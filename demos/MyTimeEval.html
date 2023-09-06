@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendship Analyzer</title>
+</head>
+
+<body>
+    <h1>Friendship Analyzer</h1>
+    <div>
+        <h2>Usernames:</h2>
+        <textarea id="usernamesInput" rows="4" cols="50" placeholder="Enter usernames, separated by commas">
+Alice, Bob, Charlie, Erin, Dan
+        </textarea>
+    </div>
+    <div>
+        <h2>Log Events:</h2>
+        <textarea id="logEventsInput" rows="4" cols="50"
+            placeholder="Enter log events, one per line (e.g., 'timestamp Alice and Bob become friends')">
+1693500000 Alice and Bob become friends
+1693600000 Bob and Erin become friends
+1693700000 Charlie and Dan become friends
+1693800000 Erin and Charlie become friends
+1693900000 Bob and Dan become friends
+        </textarea>
+    </div>
+    <button id="analyzeButton">Analyze</button>
+    <div>
+        <h2>Result:</h2>
+        <p id="result"></p>
+    </div>
+    <div id="tracePathDiv" style="display: none;">
+        <h2>Trace Path:</h2>
+        <select id="user1"></select>
+        <select id="user2"></select>
+        <button id="traceButton">Trace Path</button>
+        <div>
+            <h2>Path:</h2>
+            <p id="path"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const analyzeButton = document.getElementById("analyzeButton");
+            analyzeButton.addEventListener("click", analyzeFriendship);
+
+            const traceButton = document.getElementById("traceButton");
+            traceButton.addEventListener("click", tracePath);
+
+            let graph;
+
+            function analyzeFriendship() {
+                const usernamesInput = document.getElementById("usernamesInput").value;
+                const logEventsInput = document.getElementById("logEventsInput").value;
+
+                // Split the input strings into arrays
+                const usernames = usernamesInput.split(",").map(username => username.trim());
+                const logEvents = logEventsInput.split("\n").map(event => event.trim());
+
+                const result = calculateReachability(usernames, logEvents);
+                document.getElementById("result").textContent = result;
+
+                const user1Select = document.getElementById("user1");
+                const user2Select = document.getElementById("user2");
+
+                for (const username of usernames) {
+                    const option1 = document.createElement("option");
+                    option1.text = username;
+                    user1Select.add(option1);
+
+                    const option2 = document.createElement("option");
+                    option2.text = username;
+                    user2Select.add(option2);
+                }
+                const tracePathDiv = document.getElementById("tracePathDiv");
+                tracePathDiv.style.display = "block";
+            }
+
+            function calculateReachability(usernames, logEvents) {
+                graph = new Map();
+                let maxTimestamp = 0;
+
+                for (const logEvent of logEvents) {
+                    // Split the log event into components
+                    const parts = logEvent.split(' ');
+
+                    // Ensure there are enough parts to proceed
+                    if (parts.length !== 6) {
+                        console.error(`Invalid log event: ${logEvent}`);
+                        continue;
+                    }
+
+                    const timestamp = parseInt(parts[0], 10);
+                    const user1 = parts[1];
+                    const user2 = parts[3];
+
+                    // Check if timestamp is a valid number
+                    if (isNaN(timestamp)) {
+                        console.error(`Invalid timestamp: ${parts[0]}`);
+                        continue;
+                    }
+
+                    // Ensure both usernames are defined
+                    if (!user1 || !user2) {
+                        console.error(`Invalid action: ${action}`);
+                        continue;
+                    }
+
+                    // Update the graph
+                    if (!graph.has(user1)) {
+                        graph.set(user1, []);
+                    }
+                    if (!graph.has(user2)) {
+                        graph.set(user2, []);
+                    }
+                    graph.get(user1).push(user2);
+                    graph.get(user2).push(user1);
+
+                    // Update the maximum timestamp
+                    maxTimestamp = Math.max(maxTimestamp, timestamp);
+
+                    // Check if all users are reachable
+                    if (isAllReachable(graph, usernames)) {
+                        // Format the result
+                        const result = `All users became reachable at timestamp ${maxTimestamp}`;
+
+                        return result;
+                    }
+                }
+
+                // If the loop finishes and not all users are reachable, return a message
+                return "Not all users are reachable yet.";
+            }
+
+            function isAllReachable(graph, usernames) {
+                const visited = new Set();
+                const stack = [usernames[0]];
+
+                while (stack.length > 0) {
+                    const node = stack.pop();
+                    visited.add(node);
+
+                    for (const neighbor of graph.get(node) || []) {
+                        if (!visited.has(neighbor)) {
+                            stack.push(neighbor);
+                        }
+                    }
+                }
+
+                return visited.size === usernames.length;
+            }
+
+            function tracePath() {
+                const user1 = document.getElementById("user1").value;
+                const user2 = document.getElementById("user2").value;
+
+                const path = bfs(graph, user1, user2);
+
+                document.getElementById("path").textContent = path.join(" -> ");
+            }
+
+            function bfs(graph, start, end) {
+                const visited = new Set();
+                const queue = [[start]];
+
+                while (queue.length > 0) {
+                    const path = queue.shift();
+                    const node = path[path.length - 1];
+
+                    if (node === end) {
+                        return path;
+                    }
+
+                    if (!visited.has(node)) {
+                        visited.add(node);
+
+                        for (const neighbor of graph.get(node) || []) {
+                            const newPath = [...path, neighbor];
+                            queue.push(newPath);
+                        }
+                    }
+                }
+
+                return [];
+            }
+        });
+    </script>
+</body>
+
+</html>
