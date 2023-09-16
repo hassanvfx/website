@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mobile Business Analyst Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="welcome" class="container text-center mt-5">
+        <h1>Welcome to the Mobile Business Analyst Test</h1>
+        <button class="btn btn-primary mt-3" onclick="startQuiz()">Start Quiz</button>
+    </div>
+    <div id="quiz" class="container mt-5 d-none"></div>
+    <div id="results" class="container mt-5 d-none"></div>
+
+    <script>
+        var questions = [
+            { "q": "Can you describe the main differences between mobile apps and web apps from a business analysis perspective?", "a": "Mobile apps are specifically designed for handheld devices with considerations like limited processing power, screen size, and varying OS platforms (iOS, Android). They can leverage device-specific features such as GPS, camera, push notifications, etc. Web apps are more generic and are accessed via browsers; they might not fully utilize all mobile device features. From a BA perspective, understanding these differences is crucial for requirements gathering, especially regarding user experience and technical constraints." },
+            { "q": "How would you prioritize features for a new mobile app?", "a": "Prioritization depends on several factors including: Business needs: What does the company hope to achieve? User needs: What do user personas and user research indicate? Technical feasibility: What can be realistically developed given constraints? ROI: Which features will drive the most value or user engagement? A tool like the MoSCoW method (Must have, Should have, Could have, Won't have) can be effective." },
+            { "q": "Explain the importance of mobile app analytics for a BA.", "a": "Mobile app analytics offer insights into user behavior, app performance, and areas of improvement. For a BA, this data helps in refining requirements, suggesting improvements, and ensuring the app meets user needs and business goals. It's also crucial for post-launch iterations." },
+            { "q": "How do you ensure that the requirements you gather align with both user expectations and technical constraints?", "a": "This involves a combination of user research (surveys, user interviews, usability testing) and close collaboration with the technical team. Iterative feedback loops, wireframes, and prototypes can be beneficial. Understanding the technical landscape is also key to ensure that requirements are feasible." },
+            { "q": "How do you approach a situation where a stakeholder insists on a feature that you believe might not benefit the user or the business?", "a": "It's important to approach such situations with data and user-centric reasoning. I would present user research, analytics data, or best practices that support my perspective. However, being a good listener, understanding the stakeholder's point of view, and finding a middle ground or proposing an A/B test might be ways to proceed." },
+            { "q": "Explain a scenario where you had to compromise on the mobile user experience due to technical constraints.", "a": "[A good answer would include a specific instance, e.g.,] In a past project, we wanted a specific animation to guide users through a process. However, due to platform limitations and development timelines, we opted for a simpler, more static guide. This decision was made considering the development time vs. the overall impact on user experience." },
+            { "q": "What tools or methodologies do you use for mobile app user journey mapping?", "a": "I employ tools like Lucidchart, Miro, or even simple whiteboard sessions. The methodology might involve creating user personas first, understanding their goals, pain points, and emotions, and then charting out their journey through the app, highlighting touchpoints, channels, and interactions." },
+            { "q": "How do you keep up with the ever-evolving mobile app landscape?", "a": "I regularly follow industry blogs, attend webinars, participate in mobile app development communities, and keep an eye on updates from major players like Apple and Google. Continuous learning is key in the mobile app world." },
+            { "q": "Can you describe a challenging mobile project you've worked on and how you overcame the challenges?", "a": "[The answer will be specific to the individual's experience, but it should showcase their problem-solving skills, collaboration, and how they bring value to the team.]" },
+            { "q": "How do you handle conflicting requirements from multiple stakeholders during mobile app development?", "a": "Effective communication is crucial. I arrange sessions with conflicting parties to understand their perspectives, present data-driven insights, and try to reach a consensus. If conflicts persist, prioritizing based on business goals and user needs can be a way forward." },
+            { "q": "What is an FRD?", "a": "An FRD, or Functional Requirement Document, defines the system's functional requirements. It describes the expected behavior of a system in detail, including data, processes, inputs, and outputs." },
+            { "q": "How is an FRD different from a BRD?", "a": "While a BRD focuses on the business requirements, capturing the \"what\" and the \"why,\" an FRD details the \"how.\" It provides an in-depth description of the system's functionalities, interfaces, and services." },
+            { "q": "What are the key components of an FRD?", "a": "An FRD typically contains: Introduction Scope of the system Functional requirements System dependencies Assumptions and constraints User profiles Data and process models Use-case diagrams" },
+            { "q": "How do you ensure the quality and completeness of an FRD?", "a": "To ensure quality and completeness, one should: Collaborate closely with stakeholders. Use standardized templates. Conduct regular review meetings. Use traceability matrices to track requirements." },
+            { "q": "What is a BRD?", "a": "A BRD, or Business Requirement Document, outlines the business's needs and the problems the business intends to solve. It sets the foundation for what will be constructed, focusing on high-level objectives, stakeholders, and the expected benefits." },
+            { "q": "Why is a BRD important?", "a": "A BRD is crucial because it provides a clear understanding of business processes, goals, and objectives. It sets the direction for the project, ensuring alignment between the business needs and the project outcomes." },
+            { "q": "What information do you include in a BRD?", "a": "A BRD might contain: Introduction and background Business objectives Stakeholder information Project scope and out-of-scope items Business risks Business constraints and assumptions Business process flows User stories or use cases" },
+            { "q": "How do you handle changes or updates to the BRD once it's finalized?", "a": "Changes to a BRD should be managed through a change control process. This involves documenting the requested change, assessing its impact, seeking approval from stakeholders, and then implementing the change if approved. It's crucial to maintain version control and keep stakeholders informed." },
+            { "q": "Can a project proceed without a BRD?", "a": "Technically, a project can proceed without a BRD, but it's not recommended. Without a clear understanding of business needs and goals, the project may not align with the business's expectations, leading to wasted resources and unsatisfactory outcomes." },
+            { "q": "How do you ensure stakeholders agree with the contents of the BRD?", "a": "Ensuring agreement involves: Collaborative workshops or elicitation sessions. Regular reviews and feedback loops. Clear communication and documentation. Formal sign-off procedures to confirm agreement." },
+            { "q": "What is story mapping in the context of mobile app development?", "a": "Story mapping is a method of organizing user stories to create a visual representation of the journey a user takes through a mobile app. It helps teams visualize the app's functionalities and features, prioritize them, and decide on the app's release phases." },
+            { "q": "Why is story mapping important for a mobile app?", "a": "Story mapping provides a clear overview of the user's journey in a mobile app, helping the team to understand the bigger picture. It allows for prioritization of features based on user needs and helps in determining a logical sequence for development and release." },
+            { "q": "How do you begin creating a story map for a mobile app?", "a": "Start by identifying the main user activities or high-level tasks a user might perform in the app. These become your backbone. Then, break down these activities into sub-tasks or individual user stories, arranging them underneath the main activities in the order a user might go through them." },
+            { "q": "How do you prioritize user stories within a story map?", "a": "Prioritization is typically based on the value provided to the user and the business needs. Critical paths or essential user journeys should be identified and prioritized first. Feedback from stakeholders, users, and team members can further guide prioritization." },
+            { "q": "In mobile app development, how does story mapping cater to different device types and orientations?", "a": "While the main user journey remains consistent, specific stories or sub-tasks may be added, modified, or prioritized differently based on device constraints, screen sizes, or orientations. The Mobile BA should consider these variations while building and refining the story map." },
+            { "q": "How often should the team revisit and adjust a story map?", "a": "Story maps should be treated as living documents. Teams should revisit them regularly, especially after user feedback, usability testing, or any changes in business priorities. Adjustments ensure the development remains aligned with user needs and business goals." },
+            { "q": "How do story maps facilitate better communication within the development team?", "a": "Story maps serve as a visual representation of the product vision, making it easier for the entire team (developers, designers, testers) to understand the scope, sequence, and intricacies of the app. It fosters a shared understanding and reduces ambiguities." },
+            { "q": "How do you handle external integrations or dependencies in a story map?", "a": "External integrations or dependencies should be clearly marked in the story map. They can be highlighted with specific color codes, annotations, or symbols to ensure the team is aware of them and can plan the development and testing phases accordingly." },
+            { "q": "How does story mapping help in release planning?", "a": "Once the story map is structured, it provides a clear view of the MVP (Minimum Viable Product) and subsequent releases. By identifying the most crucial user paths and features, teams can decide what to include in the initial release and what can be deferred to later versions." },
+            { "q": "How does user feedback affect an existing story map?", "a": "User feedback can lead to the addition, modification, or reprioritization of stories within the map. Feedback provides insights into areas of the app that might need refinement or new features that could enhance the user experience. The story map should be updated accordingly to reflect these insights." }
+        ];
+        var responses = [];
+        var currentQuestion = 0;
+        function getRandomSample(array, n) {
+            var shuffled = array.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, n);
+        }
+
+        function startQuiz() {
+            document.getElementById('welcome').classList.add('d-none');
+            document.getElementById('quiz').classList.remove('d-none');
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion >= questions.length) {
+                endQuiz();
+                return;
+            }
+            var question = questions[currentQuestion];
+            var quizDiv = document.getElementById('quiz');
+            quizDiv.innerHTML = '<h2>' + (currentQuestion + 1) + '/' + questions.length + '<br/> ' + question.q + '</h2>';
+            var incorrectAnswers = questions.filter(q => q.a != question.a).map(q => q.a);
+            var answers = [question.a].concat(getRandomSample(incorrectAnswers, 3));
+            answers.sort(() => Math.random() - 0.5);
+            for (var i = 0; i < answers.length; i++) {
+                quizDiv.innerHTML += '<div class="form-check"><input class="form-check-input" type="radio" name="answer" value="' + answers[i] + '"><label class="form-check-label">' + answers[i] + '</label></div>';
+            }
+            quizDiv.innerHTML += '<button class="btn btn-primary mt-3" onclick="submitAnswer()">Submit Answer</button>';
+        }
+
+        function submitAnswer() {
+            var selectedAnswer = document.querySelector('input[name="answer"]:checked').value;
+            responses.push({ question: questions[currentQuestion].q, answer: selectedAnswer, correct: selectedAnswer == questions[currentQuestion].a });
+            currentQuestion++;
+            nextQuestion();
+        }
+
+        function endQuiz() {
+            document.getElementById('quiz').classList.add('d-none');
+            var resultsDiv = document.getElementById('results');
+            resultsDiv.classList.remove('d-none');
+            var correctAnswers = responses.filter(response => response.correct).length;
+            var totalQuestions = responses.length;
+            var scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
+            resultsDiv.innerHTML = '<h2>Results</h2>';
+            resultsDiv.innerHTML += '<h3>Your Score: ' + correctAnswers + '/' + totalQuestions + ' (' + scorePercentage + '%)</h3>';
+            for (var i = 0; i < responses.length; i++) {
+                var response = responses[i];
+                resultsDiv.innerHTML += '<p>' + response.question + '</p>';
+                if (response.correct) {
+                    resultsDiv.innerHTML += '<p class="text-success">Your answer: ' + response.answer + ' ✔</p>';
+                } else {
+                    resultsDiv.innerHTML += '<p class="text-danger">Your answer: ' + response.answer + ' ✘</p>';
+                    resultsDiv.innerHTML += '<p class="text-success">Correct answer: ' + questions[i].a + '</p>';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
