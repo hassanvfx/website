@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SwiftUI Application Tutorial</title>
+</head>
+
+<body>
+    <h1>SwiftUI Application Tutorial</h1>
+    <p>This tutorial will guide you through the process of creating a SwiftUI application with a main navigation, 3D
+        object viewer, gallery view, and mock AWS integration.</p>
+
+    <h2>1. Main Navigation</h2>
+    <p>First, we will create the main navigation with two tabs: Gallery and User Scan. We will use a TabView for this
+        purpose.</p>
+    <pre><code>
+    struct MainView: View {
+        @State private var selection = 0
+
+        var body: some View {
+            TabView(selection: $selection){
+                GalleryView()
+                    .tabItem {
+                        Label("Gallery", systemImage: "photo")
+                    }
+                    .tag(0)
+                UserScanView()
+                    .tabItem {
+                        Label("User Scan", systemImage: "person.crop.circle")
+                    }
+                    .tag(1)
+            }
+        }
+    }
+    </code></pre>
+
+    <h2>2. AppState</h2>
+    <p>Next, we will create an AppState to manage the user session. We will use the Resolver library for dependency
+        injection.</p>
+    <pre><code>
+        import Resolver
+
+        class AppState: ObservableObject {
+            @Published var session: Session?
+        
+            func signIn(user: User) async {
+                // Mock sign in
+                await validateUser(user: user) { isValid in
+                    if isValid {
+                        self.session = Session(user: user)
+                    } else {
+                        self.session = nil
+                    }
+                }
+            }
+        
+            func signOut() {
+                self.session = nil
+            }
+        
+            private func validateUser(user: User) async -> Bool {
+                // Simulate API call
+                await Task.sleep(2 * 1_000_000_000) // Sleep for 2 seconds
+                return true // Assume the user is valid
+            }
+        }
+        
+        extension Resolver {
+            static func registerAppState() {
+                register { AppState() }.scope(application)
+            }
+        }
+    </code></pre>
+
+    <p>In the SceneDelegate, call the registration method:</p>
+    <pre><code>
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        Resolver.registerAppState()
+        // ...
+    }
+    </code></pre>
+
+    <h2>3. SignInView</h2>
+    <p>Now, we will create a SignInView that will be displayed as an overlay if there is no user session.</p>
+    <pre><code>
+        struct SignInView: View {
+            @InjectedObject var appState: AppState
+            @State private var username = ""
+            @State private var password = ""
+        
+            var body: some View {
+                VStack {
+                    TextField("Username", text: $username)
+                    SecureField("Password", text: $password)
+                    Button("Sign In") {
+                        let user = User(username: username, password: password)
+                        Task {
+                            await appState.signIn(user: user)
+                        }
+                    }
+                }
+            }
+        }
+    </code></pre>
+
+    <h2>4. GalleryView</h2>
+    <pre><code>
+import SwiftUI
+
+struct GalleryView: View {
+    let thumbnails = ["thumbnail1", "thumbnail2", "thumbnail3"]
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+                    ForEach(thumbnails, id: \.self) { thumbnail in
+                        NavigationLink(destination: Object3DView()) {
+                            Image(thumbnail)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Gallery")
+        }
+    }
+}
+</code></pre>
+
+    <h2>5. 3D Object Viewer</h2>
+    <p>Finally, we will create a 3D Object Viewer to display and interact with 3D objects. We will use SceneKit for this
+        purpose.</p>
+    <pre><code>
+        
+        import SwiftUI
+        import SceneKit
+        import ARKit
+        
+        struct ContentView: View {
+            @State private var isARView = false
+        
+            var body: some View {
+                VStack {
+                    if isARView {
+                        ARViewContainer()
+                    } else {
+                        Object3DView()
+                    }
+                    Button(action: {
+                        self.isARView.toggle()
+                    }) {
+                        Text("Switch View")
+                    }
+                }
+            }
+        }
+        
+        struct Object3DView: View {
+            var body: some View {
+                SceneView(
+                    scene: SCNScene(named: "art.scnassets/yourModel.usdz"),
+                    options: [.autoenablesDefaultLighting, .allowsCameraControl]
+                )
+                .onAppear {
+                    let scene = SCNScene(named: "art.scnassets/yourModel.usdz")!
+                    scene.lightingEnvironment.contents = "art.scnassets/yourEnvironmentMap.hdr"
+                    scene.lightingEnvironment.intensity = 1.0
+                }
+            }
+        }
+        
+        struct ARViewContainer: UIViewRepresentable {
+            func makeUIView(context: Context) -> ARSCNView {
+                let arView = ARSCNView(frame: .zero)
+                let scene = SCNScene(named: "art.scnassets/yourModel.usdz")!
+                scene.lightingEnvironment.contents = "art.scnassets/yourEnvironmentMap.hdr"
+                scene.lightingEnvironment.intensity = 1.0
+                arView.scene = scene
+                return arView
+            }
+        
+            func updateUIView(_ uiView: ARSCNView, context: Context) {}
+        }
+        
+            </code></pre>
+
+    <p>That's it! You have now created a SwiftUI application with a main navigation, 3D object viewer, gallery view, and
+        mock AWS integration.</p>
+</body>
+
+</html>
