@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teoría del estado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="welcome" class="container text-center mt-5">
+        <h1>Teoría del estado</h1>
+        <h2>Guía de estudio del segundo parcial</h2>
+        <h6>Elaborado por Ammir Uriostegui</h6>
+        <button class="btn btn-primary mt-3" onclick="startQuiz()">Empezar</button>
+    </div>
+    <div id="quiz" class="container mt-5 d-none"></div>
+    <div id="results" class="container mt-5 d-none"></div>
+
+    <script>
+        var questions = [
+            { "q": "¿Qué son los estados fallidos?", "a": "Estados caracterizados por un fracaso social, político y económico que provocan un gobierno tan débil e ineficaz para proporcionar a su población los servicios básicos de seguridad y salud ante los altos estándares de criminalidad y corrupción sobre sus regiones." },
+            { "q": "¿Cuáles son las condiciones mínimas que debe proporcionar un estado?", "a": "Paz interna, leyes normativas, orden y buen gobierno." },
+            { "q": "¿Qué es lo contrario a un estado de derecho o constitucional?", "a": "Es un estado totalitario y absolutista que no vela por los derechos fundamentales." },
+            { "q": "¿Menciona las características de los estados fallidos y defínelas?", "a": "Falla gubernamental: imposibilidad de dar cumplimiento a las responsabilidades conferidas a sus funcionarios. Lucha y violencia: conflictos entre gobierno y ciudadanía por el poder, ignorando el estado de derecho. Crean movimiento migratorio: ciudadanos buscan naciones más estables. Deterioro económico: falta de estabilidad política impide producir e invertir en bienes y servicios esenciales." },
+            { "q": "¿Qué se puede hacer con estos estados fallidos? 2 caminos", "a": "Intervención extranjera solicitada: traer jefes militares y jueces anualmente para solucionar problemas sin monopolizar el poder. Intervención extranjera impuesta: ayuda de naciones interesadas por beneficios comerciales y geográficos, ofreciendo ayuda humanitaria y militar." },
+            { "q": "¿Cuáles son los tipos de fracasos que presentan los estados fallidos?", "a": "Fracaso político: falta de autoridad legítima. Fracaso económico: colapso de actividad productiva. Fracaso social: inseguridad y falta de servicios judiciales, provocando disputas por el poder." },
+            { "q": "¿Cuál es el concepto de Maquiavelo sobre el estado?", "a": "Entidad soberana que ejerce control y autoridad en su territorio y población, centralizándose en mantener el orden y el poder, incluso ante decisiones impopulares y amorales por el bien común." },
+            { "q": "¿Qué es la razón para Maquiavelo?", "a": "La necesidad del estado de actuar en función a sus intereses y objetivos, incluso si implica el uso de medios considerados inmorales o ilegales, para asegurar la supervivencia del estado." },
+            { "q": "¿Qué son los derechos humanos?", "a": "Conjunto de prerrogativas sustentadas en la dignidad humana, indispensables para el desarrollo integral de las personas." },
+            { "q": "¿Qué son las garantías individuales?", "a": "Derechos básicos mínimos consagrados en la constitución para el sistema político en favor de la dignidad humana, como igualdad, libertad y propiedad." },
+            { "q": "¿Características de las garantías?", "a": "Unilaterales, irrenunciables, intransferibles, perdurables y soberanas." },
+            { "q": "¿Qué es coacción?", "a": "Fuerza coercitiva no normatizada que actúa directamente sobre el libre albedrío de los individuos, como la amenaza de muerte ante ciertas actividades no realizadas." },
+            { "q": "¿Qué es coerción?", "a": "Fuerza coercitiva normatizada en una constitución o ley ante la realización o omisión de un acto por parte del individuo en sociedad." },
+            { "q": "¿Qué es la globalización en el estado?", "a": "Fenómeno de transformación de las dinámicas del estado donde se adaptan las nuevas relaciones entre el poder político y la sociedad para garantizar los derechos primordiales de las personas." },
+            { "q": "¿Qué es la teoría de pesos y contrapesos?", "a": "Sostiene que al distribuir las funciones del estado según la jerarquía de órganos, los funcionarios de mayor rango vigilan que los inferiores no realicen actividades que no les corresponden, para el bien común de la nación." },
+            { "q": "¿Tipos de autoridades o gobernantes?", "a": "Formal: surge por atribución de roles. Autoritario: ostenta poder mediante el miedo. Democrático: considera la opinión de sus seguidores para el buen funcionamiento social." },
+            { "q": "¿Cuál es el artículo constitucional que sustenta la forma de gobierno de México?", "a": "Artículo 40 constitucional, que nos define como una república democrática, laica y federal con estados independientes unidos bajo esta normatividad." },
+            { "q": "¿Qué es la competencia concurrente?", "a": "Situación donde la federación y las entidades están facultadas para tomar decisiones en ciertas materias para el bien común." },
+            { "q": "¿Qué es la facultad exclusiva?", "a": "Facultad ejercida de manera total por una autoridad legitimada por el estado." },
+            { "q": "¿Cuál es la ideología del estado mínimo?", "a": "Plantea que para una buena economía, el sector público debe ser mínimo en comparación al privado, para mantener un buen funcionamiento comercial del estado." },
+            { "q": "¿Qué es el neoliberalismo?", "a": "Conjunto de pensamientos político-económicos que promueven que la sociedad actúe de manera libre y autónoma para el desarrollo de la economía de la nación." },
+            { "q": "¿Menciona algunas características del neoliberalismo?", "a": "Rechaza la presencia del estado en la economía de la nación y considera a los individuos capaces de resolver problemas sociales y económicos de manera autónoma." },
+            { "q": "¿Cuál es la diferencia entre el neoliberalismo y el liberalismo?", "a": "El neoliberalismo limita la intervención estatal en la economía, mientras que el liberalismo defiende el libre mercado con cierta presencia estatal." },
+            { "q": "¿Cuál es el origen del estado según Aristóteles?", "a": "Aristóteles creía que a través de las leyes el hombre alcanza la perfección, existiendo tres clases sociales donde la clase media es ideal para administrar la sociedad al no beneficiarse de poder." },
+            { "q": "¿Qué es el reconocimiento de los estados?", "a": "Acto mediante el cual uno o más estados certifican la existencia de otro como entidad política y territorial, siendo reconocida por la comunidad internacional." },
+            { "q": "¿Cuáles son las principales teorías que sustentan al reconocimiento de los estados?", "a": "Teoría constitutiva: ser reconocido por otros estados como requisito. Teoría declarativa: la existencia depende de la justificación de su dicho." },
+            { "q": "¿Qué es la teoría de la doble personalidad?", "a": "Implica responsabilidades tanto a los ciudadanos, garantizando sus derechos, como a la entidad política, manteniendo el poder y autoridad, buscando un equilibrio entre ambos." },
+            { "q": "¿Qué es la oligarquía?", "a": "Sistema político donde el poder se centra en un pequeño grupo con la misma clase social y objetivos comunes para controlar sectores de un estado." },
+            { "q": "¿Qué es el parlamento?", "a": "Institución gubernamental en naciones democráticas compuesta por miembros elegidos que velan por el bienestar social, elaborando o aprobando leyes." },
+            { "q": "¿Qué son los partidos políticos?", "a": "Entidades que fomentan la participación democrática con representación, objetivos, intereses y valores comunes apoyando el bienestar social de la ciudadanía." },
+            { "q": "¿Qué es la democracia deliberativa?", "a": "Enfoque que busca mejorar la democracia a través de la discusión pública y reflexión para tomar decisiones." },
+            { "q": "¿Qué es la constitución mexicana de 1917 y su importancia?", "a": "Contiene las normas fundamentales de la nación, con una parte dogmática para los individuos (artículos 1 al 38) y una parte orgánica aplicativa a la nación (artículos 39 al 136)." },
+            { "q": "¿Qué es la demagogia?", "a": "Estrategia para conseguir poder político apelando a sentimientos y esperanzas de la población." },
+            { "q": "¿Qué es el neoconstitucionalismo?", "a": "Doctrina que coloca a la constitución en el centro del sistema jurídico, interpretando los derechos fundamentales y organizando los poderes del estado." },
+            { "q": "¿Qué son los tratados internacionales?", "a": "Instrumentos que consignan acuerdos entre sujetos de derecho internacional para crear, modificar o extinguir derechos y obligaciones, buscando la paz y beneficios comerciales." },
+            { "q": "¿Qué es el control supranacional?", "a": "Someter la conducta del estado a un órgano superior para subsanar faltas cometidas." },
+            { "q": "¿Qué es la suspensión de las garantías individuales?", "a": "Procedimiento que permite al presidente y titulares de secretarías suspender garantías por faltas graves, como la traición, que pongan en peligro al país." },
+            { "q": "¿Qué es el principio pro persona?", "a": "Considerar la ley o norma que más beneficie a los individuos al juzgarlos en un sistema democrático." },
+            { "q": "¿Qué es el principio de legalidad?", "a": "Exige que los órganos legislativos justifiquen sus determinaciones basándose en una normatividad suprema." },
+            { "q": "¿Qué son los problemas sociales y cuáles son?", "a": "Afectan a la sociedad en aspectos económicos y políticos, como la pobreza, discriminación, y corrupción." },
+            { "q": "¿Cuál es la función de la OCDE?", "a": "Vela por el crecimiento económico y una expansión equilibrada con beneficios comerciales para la nación." },
+            { "q": "¿Menciona algunas actuaciones que realice la OCDE?", "a": "Realiza estudios a políticas de naciones para proteger derechos fundamentales y establece compromisos vinculantes para el desarrollo gubernamental." },
+            { "q": "¿Menciona al menos un tratado y un convenio internacional?", "a": "Convenio de Ginebra: establece normas humanitarias en tiempos de guerra. Tratado de Libre Comercio: fomenta la inversión y el desarrollo comercial entre naciones." },
+            { "q": "¿Qué es el senado?", "a": "Institución legislativa que representa a las entidades federativas, participando en la elaboración de leyes y proyectos para el beneficio de la ciudadanía en un sistema democrático." },
+            { "q": "¿Cuál es la función del congreso de la unión?", "a": "Legislar normas abstractas, jurídicas y generales, así como modificar el sistema normativo vigente para el beneficio de la nación." },
+            { "q": "¿Qué son las fuerzas políticas?", "a": "Fuerza social que busca establecer, mantener o transformar el orden jurídico según una interpretación ideológica de la sociedad para el bienestar social." },
+            { "q": "¿Qué es la burocracia de los estados?", "a": "Estructura organizada racionalmente según normas objetivas que determinan cargos jerárquicos, beneficiando solo a ciertos sectores sociales y políticos." },
+            { "q": "¿Qué es la vox populi o la opinión pública?", "a": "Juicio predominante en la sociedad frente a hechos normativos o políticos, aplicable a los ciudadanos de una nación." },
+            { "q": "¿Qué son los grupos de presión y su relevancia en el estado?", "a": "Formaciones sociales organizadas que buscan influir en decisiones de autoridades para su beneficio común, originándose en el régimen liberal para proteger derechos de petición y libertad de opinión." },
+            { "q": "¿Qué son las políticas del estado?", "a": "Acciones plasmadas en la constitución con preceptos claros implementadas por el ejecutivo federal, de alcance general y estrategia para el bienestar común." },
+            { "q": "¿Qué implicaciones tiene el gobierno federal, estatal y municipal?", "a": "Implica que tanto el gobierno como la ciudadanía participen y cumplan con lo que cada quien debe hacer para alcanzar los objetivos del país establecidos para la mejora de la calidad de vida de la población, contando con instituciones y mecanismos que regulen el ejercicio del poder y que garanticen los derechos de la población." }
+        ];
+        var responses = [];
+        var currentQuestion = 0;
+        function getRandomSample(array, n) {
+            var shuffled = array.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, n);
+        }
+
+        function startQuiz() {
+            document.getElementById('welcome').classList.add('d-none');
+            document.getElementById('quiz').classList.remove('d-none');
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion >= questions.length) {
+                endQuiz();
+                return;
+            }
+            var question = questions[currentQuestion];
+            var quizDiv = document.getElementById('quiz');
+            quizDiv.innerHTML = '<h2>' + (currentQuestion + 1) + '/' + questions.length + '<br/> ' + question.q + '</h2>';
+            var incorrectAnswers = questions.filter(q => q.a != question.a).map(q => q.a);
+            var answers = [question.a].concat(getRandomSample(incorrectAnswers, 3));
+            answers.sort(() => Math.random() - 0.5);
+            for (var i = 0; i < answers.length; i++) {
+                quizDiv.innerHTML += '<div class="form-check"><input class="form-check-input" type="radio" name="answer" value="' + answers[i] + '"><label class="form-check-label">' + answers[i] + '</label></div>';
+            }
+            quizDiv.innerHTML += '<button class="btn btn-primary mt-3" onclick="submitAnswer()">Submit Answer</button>';
+        }
+
+        function submitAnswer() {
+            var selectedAnswer = document.querySelector('input[name="answer"]:checked').value;
+            responses.push({ question: questions[currentQuestion].q, answer: selectedAnswer, correct: selectedAnswer == questions[currentQuestion].a });
+            currentQuestion++;
+            nextQuestion();
+        }
+
+        function endQuiz() {
+            document.getElementById('quiz').classList.add('d-none');
+            var resultsDiv = document.getElementById('results');
+            resultsDiv.classList.remove('d-none');
+            var correctAnswers = responses.filter(response => response.correct).length;
+            var totalQuestions = responses.length;
+            var scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
+            resultsDiv.innerHTML = '<h2>Results</h2>';
+            resultsDiv.innerHTML += '<h3>Your Score: ' + correctAnswers + '/' + totalQuestions + ' (' + scorePercentage + '%)</h3>';
+            for (var i = 0; i < responses.length; i++) {
+                var response = responses[i];
+                resultsDiv.innerHTML += '<p>' + response.question + '</p>';
+                if (response.correct) {
+                    resultsDiv.innerHTML += '<p class="text-success">Your answer: ' + response.answer + ' ✔</p>';
+                } else {
+                    resultsDiv.innerHTML += '<p class="text-danger">Your answer: ' + response.answer + ' ✘</p>';
+                    resultsDiv.innerHTML += '<p class="text-success">Correct answer: ' + questions[i].a + '</p>';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
