@@ -195,7 +195,7 @@ CURRENT_PROJECTS = [
         "stats": "20,000 conversations | 200,000 messages",
         "website": "https://btwinai.com/",
         "videos": [
-            {"url": "https://player.vimeo.com/video/1003117589", "title": "BTwin Friends"},
+            {"url": "https://player.vimeo.com/video/1005370651", "title": "BTwin Friends"},
         ],
         "quote": "Our AI delves into the human essence, giving voice to silent thoughts."
     },
