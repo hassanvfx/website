@@ -379,11 +379,21 @@ FILMOGRAPHY = {
 # BOOKS
 BOOKS = [
     {
+        "title": "MST: Mind Simulation Technology",
+        "subtitle": "A Comprehensive Framework for Cognitive Profiling and Digital Twin Creation",
+        "year": "2024",
+        "language": "English",
+        "url": "https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993",
+        "press": "The definitive guide to AI personality simulation",
+        "featured": True,
+        "description": "This groundbreaking work introduces the theoretical and practical foundations of Mind Simulation Technology—the science behind BTwin Friends and TwinChat. Drawing from years of research in cognitive profiling, conversational AI, and therapeutic applications, this book provides a comprehensive framework for understanding how AI can simulate human cognition, personality, and emotional intelligence."
+    },
+    {
         "title": "I, AI: Nemo's Mirror",
         "subtitle": "Exploring the Singular Nature of Self-Awareness in ChatGPT",
         "year": "2023",
         "language": "English",
-        "url": "https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993",
+        "url": "https://www.amazon.com/-/en/AI-Exploring-Singular-Self-Awareness-ChatGPT/dp/1365528669",
         "press": "Featured in Korea Biz Wire"
     },
     {
