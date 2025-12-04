@@ -206,7 +206,7 @@ CURRENT_PROJECTS = [
         "description": "Pioneering mind simulation platform that laid the foundation for BTwin Friends. Early research into cognitive profiling and conversational AI companions with therapeutic applications.",
         "stats": "Mind Simulation Pioneer",
         "videos": [
-            {"url": "https://player.vimeo.com/video/913284078", "title": "BRB2Me Demo"},
+            {"url": "https://player.vimeo.com/video/913284078?h=82df73027a", "title": "BRB2Me Demo"},
         ],
         "quote": "The predecessor to modern AI mind simulation."
     },
