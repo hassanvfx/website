@@ -12,7 +12,8 @@ from portfolio_data import (
     IDENTITY, STATS, NAV_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
     HISTORIC_COMPANIES, BOOKS, PRESS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
-    BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER
+    BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
+    AI_INFLUENCER
 )
 from templates import CSS_STYLES
 
@@ -64,8 +65,8 @@ def generate_impact_card(company):
     return f'''
   <article class="impact-card" id="{company["id"]}">
     <div class="card-video">
-      <iframe src="{company["video"]}?autoplay=0&muted=1&controls=1" 
-              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      <iframe src="{company["video"]}" 
+              frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
     </div>
     <div class="card-content">
       <span class="highlight">{company["highlight"]}</span>
@@ -84,7 +85,7 @@ def generate_ai_showcase():
     hidden = []
     for i, video in enumerate(AI_SHOWCASE_VIDEOS):
         html = f'''<div class="showcase-video">
-        <iframe src="{video["url"]}?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="{video["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
       </div>'''
         if i < 4:
             visible.append(html)
@@ -103,8 +104,8 @@ def generate_current_project_card(project):
     return f'''
   <article class="project-card" id="{project["id"]}">
     <div class="card-video">
-      <iframe src="{video_url}?autoplay=0&muted=1&controls=1" 
-              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      <iframe src="{video_url}" 
+              frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
     </div>
     <div class="card-content">
       <span class="highlight">{project["stats"]}</span>
@@ -137,8 +138,8 @@ def generate_innovation_card(innovation):
         video_html = ""
         if innovation.get("video"):
             video_html = f'''<div class="card-video">
-      <iframe src="{innovation["video"]}?autoplay=0&muted=1&controls=1" 
-              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      <iframe src="{innovation["video"]}" 
+              frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
     </div>'''
         
         return f'''
@@ -159,7 +160,7 @@ def generate_filmography_section():
     videos_html = ""
     for video in FILMOGRAPHY["videos"]:
         videos_html += f'''<div class="film-video">
-        <iframe src="{video["url"]}?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <iframe src="{video["url"]}" frameborder="0" allowfullscreen></iframe>
         <p class="video-title">{video["title"]}</p>
       </div>
 '''
@@ -227,7 +228,7 @@ def generate_interviews_html():
     items = []
     for i in INTERVIEWS:
         items.append(f'''<div class="interview-card">
-        <iframe src="{i["url"]}?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <iframe src="{i["url"]}" frameborder="0" allowfullscreen></iframe>
         <div class="interview-info">
           <h4>{i["title"]}</h4>
           <p>{i["context"]}</p>
@@ -427,6 +428,8 @@ nav a:hover {{
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
 }}
 .impact-card .highlight {{
   display: inline-block;
@@ -492,6 +495,8 @@ nav a:hover {{
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
 }}
 .showcase-video.hidden {{
   display: none;
@@ -519,6 +524,8 @@ nav a:hover {{
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
 }}
 .project-card .highlight {{
   display: inline-block;
@@ -601,6 +608,9 @@ nav a:hover {{
 .innovation-card .card-video iframe {{
   width: 100%;
   aspect-ratio: 16/9;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 8px;
 }}
 
 /* Filmography */
@@ -614,6 +624,8 @@ nav a:hover {{
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
 }}
 .film-video .video-title {{
   color: #888;
@@ -1179,6 +1191,8 @@ nav a:hover {{
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
 }}
 
 /* Interviews Section */
@@ -1204,6 +1218,8 @@ nav a:hover {{
 .interview-card iframe {{
   width: 100%;
   aspect-ratio: 16/9;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
 }}
 .interview-info {{
   padding: 1rem;
@@ -1462,8 +1478,8 @@ nav a:hover {{
       </div>
       
       <div class="waken-video-container">
-        <iframe src="{WAKEN_AI["video"]}?autoplay=0&muted=1&controls=1" 
-                frameborder="0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="{WAKEN_AI["video"]}" 
+                frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
       </div>
       
       <p class="waken-quote">"{WAKEN_AI["quote"]}"</p>
@@ -1474,6 +1490,29 @@ nav a:hover {{
           Visit Waken AI →
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- AI Influencer Simulation Callout -->
+  <section class="waken-callout" id="ai-influencer">
+    <div class="waken-inner">
+      <div class="waken-header">
+        <span class="clineflow-badge">🤖 AI VIDEO GENERATION</span>
+        <h2 class="waken-tagline">{AI_INFLUENCER["name"]}</h2>
+        <p class="waken-subtitle">{AI_INFLUENCER["subtitle"]}</p>
+        <p class="waken-description">{AI_INFLUENCER["description"]}</p>
+      </div>
+      
+      <div class="waken-video-container" style="margin-bottom: 2rem;">
+        <iframe src="{AI_INFLUENCER["videos"][0]["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+      
+      <div class="waken-video-container">
+        <iframe src="{AI_INFLUENCER["videos"][1]["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+      
+      <p class="waken-quote" style="margin-top: 2rem;">"{AI_INFLUENCER["quote"]}"</p>
+      <p class="waken-positioning">{AI_INFLUENCER["positioning"]}</p>
     </div>
   </section>
 
@@ -1633,10 +1672,10 @@ nav a:hover {{
     </div>
     <div class="ai-art-row">
       <div class="art-video">
-        <iframe src="https://player.vimeo.com/video/457716566?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="https://player.vimeo.com/video/457716566" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
       </div>
       <div class="art-video">
-        <iframe src="https://player.vimeo.com/video/426521636?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="https://player.vimeo.com/video/426521636" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
       </div>
     </div>
   </section>

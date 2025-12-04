@@ -280,6 +280,20 @@ AI_ART_PLAYLISTS = [
     },
 ]
 
+# AI INFLUENCER SIMULATION - Featured Callout
+AI_INFLUENCER = {
+    "name": "AI Influencer Simulation",
+    "tagline": "State-of-the-Art Simulated Influencers",
+    "subtitle": "November 2025 - Cutting Edge AI Video Generation",
+    "description": "Showcasing the latest advancements in AI-generated influencer content. These simulated personalities demonstrate the state-of-the-art in realistic AI video generation as of November 2025.",
+    "videos": [
+        {"url": "https://player.vimeo.com/video/1137579986", "title": "AI Influencer Demo 1"},
+        {"url": "https://player.vimeo.com/video/1137973511", "title": "AI Influencer Demo 2"},
+    ],
+    "quote": "The future of digital personalities is here.",
+    "positioning": "Pushing the boundaries of AI-generated human simulation."
+}
+
 # WAKEN AI LABS - Featured Callout
 WAKEN_AI = {
     "name": "Waken AI",
@@ -287,7 +301,7 @@ WAKEN_AI = {
     "subtitle": "Mind Simulation Technology for Emotional Wellness",
     "description": "Waken AI Labs represents Hassan's ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, this work pioneers the intersection of AI and human emotional wellness through advanced conversational companions.",
     "logo": "https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/9a4b6ba5-4ce5-4cb4-9750-7b9be4b2de0e/waken-ai-black.png?format=1500w",
-    "video": "https://player.vimeo.com/video/416726154",
+    "video": "https://player.vimeo.com/video/960460813",
     "website": "https://www.wakenai.com/",
     "quote": "Our AI delves into the human essence, giving voice to silent thoughts.",
     "positioning": "Pioneering Mind Simulation Technology for emotional wellness and personal growth since 2020."
