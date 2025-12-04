@@ -100,7 +100,7 @@ HISTORIC_COMPANIES = [
         "role": "Principal iOS Architect",
         "highlight": "Naomi Campbell Board Member | AI Fashion",
         "description": "Building AI-powered virtual try-on technology for fashion e-commerce. SpreeAI transforms how customers shop online with real-time garment visualization. Partners include CFDA, MIT, Carnegie Mellon, and major fashion brands.",
-        "video": "https://player.vimeo.com/video/1101438413",
+        "video": "https://player.vimeo.com/video/1143600495",
         "stats": "AI Fashion Revolution",
         "press_quote": {
             "quote": "SpreeAI is pushing the forefront of e-commerce personalization, by leveraging collaborations with academia and assembling a team that understands both the deep technical challenges and their product impact.",
