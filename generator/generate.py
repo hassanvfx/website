@@ -305,6 +305,95 @@ nav a:hover {{
   color: #00D4FF !important;
 }}
 
+/* Hamburger Menu Button */
+.hamburger {{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 1002;
+  position: relative;
+}}
+.hamburger span {{
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s ease;
+}}
+.hamburger.active span:nth-child(1) {{
+  transform: rotate(45deg) translate(5px, 5px);
+}}
+.hamburger.active span:nth-child(2) {{
+  opacity: 0;
+}}
+.hamburger.active span:nth-child(3) {{
+  transform: rotate(-45deg) translate(5px, -5px);
+}}
+
+/* Mobile Menu Modal */
+.mobile-menu {{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.98);
+  z-index: 1001;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}}
+.mobile-menu.active {{
+  opacity: 1;
+  visibility: visible;
+}}
+.mobile-menu a {{
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 16px 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.3s ease;
+}}
+.mobile-menu a:hover {{
+  color: #00D4FF;
+}}
+.mobile-menu a.featured {{
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}}
+
+/* Mobile Nav Responsive */
+@media (max-width: 768px) {{
+  .hamburger {{
+    display: flex;
+  }}
+  .nav-inner a {{
+    display: none;
+  }}
+  .mobile-menu {{
+    display: flex;
+  }}
+  .scroll-nav .nav-inner {{
+    justify-content: space-between;
+    padding: 0 20px;
+  }}
+}}
+
 /* Impact Cards */
 .impact-card {{
   display: grid;
@@ -976,23 +1065,28 @@ nav a:hover {{
     border-radius: 12px;
   }}
   
-  /* Full width cards */
+  /* Full width cards - NO padding, full bleed */
   .impact-card, .project-card {{
     grid-template-columns: 1fr;
     direction: ltr !important;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 0;
+    gap: 0;
+    margin: 0;
   }}
   .impact-card > *, .project-card > * {{
     direction: ltr !important;
   }}
+  .impact-card .card-content,
+  .project-card .card-content {{
+    padding: 16px;
+  }}
   
-  /* Full width video iframes */
+  /* Full width video iframes - truly edge to edge */
   .impact-card .card-video,
   .project-card .card-video,
   .innovation-card .card-video {{
-    margin: 0 -1rem;
-    width: calc(100% + 2rem);
+    margin: 0;
+    width: 100%;
   }}
   .impact-card .card-video iframe,
   .project-card .card-video iframe,
@@ -1000,22 +1094,27 @@ nav a:hover {{
     border-radius: 0;
   }}
   
-  /* Innovation grid */
+  /* Innovation grid - full width */
   .innovation-grid {{
     grid-template-columns: 1fr;
-    padding: 1rem;
+    padding: 0;
+    gap: 0;
   }}
   .innovation-card {{
     border-radius: 0;
-    margin: 0 -1rem;
-    width: calc(100% + 2rem);
+    margin: 0;
+    width: 100%;
+  }}
+  .innovation-card .card-content {{
+    padding: 16px;
   }}
   
   /* AI Showcase full width */
   .ai-showcase {{
     grid-template-columns: 1fr;
     padding: 0;
-    gap: 1rem;
+    gap: 0;
+    max-width: 100%;
   }}
   .showcase-video {{
     border-radius: 0;
@@ -1024,47 +1123,57 @@ nav a:hover {{
     border-radius: 0;
   }}
   
-  /* Interviews grid */
+  /* Interviews grid full width */
   .interviews-grid {{
     grid-template-columns: 1fr;
-    padding: 1rem;
+    padding: 0;
+    gap: 0;
+    max-width: 100%;
   }}
   .interview-card {{
     border-radius: 0;
-    margin: 0 -1rem;
-    width: calc(100% + 2rem);
+    margin: 0;
+    width: 100%;
   }}
   .interview-card iframe {{
     border-radius: 0;
+  }}
+  .interview-info {{
+    padding: 12px 16px;
   }}
   
   /* Filmography full width */
   .filmography .film-grid {{
     grid-template-columns: 1fr;
-    padding: 1rem;
+    padding: 0;
+    gap: 0;
   }}
   .film-video {{
-    margin: 0 -1rem;
-    width: calc(100% + 2rem);
+    margin: 0;
+    width: 100%;
   }}
   .film-video iframe {{
     border-radius: 0;
+  }}
+  .film-video .video-title {{
+    padding: 8px 16px;
   }}
   
   /* Playlist grid full width */
   .playlist-grid {{
     grid-template-columns: 1fr;
-    padding: 1rem;
+    padding: 0;
+    gap: 0;
   }}
   .playlist-card {{
     border-radius: 0;
-    margin: 0 -1rem;
-    width: calc(100% + 2rem);
+    margin: 0;
+    width: 100%;
   }}
   
   /* Bio section padding */
   .bio-section {{
-    padding: 3rem 1rem;
+    padding: 3rem 16px;
   }}
   .bio-headline {{
     font-size: 1.8rem;
@@ -1072,7 +1181,7 @@ nav a:hover {{
   
   /* ClineFlow padding */
   .clineflow-callout {{
-    padding: 3rem 1rem;
+    padding: 3rem 16px;
   }}
   .clineflow-title {{
     font-size: 2.5rem;
@@ -1081,24 +1190,35 @@ nav a:hover {{
     grid-template-columns: 1fr;
   }}
   
-  /* Section headers */
+  /* Section headers - minimal padding */
   .section-header {{
-    padding: 0 1rem;
+    padding: 0 16px;
+  }}
+  
+  /* Section padding */
+  .section {{
+    padding: 60px 0;
   }}
   
   /* AI Art Row full width */
   .ai-art-row {{
     grid-template-columns: 1fr;
     padding: 0;
-    gap: 1rem;
+    gap: 0;
+    max-width: 100%;
   }}
   .art-video {{
     border-radius: 0;
-    margin: 0 -1rem;
-    width: calc(100% + 2rem);
+    margin: 0;
+    width: 100%;
   }}
   .art-video iframe {{
     border-radius: 0;
+  }}
+  
+  /* Books/Press grids - some padding */
+  .books-grid, .press-grid {{
+    padding: 0 16px;
   }}
 }}
   </style>
@@ -1109,8 +1229,18 @@ nav a:hover {{
   <nav class="scroll-nav">
     <div class="nav-inner">
       {generate_nav_html()}
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </nav>
+
+  <!-- Mobile Menu Modal -->
+  <div class="mobile-menu" id="mobileMenu">
+    {generate_nav_html()}
+  </div>
 
   <!-- Hero -->
   <section class="hero" id="home">
@@ -1384,13 +1514,40 @@ nav a:hover {{
         btn.innerHTML = 'Show Less <span class="arrow">▲</span>';
       }}
     }}
+    
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {{
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      
+      // Prevent body scroll when menu is open
+      if (mobileMenu.classList.contains('active')) {{
+        document.body.style.overflow = 'hidden';
+      }} else {{
+        document.body.style.overflow = '';
+      }}
+    }}
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {{
+      link.addEventListener('click', () => {{
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }});
+    }});
   </script>
 
 </body>
 </html>
 '''
     
-    output_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "portfolio-gallery.html")
+    output_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "index.html")
     
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)

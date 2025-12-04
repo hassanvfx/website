@@ -44,7 +44,106 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 24px;
+    padding: 0 16px;
+  }
+}
+
+/* Full-width containers on mobile for ALL sections */
+@media (max-width: 968px) {
+  /* Make all containers no padding on tablet/mobile */
+  .container {
+    padding: 0;
+    max-width: 100%;
+  }
+  
+  /* Add padding only to text content, not video wrappers */
+  .section-header,
+  .project-content,
+  .press-grid,
+  .books-grid,
+  .recognition-grid,
+  .quote,
+  .hero-content,
+  .footer .container > * {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  /* Project cards full bleed videos */
+  .project-card .container {
+    padding: 0;
+  }
+  
+  .project-card .project-content {
+    padding: 20px 16px;
+  }
+  
+  /* All video wrappers full width edge to edge */
+  .project-card .video-wrapper,
+  .more-video-item .video-wrapper,
+  .video-wrapper,
+  .project-video {
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .more-videos-inner {
+    padding-left: 0;
+    padding-right: 0;
+    gap: 24px;
+  }
+  
+  .more-video-item {
+    padding: 0;
+  }
+  
+  .more-video-item .video-title {
+    padding: 8px 16px;
+  }
+  
+  /* Hero adjustments */
+  .hero {
+    padding: 100px 16px;
+  }
+  
+  /* Section padding on mobile */
+  .section-black,
+  .section-white,
+  .section-dark {
+    padding: 60px 0;
+  }
+  
+  /* Stats row padding */
+  .stats-row {
+    padding: 0 16px;
+  }
+}
+
+/* Even smaller screens - truly full width */
+@media (max-width: 600px) {
+  .section-header,
+  .project-content,
+  .press-grid,
+  .books-grid,
+  .recognition-grid,
+  .quote,
+  .hero-content,
+  .stats-row {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  .project-card .project-content {
+    padding: 16px 12px;
+  }
+  
+  .hero {
+    padding: 80px 12px;
+  }
+  
+  .more-video-item .video-title {
+    padding: 8px 12px;
   }
 }
 
@@ -473,9 +572,10 @@ footer .copyright {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .more-videos-inner {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
