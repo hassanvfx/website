@@ -68,7 +68,7 @@ SECTION_QUOTES = [
 STATS = [
     {"value": "40M+", "label": "Users Impacted"},
     {"value": "$6M+", "label": "Funding Raised"},
-    {"value": "10K+", "label": "Products Launched"},
+    {"value": "3", "label": "Startup Exits"},
     {"value": "4", "label": "Books Published"},
 ]
 
