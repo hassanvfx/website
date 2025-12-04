@@ -1616,6 +1616,18 @@ nav a:hover {
   position: relative;
   z-index: 1;
 }
+.clineflow-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  filter: invert(1);
+  transition: all 0.3s ease;
+}
+.clineflow-logo:hover {
+  transform: scale(1.1);
+  filter: invert(1) drop-shadow(0 0 20px rgba(0,212,255,0.5));
+}
 .clineflow-badge {
   display: inline-block;
   background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(139,92,246,0.2));
@@ -1715,6 +1727,143 @@ nav a:hover {
   margin-top: 1.5rem;
   color: rgba(255,255,255,0.5);
   font-size: 0.9rem;
+}
+
+/* Waken AI Featured Callout */
+.waken-callout {
+  padding: 6rem 4rem;
+  background: linear-gradient(180deg, #000 0%, #051015 50%, #000 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(0,212,255,0.15);
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+}
+.waken-callout::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.waken-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.waken-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.waken-logo {
+  max-width: 280px;
+  height: auto;
+  filter: invert(1) brightness(1.2);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+.waken-logo:hover {
+  filter: invert(1) brightness(1.4);
+  transform: scale(1.02);
+}
+.waken-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.5rem;
+}
+.waken-subtitle {
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+.waken-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.waken-video-container {
+  position: relative;
+  padding-top: 56.25%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0a1520 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.waken-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.waken-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 0 2rem;
+}
+.waken-positioning {
+  font-size: 0.95rem;
+  color: #00D4FF;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.waken-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.15));
+  color: #00D4FF;
+  border: 1px solid rgba(0,212,255,0.3);
+  transition: all 0.3s ease;
+}
+.waken-cta:hover {
+  background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(139,92,246,0.25));
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+.waken-footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Waken Callout Mobile */
+@media (max-width: 768px) {
+  .waken-callout {
+    padding: 3rem 16px;
+  }
+  .waken-logo {
+    max-width: 200px;
+  }
+  .waken-tagline {
+    font-size: 1.4rem;
+  }
+  .waken-video-container {
+    border-radius: 0;
+    margin: 0 -16px 2rem;
+    max-width: calc(100% + 32px);
+  }
 }
 
 /* AI Art Row (before Books) */
@@ -2009,6 +2158,7 @@ nav a:hover {
   <!-- ClineFlow Featured Callout -->
   <section class="clineflow-callout" id="clineflow">
     <div class="clineflow-inner">
+      <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" alt="GitHub" class="clineflow-logo" />
       <span class="clineflow-badge">🚀 OPEN SOURCE PROJECT</span>
       <h2 class="clineflow-title">ClineFlow</h2>
       <p class="clineflow-tagline">The Future of AI-Assisted Development</p>
@@ -2029,6 +2179,32 @@ nav a:hover {
       </a>
       
       <span class="clineflow-stars">⭐ Growing Community</span>
+    </div>
+  </section>
+
+  <!-- Waken AI Featured Callout -->
+  <section class="waken-callout" id="waken">
+    <div class="waken-inner">
+      <div class="waken-header">
+        <img src="https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/9a4b6ba5-4ce5-4cb4-9750-7b9be4b2de0e/waken-ai-black.png?format=1500w" alt="Waken AI" class="waken-logo" />
+        <h2 class="waken-tagline">A New Lux — Elevating The Human Mind</h2>
+        <p class="waken-subtitle">Mind Simulation Technology for Emotional Wellness</p>
+        <p class="waken-description">Waken AI Labs represents Hassan's ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, this work pioneers the intersection of AI and human emotional wellness through advanced conversational companions.</p>
+      </div>
+      
+      <div class="waken-video-container">
+        <iframe src="https://player.vimeo.com/video/416726154?autoplay=0&muted=1&controls=1" 
+                frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      
+      <p class="waken-quote">"Our AI delves into the human essence, giving voice to silent thoughts."</p>
+      <p class="waken-positioning">Pioneering Mind Simulation Technology for emotional wellness and personal growth since 2020.</p>
+      
+      <div class="waken-footer">
+        <a href="https://www.wakenai.com/" target="_blank" class="waken-cta">
+          Visit Waken AI →
+        </a>
+      </div>
     </div>
   </section>
 
@@ -2272,9 +2448,9 @@ nav a:hover {
     </div>
   </article>
 
-<article class="project-card" id="btwinfriends">
+  <article class="project-card" id="btwinfriends">
     <div class="card-video">
-      <iframe src="https://player.vimeo.com/video/1005370651?autoplay=0&muted=1&controls=1"
+      <iframe src="https://player.vimeo.com/video/1005370651?autoplay=0&muted=1&controls=1" 
               frameborder="0" allowfullscreen allow="autoplay"></iframe>
     </div>
     <div class="card-content">
@@ -2287,9 +2463,9 @@ nav a:hover {
     </div>
   </article>
 
-<article class="project-card" id="brb2me">
-<div class="card-video">
-      <iframe src="https://player.vimeo.com/video/913284078?h=82df73027a&autoplay=0&muted=1&controls=1"
+  <article class="project-card" id="brb2me">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/913284078?h=82df73027a?autoplay=0&muted=1&controls=1" 
               frameborder="0" allowfullscreen allow="autoplay"></iframe>
     </div>
     <div class="card-content">
@@ -2332,6 +2508,33 @@ nav a:hover {
     </div>
   </article>
 
+  </section>
+
+  <!-- TwinChat Paper Callout -->
+  <section class="clineflow-callout" id="twinchat-paper">
+    <div class="clineflow-inner">
+      <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" alt="GitHub" class="clineflow-logo" />
+      <span class="clineflow-badge">📄 RESEARCH PUBLICATION</span>
+      <h2 class="clineflow-title">TwinChat Paper</h2>
+      <p class="clineflow-tagline">AI Mind Simulation Research</p>
+      <p class="clineflow-subtitle">Open Source Research on Cognitive Profiling & Digital Twins</p>
+      
+      <p class="clineflow-description">The TwinChat Paper documents the theoretical foundations and technical implementation of Mind Simulation Technology (MST). This research explores how AI can create accurate cognitive profiles for conversational simulations, enabling emotionally responsive digital companions.</p>
+      
+      <div class="clineflow-features">
+        <div class="clineflow-feature"><span>Cognitive profiling methodology</span></div><div class="clineflow-feature"><span>Digital twin creation framework</span></div><div class="clineflow-feature"><span>Conversational AI architecture</span></div><div class="clineflow-feature"><span>Personality simulation techniques</span></div><div class="clineflow-feature"><span>Ethical guidelines for AI companions</span></div>
+      </div>
+      
+      <p class="clineflow-quote">"Understanding human cognition through the lens of artificial intelligence opens new frontiers in emotional wellness and therapeutic applications."</p>
+      
+      <p class="clineflow-positioning">The scientific foundation behind BTwin Friends, TwinChat, and Waken AI Labs.</p>
+      
+      <a href="https://github.com/hassanvfx/twinchat-paper" target="_blank" class="clineflow-cta">
+        View on GitHub →
+      </a>
+      
+      <span class="clineflow-stars">📄 Research Publication</span>
+    </div>
   </section>
 
   
@@ -2493,18 +2696,14 @@ nav a:hover {
       <span class="eyebrow">Published Works</span>
       <h2>Books</h2>
     </div>
-    
-    <!-- Featured MST Book -->
-    <div class="featured-book-card" style="background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(139,92,246,0.08)); border: 1px solid rgba(0,212,255,0.2); border-radius: 16px; padding: 3rem; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-      <span class="year" style="color: #00D4FF; font-size: 0.85rem; font-weight: 600;">2024 • English • Featured</span>
-      <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0.75rem 0; color: #fff;">MST: Mind Simulation Technology</h3>
-      <p class="subtitle" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 1rem;">A Comprehensive Framework for Cognitive Profiling and Digital Twin Creation</p>
-      <p style="color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.5rem;">This groundbreaking work introduces the theoretical and practical foundations of Mind Simulation Technology—the science behind BTwin Friends and TwinChat. Drawing from years of research in cognitive profiling, conversational AI, and therapeutic applications, this book provides a comprehensive framework for understanding how AI can simulate human cognition, personality, and emotional intelligence.</p>
-      <p class="press" style="color: #00D4FF; font-size: 0.9rem; font-style: italic; margin-bottom: 1.5rem;">The definitive guide to AI personality simulation</p>
-      <a href="https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993" target="_blank" class="btn btn-primary">Read on Amazon</a>
-    </div>
-    
     <div class="books-grid">
+      <article class="book-card">
+        <span class="year">2024 • English</span>
+        <h3>MST: Mind Simulation Technology</h3>
+        <p class="subtitle">A Comprehensive Framework for Cognitive Profiling and Digital Twin Creation</p>
+        <p class="press">The definitive guide to AI personality simulation</p>
+        <a href="https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993" target="_blank" class="btn btn-outline">Read More</a>
+      </article>
       <article class="book-card">
         <span class="year">2023 • English</span>
         <h3>I, AI: Nemo's Mirror</h3>
@@ -2542,13 +2741,15 @@ nav a:hover {
           <h4>AI & Future of Technology</h4>
           <p>Interview on AI ethics and innovation</p>
         </div>
-      </div><div class="interview-card">
+      </div>
+      <div class="interview-card">
         <iframe src="https://player.vimeo.com/video/843499496?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
         <div class="interview-info">
           <h4>Silicon Valley Journey</h4>
           <p>Career retrospective</p>
         </div>
-      </div><div class="interview-card">
+      </div>
+      <div class="interview-card">
         <iframe src="https://player.vimeo.com/video/843495231?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
         <div class="interview-info">
           <h4>Entrepreneurship & Innovation</h4>

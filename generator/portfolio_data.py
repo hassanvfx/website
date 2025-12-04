@@ -282,13 +282,35 @@ AI_ART_PLAYLISTS = [
 
 # WAKEN AI LABS - Featured Callout
 WAKEN_AI = {
-    "name": "Waken AI Labs",
-    "tagline": "Where AI Meets Human Consciousness",
-    "subtitle": "The Origin of Mind Simulation Research",
-    "description": "Waken AI Labs represents Hassan's ongoing research into artificial consciousness and mind simulation. From BRB2Me to BTwin Friends and TwinChat, this work explores the boundaries between human awareness and artificial intelligence.",
+    "name": "Waken AI",
+    "tagline": "A New Lux — Elevating The Human Mind",
+    "subtitle": "Mind Simulation Technology for Emotional Wellness",
+    "description": "Waken AI Labs represents Hassan's ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, this work pioneers the intersection of AI and human emotional wellness through advanced conversational companions.",
+    "logo": "https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/9a4b6ba5-4ce5-4cb4-9750-7b9be4b2de0e/waken-ai-black.png?format=1500w",
     "video": "https://player.vimeo.com/video/416726154",
+    "website": "https://www.wakenai.com/",
     "quote": "Our AI delves into the human essence, giving voice to silent thoughts.",
-    "positioning": "Pioneering the intersection of AI and consciousness since 2020."
+    "positioning": "Pioneering Mind Simulation Technology for emotional wellness and personal growth since 2020."
+}
+
+# TWINCHAT PAPER - Research Publication
+TWINCHAT_PAPER = {
+    "name": "TwinChat Paper",
+    "tagline": "AI Mind Simulation Research",
+    "subtitle": "Open Source Research on Cognitive Profiling & Digital Twins",
+    "logo": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
+    "description": "The TwinChat Paper documents the theoretical foundations and technical implementation of Mind Simulation Technology (MST). This research explores how AI can create accurate cognitive profiles for conversational simulations, enabling emotionally responsive digital companions.",
+    "features": [
+        "Cognitive profiling methodology",
+        "Digital twin creation framework",
+        "Conversational AI architecture",
+        "Personality simulation techniques",
+        "Ethical guidelines for AI companions"
+    ],
+    "github": "https://github.com/hassanvfx/twinchat-paper",
+    "stars": "📄 Research Publication",
+    "quote": "Understanding human cognition through the lens of artificial intelligence opens new frontiers in emotional wellness and therapeutic applications.",
+    "positioning": "The scientific foundation behind BTwin Friends, TwinChat, and Waken AI Labs."
 }
 
 # CLINEFLOW - Featured Hero Project
@@ -296,6 +318,7 @@ CLINEFLOW = {
     "name": "ClineFlow",
     "tagline": "The Future of AI-Assisted Development",
     "subtitle": "Open Source Workflow Automation for Cline",
+    "logo": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
     "description": "ClineFlow is a powerful, open-source workflow automation tool that transforms how developers interact with AI assistants. Built on decades of software engineering experience, it provides structured prompts, intelligent context management, and scalable workflows that make AI development accessible to everyone.",
     "features": [
         "Modular workflow system with customizable prompts",

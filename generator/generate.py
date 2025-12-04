@@ -12,7 +12,7 @@ from portfolio_data import (
     IDENTITY, STATS, NAV_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
     HISTORIC_COMPANIES, BOOKS, PRESS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
-    BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS
+    BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER
 )
 from templates import CSS_STYLES
 
@@ -219,6 +219,20 @@ def generate_social_links():
     items = []
     for link in SOCIAL_LINKS:
         items.append(f'<a href="{link["url"]}" target="_blank" class="btn btn-outline">{link["label"]}</a>')
+    return "\n      ".join(items)
+
+
+def generate_interviews_html():
+    """Generate interviews section"""
+    items = []
+    for i in INTERVIEWS:
+        items.append(f'''<div class="interview-card">
+        <iframe src="{i["url"]}?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <div class="interview-info">
+          <h4>{i["title"]}</h4>
+          <p>{i["context"]}</p>
+        </div>
+      </div>''')
     return "\n      ".join(items)
 
 
@@ -898,6 +912,18 @@ nav a:hover {{
   position: relative;
   z-index: 1;
 }}
+.clineflow-logo {{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  filter: invert(1);
+  transition: all 0.3s ease;
+}}
+.clineflow-logo:hover {{
+  transform: scale(1.1);
+  filter: invert(1) drop-shadow(0 0 20px rgba(0,212,255,0.5));
+}}
 .clineflow-badge {{
   display: inline-block;
   background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(139,92,246,0.2));
@@ -997,6 +1023,143 @@ nav a:hover {{
   margin-top: 1.5rem;
   color: rgba(255,255,255,0.5);
   font-size: 0.9rem;
+}}
+
+/* Waken AI Featured Callout */
+.waken-callout {{
+  padding: 6rem 4rem;
+  background: linear-gradient(180deg, #000 0%, #051015 50%, #000 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(0,212,255,0.15);
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+}}
+.waken-callout::before {{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}}
+.waken-inner {{
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}}
+.waken-header {{
+  text-align: center;
+  margin-bottom: 3rem;
+}}
+.waken-logo {{
+  max-width: 280px;
+  height: auto;
+  filter: invert(1) brightness(1.2);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}}
+.waken-logo:hover {{
+  filter: invert(1) brightness(1.4);
+  transform: scale(1.02);
+}}
+.waken-tagline {{
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.5rem;
+}}
+.waken-subtitle {{
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}}
+.waken-description {{
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}}
+.waken-video-container {{
+  position: relative;
+  padding-top: 56.25%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0a1520 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.2);
+}}
+.waken-video-container iframe {{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}}
+.waken-quote {{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 0 2rem;
+}}
+.waken-positioning {{
+  font-size: 0.95rem;
+  color: #00D4FF;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 2rem;
+}}
+.waken-cta {{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.15));
+  color: #00D4FF;
+  border: 1px solid rgba(0,212,255,0.3);
+  transition: all 0.3s ease;
+}}
+.waken-cta:hover {{
+  background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(139,92,246,0.25));
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}}
+.waken-footer {{
+  text-align: center;
+  margin-top: 2rem;
+}}
+
+/* Waken Callout Mobile */
+@media (max-width: 768px) {{
+  .waken-callout {{
+    padding: 3rem 16px;
+  }}
+  .waken-logo {{
+    max-width: 200px;
+  }}
+  .waken-tagline {{
+    font-size: 1.4rem;
+  }}
+  .waken-video-container {{
+    border-radius: 0;
+    margin: 0 -16px 2rem;
+    max-width: calc(100% + 32px);
+  }}
 }}
 
 /* AI Art Row (before Books) */
@@ -1264,6 +1427,7 @@ nav a:hover {{
   <!-- ClineFlow Featured Callout -->
   <section class="clineflow-callout" id="clineflow">
     <div class="clineflow-inner">
+      <img src="{CLINEFLOW["logo"]}" alt="GitHub" class="clineflow-logo" />
       <span class="clineflow-badge">🚀 OPEN SOURCE PROJECT</span>
       <h2 class="clineflow-title">{CLINEFLOW["name"]}</h2>
       <p class="clineflow-tagline">{CLINEFLOW["tagline"]}</p>
@@ -1284,6 +1448,32 @@ nav a:hover {{
       </a>
       
       <span class="clineflow-stars">{CLINEFLOW["stars"]}</span>
+    </div>
+  </section>
+
+  <!-- Waken AI Featured Callout -->
+  <section class="waken-callout" id="waken">
+    <div class="waken-inner">
+      <div class="waken-header">
+        <img src="{WAKEN_AI["logo"]}" alt="{WAKEN_AI["name"]}" class="waken-logo" />
+        <h2 class="waken-tagline">{WAKEN_AI["tagline"]}</h2>
+        <p class="waken-subtitle">{WAKEN_AI["subtitle"]}</p>
+        <p class="waken-description">{WAKEN_AI["description"]}</p>
+      </div>
+      
+      <div class="waken-video-container">
+        <iframe src="{WAKEN_AI["video"]}?autoplay=0&muted=1&controls=1" 
+                frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      
+      <p class="waken-quote">"{WAKEN_AI["quote"]}"</p>
+      <p class="waken-positioning">{WAKEN_AI["positioning"]}</p>
+      
+      <div class="waken-footer">
+        <a href="{WAKEN_AI["website"]}" target="_blank" class="waken-cta">
+          Visit Waken AI →
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1388,6 +1578,33 @@ nav a:hover {{
     {"".join(generate_current_project_card(p) for p in CURRENT_PROJECTS)}
   </section>
 
+  <!-- TwinChat Paper Callout -->
+  <section class="clineflow-callout" id="twinchat-paper">
+    <div class="clineflow-inner">
+      <img src="{TWINCHAT_PAPER["logo"]}" alt="GitHub" class="clineflow-logo" />
+      <span class="clineflow-badge">📄 RESEARCH PUBLICATION</span>
+      <h2 class="clineflow-title">{TWINCHAT_PAPER["name"]}</h2>
+      <p class="clineflow-tagline">{TWINCHAT_PAPER["tagline"]}</p>
+      <p class="clineflow-subtitle">{TWINCHAT_PAPER["subtitle"]}</p>
+      
+      <p class="clineflow-description">{TWINCHAT_PAPER["description"]}</p>
+      
+      <div class="clineflow-features">
+        {"".join(f'<div class="clineflow-feature"><span>{f}</span></div>' for f in TWINCHAT_PAPER["features"])}
+      </div>
+      
+      <p class="clineflow-quote">"{TWINCHAT_PAPER["quote"]}"</p>
+      
+      <p class="clineflow-positioning">{TWINCHAT_PAPER["positioning"]}</p>
+      
+      <a href="{TWINCHAT_PAPER["github"]}" target="_blank" class="clineflow-cta">
+        View on GitHub →
+      </a>
+      
+      <span class="clineflow-stars">{TWINCHAT_PAPER["stars"]}</span>
+    </div>
+  </section>
+
   {generate_timeline_marker("2010-2020", "Innovation")}
 
   <!-- Research & Innovations -->
@@ -1442,13 +1659,7 @@ nav a:hover {{
       <h2>Interviews</h2>
     </div>
     <div class="interviews-grid">
-      {"".join(f'''<div class="interview-card">
-        <iframe src="{i["url"]}?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
-        <div class="interview-info">
-          <h4>{i["title"]}</h4>
-          <p>{i["context"]}</p>
-        </div>
-      </div>''' for i in INTERVIEWS)}
+      {generate_interviews_html()}
     </div>
   </section>
 
