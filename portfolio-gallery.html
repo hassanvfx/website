@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hassan Uriostegui - EB1A Extraordinary Ability</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --black: #000000;
+  --white: #FFFFFF;
+  --cyan: #00D4FF;
+  --purple: #8B5CF6;
+  --blue: #00D4FF;
+  --neon-gradient: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  --neon-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+  --neon-glow-strong: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(139, 92, 246, 0.3);
+  --gray-dark: #111111;
+  --gray-light: #F5F5F5;
+  --text-on-black: #FFFFFF;
+  --text-muted-black: rgba(255,255,255,0.6);
+  --text-on-white: #000000;
+  --text-muted-white: #555555;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+/* ===========================================
+   SCROLL-SYNCED NAVIGATION
+   =========================================== */
+.scroll-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s ease;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  gap: 0;
+}
+
+nav a {
+  position: relative;
+  padding: 24px 32px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scroll-nav-item:hover {
+  color: rgba(255,255,255,0.8);
+}
+
+.scroll-nav-item.active {
+  color: var(--white);
+}
+
+.scroll-nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.scroll-nav-item.active::after {
+  width: 30px;
+}
+
+@media (max-width: 968px) {
+  .scroll-nav-item {
+    padding: 20px 16px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-nav-inner {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .scroll-nav-item {
+    padding: 20px 12px;
+    white-space: nowrap;
+  }
+}
+
+/* ===========================================
+   SECTIONS
+   =========================================== */
+.section-black {
+  background: var(--black);
+  padding: 140px 0;
+}
+
+.section-white {
+  background: var(--white);
+  padding: 140px 0;
+  color: var(--text-on-white);
+}
+
+.section-dark {
+  background: var(--gray-dark);
+  padding: 140px 0;
+}
+
+.section-compact {
+  padding: 100px 0;
+}
+
+/* ===========================================
+   TYPOGRAPHY
+   =========================================== */
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 80px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+.lead {
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.quote {
+  font-size: 28px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-muted-black);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 0;
+  border-left: none;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 24px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.footnote {
+  font-size: 13px;
+  color: var(--text-muted-black);
+  margin-top: 16px;
+  font-style: italic;
+}
+
+/* ===========================================
+   HERO
+   =========================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 60px;
+  position: relative;
+}
+
+.section {
+  padding: 100px 60px;
+}
+
+.section-header.white {
+  color: var(--white);
+}
+
+.quote-section {
+  padding: 80px 60px;
+  text-align: center;
+  background: #000;
+}
+
+.quote-section blockquote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quote-section cite {
+  display: block;
+  margin-top: 20px;
+  color: var(--blue);
+  font-style: normal;
+}
+
+footer {
+  padding: 100px 60px;
+  text-align: center;
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+footer h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  margin-bottom: 10px;
+}
+
+footer p {
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+}
+
+footer .email {
+  display: block;
+  color: var(--blue);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
+footer .social-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+footer .copyright {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+}
+
+.hero-content {
+  max-width: 1000px;
+}
+
+.hero h1 {
+  margin-bottom: 24px;
+}
+
+.hero .subtitle {
+  font-size: 28px;
+  color: var(--blue);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.hero .tagline {
+  font-size: 20px;
+  color: var(--text-muted-black);
+  margin-bottom: 60px;
+}
+
+/* Stats Row */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 60px 0;
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .value {
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+}
+
+.stat-item .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted-black);
+  margin-top: 8px;
+}
+
+/* ===========================================
+   PROJECT CARDS - HERO VIDEO + VIEW MORE
+   =========================================== */
+.project-card {
+  margin-bottom: 0;
+}
+
+.project-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.project-card-inner.reverse {
+  direction: rtl;
+}
+
+.project-card-inner.reverse > * {
+  direction: ltr;
+}
+
+@media (max-width: 968px) {
+  .project-card-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .project-card-inner.reverse {
+    direction: ltr;
+  }
+}
+
+.project-video {
+  position: relative;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.project-content {
+  padding: 20px 0;
+}
+
+.project-content .eyebrow {
+  margin-bottom: 20px;
+}
+
+.project-content h2 {
+  margin-bottom: 24px;
+}
+
+.project-content .description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-muted-black);
+  margin-bottom: 32px;
+}
+
+.project-content .highlight {
+  display: inline-block;
+  background: rgba(0,113,227,0.15);
+  color: var(--blue);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Expandable Videos */
+.more-videos {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  margin-top: 0;
+}
+
+.more-videos.expanded {
+  max-height: 2000px;
+  margin-top: 60px;
+}
+
+.more-videos-inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+  .more-videos-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.more-video-item {
+  position: relative;
+}
+
+.more-video-item .video-wrapper {
+  margin-bottom: 12px;
+}
+
+.more-video-item .video-title {
+  font-size: 14px;
+  color: var(--text-muted-black);
+}
+
+/* ===========================================
+   BUTTONS
+   =========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  color: var(--white);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(139, 92, 246, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+}
+
+.btn-outline:hover {
+  border-color: var(--cyan);
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--blue);
+  padding: 16px 0;
+}
+
+.btn-text:hover {
+  opacity: 0.8;
+}
+
+.btn-text .arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-text:hover .arrow {
+  transform: translateX(4px);
+}
+
+.btn-expand {
+  background: transparent;
+  color: var(--text-muted-black);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+.btn-expand:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.btn-expand .icon {
+  transition: transform 0.3s ease;
+}
+
+.btn-expand.expanded .icon {
+  transform: rotate(180deg);
+}
+
+/* ===========================================
+   SECTION HEADERS
+   =========================================== */
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-header .eyebrow {
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin-bottom: 24px;
+}
+
+.section-header .lead {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--text-muted-black);
+}
+
+.section-white .section-header .lead {
+  color: var(--text-muted-white);
+}
+
+/* ===========================================
+   PRESS CARDS
+   =========================================== */
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .press-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.press-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 40px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.press-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-4px);
+}
+
+.press-card .publication {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--blue);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.press-card h4 {
+  color: var(--white);
+  margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.press-card .excerpt {
+  color: var(--text-muted-black);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ===========================================
+   RECOGNITION
+   =========================================== */
+.recognition-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+@media (max-width: 968px) {
+  .recognition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .recognition-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recognition-item {
+  text-align: center;
+  padding: 40px 30px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.recognition-item .year {
+  font-size: 13px;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.recognition-item h4 {
+  color: var(--white);
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.recognition-item p {
+  color: var(--text-muted-black);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===========================================
+   BOOKS
+   =========================================== */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.book-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 48px;
+  text-align: center;
+  color: var(--text-on-white);
+}
+
+.book-card .year {
+  font-size: 13px;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+}
+
+.book-card h4 {
+  color: var(--text-on-white);
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.book-card .subtitle {
+  color: var(--text-muted-white);
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.book-card .press {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-muted-white);
+  margin-bottom: 24px;
+}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+.footer {
+  background: var(--black);
+  padding: 100px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer h3 {
+  color: var(--white);
+  margin-bottom: 16px;
+  font-size: 32px;
+}
+
+.footer .email {
+  font-size: 18px;
+  color: var(--text-muted-black);
+  margin-bottom: 40px;
+}
+
+.footer .social-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.footer .copyright {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===========================================
+   RESPONSIVE TYPOGRAPHY
+   =========================================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 48px;
+  }
+  
+  h2 {
+    font-size: 36px;
+  }
+  
+  h3 {
+    font-size: 28px;
+  }
+  
+  .lead {
+    font-size: 18px;
+  }
+  
+  .quote {
+    font-size: 20px;
+    padding: 40px 0;
+  }
+  
+  .section-black,
+  .section-white,
+  .section-dark {
+    padding: 100px 0;
+  }
+  
+  .stat-item .value {
+    font-size: 48px;
+  }
+}
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Hero Portrait */
+.hero-portrait {
+  margin-bottom: 2.5rem;
+}
+.hero-portrait img {
+  width: 280px;
+  height: 350px;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.25), 0 0 100px rgba(139, 92, 246, 0.15);
+  transition: all 0.3s ease;
+}
+.hero-portrait img:hover {
+  border-color: rgba(0, 212, 255, 0.6);
+  box-shadow: 0 0 70px rgba(0, 212, 255, 0.4), 0 0 120px rgba(139, 92, 246, 0.25);
+  transform: scale(1.02);
+}
+
+/* Timeline Markers */
+.timeline-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 0;
+  background: #000;
+}
+.marker-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #333, transparent);
+  max-width: 200px;
+}
+.marker-circle {
+  background: #1a1a1a;
+  border: 2px solid #333;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.marker-label {
+  color: #666;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Featured Nav Link - Neon Cyan */
+nav a.featured {
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+nav a.featured:hover {
+  text-shadow: 0 0 40px rgba(0, 212, 255, 0.8), 0 0 60px rgba(139, 92, 246, 0.5);
+}
+nav a:hover {
+  color: #00D4FF !important;
+}
+
+/* Impact Cards */
+.impact-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background: #0a0a0a;
+  padding: 2rem;
+  margin-bottom: 1px;
+}
+.impact-card:nth-child(even) {
+  direction: rtl;
+}
+.impact-card:nth-child(even) > * {
+  direction: ltr;
+}
+.impact-card .card-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+}
+.impact-card .highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.15));
+  color: #00D4FF;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.impact-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  color: #fff;
+}
+.impact-card .role {
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+/* Company Press Quotes */
+.company-press-quote {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(0,212,255,0.05);
+  border-left: 3px solid #00D4FF;
+  border-radius: 0 8px 8px 0;
+}
+.company-press-quote .quote-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.company-press-quote .quote-source {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+}
+.company-press-quote .quote-source strong {
+  color: #00D4FF;
+}
+
+/* AI Showcase Grid - 2 columns max */
+.ai-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #000;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.showcase-video {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.showcase-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+}
+.showcase-video.hidden {
+  display: none;
+}
+.showcase-video.shown {
+  display: block;
+}
+
+/* Project Cards */
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background: #0a0a0a;
+  padding: 2rem;
+  margin-bottom: 1px;
+}
+.project-card:nth-child(odd) {
+  direction: rtl;
+}
+.project-card:nth-child(odd) > * {
+  direction: ltr;
+}
+.project-card .card-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+}
+.project-card .highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(139,92,246,0.1));
+  color: #00D4FF;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.project-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  margin: 0.5rem 0;
+  color: #fff;
+}
+.project-card .quote {
+  font-style: italic;
+  color: #888;
+  border-left: 2px solid #333;
+  padding-left: 1rem;
+  margin: 1rem 0;
+}
+
+/* Innovation Cards */
+.innovation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+.innovation-card {
+  background: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.innovation-card.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(139,92,246,0.08));
+  border: 1px solid rgba(0,212,255,0.2);
+  padding: 2rem;
+}
+.innovation-card .badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.15));
+  color: #00D4FF;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.innovation-card .year-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  color: #00D4FF;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(0,212,255,0.15);
+}
+.innovation-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  color: #fff;
+}
+.innovation-card .tagline {
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.innovation-card .card-content {
+  padding: 1.5rem;
+}
+.innovation-card .card-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+/* Filmography */
+.filmography .film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+.film-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+}
+.film-video .video-title {
+  color: #888;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.film-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+.ves-badge {
+  background: linear-gradient(135deg, #b8860b, #daa520);
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Books */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.book-card {
+  background: #0a0a0a;
+  border-radius: 12px;
+  padding: 2rem;
+}
+.book-card .year {
+  color: #666;
+  font-size: 0.85rem;
+}
+.book-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  color: #fff;
+}
+.book-card .subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.book-card .press {
+  color: #00D4FF;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* Press */
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+.press-card {
+  background: #0a0a0a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+.press-card:hover {
+  background: #111;
+  transform: translateY(-2px);
+  border-color: rgba(0,212,255,0.2);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+.press-card .publication {
+  color: #00D4FF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Show More Button */
+.show-more-container {
+  text-align: center;
+  padding: 2rem;
+}
+.show-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 50px;
+  background: transparent;
+  color: #00D4FF;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.show-more-btn:hover {
+  border-color: #00D4FF;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.05);
+}
+.show-more-btn .arrow {
+  transition: transform 0.3s ease;
+}
+.show-more-btn.expanded .arrow {
+  transform: rotate(180deg);
+}
+
+/* Hidden content */
+.more-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+.more-content.expanded {
+  max-height: 2000px;
+}
+
+/* AI Playlist cards */
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.playlist-card {
+  background: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,212,255,0.1);
+}
+.playlist-card iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+.playlist-card .playlist-info {
+  padding: 1rem;
+  text-align: center;
+}
+.playlist-card .playlist-info h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.playlist-card .playlist-info a {
+  color: #00D4FF;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.playlist-card .playlist-info a:hover {
+  text-decoration: underline;
+}
+.press-card h4 {
+  color: #fff;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+.press-card p {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* Bio/Artist Intro Section */
+.bio-section {
+  padding: 6rem 4rem;
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+}
+.bio-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.bio-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.bio-intro {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.eb1a-card {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(139,92,246,0.08));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+.eb1a-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.eb1a-card .eb1a-description {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+.eb1a-criteria {
+  list-style: none;
+  padding: 0;
+}
+.eb1a-criteria li {
+  color: rgba(255,255,255,0.8);
+  padding: 0.5rem 0;
+  padding-left: 2rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+.eb1a-criteria li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #00D4FF;
+  font-weight: bold;
+}
+.bio-summary {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Press Quote Dividers */
+.press-quote-divider {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #050505 0%, #0a0a0a 50%, #050505 100%);
+  text-align: center;
+}
+.press-quote-divider blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.8);
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+}
+.press-quote-divider .source {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.press-quote-divider .source-name {
+  color: #00D4FF;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.press-quote-divider .source-context {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+}
+.press-quote-divider a {
+  color: #00D4FF;
+  text-decoration: none;
+}
+.press-quote-divider a:hover {
+  text-decoration: underline;
+}
+
+/* ClineFlow Featured Callout */
+.clineflow-callout {
+  padding: 6rem 4rem;
+  background: linear-gradient(180deg, #000 0%, #050510 50%, #000 100%);
+  position: relative;
+  overflow: hidden;
+}
+.clineflow-callout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.clineflow-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.clineflow-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(139,92,246,0.2));
+  color: #00D4FF;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0,212,255,0.3);
+  letter-spacing: 0.1em;
+}
+.clineflow-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.clineflow-tagline {
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.5rem;
+}
+.clineflow-subtitle {
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.clineflow-description {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 2.5rem;
+}
+.clineflow-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+.clineflow-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(0,212,255,0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(0,212,255,0.1);
+}
+.clineflow-feature::before {
+  content: "→";
+  color: #00D4FF;
+  font-weight: bold;
+}
+.clineflow-feature span {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+}
+.clineflow-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+}
+.clineflow-positioning {
+  font-size: 1rem;
+  color: #00D4FF;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+.clineflow-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  color: #000;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+.clineflow-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.5), 0 0 80px rgba(139, 92, 246, 0.3);
+}
+.clineflow-stars {
+  display: block;
+  margin-top: 1.5rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+}
+
+/* AI Art Row (before Books) */
+.ai-art-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.art-video {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.art-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+}
+
+/* Interviews Section */
+.interviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.interview-card {
+  background: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,212,255,0.1);
+  transition: all 0.3s ease;
+}
+.interview-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+.interview-card iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+.interview-info {
+  padding: 1rem;
+}
+.interview-info h4 {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.interview-info p {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* Responsive - Mobile Full Width for Video Sections */
+@media (max-width: 768px) {
+  /* Hero portrait - larger on mobile */
+  .hero-portrait img {
+    width: 220px;
+    height: 300px;
+    border-radius: 12px;
+  }
+  
+  /* Full width cards */
+  .impact-card, .project-card {
+    grid-template-columns: 1fr;
+    direction: ltr !important;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .impact-card > *, .project-card > * {
+    direction: ltr !important;
+  }
+  
+  /* Full width video iframes */
+  .impact-card .card-video,
+  .project-card .card-video,
+  .innovation-card .card-video {
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+  .impact-card .card-video iframe,
+  .project-card .card-video iframe,
+  .innovation-card .card-video iframe {
+    border-radius: 0;
+  }
+  
+  /* Innovation grid */
+  .innovation-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .innovation-card {
+    border-radius: 0;
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+  
+  /* AI Showcase full width */
+  .ai-showcase {
+    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 1rem;
+  }
+  .showcase-video {
+    border-radius: 0;
+  }
+  .showcase-video iframe {
+    border-radius: 0;
+  }
+  
+  /* Interviews grid */
+  .interviews-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .interview-card {
+    border-radius: 0;
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+  .interview-card iframe {
+    border-radius: 0;
+  }
+  
+  /* Filmography full width */
+  .filmography .film-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .film-video {
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+  .film-video iframe {
+    border-radius: 0;
+  }
+  
+  /* Playlist grid full width */
+  .playlist-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .playlist-card {
+    border-radius: 0;
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+  
+  /* Bio section padding */
+  .bio-section {
+    padding: 3rem 1rem;
+  }
+  .bio-headline {
+    font-size: 1.8rem;
+  }
+  
+  /* ClineFlow padding */
+  .clineflow-callout {
+    padding: 3rem 1rem;
+  }
+  .clineflow-title {
+    font-size: 2.5rem;
+  }
+  .clineflow-features {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Section headers */
+  .section-header {
+    padding: 0 1rem;
+  }
+  
+  /* AI Art Row full width */
+  .ai-art-row {
+    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 1rem;
+  }
+  .art-video {
+    border-radius: 0;
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+  .art-video iframe {
+    border-radius: 0;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="scroll-nav">
+    <div class="nav-inner">
+      <a href="#home">HOME</a>
+      <a href="https://github.com/hassanvfx/clineflow" class="featured" target="_blank">CLINEFLOW</a>
+      <a href="#impact">IMPACT</a>
+      <a href="#work">WORK</a>
+      <a href="#research">RESEARCH</a>
+      <a href="#books">BOOKS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-portrait">
+      <img src="https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/db719a43-cc9c-4930-b4f8-21112bb508d3/HassanUriostegui1.jpeg?format=1500w" alt="Hassan Uriostegui" />
+    </div>
+    <span class="eyebrow">EB1A Extraordinary Ability</span>
+    <h1>Hassan Uriostegui</h1>
+    <p class="subtitle">Silicon Valley Innovator | AI Pioneer | Author</p>
+    <div class="stats-row">
+      <div class="stat-item">
+          <div class="value">40M+</div>
+          <div class="label">Users Impacted</div>
+        </div>
+        <div class="stat-item">
+          <div class="value">$6M+</div>
+          <div class="label">Funding Raised</div>
+        </div>
+        <div class="stat-item">
+          <div class="value">10K+</div>
+          <div class="label">Products Launched</div>
+        </div>
+        <div class="stat-item">
+          <div class="value">4</div>
+          <div class="label">Books Published</div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <blockquote>"Intelligence might be appreciated as the most primitive form of life. As such, the Universe won't be just a pathway full of intelligent life, but an absolute reflection of human awareness."</blockquote>
+    <cite>— Hassan Uriostegui</cite>
+  </section>
+
+  <!-- ClineFlow Featured Callout -->
+  <section class="clineflow-callout" id="clineflow">
+    <div class="clineflow-inner">
+      <span class="clineflow-badge">🚀 OPEN SOURCE PROJECT</span>
+      <h2 class="clineflow-title">ClineFlow</h2>
+      <p class="clineflow-tagline">The Future of AI-Assisted Development</p>
+      <p class="clineflow-subtitle">Open Source Workflow Automation for Cline</p>
+      
+      <p class="clineflow-description">ClineFlow is a powerful, open-source workflow automation tool that transforms how developers interact with AI assistants. Built on decades of software engineering experience, it provides structured prompts, intelligent context management, and scalable workflows that make AI development accessible to everyone.</p>
+      
+      <div class="clineflow-features">
+        <div class="clineflow-feature"><span>Modular workflow system with customizable prompts</span></div><div class="clineflow-feature"><span>Intelligent context management for large codebases</span></div><div class="clineflow-feature"><span>Plan Mode & Act Mode for systematic development</span></div><div class="clineflow-feature"><span>Built-in best practices from enterprise experience</span></div><div class="clineflow-feature"><span>MIT Licensed - Free forever</span></div>
+      </div>
+      
+      <p class="clineflow-quote">"ClineFlow represents the culmination of 15+ years building products at scale—now distilled into a tool that helps every developer harness AI effectively."</p>
+      
+      <p class="clineflow-positioning">This is not just another tool. ClineFlow is the foundation for the next generation of AI-human collaboration in software development.</p>
+      
+      <a href="https://github.com/hassanvfx/clineflow" target="_blank" class="clineflow-cta">
+        View on GitHub →
+      </a>
+      
+      <span class="clineflow-stars">⭐ Growing Community</span>
+    </div>
+  </section>
+
+  <!-- Bio / Artist Introduction -->
+  <section class="bio-section" id="about">
+    <div class="bio-content">
+      <h2 class="bio-headline">A Silicon Valley Visionary Shaping the Future of AI</h2>
+      <p class="bio-intro">Hassan Uriostegui is a Mexican-American technologist, author, and AI pioneer whose work has touched over 40 million users worldwide. Recognized by the United States government with the prestigious EB1A visa for individuals of extraordinary ability, Hassan's career spans groundbreaking innovations in mobile video technology, AI-human interaction, and visual effects for Hollywood films.</p>
+      
+      <div class="eb1a-card">
+        <h3>EB1A Extraordinary Ability Recognition</h3>
+        <p class="eb1a-description">In 2020, Hassan was granted U.S. Permanent Residency through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
+        <ul class="eb1a-criteria">
+          <li>Published works of major significance (4 books on AI consciousness)</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
+        </ul>
+      </div>
+      
+      <p class="bio-summary">From pioneering real-time video filters a decade before Snapchat to building AI systems that have processed over 200,000 therapeutic conversations, Hassan continues to push the boundaries of what's possible at the intersection of human creativity and artificial intelligence.</p>
+    </div>
+  </section>
+
+  <!-- Press Quote: TechCrunch -->
+  <section class="press-quote-divider">
+    <blockquote>"Flyr was the first third-party company granted access to Snapchat's content API, a testament to their groundbreaking work in mobile video storytelling."</blockquote>
+    <div class="source">
+      <a href="https://techcrunch.com/2017/03/13/flyr-launch/" target="_blank" class="source-name">TechCrunch</a>
+      <span class="source-context">— On FlyrTV's exclusive Snapchat partnership</span>
+    </div>
+  </section>
+
+  
+  <section class="timeline-marker">
+    <div class="marker-line"></div>
+    <div class="marker-circle">2012-2020</div>
+    <div class="marker-label">Track Record</div>
+    <div class="marker-line"></div>
+  </section>
+
+
+  <!-- Impact Section -->
+  <section class="section" id="impact">
+    <div class="section-header white">
+      <span class="eyebrow">Proven Success</span>
+      <h2>Impact & Exits</h2>
+      <p class="lead">A decade of building products that reached millions and raised millions.</p>
+    </div>
+    
+    
+  <article class="impact-card" id="spreeai">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/1101438413?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">Naomi Campbell Board Member | AI Fashion</span>
+      <h3>SpreeAI</h3>
+      <p class="role">Principal iOS Architect • 2024-Present</p>
+      <p class="description">Building AI-powered virtual try-on technology for fashion e-commerce. SpreeAI transforms how customers shop online with real-time garment visualization. Partners include CFDA, MIT, Carnegie Mellon, and major fashion brands.</p>
+      
+      <div class="company-press-quote">
+        <p class="quote-text">"SpreeAI is pushing the forefront of e-commerce personalization, by leveraging collaborations with academia and assembling a team that understands both the deep technical challenges and their product impact."</p>
+        <p class="quote-source">— <strong>Professor Deva Ramanan</strong> CMU Robotics Institute Professor</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="impact-card" id="viddy">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/avccq32KfOE?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">$370M Valuation | 40M Users</span>
+      <h3>Viddy</h3>
+      <p class="role">Director of Video Engineering • 2012-2013</p>
+      <p class="description">Built iOS + Android VFX rendering engine. Created the most advanced video editor when Instagram was photos-only. At peak engagement, served 40M+ users.</p>
+      
+      <div class="company-press-quote">
+        <p class="quote-text">"Viddy, the video-sharing app that has been called 'Instagram for video,' raised $30 million in funding at a valuation of $370 million."</p>
+        <p class="quote-source">— <strong>The Wall Street Journal</strong> on Viddy's funding round</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="impact-card" id="flyr">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/7GQm8h70PRg?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">$6M Raised | Acquired 2018</span>
+      <h3>FlyrTV</h3>
+      <p class="role">CTO & Co-founder • 2014-2018</p>
+      <p class="description">Raised $6M+, built team of 30 professionals, launched 10,000+ HD video templates. First company to access Snapchat's content API. Acquired by POND5.</p>
+      
+      <div class="company-press-quote">
+        <p class="quote-text">"Flyr was the first third-party company granted access to Snapchat's content API, a testament to their groundbreaking work in mobile video storytelling."</p>
+        <p class="quote-source">— <strong>TechCrunch</strong> on FlyrTV's Snapchat partnership</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="impact-card" id="community">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/ZOWuy-HhQxE?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">Backed by Madonna & Ashton Kutcher</span>
+      <h3>Community</h3>
+      <p class="role">Principal iOS Architect • 2019-2020</p>
+      <p class="description">Implemented Princeton CS Ph.D. paper in Swift. Architected reactive iOS app. Built and led iOS team of 5 engineers in 6 months.</p>
+      
+      <div class="company-press-quote">
+        <p class="quote-text">"Community has raised $35 million in new funding to bring celebrities closer to their fans through direct messaging."</p>
+        <p class="quote-source">— <strong>Forbes</strong> on Community's Series A</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="impact-card" id="invision">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/x3WtPVjdTNM?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">800 Employees | Industry Leader</span>
+      <h3>InVision</h3>
+      <p class="role">Lead Mobile Developer • 2018-2019</p>
+      <p class="description">Implemented real-time previews for Studio and iOS. Integrated Freehand editor. Refactored legacy code into modular frameworks.</p>
+      
+      <div class="company-press-quote">
+        <p class="quote-text">"InVision has become the world's leading design platform, used by 100% of the Fortune 100 companies."</p>
+        <p class="quote-source">— <strong>Fast Company</strong> on InVision's industry impact</p>
+      </div>
+    </div>
+  </article>
+
+  </section>
+
+  <!-- Press Quote: Korea Biz Wire -->
+  <section class="press-quote-divider">
+    <blockquote>"Hassan Uriostegui explores whether ChatGPT could be sentient, diving deep into the philosophical and technical implications of artificial consciousness."</blockquote>
+    <div class="source">
+      <a href="http://koreabizwire.com/is-chatgpt-sentient-the-question-is-answered-in-i-ai-by-waken-ai-founder-hassan-uriostegui" target="_blank" class="source-name">Korea Biz Wire</a>
+      <span class="source-context">— On 'I, AI: Nemo's Mirror'</span>
+    </div>
+  </section>
+
+  
+  <section class="timeline-marker">
+    <div class="marker-line"></div>
+    <div class="marker-circle">2022-2025</div>
+    <div class="marker-label">AI Era</div>
+    <div class="marker-line"></div>
+  </section>
+
+
+  <!-- AI Video Showcase -->
+  <section class="section" id="ai-showcase">
+    <div class="section-header">
+      <span class="eyebrow">Visual AI</span>
+      <h2>AI-Generated Content</h2>
+    </div>
+    <div class="ai-showcase" id="ai-showcase-grid">
+      <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1007140444?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1115280799?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1137579881?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1004812787?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+    </div>
+    
+    <!-- Show More - Hidden Videos + Playlists -->
+    <div class="show-more-container">
+      <button class="show-more-btn" onclick="toggleShowMore('ai-more', this)">
+        Show More AI Art <span class="arrow">▼</span>
+      </button>
+    </div>
+    <div id="ai-more" class="more-content">
+      <div class="ai-showcase" style="padding-top: 0;">
+        <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1002554159?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1002309561?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1135112888?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="showcase-video">
+        <iframe src="https://player.vimeo.com/video/1135110903?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      </div>
+      <div class="playlist-grid">
+        <div class="playlist-card">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB" frameborder="0" allowfullscreen></iframe>
+          <div class="playlist-info">
+            <h4>AI Art Collection</h4>
+            <a href="https://www.youtube.com/playlist?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB" target="_blank">View Full Playlist →</a>
+          </div>
+        </div>
+        <div class="playlist-card">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl" frameborder="0" allowfullscreen></iframe>
+          <div class="playlist-info">
+            <h4>AI Art Series 2</h4>
+            <a href="https://www.youtube.com/playlist?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl" target="_blank">View Full Playlist →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Work -->
+  <section class="section" id="work">
+    <div class="section-header white">
+      <span class="eyebrow">Current Focus</span>
+      <h2>AI Innovation</h2>
+      <p class="lead">Building the future of AI-human interaction through ethical, ergonomic technology.</p>
+    </div>
+    
+    
+  <article class="project-card" id="twinchat">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/839937602?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">10,000+ AI Personalities</span>
+      <h3>TwinChat</h3>
+      <p class="year">2023-Present</p>
+      <p class="description">AI-Podcast platform that disrupts social media with 10,000 famous personalities' Mind-Deepfakes. Revolutionary AI that creates compelling conversational experiences with celebrity digital twins.</p>
+      <p class="quote">"Unlocking VIP Celebrity conversations through AI."</p>
+      <a href="https://btwinai.com/" target="_blank" class="btn btn-outline">Visit Website</a>
+    </div>
+  </article>
+
+  <article class="project-card" id="btwinfriends">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/1003117589?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">20,000 conversations | 200,000 messages</span>
+      <h3>BTwin Friends</h3>
+      <p class="year">2024-Present</p>
+      <p class="description">Advanced AI platform creating cognitive profiles for conversational simulations. Emotionally responsive AI companions that enhance user interaction with highly accurate personality profiles. Evolution of BRB2Me mind simulation research.</p>
+      <p class="quote">"Our AI delves into the human essence, giving voice to silent thoughts."</p>
+      <a href="https://btwinai.com/" target="_blank" class="btn btn-outline">Visit Website</a>
+    </div>
+  </article>
+
+  <article class="project-card" id="brb2me">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/913284078?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">Mind Simulation Pioneer</span>
+      <h3>BRB2Me</h3>
+      <p class="year">2020-2022</p>
+      <p class="description">Pioneering mind simulation platform that laid the foundation for BTwin Friends. Early research into cognitive profiling and conversational AI companions with therapeutic applications.</p>
+      <p class="quote">"The predecessor to modern AI mind simulation."</p>
+      
+    </div>
+  </article>
+
+  <article class="project-card" id="brujaroja">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/1022298842?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">WhatsApp AI Storytelling</span>
+      <h3>Bruja Roja</h3>
+      <p class="year">2024</p>
+      <p class="description">WhatsApp-based storytelling AI that brings personalized narratives to life through conversational interfaces.</p>
+      
+      <a href="https://www.brujaroja.mx/" target="_blank" class="btn btn-outline">Visit Website</a>
+    </div>
+  </article>
+
+  <article class="project-card" id="sendkarma">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/1138631992?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="highlight">AI Wellness</span>
+      <h3>SendKarma</h3>
+      <p class="year">2025</p>
+      <p class="description">Sadhguru-inspired AI wellness companion delivering wisdom and guidance through accessible channels.</p>
+      
+      <a href="https://www.sendkarma.app/" target="_blank" class="btn btn-outline">Visit Website</a>
+    </div>
+  </article>
+
+  </section>
+
+  
+  <section class="timeline-marker">
+    <div class="marker-line"></div>
+    <div class="marker-circle">2010-2020</div>
+    <div class="marker-label">Innovation</div>
+    <div class="marker-line"></div>
+  </section>
+
+
+  <!-- Research & Innovations -->
+  <section class="section" id="research">
+    <div class="section-header white">
+      <span class="eyebrow">Research & Development</span>
+      <h2>Innovations</h2>
+      <p class="lead">Building tomorrow's technology, years before the industry catches up.</p>
+    </div>
+    
+    <div class="innovation-grid">
+      
+  <article class="innovation-card" id="maxwell">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/435053200?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="year-badge">2020</span>
+      <h3>Maxwell Lux</h3>
+      <p class="tagline">Bootstrap for SwiftUI</p>
+      <p class="description">First Universal Design System for iOS and macOS. Presented at WWDC20 Labs. Approved for Apple Silicon early access program.</p>
+    </div>
+  </article>
+
+  <article class="innovation-card" id="onelapse">
+    <div class="card-video">
+      <iframe src="https://player.vimeo.com/video/66624830?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="year-badge">2013</span>
+      <h3>Onelapse</h3>
+      <p class="tagline">Live Photos 2 Years Before Apple</p>
+      <p class="description">Envisioned a new media type blending high-res video with photos. 'Taking photos from videos' - Apple released similar feature in 2015.</p>
+    </div>
+  </article>
+
+  <article class="innovation-card" id="cinekolor">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/g722kzRyzPo?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="year-badge">2014</span>
+      <h3>Cinekolor</h3>
+      <p class="tagline">Pro Color Grading Before Adobe</p>
+      <p class="description">Professional 3-stage color correction with 3D LUT export for film production. Featured by Apple worldwide.</p>
+    </div>
+  </article>
+
+  <article class="innovation-card" id="krommy">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/d3hvzV9KgcE?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="year-badge">2011</span>
+      <h3>Krommy</h3>
+      <p class="tagline">Face Filters 10 Years Before Snapchat</p>
+      <p class="description">After releasing Kromath (first real-time Green Screen for iOS), developed early face filter concept almost a decade before Snapchat.</p>
+    </div>
+  </article>
+
+  <article class="innovation-card" id="tron">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/YXglHq-JJYI?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="year-badge">2010</span>
+      <h3>Tron Legacy AR Engine</h3>
+      <p class="tagline">AR Before ARKit</p>
+      <p class="description">High-performance Augmented Reality Engine for Disney's Tron Legacy marketing. Built before modern AR frameworks existed.</p>
+    </div>
+  </article>
+
+  <article class="innovation-card" id="renderfarm">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/GET8ncM2C84?autoplay=0&muted=1&controls=1" 
+              frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="card-content">
+      <span class="year-badge">2018</span>
+      <h3>Renderfarm X</h3>
+      <p class="tagline">Patent: Intelligent Graphical Feature Generation</p>
+      <p class="description">Revolutionary backend rendering using iOS engine. Reused mobile rendering for scalable server-side video processing.</p>
+    </div>
+  </article>
+
+    </div>
+  </section>
+
+  
+  <section class="timeline-marker">
+    <div class="marker-line"></div>
+    <div class="marker-circle">2006-2010</div>
+    <div class="marker-label">VFX & Film</div>
+    <div class="marker-line"></div>
+  </section>
+
+
+  <!-- Filmography -->
+  
+  <section class="section filmography" id="filmography">
+    <div class="section-header">
+      <span class="eyebrow">2006-2010</span>
+      <h2>Filmography & VFX</h2>
+      <p class="lead">Collaborated on 10+ feature films. Winner of Ariel Awards for visual effects. Active member of Hollywood Visual Effects Society (VES).</p>
+    </div>
+    
+    <div class="film-grid">
+      <div class="film-video">
+        <iframe src="https://www.youtube.com/embed/H1D5HITPAhc?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <p class="video-title">Creative Engineering 2006-2011</p>
+      </div>
+<div class="film-video">
+        <iframe src="https://www.youtube.com/embed/cS9tKYNIOxg?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <p class="video-title">VFX Reel 2006-2011</p>
+      </div>
+
+    </div>
+    
+    <div class="film-links">
+      <a href="https://www.imdb.com/name/nm2843359/" target="_blank" class="btn btn-outline">View IMDB Profile</a>
+      <span class="ves-badge">VES Member</span>
+    </div>
+  </section>
+
+
+  <!-- AI Art Before Books -->
+  <section class="section" id="ai-art-highlight">
+    <div class="section-header">
+      <span class="eyebrow">Visual Creativity</span>
+      <h2>AI Art Highlights</h2>
+    </div>
+    <div class="ai-art-row">
+      <div class="art-video">
+        <iframe src="https://player.vimeo.com/video/457716566?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="art-video">
+        <iframe src="https://player.vimeo.com/video/426521636?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Books -->
+  <section class="section" id="books">
+    <div class="section-header white">
+      <span class="eyebrow">Published Works</span>
+      <h2>Books</h2>
+    </div>
+    <div class="books-grid">
+      <article class="book-card">
+        <span class="year">2023 • English</span>
+        <h3>I, AI: Nemo's Mirror</h3>
+        <p class="subtitle">Exploring the Singular Nature of Self-Awareness in ChatGPT</p>
+        <p class="press">Featured in Korea Biz Wire</p>
+        <a href="https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993" target="_blank" class="btn btn-outline">Read More</a>
+      </article>
+      <article class="book-card">
+        <span class="year">2023 • Español</span>
+        <h3>Yo, IA: Cyberpunks</h3>
+        <p class="subtitle">La Inteligencia Artificial y el Espejo de Nemo</p>
+        <p class="press">Featured on Imagen Radio Mexico</p>
+        <a href="https://www.amazon.com/Yo-IA-Cyberpunks-Inteligencia-Artificial/dp/1312446501" target="_blank" class="btn btn-outline">Read More</a>
+      </article>
+      <article class="book-card">
+        <span class="year">2020 • English</span>
+        <h3>The Fly of the Humanized Robot</h3>
+        <p class="subtitle">An Algorithm to Heal the Soul</p>
+        
+        <a href="book/eng.pdf" class="btn btn-outline">Read More</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Interviews -->
+  <section class="section" id="interviews">
+    <div class="section-header">
+      <span class="eyebrow">Media & Speaking</span>
+      <h2>Interviews</h2>
+    </div>
+    <div class="interviews-grid">
+      <div class="interview-card">
+        <iframe src="https://player.vimeo.com/video/1001075745?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <div class="interview-info">
+          <h4>AI & Future of Technology</h4>
+          <p>Interview on AI ethics and innovation</p>
+        </div>
+      </div><div class="interview-card">
+        <iframe src="https://player.vimeo.com/video/843499496?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <div class="interview-info">
+          <h4>Silicon Valley Journey</h4>
+          <p>Career retrospective</p>
+        </div>
+      </div><div class="interview-card">
+        <iframe src="https://player.vimeo.com/video/843495231?autoplay=0&muted=1&controls=1" frameborder="0" allowfullscreen></iframe>
+        <div class="interview-info">
+          <h4>Entrepreneurship & Innovation</h4>
+          <p>Startup insights</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press -->
+  <section class="section" id="press">
+    <div class="section-header">
+      <span class="eyebrow">Media Coverage</span>
+      <h2>Press</h2>
+    </div>
+    <div class="press-grid">
+      <a href="https://techcrunch.com/2017/03/13/flyr-launch/" target="_blank" class="press-card">
+        <span class="publication">TechCrunch</span>
+        <h4>Flyr launches an app for rapid creation of Snapchat Discover-style stories</h4>
+        <p>First third-party company granted Snapchat API access</p>
+      </a>
+      <a href="https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e" target="_blank" class="press-card">
+        <span class="publication">Authority Magazine</span>
+        <h4>Hassan Uriostegui On the Future of Artificial Intelligence</h4>
+        <p>In-depth interview on AI ethics and digital empathy</p>
+      </a>
+      <a href="https://www.forbes.com" target="_blank" class="press-card">
+        <span class="publication">Forbes</span>
+        <h4>Ultrakam 4K video app arrives for iPhone 6</h4>
+        <p>Revolutionary mobile video recording</p>
+      </a>
+      <a href="http://koreabizwire.com/is-chatgpt-sentient-the-question-is-answered-in-i-ai-by-waken-ai-founder-hassan-uriostegui" target="_blank" class="press-card">
+        <span class="publication">Korea Biz Wire</span>
+        <h4>Is ChatGPT Sentient? The Question is Answered in 'I, AI'</h4>
+        <p>Book explores consciousness in AI systems</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <h2>Hassan Uriostegui</h2>
+    <p>EB1A Extraordinary Ability</p>
+    <a href="mailto:hassan.uriostegui@gmail.com" class="email">hassan.uriostegui@gmail.com</a>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/bensabbah" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/hassanvfx" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://www.imdb.com/name/nm2843359/" target="_blank" class="btn btn-outline">IMDB</a>
+      <a href="https://uriostegui.medium.com" target="_blank" class="btn btn-outline">Medium</a>
+    </div>
+    <p class="copyright">© 2025 Hassan Uriostegui. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll-synced navigation
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks = document.querySelectorAll('.scroll-nav a[href^="#"]');
+    
+    function updateNav() {
+      let current = '';
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom >= 150) {
+          current = section.id;
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', updateNav);
+    updateNav();
+    
+    // Show More toggle function
+    function toggleShowMore(contentId, btn) {
+      const content = document.getElementById(contentId);
+      const isExpanded = content.classList.contains('expanded');
+      
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        btn.classList.remove('expanded');
+        btn.innerHTML = 'Show More AI Art <span class="arrow">▼</span>';
+      } else {
+        content.classList.add('expanded');
+        btn.classList.add('expanded');
+        btn.innerHTML = 'Show Less <span class="arrow">▲</span>';
+      }
+    }
+  </script>
+
+</body>
+</html>
