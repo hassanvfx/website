@@ -1927,7 +1927,6 @@ nav a:hover {{
   <footer id="contact">
     <h2>{IDENTITY["name"]}</h2>
     <p>{IDENTITY["status"]}</p>
-    <a href="mailto:{IDENTITY["email"]}" class="email">{IDENTITY["email"]}</a>
     <div class="social-links">
       {generate_social_links()}
     </div>

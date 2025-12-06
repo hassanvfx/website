@@ -5,7 +5,7 @@ Portfolio Data - Impact First Structure
 # Core Identity
 IDENTITY = {
     "name": "Hassan Uriostegui",
-    "status": "EB1A Extraordinary Ability",
+    "status": "EB1A Systems Engineer",
     "title": "Silicon Valley Innovator | AI Pioneer | Author",
     "email": "hassan.uriostegui@gmail.com",
     "portrait": "https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/db719a43-cc9c-4930-b4f8-21112bb508d3/HassanUriostegui1.jpeg?format=1500w",
