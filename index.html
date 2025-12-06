@@ -1976,6 +1976,16 @@ nav a:hover {
   font-size: 0.85rem;
 }
 
+/* Mr. Joy Music Section */
+.mrjoy-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.mrjoy-content .waken-video-container {
+  max-width: 900px;
+}
+
 /* Responsive - Mobile Full Width for Video Sections */
 @media (max-width: 768px) {
   /* Hero portrait - larger on mobile */
@@ -2139,6 +2149,30 @@ nav a:hover {
   /* Books/Press grids - some padding */
   .books-grid, .press-grid {
     padding: 0 16px;
+  }
+  
+  /* Mr. Joy - Portrait video on mobile */
+  .mrjoy-content {
+    padding: 0;
+  }
+  .mrjoy-content .waken-video-container {
+    padding-top: 177.78%;
+    border-radius: 0;
+    margin: 0 0 2rem;
+    max-width: 100%;
+  }
+  .mrjoy-content .waken-quote,
+  .mrjoy-content .waken-positioning,
+  .mrjoy-content .waken-footer,
+  .mrjoy-content p {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  /* AI Influencer & Product Shots - Portrait videos on mobile */
+  #ai-influencer .waken-video-container,
+  #ai-product-shots .waken-video-container {
+    padding-top: 177.78%;
   }
 }
   </style>
@@ -2779,14 +2813,14 @@ nav a:hover {
 
 
   <!-- Mr. Joy - Music & AI -->
-  <section class="waken-callout" id="mrjoy">
-    <div class="waken-inner">
-      <div class="waken-header">
-        <span class="clineflow-badge">🎵 MUSIC & AI</span>
-        <h2 class="waken-tagline">Mr. Joy</h2>
-        <p class="waken-subtitle">Under artistic name: Mr. Joy</p>
-        <p class="waken-description">Under the artistic persona Mr. Joy, Hassan pioneered a revolutionary AI-driven multimedia pipeline that generates fully personalized songs from conception to delivery—lyrics, musical composition, vocal performance, cover art, and promotional assets—all orchestrated through sophisticated ManyChat workflows, advanced LLMs, and automated FFmpeg pipelines. This groundbreaking system serves thousands of customers with complex prompt-based state machines, intelligent AI customer-support agents, and a complete personalization engine that transforms individual stories into professional-grade musical experiences.</p>
-      </div>
+  <section class="section" id="mrjoy">
+    <div class="section-header">
+      <span class="eyebrow">Artistic Expression</span>
+      <h2>Music & Mr. Joy</h2>
+      <p class="lead">Under the artistic persona Mr. Joy, Hassan pioneered a revolutionary AI-driven multimedia pipeline that generates fully personalized songs from conception to delivery—lyrics, musical composition, vocal performance, cover art, and promotional assets. This groundbreaking system serves thousands of customers, transforming individual stories into professional-grade musical experiences through sophisticated automation.</p>
+    </div>
+    
+    <div class="mrjoy-content">
       
       <div class="waken-video-container">
         <iframe src="https://player.vimeo.com/video/1144180022" 
@@ -2805,7 +2839,7 @@ nav a:hover {
         </a>
       </div>
       
-      <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem;">100% AI Simulated - State-of-the-Art 2025</p>
+      <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem;">Every life has a story worth to be preserved with music</p>
     </div>
   </section>
 

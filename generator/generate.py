@@ -1273,6 +1273,16 @@ nav a:hover {{
   font-size: 0.85rem;
 }}
 
+/* Mr. Joy Music Section */
+.mrjoy-content {{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}}
+.mrjoy-content .waken-video-container {{
+  max-width: 900px;
+}}
+
 /* Responsive - Mobile Full Width for Video Sections */
 @media (max-width: 768px) {{
   /* Hero portrait - larger on mobile */
@@ -1436,6 +1446,30 @@ nav a:hover {{
   /* Books/Press grids - some padding */
   .books-grid, .press-grid {{
     padding: 0 16px;
+  }}
+  
+  /* Mr. Joy - Portrait video on mobile */
+  .mrjoy-content {{
+    padding: 0;
+  }}
+  .mrjoy-content .waken-video-container {{
+    padding-top: 177.78%;
+    border-radius: 0;
+    margin: 0 0 2rem;
+    max-width: 100%;
+  }}
+  .mrjoy-content .waken-quote,
+  .mrjoy-content .waken-positioning,
+  .mrjoy-content .waken-footer,
+  .mrjoy-content p {{
+    padding-left: 16px;
+    padding-right: 16px;
+  }}
+  
+  /* AI Influencer & Product Shots - Portrait videos on mobile */
+  #ai-influencer .waken-video-container,
+  #ai-product-shots .waken-video-container {{
+    padding-top: 177.78%;
   }}
 }}
   </style>
@@ -1731,14 +1765,14 @@ nav a:hover {{
   {generate_filmography_section()}
 
   <!-- Mr. Joy - Music & AI -->
-  <section class="waken-callout" id="mrjoy">
-    <div class="waken-inner">
-      <div class="waken-header">
-        <span class="clineflow-badge">🎵 MUSIC & AI</span>
-        <h2 class="waken-tagline">{MR_JOY["name"]}</h2>
-        <p class="waken-subtitle">Under artistic name: {MR_JOY["artistic_name"]}</p>
-        <p class="waken-description">{MR_JOY["description"]}</p>
-      </div>
+  <section class="section" id="mrjoy">
+    <div class="section-header">
+      <span class="eyebrow">Artistic Expression</span>
+      <h2>{MR_JOY["name"]}</h2>
+      <p class="lead">{MR_JOY["description"]}</p>
+    </div>
+    
+    <div class="mrjoy-content">
       
       <div class="waken-video-container">
         <iframe src="{MR_JOY["video"]}" 

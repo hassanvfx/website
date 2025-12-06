@@ -429,13 +429,13 @@ FILMOGRAPHY = {
 
 # MUSIC & AI - MR. JOY
 MR_JOY = {
-    "name": "Mr. Joy",
+    "name": "Music & Mr. Joy",
     "artistic_name": "Mr. Joy",
     "tagline": "Revolutionary AI Music Generation at Scale",
     "subtitle": "End-to-End Personalized Song Creation",
-    "description": "Under the artistic persona Mr. Joy, Hassan pioneered a revolutionary AI-driven multimedia pipeline that generates fully personalized songs from conception to delivery—lyrics, musical composition, vocal performance, cover art, and promotional assets—all orchestrated through sophisticated ManyChat workflows, advanced LLMs, and automated FFmpeg pipelines. This groundbreaking system serves thousands of customers with complex prompt-based state machines, intelligent AI customer-support agents, and a complete personalization engine that transforms individual stories into professional-grade musical experiences.",
+    "description": "Under the artistic persona Mr. Joy, Hassan pioneered a revolutionary AI-driven multimedia pipeline that generates fully personalized songs from conception to delivery—lyrics, musical composition, vocal performance, cover art, and promotional assets. This groundbreaking system serves thousands of customers, transforming individual stories into professional-grade musical experiences through sophisticated automation.",
     "video": "https://player.vimeo.com/video/1144180022",
-    "video_note": "100% AI Simulated - State-of-the-Art 2025",
+    "video_note": "Every life has a story worth to be preserved with music",
     "website": "https://pidetucancion.com",
     "youtube": "https://www.youtube.com/@pidetucancion",
     "quote": "Every song tells a story. Now AI can compose yours.",
