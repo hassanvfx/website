@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from portfolio_data import (
-    IDENTITY, STATS, NAV_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
+    IDENTITY, STATS, NAV_ITEMS, SUBMENU_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
     HISTORIC_COMPANIES, BOOKS, PRESS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
@@ -25,6 +25,14 @@ def generate_nav_html():
         featured_class = ' class="featured"' if nav.get("featured") else ''
         target = ' target="_blank"' if nav.get("external") else ''
         items.append(f'<a href="{nav["href"]}"{featured_class}{target}>{nav["label"]}</a>')
+    return "\n      ".join(items)
+
+
+def generate_submenu_html():
+    """Generate submenu navigation"""
+    items = []
+    for item in SUBMENU_ITEMS:
+        items.append(f'<a href="{item["href"]}" class="submenu-link">{item["label"]}</a>')
     return "\n      ".join(items)
 
 
@@ -191,8 +199,10 @@ def generate_books_html():
     for book in BOOKS:
         press_html = f'<p class="press">{book["press"]}</p>' if book.get("press") else ""
         target = "" if book.get("local") else ' target="_blank"'
+        image_html = f'<img src="{book["image"]}" alt="{book["title"]}" class="book-cover" />' if book.get("image") else ""
         
         items.append(f'''<article class="book-card">
+        {image_html}
         <span class="year">{book["year"]} • {book.get("language", "English")}</span>
         <h3>{book["title"]}</h3>
         <p class="subtitle">{book["subtitle"]}</p>
@@ -392,6 +402,38 @@ nav a:hover {{
   font-weight: 600;
 }}
 
+/* Submenu - Separate Row */
+.submenu-nav {{
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  padding: 10px 0;
+  position: sticky;
+  top: 60px;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+}}
+.submenu-inner {{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}}
+.submenu-link {{
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+}}
+.submenu-link:hover {{
+  color: #00D4FF;
+}}
+
 /* Mobile Nav Responsive */
 @media (max-width: 768px) {{
   .hamburger {{
@@ -406,6 +448,11 @@ nav a:hover {{
   .scroll-nav .nav-inner {{
     justify-content: space-between;
     padding: 0 20px;
+  }}
+  
+  /* Hide submenu bar on mobile */
+  .submenu-nav {{
+    display: none;
   }}
 }}
 
@@ -651,29 +698,54 @@ nav a:hover {{
 /* Books */
 .books-grid {{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }}
 .book-card {{
   background: #0a0a0a;
+  border-radius: 16px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+}}
+.book-card:hover {{
+  background: #111;
+  transform: translateY(-4px);
+}}
+.book-cover {{
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
   border-radius: 12px;
-  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.15), 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}}
+.book-card:hover .book-cover {{
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.3), 0 15px 60px rgba(0, 0, 0, 0.4);
+  transform: scale(1.02);
 }}
 .book-card .year {{
   color: #666;
   font-size: 0.85rem;
+  margin-bottom: 0.5rem;
 }}
 .book-card h3 {{
   font-family: 'Playfair Display', serif;
   font-size: 1.25rem;
   margin: 0.5rem 0;
   color: #fff;
+  line-height: 1.3;
 }}
 .book-card .subtitle {{
   color: #888;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-bottom: 1rem;
+  line-height: 1.4;
 }}
 .book-card .press {{
   color: #00D4FF;
@@ -1485,6 +1557,13 @@ nav a:hover {{
         <span></span>
         <span></span>
       </div>
+    </div>
+  </nav>
+
+  <!-- Submenu Row -->
+  <nav class="submenu-nav">
+    <div class="submenu-inner">
+      {generate_submenu_html()}
     </div>
   </nav>
 

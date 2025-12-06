@@ -80,8 +80,16 @@ NAV_ITEMS = [
     {"label": "IMPACT", "href": "#impact"},
     {"label": "WORK", "href": "#work"},
     {"label": "RESEARCH", "href": "#research"},
-    {"label": "BOOKS", "href": "#books"},
+    {"label": "PRESS", "href": "#press"},
     {"label": "CONTACT", "href": "#contact"},
+]
+
+# Submenu Items - Secondary navigation
+SUBMENU_ITEMS = [
+    {"label": "AI", "href": "#waken"},
+    {"label": "Films", "href": "#filmography"},
+    {"label": "Music", "href": "#mrjoy"},
+    {"label": "Books", "href": "#books"},
 ]
 
 # Social Links
@@ -438,7 +446,7 @@ MR_JOY = {
     "video_note": "Every life has a story worth to be preserved with music",
     "website": "https://pidetucancion.com",
     "youtube": "https://www.youtube.com/@pidetucancion",
-    "quote": "Every song tells a story. Now AI can compose yours.",
+    "quote": "Every life has a story worth preserving as Music Forever",
     "positioning": "Pushing the boundaries of AI-generated music production with industrial-scale automation and personalization."
 }
 
@@ -452,6 +460,7 @@ BOOKS = [
         "url": "https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993",
         "press": "The definitive guide to AI personality simulation",
         "featured": True,
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062559/this_book_cover_in_a_foto_real_display_in_a_book_store_real_fotography_k3r65iuq1nnvj1ljkmhv_1_zrz0o2.png",
         "description": "This groundbreaking work introduces the theoretical and practical foundations of Mind Simulation Technology—the science behind BTwin Friends and TwinChat. Drawing from years of research in cognitive profiling, conversational AI, and therapeutic applications, this book provides a comprehensive framework for understanding how AI can simulate human cognition, personality, and emotional intelligence."
     },
     {
@@ -460,7 +469,8 @@ BOOKS = [
         "year": "2023",
         "language": "English",
         "url": "https://www.amazon.com/-/en/AI-Exploring-Singular-Self-Awareness-ChatGPT/dp/1365528669",
-        "press": "Featured in Korea Biz Wire"
+        "press": "Featured in Korea Biz Wire",
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062694/this_book_hold_by_this_guy_in_a_startbucks_coffee_uuoxtjvsv8tpp3imnsjj_0_yj2p6m.jpg"
     },
     {
         "title": "Yo, IA: Cyberpunks",
@@ -468,7 +478,8 @@ BOOKS = [
         "year": "2023",
         "language": "Español",
         "url": "https://www.amazon.com/Yo-IA-Cyberpunks-Inteligencia-Artificial/dp/1312446501",
-        "press": "Featured on Imagen Radio Mexico"
+        "press": "Featured on Imagen Radio Mexico",
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062693/this_book_cover_in_a_foto_real_display_in_a_book_store_real_fotography_at_barnes__noble_07l8939fc8cxlyirqp40_0_wir41f.jpg"
     },
     {
         "title": "The Fly of the Humanized Robot",
@@ -476,7 +487,8 @@ BOOKS = [
         "year": "2020",
         "language": "English",
         "url": "book/eng.pdf",
-        "local": True
+        "local": True,
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062693/this_book_hold_by_this_guy_in_the_woods_8h7ed2ri8wqtfycbeb16_1_kd3iwp.jpg"
     },
 ]
 
