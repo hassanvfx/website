@@ -13,7 +13,7 @@ from portfolio_data import (
     HISTORIC_COMPANIES, BOOKS, PRESS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
-    AI_INFLUENCER, AI_PRODUCT_SHOTS
+    AI_INFLUENCER, AI_PRODUCT_SHOTS, MR_JOY
 )
 from templates import CSS_STYLES
 
@@ -807,8 +807,46 @@ nav a:hover {{
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: #fff;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+}}
+.bio-featured-article {{
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}}
+.bio-featured-article a {{
+  display: block;
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(139,92,246,0.08));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}}
+.bio-featured-article a:hover {{
+  background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(139,92,246,0.12));
+  border-color: rgba(0,212,255,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+}}
+.bio-featured-article .article-label {{
+  color: #00D4FF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}}
+.bio-featured-article .article-title {{
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}}
+.bio-featured-article .article-source {{
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
 }}
 .bio-intro {{
   font-size: 1.2rem;
@@ -1539,6 +1577,15 @@ nav a:hover {{
   <section class="bio-section" id="about">
     <div class="bio-content">
       <h2 class="bio-headline">{BIO["headline"]}</h2>
+      
+      <div class="bio-featured-article">
+        <a href="{BIO["headline_link"]}" target="_blank">
+          <div class="article-label">Featured Article</div>
+          <div class="article-title">On the Future of Artificial Intelligence</div>
+          <div class="article-source">Authority Magazine</div>
+        </a>
+      </div>
+      
       <p class="bio-intro">{BIO["intro"]}</p>
       
       <div class="eb1a-card">
@@ -1682,6 +1729,37 @@ nav a:hover {{
 
   <!-- Filmography -->
   {generate_filmography_section()}
+
+  <!-- Mr. Joy - Music & AI -->
+  <section class="waken-callout" id="mrjoy">
+    <div class="waken-inner">
+      <div class="waken-header">
+        <span class="clineflow-badge">🎵 MUSIC & AI</span>
+        <h2 class="waken-tagline">{MR_JOY["name"]}</h2>
+        <p class="waken-subtitle">Under artistic name: {MR_JOY["artistic_name"]}</p>
+        <p class="waken-description">{MR_JOY["description"]}</p>
+      </div>
+      
+      <div class="waken-video-container">
+        <iframe src="{MR_JOY["video"]}" 
+                frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+      
+      <p class="waken-quote">"{MR_JOY["quote"]}"</p>
+      <p class="waken-positioning">{MR_JOY["positioning"]}</p>
+      
+      <div class="waken-footer">
+        <a href="{MR_JOY["website"]}" target="_blank" class="waken-cta">
+          Visit pidetucancion.com →
+        </a>
+        <a href="{MR_JOY["youtube"]}" target="_blank" class="waken-cta" style="margin-left: 1rem;">
+          YouTube Channel →
+        </a>
+      </div>
+      
+      <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem;">{MR_JOY["video_note"]}</p>
+    </div>
+  </section>
 
   <!-- AI Art Before Books -->
   <section class="section" id="ai-art-highlight">

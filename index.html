@@ -1510,8 +1510,46 @@ nav a:hover {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: #fff;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+}
+.bio-featured-article {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+.bio-featured-article a {
+  display: block;
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(139,92,246,0.08));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.bio-featured-article a:hover {
+  background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(139,92,246,0.12));
+  border-color: rgba(0,212,255,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+}
+.bio-featured-article .article-label {
+  color: #00D4FF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.bio-featured-article .article-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+.bio-featured-article .article-source {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
 }
 .bio-intro {
   font-size: 1.2rem;
@@ -2269,6 +2307,15 @@ nav a:hover {
   <section class="bio-section" id="about">
     <div class="bio-content">
       <h2 class="bio-headline">A Silicon Valley Visionary Shaping the Future of AI</h2>
+      
+      <div class="bio-featured-article">
+        <a href="https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e" target="_blank">
+          <div class="article-label">Featured Article</div>
+          <div class="article-title">On the Future of Artificial Intelligence</div>
+          <div class="article-source">Authority Magazine</div>
+        </a>
+      </div>
+      
       <p class="bio-intro">Hassan Uriostegui is a Mexican-American technologist, author, and AI pioneer whose work has touched over 40 million users worldwide. Recognized by the United States government with the prestigious EB1A visa for individuals of extraordinary ability, Hassan's career spans groundbreaking innovations in mobile video technology, AI-human interaction, and visual effects for Hollywood films.</p>
       
       <div class="eb1a-card">
@@ -2730,6 +2777,37 @@ nav a:hover {
     </div>
   </section>
 
+
+  <!-- Mr. Joy - Music & AI -->
+  <section class="waken-callout" id="mrjoy">
+    <div class="waken-inner">
+      <div class="waken-header">
+        <span class="clineflow-badge">🎵 MUSIC & AI</span>
+        <h2 class="waken-tagline">Mr. Joy</h2>
+        <p class="waken-subtitle">Under artistic name: Mr. Joy</p>
+        <p class="waken-description">Under the artistic persona Mr. Joy, Hassan pioneered a revolutionary AI-driven multimedia pipeline that generates fully personalized songs from conception to delivery—lyrics, musical composition, vocal performance, cover art, and promotional assets—all orchestrated through sophisticated ManyChat workflows, advanced LLMs, and automated FFmpeg pipelines. This groundbreaking system serves thousands of customers with complex prompt-based state machines, intelligent AI customer-support agents, and a complete personalization engine that transforms individual stories into professional-grade musical experiences.</p>
+      </div>
+      
+      <div class="waken-video-container">
+        <iframe src="https://player.vimeo.com/video/1144180022" 
+                frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+      
+      <p class="waken-quote">"Every song tells a story. Now AI can compose yours."</p>
+      <p class="waken-positioning">Pushing the boundaries of AI-generated music production with industrial-scale automation and personalization.</p>
+      
+      <div class="waken-footer">
+        <a href="https://pidetucancion.com" target="_blank" class="waken-cta">
+          Visit pidetucancion.com →
+        </a>
+        <a href="https://www.youtube.com/@pidetucancion" target="_blank" class="waken-cta" style="margin-left: 1rem;">
+          YouTube Channel →
+        </a>
+      </div>
+      
+      <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem;">100% AI Simulated - State-of-the-Art 2025</p>
+    </div>
+  </section>
 
   <!-- AI Art Before Books -->
   <section class="section" id="ai-art-highlight">

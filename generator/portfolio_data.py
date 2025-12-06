@@ -15,6 +15,7 @@ IDENTITY = {
 # Bio/EB1A Overview - Like a famous artist portfolio intro
 BIO = {
     "headline": "A Silicon Valley Visionary Shaping the Future of AI",
+    "headline_link": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
     "intro": "Hassan Uriostegui is a Mexican-American technologist, author, and AI pioneer whose work has touched over 40 million users worldwide. Recognized by the United States government with the prestigious EB1A visa for individuals of extraordinary ability, Hassan's career spans groundbreaking innovations in mobile video technology, AI-human interaction, and visual effects for Hollywood films.",
     "eb1a_overview": {
         "title": "EB1A Extraordinary Ability Recognition",
@@ -424,6 +425,21 @@ FILMOGRAPHY = {
         {"url": "https://www.youtube.com/embed/H1D5HITPAhc", "title": "Creative Engineering 2006-2011"},
         {"url": "https://www.youtube.com/embed/cS9tKYNIOxg", "title": "VFX Reel 2006-2011"},
     ]
+}
+
+# MUSIC & AI - MR. JOY
+MR_JOY = {
+    "name": "Mr. Joy",
+    "artistic_name": "Mr. Joy",
+    "tagline": "Revolutionary AI Music Generation at Scale",
+    "subtitle": "End-to-End Personalized Song Creation",
+    "description": "Under the artistic persona Mr. Joy, Hassan pioneered a revolutionary AI-driven multimedia pipeline that generates fully personalized songs from conception to delivery—lyrics, musical composition, vocal performance, cover art, and promotional assets—all orchestrated through sophisticated ManyChat workflows, advanced LLMs, and automated FFmpeg pipelines. This groundbreaking system serves thousands of customers with complex prompt-based state machines, intelligent AI customer-support agents, and a complete personalization engine that transforms individual stories into professional-grade musical experiences.",
+    "video": "https://player.vimeo.com/video/1144180022",
+    "video_note": "100% AI Simulated - State-of-the-Art 2025",
+    "website": "https://pidetucancion.com",
+    "youtube": "https://www.youtube.com/@pidetucancion",
+    "quote": "Every song tells a story. Now AI can compose yours.",
+    "positioning": "Pushing the boundaries of AI-generated music production with industrial-scale automation and personalization."
 }
 
 # BOOKS
