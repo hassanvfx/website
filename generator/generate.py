@@ -13,7 +13,7 @@ from portfolio_data import (
     HISTORIC_COMPANIES, BOOKS, PRESS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
-    AI_INFLUENCER
+    AI_INFLUENCER, AI_PRODUCT_SHOTS
 )
 from templates import CSS_STYLES
 
@@ -1513,6 +1513,25 @@ nav a:hover {{
       
       <p class="waken-quote" style="margin-top: 2rem;">"{AI_INFLUENCER["quote"]}"</p>
       <p class="waken-positioning">{AI_INFLUENCER["positioning"]}</p>
+    </div>
+  </section>
+
+  <!-- AI Product Shots Callout -->
+  <section class="waken-callout" id="ai-product-shots">
+    <div class="waken-inner">
+      <div class="waken-header">
+        <span class="clineflow-badge">🎬 AI MOTION GRAPHICS</span>
+        <h2 class="waken-tagline">{AI_PRODUCT_SHOTS["name"]}</h2>
+        <p class="waken-subtitle">{AI_PRODUCT_SHOTS["subtitle"]}</p>
+        <p class="waken-description">{AI_PRODUCT_SHOTS["description"]}</p>
+      </div>
+      
+      <div class="waken-video-container">
+        <iframe src="{AI_PRODUCT_SHOTS["videos"][0]["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+      
+      <p class="waken-quote" style="margin-top: 2rem;">"{AI_PRODUCT_SHOTS["quote"]}"</p>
+      <p class="waken-positioning">{AI_PRODUCT_SHOTS["positioning"]}</p>
     </div>
   </section>
 

@@ -185,6 +185,19 @@ function App() {
         <FullWidthVideo src="https://player.vimeo.com/video/1137973511" />
       </Section>
 
+      {/* AI Product Shots 2025 */}
+      <Section id="aiproductshots">
+        <Typography variant="h2" sx={{ mb: 2, color: '#fff', textAlign: 'center' }}>AI Product Shots</Typography>
+        <Typography variant="h4" sx={{ mb: 8, color: 'rgba(255,255,255,0.7)', textAlign: 'center', fontWeight: 400 }}>
+          State-of-the-Art November 2025 Generative Motion Graphics AI
+        </Typography>
+        <FullWidthVideo src="https://player.vimeo.com/video/1144077038" />
+        <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.85)', textAlign: 'center', mt: 6, maxWidth: 800, mx: 'auto' }}>
+          Revolutionary AI-powered motion graphics system for automated product visualization and video generation. 
+          Pushing the boundaries of what's possible with generative AI in late 2025.
+        </Typography>
+      </Section>
+
       {/* Viddy */}
       <Section id="viddy">
         <Typography variant="h2" sx={{ mb: 2, color: '#fff', textAlign: 'center' }}>Viddy</Typography>

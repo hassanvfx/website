@@ -294,6 +294,19 @@ AI_INFLUENCER = {
     "positioning": "Pushing the boundaries of AI-generated human simulation."
 }
 
+# AI PRODUCT SHOTS - Featured Callout
+AI_PRODUCT_SHOTS = {
+    "name": "AI Product Shots",
+    "tagline": "State-of-the-Art Generative Motion Graphics AI",
+    "subtitle": "November 2025 - Revolutionary Product Visualization",
+    "description": "Revolutionary AI-powered motion graphics system for automated product visualization and video generation. Pushing the boundaries of what's possible with generative AI in late 2025.",
+    "videos": [
+        {"url": "https://player.vimeo.com/video/1144077038", "title": "AI Product Shots Demo"},
+    ],
+    "quote": "Transforming product marketing through AI-generated motion graphics.",
+    "positioning": "State-of-the-art November 2025 generation motion graphics AI technology."
+}
+
 # WAKEN AI LABS - Featured Callout
 WAKEN_AI = {
     "name": "Waken AI",
