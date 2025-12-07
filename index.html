@@ -2208,8 +2208,14 @@ nav a:hover {
     border-radius: 0;
   }
   
-  /* Books/Press grids - some padding */
-  .books-grid, .press-grid {
+  /* Books grid - single column on mobile */
+  .books-grid {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+  }
+  
+  /* Press grids - some padding */
+  .press-grid {
     padding: 0 16px;
   }
   
@@ -2915,22 +2921,6 @@ nav a:hover {
     </div>
   </section>
 
-  <!-- AI Art Before Books -->
-  <section class="section" id="ai-art-highlight">
-    <div class="section-header">
-      <span class="eyebrow">Visual Creativity</span>
-      <h2>AI Art Highlights</h2>
-    </div>
-    <div class="ai-art-row">
-      <div class="art-video">
-        <iframe src="https://player.vimeo.com/video/457716566" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="art-video">
-        <iframe src="https://player.vimeo.com/video/426521636" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-    </div>
-  </section>
-
   <!-- Books -->
   <section class="section" id="books">
     <div class="section-header white">
@@ -2970,6 +2960,16 @@ nav a:hover {
         
         <a href="book/eng.pdf" class="btn btn-outline">Read More</a>
       </article>
+    </div>
+    
+    <!-- AI Art Videos -->
+    <div class="ai-art-row">
+      <div class="art-video">
+        <iframe src="https://player.vimeo.com/video/457716566" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+      <div class="art-video">
+        <iframe src="https://player.vimeo.com/video/426521636" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
     </div>
   </section>
 
