@@ -464,6 +464,9 @@ nav a:hover {{
   background: #0a0a0a;
   padding: 2rem;
   margin-bottom: 1px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }}
 .impact-card:nth-child(even) {{
   direction: rtl;
@@ -560,6 +563,9 @@ nav a:hover {{
   background: #0a0a0a;
   padding: 2rem;
   margin-bottom: 1px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }}
 .project-card:nth-child(odd) {{
   direction: rtl;
@@ -604,6 +610,9 @@ nav a:hover {{
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1rem;
   padding: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }}
 .innovation-card {{
   background: #0a0a0a;
@@ -666,6 +675,9 @@ nav a:hover {{
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   padding: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }}
 .film-video iframe {{
   width: 100%;
