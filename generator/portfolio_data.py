@@ -80,7 +80,7 @@ NAV_ITEMS = [
     {"label": "IMPACT", "href": "#impact"},
     {"label": "WORK", "href": "#work"},
     {"label": "RESEARCH", "href": "#research"},
-    {"label": "PRESS", "href": "#press"},
+    {"label": "PRESS", "href": "#interviews"},
     {"label": "CONTACT", "href": "#contact"},
 ]
 
@@ -492,34 +492,64 @@ BOOKS = [
     },
 ]
 
+# PRESS LOGOS SHOWCASE - "In the News" section
+PRESS_LOGOS = [
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/authority_magazine_logo_on_black_kpqqs5uhydk9m839b88e_0_ahq1hk.png", "name": "Authority Magazine"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/forbes_logo_on_black_958c8d0mlceji9etw3d2_0_kwbfsx.png", "name": "Forbes"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/techrunch_logo_on_black_r2pskd3j2ibgflk4ape1_1_dlxfyb.png", "name": "TechCrunch"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/athletechnews_logo_on_black_0sqg1tayo0zrda137byl_0_gcfdee.png", "name": "Athletechnews"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214650/cybernews_logo_on_black_ej9hnl3fibwuffvi17hb_1_r30zmn.png", "name": "CyberNews"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/yahoo_news_logo_on_black_lxx9qlheyue42r3u4rnr_0_rh3pg6.png", "name": "Yahoo News"},
+]
+
 # PRESS
 PRESS = [
     {
         "publication": "TechCrunch",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/techrunch_logo_on_black_r2pskd3j2ibgflk4ape1_1_dlxfyb.png",
         "headline": "Flyr launches an app for rapid creation of Snapchat Discover-style stories",
-        "excerpt": "First third-party company granted Snapchat API access",
+        "excerpt": "FlyrTV becomes the first third-party company granted access to Snapchat's content API, enabling rapid creation of professional video content for Snapchat Discover.",
         "url": "https://techcrunch.com/2017/03/13/flyr-launch/",
         "year": "2017"
     },
     {
-        "publication": "Authority Magazine",
-        "headline": "Hassan Uriostegui On the Future of Artificial Intelligence",
-        "excerpt": "In-depth interview on AI ethics and digital empathy",
-        "url": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
-        "year": "2024"
-    },
-    {
         "publication": "Forbes",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/forbes_logo_on_black_958c8d0mlceji9etw3d2_0_kwbfsx.png",
         "headline": "Ultrakam 4K video app arrives for iPhone 6",
-        "excerpt": "Revolutionary mobile video recording",
+        "excerpt": "Revolutionary mobile video recording technology brings 4K capabilities to iPhone 6, pushing the boundaries of mobile filmmaking.",
         "url": "https://www.forbes.com",
         "year": "2014"
     },
     {
-        "publication": "Korea Biz Wire",
-        "headline": "Is ChatGPT Sentient? The Question is Answered in 'I, AI'",
-        "excerpt": "Book explores consciousness in AI systems",
-        "url": "http://koreabizwire.com/is-chatgpt-sentient-the-question-is-answered-in-i-ai-by-waken-ai-founder-hassan-uriostegui",
+        "publication": "Authority Magazine",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/authority_magazine_logo_on_black_kpqqs5uhydk9m839b88e_0_ahq1hk.png",
+        "headline": "Hassan Uriostegui On the Future of Artificial Intelligence",
+        "excerpt": "In-depth interview exploring AI ethics, digital empathy, and the future of human-AI interaction with the Waken AI founder.",
+        "url": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
+        "year": "2024"
+    },
+    {
+        "publication": "Athletechnews",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/athletechnews_logo_on_black_0sqg1tayo0zrda137byl_0_gcfdee.png",
+        "headline": "BTwin AI Friends App: Revolutionizing Emotional Wellness",
+        "excerpt": "How BTwin AI Friends is transforming emotional wellness through advanced AI companions and mind simulation technology.",
+        "url": "https://athletechnews.com/btwin-ai-friends-app-emotional-wellness/",
+        "year": "2024"
+    },
+    {
+        "publication": "CyberNews",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214650/cybernews_logo_on_black_ej9hnl3fibwuffvi17hb_1_r30zmn.png",
+        "headline": "BTwin AI Emotional Support App: Privacy Considerations",
+        "excerpt": "An in-depth analysis of privacy and data protection practices in BTwin AI's emotional support platform.",
+        "url": "https://cybernews.com/privacy/btwin-ai-emotional-support-app-privacy/",
+        "year": "2024"
+    },
+    {
+        "publication": "Yahoo News",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/yahoo_news_logo_on_black_lxx9qlheyue42r3u4rnr_0_rh3pg6.png",
+        "headline": "Conscious AI Imagined: ChatGPT and Waken AI",
+        "excerpt": "Exploring the boundaries of AI consciousness and the philosophical implications of ChatGPT through Waken AI's research.",
+        "url": "https://finance.yahoo.com/news/conscious-ai-imagined-chatgpt-waken-190000098.html",
         "year": "2023"
     },
 ]

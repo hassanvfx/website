@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from portfolio_data import (
     IDENTITY, STATS, NAV_ITEMS, SUBMENU_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
-    HISTORIC_COMPANIES, BOOKS, PRESS, RECOGNITION, FILMOGRAPHY,
+    HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
     AI_INFLUENCER, AI_PRODUCT_SHOTS, MR_JOY
@@ -218,9 +218,10 @@ def generate_press_html():
     items = []
     for article in PRESS:
         items.append(f'''<a href="{article["url"]}" target="_blank" class="press-card">
+        <img src="{article["logo"]}" alt="{article["publication"]}" class="press-logo" />
         <span class="publication">{article["publication"]}</span>
         <h4>{article["headline"]}</h4>
-        <p>{article["excerpt"]}</p>
+        <p class="excerpt">{article["excerpt"]}</p>
       </a>''')
     return "\n      ".join(items)
 
@@ -1322,7 +1323,7 @@ nav a:hover {{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }}
@@ -1607,6 +1608,16 @@ nav a:hover {{
   <section class="quote-section">
     <blockquote>"{IDENTITY["quote"]}"</blockquote>
     <cite>— {IDENTITY["name"]}</cite>
+  </section>
+
+  <!-- Press Logos Showcase - "In the News" Marquee -->
+  <section class="press-showcase" onclick="window.location.href='#interviews'">
+    <div class="press-marquee-container">
+      <div class="press-logos-scroll">
+        {"".join(f'<div class="press-logo-item"><img src="{logo["logo"]}" alt="{logo["name"]}" /></div>' for logo in PRESS_LOGOS)}
+        {"".join(f'<div class="press-logo-item"><img src="{logo["logo"]}" alt="{logo["name"]}" /></div>' for logo in PRESS_LOGOS)}
+      </div>
+    </div>
   </section>
 
   <!-- ClineFlow Featured Callout -->
@@ -1925,9 +1936,8 @@ nav a:hover {{
   </section>
 
   <!-- Press -->
-  <section class="section" id="press">
-    <div class="section-header">
-      <span class="eyebrow">Media Coverage</span>
+  <section class="section" id="press" style="padding-top: 0;">
+    <div class="section-header" style="margin-bottom: 40px; margin-top: 24px;">
       <h2>Press</h2>
     </div>
     <div class="press-grid">

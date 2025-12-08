@@ -196,7 +196,8 @@ HTML_PRESS_SECTION = '''
 
 HTML_PRESS_ITEM = '''
       <a href="{url}" target="_blank" class="press-card" data-aos="fade-up" data-aos-delay="{delay}">
-        <p class="publication">{publication}</p>
+        <img src="{logo}" alt="{publication}" class="press-logo" />
+        <span class="publication">{publication}</span>
         <h4>{headline}</h4>
         <p class="excerpt">{excerpt}</p>
       </a>

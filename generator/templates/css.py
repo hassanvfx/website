@@ -702,52 +702,73 @@ footer .copyright {
    =========================================== */
 .press-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
+  .press-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
   .press-grid {
     grid-template-columns: 1fr;
+    padding: 0 16px;
   }
 }
 
 .press-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--white);
   border-radius: 16px;
-  padding: 40px;
+  padding: 2rem;
   transition: all 0.3s ease;
   text-decoration: none;
   display: block;
+  color: var(--text-on-white);
 }
 
 .press-card:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.15);
+  background: #fafafa;
   transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.press-card .press-logo {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  background: #000;
+  padding: 1rem;
 }
 
 .press-card .publication {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--blue);
-  margin-bottom: 16px;
-  font-weight: 600;
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .press-card h4 {
-  color: var(--white);
-  margin-bottom: 16px;
-  font-size: 20px;
-  line-height: 1.4;
+  color: var(--text-on-white);
+  font-size: 1.15rem;
+  margin: 0.5rem 0;
+  line-height: 1.3;
+  font-weight: 600;
 }
 
 .press-card .excerpt {
-  color: var(--text-muted-black);
-  font-size: 15px;
-  line-height: 1.7;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 0.75rem;
 }
 
 /* ===========================================
@@ -945,5 +966,105 @@ footer .copyright {
 [data-aos="fade-up"].aos-animate {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===========================================
+   PRESS LOGOS SHOWCASE - "IN THE NEWS" MARQUEE
+   =========================================== */
+.press-showcase {
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+  padding: 12rem 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.press-showcase::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.press-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.press-logos-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+  animation: scroll-logos 50s linear infinite;
+  will-change: transform;
+}
+
+.press-logo-item {
+  flex-shrink: 0;
+}
+
+.press-logo-item img {
+  height: 240px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.7;
+  filter: brightness(1.2);
+  transition: all 0.3s ease;
+}
+
+.press-showcase:hover::before {
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.12) 0%, transparent 70%);
+}
+
+.press-showcase:hover .press-logo-item img {
+  opacity: 1;
+  filter: brightness(1.4) drop-shadow(0 0 20px rgba(0,212,255,0.3));
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 968px) {
+  .press-showcase {
+    padding: 4rem 0;
+  }
+  
+  .press-logos-scroll {
+    gap: 5rem;
+    animation-duration: 40s;
+  }
+  
+  .press-logo-item img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .press-showcase {
+    padding: 6rem 0;
+  }
+  
+  .press-logos-scroll {
+    gap: 4rem;
+    animation-duration: 30s;
+  }
+  
+  .press-logo-item img {
+    height: 120px;
+  }
 }
 '''

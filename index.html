@@ -709,52 +709,73 @@ footer .copyright {
    =========================================== */
 .press-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
+  .press-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
   .press-grid {
     grid-template-columns: 1fr;
+    padding: 0 16px;
   }
 }
 
 .press-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--white);
   border-radius: 16px;
-  padding: 40px;
+  padding: 2rem;
   transition: all 0.3s ease;
   text-decoration: none;
   display: block;
+  color: var(--text-on-white);
 }
 
 .press-card:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.15);
+  background: #fafafa;
   transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.press-card .press-logo {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  background: #000;
+  padding: 1rem;
 }
 
 .press-card .publication {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--blue);
-  margin-bottom: 16px;
-  font-weight: 600;
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .press-card h4 {
-  color: var(--white);
-  margin-bottom: 16px;
-  font-size: 20px;
-  line-height: 1.4;
+  color: var(--text-on-white);
+  font-size: 1.15rem;
+  margin: 0.5rem 0;
+  line-height: 1.3;
+  font-weight: 600;
 }
 
 .press-card .excerpt {
-  color: var(--text-muted-black);
-  font-size: 15px;
-  line-height: 1.7;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 0.75rem;
 }
 
 /* ===========================================
@@ -952,6 +973,106 @@ footer .copyright {
 [data-aos="fade-up"].aos-animate {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===========================================
+   PRESS LOGOS SHOWCASE - "IN THE NEWS" MARQUEE
+   =========================================== */
+.press-showcase {
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+  padding: 12rem 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.press-showcase::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.press-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.press-logos-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+  animation: scroll-logos 50s linear infinite;
+  will-change: transform;
+}
+
+.press-logo-item {
+  flex-shrink: 0;
+}
+
+.press-logo-item img {
+  height: 240px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.7;
+  filter: brightness(1.2);
+  transition: all 0.3s ease;
+}
+
+.press-showcase:hover::before {
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.12) 0%, transparent 70%);
+}
+
+.press-showcase:hover .press-logo-item img {
+  opacity: 1;
+  filter: brightness(1.4) drop-shadow(0 0 20px rgba(0,212,255,0.3));
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 968px) {
+  .press-showcase {
+    padding: 4rem 0;
+  }
+  
+  .press-logos-scroll {
+    gap: 5rem;
+    animation-duration: 40s;
+  }
+  
+  .press-logo-item img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .press-showcase {
+    padding: 6rem 0;
+  }
+  
+  .press-logos-scroll {
+    gap: 4rem;
+    animation-duration: 30s;
+  }
+  
+  .press-logo-item img {
+    height: 120px;
+  }
 }
 
 
@@ -2015,7 +2136,7 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -2267,7 +2388,7 @@ nav a:hover {
       <a href="#impact">IMPACT</a>
       <a href="#work">WORK</a>
       <a href="#research">RESEARCH</a>
-      <a href="#press">PRESS</a>
+      <a href="#interviews">PRESS</a>
       <a href="#contact">CONTACT</a>
       <div class="hamburger" onclick="toggleMobileMenu()">
         <span></span>
@@ -2294,7 +2415,7 @@ nav a:hover {
       <a href="#impact">IMPACT</a>
       <a href="#work">WORK</a>
       <a href="#research">RESEARCH</a>
-      <a href="#press">PRESS</a>
+      <a href="#interviews">PRESS</a>
       <a href="#contact">CONTACT</a>
   </div>
 
@@ -2330,6 +2451,16 @@ nav a:hover {
   <section class="quote-section">
     <blockquote>"Intelligence might be appreciated as the most primitive form of life. As such, the Universe won't be just a pathway full of intelligent life, but an absolute reflection of human awareness."</blockquote>
     <cite>— Hassan Uriostegui</cite>
+  </section>
+
+  <!-- Press Logos Showcase - "In the News" Marquee -->
+  <section class="press-showcase" onclick="window.location.href='#interviews'">
+    <div class="press-marquee-container">
+      <div class="press-logos-scroll">
+        <div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/authority_magazine_logo_on_black_kpqqs5uhydk9m839b88e_0_ahq1hk.png" alt="Authority Magazine" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/forbes_logo_on_black_958c8d0mlceji9etw3d2_0_kwbfsx.png" alt="Forbes" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/techrunch_logo_on_black_r2pskd3j2ibgflk4ape1_1_dlxfyb.png" alt="TechCrunch" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/athletechnews_logo_on_black_0sqg1tayo0zrda137byl_0_gcfdee.png" alt="Athletechnews" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214650/cybernews_logo_on_black_ej9hnl3fibwuffvi17hb_1_r30zmn.png" alt="CyberNews" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/yahoo_news_logo_on_black_lxx9qlheyue42r3u4rnr_0_rh3pg6.png" alt="Yahoo News" /></div>
+        <div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/authority_magazine_logo_on_black_kpqqs5uhydk9m839b88e_0_ahq1hk.png" alt="Authority Magazine" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/forbes_logo_on_black_958c8d0mlceji9etw3d2_0_kwbfsx.png" alt="Forbes" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/techrunch_logo_on_black_r2pskd3j2ibgflk4ape1_1_dlxfyb.png" alt="TechCrunch" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/athletechnews_logo_on_black_0sqg1tayo0zrda137byl_0_gcfdee.png" alt="Athletechnews" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214650/cybernews_logo_on_black_ej9hnl3fibwuffvi17hb_1_r30zmn.png" alt="CyberNews" /></div><div class="press-logo-item"><img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/yahoo_news_logo_on_black_lxx9qlheyue42r3u4rnr_0_rh3pg6.png" alt="Yahoo News" /></div>
+      </div>
+    </div>
   </section>
 
   <!-- ClineFlow Featured Callout -->
@@ -3017,31 +3148,46 @@ nav a:hover {
   </section>
 
   <!-- Press -->
-  <section class="section" id="press">
-    <div class="section-header">
-      <span class="eyebrow">Media Coverage</span>
+  <section class="section" id="press" style="padding-top: 0;">
+    <div class="section-header" style="margin-bottom: 40px; margin-top: 24px;">
       <h2>Press</h2>
     </div>
     <div class="press-grid">
       <a href="https://techcrunch.com/2017/03/13/flyr-launch/" target="_blank" class="press-card">
+        <img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/techrunch_logo_on_black_r2pskd3j2ibgflk4ape1_1_dlxfyb.png" alt="TechCrunch" class="press-logo" />
         <span class="publication">TechCrunch</span>
         <h4>Flyr launches an app for rapid creation of Snapchat Discover-style stories</h4>
-        <p>First third-party company granted Snapchat API access</p>
-      </a>
-      <a href="https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e" target="_blank" class="press-card">
-        <span class="publication">Authority Magazine</span>
-        <h4>Hassan Uriostegui On the Future of Artificial Intelligence</h4>
-        <p>In-depth interview on AI ethics and digital empathy</p>
+        <p class="excerpt">FlyrTV becomes the first third-party company granted access to Snapchat's content API, enabling rapid creation of professional video content for Snapchat Discover.</p>
       </a>
       <a href="https://www.forbes.com" target="_blank" class="press-card">
+        <img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/forbes_logo_on_black_958c8d0mlceji9etw3d2_0_kwbfsx.png" alt="Forbes" class="press-logo" />
         <span class="publication">Forbes</span>
         <h4>Ultrakam 4K video app arrives for iPhone 6</h4>
-        <p>Revolutionary mobile video recording</p>
+        <p class="excerpt">Revolutionary mobile video recording technology brings 4K capabilities to iPhone 6, pushing the boundaries of mobile filmmaking.</p>
       </a>
-      <a href="http://koreabizwire.com/is-chatgpt-sentient-the-question-is-answered-in-i-ai-by-waken-ai-founder-hassan-uriostegui" target="_blank" class="press-card">
-        <span class="publication">Korea Biz Wire</span>
-        <h4>Is ChatGPT Sentient? The Question is Answered in 'I, AI'</h4>
-        <p>Book explores consciousness in AI systems</p>
+      <a href="https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e" target="_blank" class="press-card">
+        <img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/authority_magazine_logo_on_black_kpqqs5uhydk9m839b88e_0_ahq1hk.png" alt="Authority Magazine" class="press-logo" />
+        <span class="publication">Authority Magazine</span>
+        <h4>Hassan Uriostegui On the Future of Artificial Intelligence</h4>
+        <p class="excerpt">In-depth interview exploring AI ethics, digital empathy, and the future of human-AI interaction with the Waken AI founder.</p>
+      </a>
+      <a href="https://athletechnews.com/btwin-ai-friends-app-emotional-wellness/" target="_blank" class="press-card">
+        <img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/athletechnews_logo_on_black_0sqg1tayo0zrda137byl_0_gcfdee.png" alt="Athletechnews" class="press-logo" />
+        <span class="publication">Athletechnews</span>
+        <h4>BTwin AI Friends App: Revolutionizing Emotional Wellness</h4>
+        <p class="excerpt">How BTwin AI Friends is transforming emotional wellness through advanced AI companions and mind simulation technology.</p>
+      </a>
+      <a href="https://cybernews.com/privacy/btwin-ai-emotional-support-app-privacy/" target="_blank" class="press-card">
+        <img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214650/cybernews_logo_on_black_ej9hnl3fibwuffvi17hb_1_r30zmn.png" alt="CyberNews" class="press-logo" />
+        <span class="publication">CyberNews</span>
+        <h4>BTwin AI Emotional Support App: Privacy Considerations</h4>
+        <p class="excerpt">An in-depth analysis of privacy and data protection practices in BTwin AI's emotional support platform.</p>
+      </a>
+      <a href="https://finance.yahoo.com/news/conscious-ai-imagined-chatgpt-waken-190000098.html" target="_blank" class="press-card">
+        <img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/yahoo_news_logo_on_black_lxx9qlheyue42r3u4rnr_0_rh3pg6.png" alt="Yahoo News" class="press-logo" />
+        <span class="publication">Yahoo News</span>
+        <h4>Conscious AI Imagined: ChatGPT and Waken AI</h4>
+        <p class="excerpt">Exploring the boundaries of AI consciousness and the philosophical implications of ChatGPT through Waken AI's research.</p>
       </a>
     </div>
   </section>
