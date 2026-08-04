@@ -88,7 +88,7 @@ NAV_ITEMS = [
 SUBMENU_ITEMS = [
     {"label": "AI", "href": "#waken"},
     {"label": "Films", "href": "#filmography"},
-    {"label": "Music", "href": "#mrjoy"},
+    {"label": "Citations", "href": "#citations"},
     {"label": "Books", "href": "#books"},
 ]
 
@@ -329,6 +329,44 @@ WAKEN_AI = {
     "positioning": "Pioneering Mind Simulation Technology for emotional wellness and personal growth since 2020."
 }
 
+# AI COPYRIGHT WEIGHTS - CITATIONS
+CITATIONS = {
+    "title": "AI-Copyright Weights",
+    "eyebrow": "Research Recognition",
+    "description": "A 2023 article examining whether AI model weights may raise derivative-work and compensation questions in copyright law.",
+    "article_url": "https://medium.com/twinchat/ai-copyright-weights-a-new-frontier-in-intellectual-property-law-d8ee1b6c55ee",
+    "image": "assets/ai-copyright-house-task-force-report.png",
+    "image_alt": "Cover of the 2024 Bipartisan House Task Force Report on Artificial Intelligence",
+    "house": {
+        "source": "Bipartisan House AI Task Force Report",
+        "title": "2024 Bipartisan House Task Force Report on Artificial Intelligence",
+        "detail": "Cited in footnote 40 of the Intellectual Property chapter (printed page 117).",
+        "url": "https://www.speaker.gov/wp-content/uploads/2024/12/AI-Task-Force-Report-FINAL.pdf"
+    },
+    "additional": [
+        {
+            "source": "Epic Law",
+            "title": "AI-generated derivative works: the case for mandatory disclosure of weights and prompts",
+            "url": "https://epic.law/ai-generated-derivative-works-the-case-for-mandatory-disclosure-of-weights-and-prompts/"
+        },
+        {
+            "source": "SSRN / GRUR International",
+            "title": "Copyright as Affirmative Action for Human Authors Until the Singularity",
+            "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4697678"
+        },
+        {
+            "source": "Touro Law Review",
+            "title": "The Author-Ity of AI",
+            "url": "https://digitalcommons.tourolaw.edu/lawreview/vol39/iss2/10/"
+        },
+        {
+            "source": "mEDRA",
+            "title": "Creatività umana e intelligenza artificiale generativa",
+            "url": "https://www.medra.org/servlet/view?LANG=ita&doi=10.1422%2F109012"
+        }
+    ]
+}
+
 # TWINCHAT PAPER - Research Publication
 TWINCHAT_PAPER = {
     "name": "TwinChat Paper",
@@ -433,21 +471,6 @@ FILMOGRAPHY = {
         {"url": "https://www.youtube.com/embed/H1D5HITPAhc", "title": "Creative Engineering 2006-2011"},
         {"url": "https://www.youtube.com/embed/cS9tKYNIOxg", "title": "VFX Reel 2006-2011"},
     ]
-}
-
-# MUSIC & AI - MR. JOY
-MR_JOY = {
-    "name": "Music & Mr. Joy",
-    "artistic_name": "Mr. Joy",
-    "tagline": "Revolutionary AI Music Generation at Scale",
-    "subtitle": "End-to-End Personalized Song Creation",
-    "description": "Under the artistic persona Mr. Joy, Hassan pioneered a revolutionary AI-driven multimedia pipeline that generates fully personalized songs from conception to delivery—lyrics, musical composition, vocal performance, cover art, and promotional assets. This groundbreaking system serves thousands of customers, transforming individual stories into professional-grade musical experiences through sophisticated automation.",
-    "video": "https://player.vimeo.com/video/1144180022",
-    "video_note": "Every life has a story worth to be preserved with music",
-    "website": "https://pidetucancion.com",
-    "youtube": "https://www.youtube.com/@pidetucancion",
-    "quote": "Every life has a story worth preserving as Music Forever",
-    "positioning": "Pushing the boundaries of AI-generated music production with industrial-scale automation and personalization."
 }
 
 # BOOKS

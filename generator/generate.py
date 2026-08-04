@@ -13,7 +13,7 @@ from portfolio_data import (
     HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
-    AI_INFLUENCER, AI_PRODUCT_SHOTS, MR_JOY
+    AI_INFLUENCER, AI_PRODUCT_SHOTS, CITATIONS
 )
 from templates import CSS_STYLES
 
@@ -101,6 +101,49 @@ def generate_ai_showcase():
             hidden.append(html)
     
     return "\n      ".join(visible), "\n      ".join(hidden)
+
+
+def generate_citations_section():
+    """Generate the AI Copyright Weights citations section."""
+    additional_citations = "\n        ".join(
+        f'''<a href="{citation["url"]}" target="_blank" rel="noopener noreferrer" class="citation-card">
+          <span class="citation-source">{citation["source"]}</span>
+          <h3>{citation["title"]}</h3>
+          <span class="citation-link">View citation →</span>
+        </a>'''
+        for citation in CITATIONS["additional"]
+    )
+
+    house = CITATIONS["house"]
+    return f'''
+  <section class="citations-section" id="citations">
+    <div class="citations-inner">
+      <div class="citations-intro">
+        <span class="citations-eyebrow">{CITATIONS["eyebrow"]}</span>
+        <h2>{CITATIONS["title"]}</h2>
+        <p>{CITATIONS["description"]}</p>
+        <p class="citations-context">The article has been cited in government, legal, and academic discussions of AI, copyright, and model weights.</p>
+        <a href="{CITATIONS["article_url"]}" target="_blank" rel="noopener noreferrer" class="citations-cta">Read the original article →</a>
+      </div>
+
+      <a href="{CITATIONS["article_url"]}" target="_blank" rel="noopener noreferrer" class="citations-cover-link">
+        <img src="{CITATIONS["image"]}" alt="{CITATIONS["image_alt"]}" class="citations-cover" />
+        <span>Read the original article on Medium →</span>
+      </a>
+
+      <a href="{house["url"]}" target="_blank" rel="noopener noreferrer" class="citation-house-card">
+        <span class="citation-source">Featured government citation</span>
+        <h3>{house["title"]}</h3>
+        <p>{house["detail"]}</p>
+        <span class="citation-link">Open the House report →</span>
+      </a>
+
+      <div class="citation-grid">
+        {additional_citations}
+      </div>
+    </div>
+  </section>
+'''
 
 
 def generate_current_project_card(project):
@@ -1297,6 +1340,159 @@ nav a:hover {{
   }}
 }}
 
+/* AI Copyright Weights Citations */
+.citations-section {{
+  padding: 6rem 4rem;
+  background: linear-gradient(135deg, #061522 0%, #080b12 55%, #10101d 100%);
+  border-top: 1px solid rgba(0,212,255,0.18);
+  border-bottom: 1px solid rgba(139,92,246,0.2);
+}}
+.citations-inner {{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+  gap: 2rem 4rem;
+  align-items: center;
+}}
+.citations-intro {{
+  max-width: 620px;
+}}
+.citations-eyebrow,
+.citation-source {{
+  display: block;
+  color: #00D4FF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}}
+.citations-intro h2 {{
+  margin: 0.65rem 0 1.15rem;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.05;
+}}
+.citations-intro p {{
+  color: rgba(255,255,255,0.76);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}}
+.citations-intro .citations-context {{
+  margin-top: 1rem;
+  color: rgba(255,255,255,0.52);
+  font-size: 0.95rem;
+}}
+.citations-cta {{
+  display: inline-flex;
+  margin-top: 1.75rem;
+  padding: 13px 26px;
+  border: 1px solid rgba(0,212,255,0.42);
+  border-radius: 999px;
+  color: #00D4FF;
+  font-weight: 700;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}}
+.citations-cover-link {{
+  display: block;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.85rem;
+  text-align: center;
+}}
+.citations-cover {{
+  display: block;
+  width: min(100%, 360px);
+  margin: 0 auto 1rem;
+  border: 1px solid rgba(0,212,255,0.35);
+  box-shadow: 0 24px 55px rgba(0,0,0,0.45), 0 0 35px rgba(0,212,255,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}}
+.citation-house-card {{
+  grid-column: 1 / -1;
+  display: block;
+  padding: 2rem;
+  background: rgba(0,212,255,0.06);
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 12px;
+}}
+.citation-house-card h3,
+.citation-card h3 {{
+  margin: 0.65rem 0;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  line-height: 1.25;
+}}
+.citation-house-card h3 {{
+  font-size: 1.5rem;
+}}
+.citation-house-card p {{
+  margin-bottom: 1rem;
+  color: rgba(255,255,255,0.66);
+}}
+.citation-grid {{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}}
+.citation-card {{
+  display: flex;
+  min-height: 170px;
+  padding: 1.5rem;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.035);
+}}
+.citation-card h3 {{
+  font-size: 1.08rem;
+}}
+.citation-link {{
+  display: block;
+  margin-top: auto;
+  color: #00D4FF;
+  font-size: 0.88rem;
+  font-weight: 600;
+}}
+.citations-cta:hover,
+.citations-cta:focus-visible {{
+  background: rgba(0,212,255,0.12);
+  box-shadow: 0 0 28px rgba(0,212,255,0.18);
+  transform: translateY(-2px);
+}}
+.citations-cover-link:hover .citations-cover,
+.citations-cover-link:focus-visible .citations-cover {{
+  box-shadow: 0 28px 65px rgba(0,0,0,0.5), 0 0 42px rgba(0,212,255,0.28);
+  transform: translateY(-4px);
+}}
+.citation-house-card:hover,
+.citation-house-card:focus-visible,
+.citation-card:hover,
+.citation-card:focus-visible {{
+  border-color: rgba(0,212,255,0.58);
+  background: rgba(0,212,255,0.09);
+}}
+@media (max-width: 768px) {{
+  .citations-section {{
+    padding: 4rem 16px;
+  }}
+  .citations-inner {{
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }}
+  .citations-cover {{
+    width: min(100%, 315px);
+  }}
+  .citation-house-card,
+  .citation-grid {{
+    grid-column: auto;
+  }}
+  .citation-grid {{
+    grid-template-columns: 1fr;
+  }}
+}}
+
 /* AI Art Row (before Books) */
 .ai-art-row {{
   display: grid;
@@ -1356,16 +1552,6 @@ nav a:hover {{
 .interview-info p {{
   color: #888;
   font-size: 0.85rem;
-}}
-
-/* Mr. Joy Music Section */
-.mrjoy-content {{
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-}}
-.mrjoy-content .waken-video-container {{
-  max-width: 900px;
 }}
 
 /* Responsive - Mobile Full Width for Video Sections */
@@ -1539,24 +1725,6 @@ nav a:hover {{
     padding: 0 16px;
   }}
   
-  /* Mr. Joy - Portrait video on mobile */
-  .mrjoy-content {{
-    padding: 0;
-  }}
-  .mrjoy-content .waken-video-container {{
-    padding-top: 177.78%;
-    border-radius: 0;
-    margin: 0 0 2rem;
-    max-width: 100%;
-  }}
-  .mrjoy-content .waken-quote,
-  .mrjoy-content .waken-positioning,
-  .mrjoy-content .waken-footer,
-  .mrjoy-content p {{
-    padding-left: 16px;
-    padding-right: 16px;
-  }}
-  
   /* AI Influencer & Product Shots - Portrait videos on mobile */
   #ai-influencer .waken-video-container,
   #ai-product-shots .waken-video-container {{
@@ -1672,6 +1840,9 @@ nav a:hover {{
       </div>
     </div>
   </section>
+
+  <!-- AI Copyright Weights Citations -->
+  {generate_citations_section().strip()}
 
   <!-- AI Influencer Simulation Callout -->
   <section class="waken-callout" id="ai-influencer">
@@ -1871,37 +2042,6 @@ nav a:hover {{
 
   <!-- Filmography -->
   {generate_filmography_section()}
-
-  <!-- Mr. Joy - Music & AI -->
-  <section class="section" id="mrjoy">
-    <div class="section-header">
-      <span class="eyebrow">Artistic Expression</span>
-      <h2>{MR_JOY["name"]}</h2>
-      <p class="lead">{MR_JOY["description"]}</p>
-    </div>
-    
-    <div class="mrjoy-content">
-      
-      <div class="waken-video-container">
-        <iframe src="{MR_JOY["video"]}" 
-                frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <p class="waken-quote">"{MR_JOY["quote"]}"</p>
-      <p class="waken-positioning">{MR_JOY["positioning"]}</p>
-      
-      <div class="waken-footer">
-        <a href="{MR_JOY["website"]}" target="_blank" class="waken-cta">
-          Visit pidetucancion.com →
-        </a>
-        <a href="{MR_JOY["youtube"]}" target="_blank" class="waken-cta" style="margin-left: 1rem;">
-          YouTube Channel →
-        </a>
-      </div>
-      
-      <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem;">{MR_JOY["video_note"]}</p>
-    </div>
-  </section>
 
   <!-- Books -->
   <section class="section" id="books">
