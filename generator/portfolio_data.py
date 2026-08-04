@@ -21,7 +21,7 @@ BIO = {
         "title": "EB1A Extraordinary Ability Recognition",
         "description": "In 2020, Hassan was granted U.S. Permanent Residency through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.",
         "criteria_met": [
-            "Published works of major significance (4 books on AI consciousness)",
+            "Published works of major significance (4 books on AI for general audiences)",
             "Original contributions to the field (Patents, first-of-kind mobile technologies)",
             "Judging the work of others (Industry expert, VES Member)",
             "High remuneration for services (Silicon Valley executive roles)",
@@ -220,17 +220,6 @@ CURRENT_PROJECTS = [
         "quote": "The predecessor to modern AI mind simulation."
     },
     {
-        "id": "brujaroja",
-        "name": "Bruja Roja",
-        "year": "2024",
-        "description": "WhatsApp-based storytelling AI that brings personalized narratives to life through conversational interfaces.",
-        "stats": "WhatsApp AI Storytelling",
-        "website": "https://www.brujaroja.mx/",
-        "videos": [
-            {"url": "https://player.vimeo.com/video/1022298842", "title": "Bruja Roja"},
-        ]
-    },
-    {
         "id": "sendkarma",
         "name": "SendKarma",
         "year": "2025",
@@ -241,18 +230,6 @@ CURRENT_PROJECTS = [
             {"url": "https://player.vimeo.com/video/1138631992", "title": "SendKarma"},
         ]
     },
-]
-
-# AI VIDEOS SHOWCASE (AI Art) - Featured video first
-AI_SHOWCASE_VIDEOS = [
-    {"url": "https://player.vimeo.com/video/1007140444", "title": "Featured AI Art", "featured": True},
-    {"url": "https://player.vimeo.com/video/1115280799", "title": "AI 2025"},
-    {"url": "https://player.vimeo.com/video/1137579881", "title": "AI 2025"},
-    {"url": "https://player.vimeo.com/video/1004812787", "title": "AI Art 2024"},
-    {"url": "https://player.vimeo.com/video/1002554159", "title": "AI Art 2024"},
-    {"url": "https://player.vimeo.com/video/1002309561", "title": "AI Art 2024"},
-    {"url": "https://player.vimeo.com/video/1135112888", "title": "AI 2025"},
-    {"url": "https://player.vimeo.com/video/1135110903", "title": "AI 2025"},
 ]
 
 # INTERVIEWS SECTION
@@ -271,21 +248,6 @@ INTERVIEWS = [
         "url": "https://player.vimeo.com/video/843495231",
         "title": "Entrepreneurship & Innovation",
         "context": "Startup insights"
-    },
-]
-
-# YouTube AI Art Playlists - Show More Section
-AI_ART_PLAYLISTS = [
-    {
-        "title": "AI Art Collection",
-        "url": "https://www.youtube.com/watch?v=LYXQj3jE5cY&list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB",
-        "playlist_url": "https://www.youtube.com/playlist?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB",
-        "embed": "https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB"
-    },
-    {
-        "title": "AI Art Series 2",
-        "url": "https://www.youtube.com/playlist?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl",
-        "embed": "https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl"
     },
 ]
 

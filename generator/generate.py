@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from portfolio_data import (
     IDENTITY, STATS, NAV_ITEMS, SUBMENU_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
     HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
-    INNOVATIONS, AI_SHOWCASE_VIDEOS, TIMELINE_MARKERS, AI_ART_PLAYLISTS,
+    INNOVATIONS, TIMELINE_MARKERS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
     AI_INFLUENCER, AI_PRODUCT_SHOTS, CITATIONS
 )
@@ -85,22 +85,6 @@ def generate_impact_card(company):
     </div>
   </article>
 '''
-
-
-def generate_ai_showcase():
-    """Generate AI videos showcase grid - first 4 visible, rest hidden"""
-    visible = []
-    hidden = []
-    for i, video in enumerate(AI_SHOWCASE_VIDEOS):
-        html = f'''<div class="showcase-video">
-        <iframe src="{video["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>'''
-        if i < 4:
-            visible.append(html)
-        else:
-            hidden.append(html)
-    
-    return "\n      ".join(visible), "\n      ".join(hidden)
 
 
 def generate_citations_section():
@@ -571,34 +555,6 @@ nav a:hover {{
   color: #00D4FF;
 }}
 
-/* AI Showcase Grid - 2 columns max */
-.ai-showcase {{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  padding: 2rem;
-  background: #000;
-  max-width: 1000px;
-  margin: 0 auto;
-}}
-.showcase-video {{
-  border-radius: 12px;
-  overflow: hidden;
-}}
-.showcase-video iframe {{
-  width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
-  border: 1px solid rgba(0,212,255,0.2);
-}}
-.showcase-video.hidden {{
-  display: none;
-}}
-.showcase-video.shown {{
-  display: block;
-}}
-
 /* Project Cards */
 .project-card {{
   display: grid;
@@ -837,81 +793,6 @@ nav a:hover {{
   text-transform: uppercase;
 }}
 
-/* Show More Button */
-.show-more-container {{
-  text-align: center;
-  padding: 2rem;
-}}
-.show-more-btn {{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 50px;
-  background: transparent;
-  color: #00D4FF;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}}
-.show-more-btn:hover {{
-  border-color: #00D4FF;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-  background: rgba(0, 212, 255, 0.05);
-}}
-.show-more-btn .arrow {{
-  transition: transform 0.3s ease;
-}}
-.show-more-btn.expanded .arrow {{
-  transform: rotate(180deg);
-}}
-
-/* Hidden content */
-.more-content {{
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-}}
-.more-content.expanded {{
-  max-height: 2000px;
-}}
-
-/* AI Playlist cards */
-.playlist-grid {{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}}
-.playlist-card {{
-  background: #0a0a0a;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(0,212,255,0.1);
-}}
-.playlist-card iframe {{
-  width: 100%;
-  aspect-ratio: 16/9;
-}}
-.playlist-card .playlist-info {{
-  padding: 1rem;
-  text-align: center;
-}}
-.playlist-card .playlist-info h4 {{
-  color: #fff;
-  margin-bottom: 0.5rem;
-}}
-.playlist-card .playlist-info a {{
-  color: #00D4FF;
-  text-decoration: none;
-  font-size: 0.9rem;
-}}
-.playlist-card .playlist-info a:hover {{
-  text-decoration: underline;
-}}
 .press-card h4 {{
   color: #fff;
   font-size: 1rem;
@@ -1607,20 +1488,6 @@ nav a:hover {{
     padding: 16px;
   }}
   
-  /* AI Showcase full width */
-  .ai-showcase {{
-    grid-template-columns: 1fr;
-    padding: 0;
-    gap: 0;
-    max-width: 100%;
-  }}
-  .showcase-video {{
-    border-radius: 0;
-  }}
-  .showcase-video iframe {{
-    border-radius: 0;
-  }}
-  
   /* Interviews grid full width */
   .interviews-grid {{
     grid-template-columns: 1fr;
@@ -1655,18 +1522,6 @@ nav a:hover {{
   }}
   .film-video .video-title {{
     padding: 8px 16px;
-  }}
-  
-  /* Playlist grid full width */
-  .playlist-grid {{
-    grid-template-columns: 1fr;
-    padding: 0;
-    gap: 0;
-  }}
-  .playlist-card {{
-    border-radius: 0;
-    margin: 0;
-    width: 100%;
   }}
   
   /* Bio section padding */
@@ -1946,45 +1801,6 @@ nav a:hover {{
 
   {generate_timeline_marker("2022-2025", "AI Era")}
 
-  <!-- AI Video Showcase -->
-  <section class="section" id="ai-showcase">
-    <div class="section-header">
-      <span class="eyebrow">Visual AI</span>
-      <h2>AI-Generated Content</h2>
-    </div>
-    <div class="ai-showcase" id="ai-showcase-grid">
-      {generate_ai_showcase()[0]}
-    </div>
-    
-    <!-- Show More - Hidden Videos + Playlists -->
-    <div class="show-more-container">
-      <button class="show-more-btn" onclick="toggleShowMore('ai-more', this)">
-        Show More AI Art <span class="arrow">▼</span>
-      </button>
-    </div>
-    <div id="ai-more" class="more-content">
-      <div class="ai-showcase" style="padding-top: 0;">
-        {generate_ai_showcase()[1]}
-      </div>
-      <div class="playlist-grid">
-        <div class="playlist-card">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB" frameborder="0" allowfullscreen></iframe>
-          <div class="playlist-info">
-            <h4>AI Art Collection</h4>
-            <a href="https://www.youtube.com/playlist?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB" target="_blank">View Full Playlist →</a>
-          </div>
-        </div>
-        <div class="playlist-card">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl" frameborder="0" allowfullscreen></iframe>
-          <div class="playlist-info">
-            <h4>AI Art Series 2</h4>
-            <a href="https://www.youtube.com/playlist?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl" target="_blank">View Full Playlist →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Current Work -->
   <section class="section" id="work">
     <div class="section-header white">
@@ -2122,22 +1938,6 @@ nav a:hover {{
     
     window.addEventListener('scroll', updateNav);
     updateNav();
-    
-    // Show More toggle function
-    function toggleShowMore(contentId, btn) {{
-      const content = document.getElementById(contentId);
-      const isExpanded = content.classList.contains('expanded');
-      
-      if (isExpanded) {{
-        content.classList.remove('expanded');
-        btn.classList.remove('expanded');
-        btn.innerHTML = 'Show More AI Art <span class="arrow">▼</span>';
-      }} else {{
-        content.classList.add('expanded');
-        btn.classList.add('expanded');
-        btn.innerHTML = 'Show Less <span class="arrow">▲</span>';
-      }}
-    }}
     
     // Mobile Menu Toggle
     function toggleMobileMenu() {{

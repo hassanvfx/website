@@ -1341,34 +1341,6 @@ nav a:hover {
   color: #00D4FF;
 }
 
-/* AI Showcase Grid - 2 columns max */
-.ai-showcase {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  padding: 2rem;
-  background: #000;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.showcase-video {
-  border-radius: 12px;
-  overflow: hidden;
-}
-.showcase-video iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0,212,255,0.15);
-  border: 1px solid rgba(0,212,255,0.2);
-}
-.showcase-video.hidden {
-  display: none;
-}
-.showcase-video.shown {
-  display: block;
-}
-
 /* Project Cards */
 .project-card {
   display: grid;
@@ -1607,81 +1579,6 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-/* Show More Button */
-.show-more-container {
-  text-align: center;
-  padding: 2rem;
-}
-.show-more-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 50px;
-  background: transparent;
-  color: #00D4FF;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.show-more-btn:hover {
-  border-color: #00D4FF;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-  background: rgba(0, 212, 255, 0.05);
-}
-.show-more-btn .arrow {
-  transition: transform 0.3s ease;
-}
-.show-more-btn.expanded .arrow {
-  transform: rotate(180deg);
-}
-
-/* Hidden content */
-.more-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-}
-.more-content.expanded {
-  max-height: 2000px;
-}
-
-/* AI Playlist cards */
-.playlist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-.playlist-card {
-  background: #0a0a0a;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(0,212,255,0.1);
-}
-.playlist-card iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-.playlist-card .playlist-info {
-  padding: 1rem;
-  text-align: center;
-}
-.playlist-card .playlist-info h4 {
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-.playlist-card .playlist-info a {
-  color: #00D4FF;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-.playlist-card .playlist-info a:hover {
-  text-decoration: underline;
-}
 .press-card h4 {
   color: #fff;
   font-size: 1rem;
@@ -2377,20 +2274,6 @@ nav a:hover {
     padding: 16px;
   }
   
-  /* AI Showcase full width */
-  .ai-showcase {
-    grid-template-columns: 1fr;
-    padding: 0;
-    gap: 0;
-    max-width: 100%;
-  }
-  .showcase-video {
-    border-radius: 0;
-  }
-  .showcase-video iframe {
-    border-radius: 0;
-  }
-  
   /* Interviews grid full width */
   .interviews-grid {
     grid-template-columns: 1fr;
@@ -2425,18 +2308,6 @@ nav a:hover {
   }
   .film-video .video-title {
     padding: 8px 16px;
-  }
-  
-  /* Playlist grid full width */
-  .playlist-grid {
-    grid-template-columns: 1fr;
-    padding: 0;
-    gap: 0;
-  }
-  .playlist-card {
-    border-radius: 0;
-    margin: 0;
-    width: 100%;
   }
   
   /* Bio section padding */
@@ -2750,7 +2621,7 @@ nav a:hover {
         <h3>EB1A Extraordinary Ability Recognition</h3>
         <p class="eb1a-description">In 2020, Hassan was granted U.S. Permanent Residency through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
         <ul class="eb1a-criteria">
-          <li>Published works of major significance (4 books on AI consciousness)</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
+          <li>Published works of major significance (4 books on AI for general audiences)</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
         </ul>
       </div>
       
@@ -2895,67 +2766,6 @@ nav a:hover {
   </section>
 
 
-  <!-- AI Video Showcase -->
-  <section class="section" id="ai-showcase">
-    <div class="section-header">
-      <span class="eyebrow">Visual AI</span>
-      <h2>AI-Generated Content</h2>
-    </div>
-    <div class="ai-showcase" id="ai-showcase-grid">
-      <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1007140444" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1115280799" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1137579881" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1004812787" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-    </div>
-    
-    <!-- Show More - Hidden Videos + Playlists -->
-    <div class="show-more-container">
-      <button class="show-more-btn" onclick="toggleShowMore('ai-more', this)">
-        Show More AI Art <span class="arrow">▼</span>
-      </button>
-    </div>
-    <div id="ai-more" class="more-content">
-      <div class="ai-showcase" style="padding-top: 0;">
-        <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1002554159" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1002309561" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1135112888" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="showcase-video">
-        <iframe src="https://player.vimeo.com/video/1135110903" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      </div>
-      <div class="playlist-grid">
-        <div class="playlist-card">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB" frameborder="0" allowfullscreen></iframe>
-          <div class="playlist-info">
-            <h4>AI Art Collection</h4>
-            <a href="https://www.youtube.com/playlist?list=PLU5i6V0edOss46SaZSO58FqrregrTb9WB" target="_blank">View Full Playlist →</a>
-          </div>
-        </div>
-        <div class="playlist-card">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl" frameborder="0" allowfullscreen></iframe>
-          <div class="playlist-info">
-            <h4>AI Art Series 2</h4>
-            <a href="https://www.youtube.com/playlist?list=PLU5i6V0edOsvxXJq_7PMeBYudX69s_EQl" target="_blank">View Full Playlist →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Current Work -->
   <section class="section" id="work">
     <div class="section-header white">
@@ -3007,21 +2817,6 @@ nav a:hover {
       <p class="description">Pioneering mind simulation platform that laid the foundation for BTwin Friends. Early research into cognitive profiling and conversational AI companions with therapeutic applications.</p>
       <p class="quote">"The predecessor to modern AI mind simulation."</p>
       
-    </div>
-  </article>
-
-  <article class="project-card" id="brujaroja">
-    <div class="card-video">
-      <iframe src="https://player.vimeo.com/video/1022298842" 
-              frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-    </div>
-    <div class="card-content">
-      <span class="highlight">WhatsApp AI Storytelling</span>
-      <h3>Bruja Roja</h3>
-      <p class="year">2024</p>
-      <p class="description">WhatsApp-based storytelling AI that brings personalized narratives to life through conversational interfaces.</p>
-      
-      <a href="https://www.brujaroja.mx/" target="_blank" class="btn btn-outline">Visit Website</a>
     </div>
   </article>
 
@@ -3374,22 +3169,6 @@ nav a:hover {
     
     window.addEventListener('scroll', updateNav);
     updateNav();
-    
-    // Show More toggle function
-    function toggleShowMore(contentId, btn) {
-      const content = document.getElementById(contentId);
-      const isExpanded = content.classList.contains('expanded');
-      
-      if (isExpanded) {
-        content.classList.remove('expanded');
-        btn.classList.remove('expanded');
-        btn.innerHTML = 'Show More AI Art <span class="arrow">▼</span>';
-      } else {
-        content.classList.add('expanded');
-        btn.classList.add('expanded');
-        btn.innerHTML = 'Show Less <span class="arrow">▲</span>';
-      }
-    }
     
     // Mobile Menu Toggle
     function toggleMobileMenu() {
