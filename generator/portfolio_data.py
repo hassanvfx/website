@@ -12,6 +12,16 @@ IDENTITY = {
     "quote": "Intelligence might be appreciated as the most primitive form of life. As such, the Universe won't be just a pathway full of intelligent life, but an absolute reflection of human awareness."
 }
 
+# PROFESSIONAL PROFILE / RESUME
+PROFESSIONAL_PROFILE = {
+    "eyebrow": "Professional Profile",
+    "title": "AI-Native Principal / Founding Engineer",
+    "summary": "Building agentic systems, mobile products, and consumer platforms that turn ambitious ideas into resilient, high-impact experiences.",
+    "pdf": "assets/hassan-uriostegui-professional-profile.pdf",
+    "download_label": "Download Resume (PDF)",
+    "open_label": "Open Fullscreen"
+}
+
 # Bio/EB1A Overview - Like a famous artist portfolio intro
 BIO = {
     "headline": "A Silicon Valley Visionary Shaping the Future of AI",
@@ -160,21 +170,6 @@ HISTORIC_COMPANIES = [
             "quote": "Community has raised $35 million in new funding to bring celebrities closer to their fans through direct messaging.",
             "source": "Forbes",
             "source_title": "on Community's Series A"
-        }
-    },
-    {
-        "id": "invision",
-        "name": "InVision",
-        "year": "2018-2019",
-        "role": "Lead Mobile Developer",
-        "highlight": "800 Employees | Industry Leader",
-        "description": "Implemented real-time previews for Studio and iOS. Integrated Freehand editor. Refactored legacy code into modular frameworks.",
-        "video": "https://www.youtube.com/embed/x3WtPVjdTNM",
-        "stats": "World's design platform",
-        "press_quote": {
-            "quote": "InVision has become the world's leading design platform, used by 100% of the Fortune 100 companies.",
-            "source": "Fast Company",
-            "source_title": "on InVision's industry impact"
         }
     },
 ]

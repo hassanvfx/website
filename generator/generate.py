@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from portfolio_data import (
-    IDENTITY, STATS, NAV_ITEMS, SUBMENU_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
+    IDENTITY, PROFESSIONAL_PROFILE, STATS, NAV_ITEMS, SUBMENU_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
     HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, TIMELINE_MARKERS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
@@ -45,6 +45,41 @@ def generate_stats_html():
           <div class="label">{stat["label"]}</div>
         </div>''')
     return "\n        ".join(items)
+
+
+def generate_professional_profile():
+    """Generate the embedded PDF.js professional profile viewer."""
+    return f'''
+  <section class="professional-profile" id="professional-profile">
+    <div class="professional-profile-inner">
+      <div class="professional-profile-copy">
+        <span class="professional-profile-eyebrow">{PROFESSIONAL_PROFILE["eyebrow"]}</span>
+        <h2>{PROFESSIONAL_PROFILE["title"]}</h2>
+        <p>{PROFESSIONAL_PROFILE["summary"]}</p>
+        <div class="professional-profile-actions">
+          <a href="{PROFESSIONAL_PROFILE["pdf"]}" download class="professional-profile-download">{PROFESSIONAL_PROFILE["download_label"]}</a>
+          <a href="{PROFESSIONAL_PROFILE["pdf"]}" target="_blank" rel="noopener noreferrer" class="professional-profile-open">{PROFESSIONAL_PROFILE["open_label"]} →</a>
+        </div>
+      </div>
+      <div class="professional-profile-viewer" aria-label="Embedded professional profile PDF viewer">
+        <div class="professional-profile-toolbar">
+          <span id="resumeStatus" class="professional-profile-status" aria-live="polite">Loading resume…</span>
+          <div class="professional-profile-controls" aria-label="Resume viewer controls">
+            <button type="button" id="resumePrevious" aria-label="Previous resume page" disabled>←</button>
+            <span id="resumePageIndicator" aria-live="polite">1 / 2</span>
+            <button type="button" id="resumeNext" aria-label="Next resume page" disabled>→</button>
+            <button type="button" id="resumeZoomOut" aria-label="Zoom out" disabled>−</button>
+            <button type="button" id="resumeZoomIn" aria-label="Zoom in" disabled>+</button>
+          </div>
+        </div>
+        <div id="resumeCanvasWrap" class="professional-profile-canvas-wrap">
+          <canvas id="resumeCanvas" aria-label="Professional profile PDF page"></canvas>
+        </div>
+        <p class="professional-profile-fallback">If the embedded viewer is unavailable, <a href="{PROFESSIONAL_PROFILE["pdf"]}" target="_blank" rel="noopener noreferrer">open the resume PDF</a>.</p>
+      </div>
+    </div>
+  </section>
+'''
 
 
 def generate_timeline_marker(year, label):
@@ -988,6 +1023,197 @@ nav a:hover {{
   text-decoration: underline;
 }}
 
+/* Professional Profile / PDF.js Resume Viewer */
+.professional-profile {{
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 4rem;
+  background: linear-gradient(135deg, #071522 0%, #0c0d18 54%, #161022 100%);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.25);
+}}
+.professional-profile::before {{
+  content: "";
+  position: absolute;
+  inset: -30% auto auto -12%;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.13), transparent 68%);
+  pointer-events: none;
+}}
+.professional-profile::after {{
+  content: "";
+  position: absolute;
+  right: -12%;
+  bottom: -45%;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 68%);
+  pointer-events: none;
+}}
+.professional-profile-inner {{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  gap: 3rem;
+  max-width: 1220px;
+  margin: 0 auto;
+  align-items: center;
+}}
+.professional-profile-eyebrow {{
+  display: block;
+  color: #00D4FF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}}
+.professional-profile-copy h2 {{
+  margin: 0.7rem 0 1.2rem;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.3rem, 4vw, 3.9rem);
+  line-height: 1.08;
+}}
+.professional-profile-copy p {{
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}}
+.professional-profile-actions {{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}}
+.professional-profile-download {{
+  display: inline-flex;
+  padding: 0.9rem 1.15rem;
+  border-radius: 6px;
+  background: #00D4FF;
+  color: #00141b;
+  font-size: 0.92rem;
+  font-weight: 800;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}}
+.professional-profile-download:hover,
+.professional-profile-download:focus-visible {{
+  box-shadow: 0 0 28px rgba(0, 212, 255, 0.38);
+  transform: translateY(-2px);
+}}
+.professional-profile-open {{
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 600;
+}}
+.professional-profile-open:hover,
+.professional-profile-open:focus-visible {{
+  color: #00D4FF;
+}}
+.professional-profile-viewer {{
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42), 0 0 45px rgba(0, 212, 255, 0.1);
+}}
+.professional-profile-toolbar {{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 52px;
+  padding: 0.65rem 0.8rem 0.65rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 18, 29, 0.85);
+}}
+.professional-profile-status {{
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.8rem;
+}}
+.professional-profile-controls {{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}}
+.professional-profile-controls button {{
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  border-radius: 4px;
+  background: rgba(0, 212, 255, 0.08);
+  color: #00D4FF;
+  cursor: pointer;
+  font-size: 1rem;
+}}
+.professional-profile-controls button:disabled {{
+  cursor: not-allowed;
+  opacity: 0.38;
+}}
+.professional-profile-controls button:not(:disabled):hover,
+.professional-profile-controls button:not(:disabled):focus-visible {{
+  background: rgba(0, 212, 255, 0.2);
+}}
+#resumePageIndicator {{
+  min-width: 42px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.78rem;
+  text-align: center;
+}}
+.professional-profile-canvas-wrap {{
+  display: flex;
+  min-height: 380px;
+  max-height: 760px;
+  justify-content: center;
+  overflow: auto;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.035), rgba(139, 92, 246, 0.04));
+}}
+#resumeCanvas {{
+  display: block;
+  max-width: none;
+  height: auto;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}}
+.professional-profile-fallback {{
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.75rem;
+  text-align: center;
+}}
+.professional-profile-fallback a {{
+  color: #00D4FF;
+}}
+@media (max-width: 768px) {{
+  .professional-profile {{
+    padding: 4rem 16px;
+  }}
+  .professional-profile-inner {{
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }}
+  .professional-profile-canvas-wrap {{
+    min-height: 260px;
+    max-height: 620px;
+    padding: 0.5rem;
+  }}
+  .professional-profile-toolbar {{
+    align-items: flex-start;
+    flex-direction: column;
+  }}
+  .professional-profile-controls {{
+    width: 100%;
+    justify-content: flex-end;
+  }}
+}}
+
 /* ClineFlow Featured Callout */
 .clineflow-callout {{
   padding: 6rem 4rem;
@@ -1893,6 +2119,9 @@ nav a:hover {{
     </div>
   </section>
 
+  <!-- Professional Profile / Resume -->
+  {generate_professional_profile().strip()}
+
   <!-- ClineFlow Featured Callout -->
   <section class="clineflow-callout" id="clineflow">
     <div class="clineflow-inner">
@@ -2217,6 +2446,111 @@ nav a:hover {{
         mobileMenu.classList.remove('active');
         document.body.style.overflow = '';
       }});
+    }});
+  </script>
+
+  <script type="module">
+    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.mjs';
+
+    const resumeUrl = '{PROFESSIONAL_PROFILE["pdf"]}';
+    const resumeCanvas = document.getElementById('resumeCanvas');
+    const resumeCanvasWrap = document.getElementById('resumeCanvasWrap');
+    const resumeStatus = document.getElementById('resumeStatus');
+    const resumePageIndicator = document.getElementById('resumePageIndicator');
+    const resumePrevious = document.getElementById('resumePrevious');
+    const resumeNext = document.getElementById('resumeNext');
+    const resumeZoomOut = document.getElementById('resumeZoomOut');
+    const resumeZoomIn = document.getElementById('resumeZoomIn');
+
+    let resumePdf = null;
+    let resumePage = 1;
+    let resumeZoom = 1;
+    let resumeRenderTask = null;
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.worker.mjs';
+
+    function updateResumeControls() {{
+      const ready = Boolean(resumePdf);
+      resumePrevious.disabled = !ready || resumePage <= 1;
+      resumeNext.disabled = !ready || resumePage >= resumePdf.numPages;
+      resumeZoomOut.disabled = !ready || resumeZoom <= 0.75;
+      resumeZoomIn.disabled = !ready || resumeZoom >= 1.75;
+      if (ready) {{
+        resumePageIndicator.textContent = `${{resumePage}} / ${{resumePdf.numPages}}`;
+      }}
+    }}
+
+    async function renderResumePage() {{
+      if (!resumePdf) return;
+      if (resumeRenderTask) {{
+        resumeRenderTask.cancel();
+      }}
+      resumeStatus.textContent = `Rendering page ${{resumePage}}…`;
+      const page = await resumePdf.getPage(resumePage);
+      const baseViewport = page.getViewport({{ scale: 1 }});
+      const availableWidth = Math.max(260, resumeCanvasWrap.clientWidth - 32);
+      const fitScale = Math.min(1, availableWidth / baseViewport.width);
+      const viewport = page.getViewport({{ scale: fitScale * resumeZoom }});
+      const outputScale = window.devicePixelRatio || 1;
+      const context = resumeCanvas.getContext('2d', {{ alpha: false }});
+      resumeCanvas.width = Math.floor(viewport.width * outputScale);
+      resumeCanvas.height = Math.floor(viewport.height * outputScale);
+      resumeCanvas.style.width = `${{Math.floor(viewport.width)}}px`;
+      resumeCanvas.style.height = `${{Math.floor(viewport.height)}}px`;
+      resumeRenderTask = page.render({{
+        canvasContext: context,
+        viewport,
+        transform: outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null,
+      }});
+      try {{
+        await resumeRenderTask.promise;
+        resumeStatus.textContent = `Resume page ${{resumePage}} of ${{resumePdf.numPages}}`;
+      }} catch (error) {{
+        if (error?.name !== 'RenderingCancelledException') {{
+          throw error;
+        }}
+      }} finally {{
+        resumeRenderTask = null;
+      }}
+      updateResumeControls();
+    }}
+
+    try {{
+      const loadingTask = pdfjsLib.getDocument(resumeUrl);
+      resumePdf = await loadingTask.promise;
+      await renderResumePage();
+      updateResumeControls();
+    }} catch (error) {{
+      console.error('Unable to load embedded resume:', error);
+      resumeStatus.textContent = 'Embedded viewer unavailable — use the PDF link below.';
+    }}
+
+    resumePrevious.addEventListener('click', async () => {{
+      if (resumePage > 1) {{
+        resumePage -= 1;
+        await renderResumePage();
+      }}
+    }});
+    resumeNext.addEventListener('click', async () => {{
+      if (resumePdf && resumePage < resumePdf.numPages) {{
+        resumePage += 1;
+        await renderResumePage();
+      }}
+    }});
+    resumeZoomOut.addEventListener('click', async () => {{
+      resumeZoom = Math.max(0.75, resumeZoom - 0.25);
+      await renderResumePage();
+    }});
+    resumeZoomIn.addEventListener('click', async () => {{
+      resumeZoom = Math.min(1.75, resumeZoom + 0.25);
+      await renderResumePage();
+    }});
+
+    let resumeResizeTimer;
+    window.addEventListener('resize', () => {{
+      if (!resumePdf) return;
+      window.clearTimeout(resumeResizeTimer);
+      resumeResizeTimer = window.setTimeout(() => renderResumePage(), 150);
     }});
   </script>
 
