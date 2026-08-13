@@ -2149,6 +2149,9 @@ nav a:hover {{
     </div>
   </section>
 
+  <!-- Apple WWDC14 Ultrakam Recognition -->
+  {generate_wwdc14_feature().strip()}
+
   <!-- Waken AI Featured Callout -->
   <section class="waken-callout" id="waken">
     <div class="waken-inner">
@@ -2268,9 +2271,6 @@ nav a:hover {{
     
     {"".join(generate_impact_card(c) for c in HISTORIC_COMPANIES)}
   </section>
-
-  <!-- Apple WWDC14 Ultrakam Recognition -->
-  {generate_wwdc14_feature().strip()}
 
   <!-- Press Quote: Korea Biz Wire -->
   <section class="press-quote-divider">
