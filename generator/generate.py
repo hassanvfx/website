@@ -13,7 +13,7 @@ from portfolio_data import (
     HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, TIMELINE_MARKERS,
     BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
-    AI_INFLUENCER, AI_PRODUCT_SHOTS, CITATIONS
+    AI_INFLUENCER, AI_PRODUCT_SHOTS, CITATIONS, WWDC14_FEATURE
 )
 from templates import CSS_STYLES
 
@@ -84,6 +84,48 @@ def generate_impact_card(company):
       {press_quote_html}
     </div>
   </article>
+'''
+
+
+def generate_wwdc14_feature():
+    """Generate the Apple WWDC14 Ultrakam recognition feature."""
+    return f'''
+  <section class="wwdc14-feature" id="wwdc14">
+    <div class="wwdc14-inner">
+      <div class="wwdc14-copy">
+        <span class="wwdc14-eyebrow">{WWDC14_FEATURE["eyebrow"]}</span>
+        <h2>{WWDC14_FEATURE["title"]}</h2>
+        <p class="wwdc14-subtitle">{WWDC14_FEATURE["subtitle"]}</p>
+        <p class="wwdc14-description">{WWDC14_FEATURE["description"]}</p>
+        <blockquote>{WWDC14_FEATURE["quote"]}</blockquote>
+        <div class="wwdc14-journey" aria-label="Recognition timeline">
+          <span>Independent iOS product</span><span>Apple permission request</span><span>Featured at WWDC14</span><span>Official presentation archive</span>
+        </div>
+        <div class="wwdc14-actions">
+          <a href="{WWDC14_FEATURE["pdf_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">View Original WWDC14 Presentation</a>
+          <a href="{WWDC14_FEATURE["video_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-btn">Watch Session 709</a>
+          <a href="{WWDC14_FEATURE["medium_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-text-link">Read the Story on Medium →</a>
+        </div>
+      </div>
+      <div class="wwdc14-visuals">
+        <a href="{WWDC14_FEATURE["pdf_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-slide-link">
+          <img src="{WWDC14_FEATURE["slide_image"]}" alt="{WWDC14_FEATURE["slide_alt"]}" class="wwdc14-slide" />
+          <span>WWDC14 Session 709, slide 6</span>
+        </a>
+        <div class="wwdc14-icon-proof">
+          <img src="{WWDC14_FEATURE["icon_image"]}" alt="{WWDC14_FEATURE["icon_alt"]}" />
+          <p>Ultrakam Remote Control<br /><strong>blue clapperboard icon</strong></p>
+        </div>
+      </div>
+      <details class="wwdc14-proof">
+        <summary>View original Apple asset-usage request</summary>
+        <div class="wwdc14-proof-content">
+          <p>Apple requested permission to use Ultrakam Remote Control app assets, icons, logos, and screen captures at WWDC 2014 as an example of good design.</p>
+          <img src="{WWDC14_FEATURE["email_image"]}" alt="{WWDC14_FEATURE["email_alt"]}" />
+        </div>
+      </details>
+    </div>
+  </section>
 '''
 
 
@@ -1221,6 +1263,214 @@ nav a:hover {{
   }}
 }}
 
+/* Apple WWDC14 Ultrakam Recognition */
+.wwdc14-feature {{
+  padding: 6rem 4rem;
+  background: linear-gradient(135deg, #07111c 0%, #0a0a0a 55%, #10131b 100%);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+}}
+.wwdc14-inner {{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 1.2fr);
+  gap: 2.5rem 4rem;
+  align-items: center;
+}}
+.wwdc14-eyebrow {{
+  color: #00D4FF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}}
+.wwdc14-copy h2 {{
+  margin: 0.7rem 0;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.15rem, 4vw, 3.5rem);
+  line-height: 1.08;
+}}
+.wwdc14-subtitle {{
+  color: #00D4FF;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}}
+.wwdc14-description {{
+  margin-top: 1.25rem;
+  color: rgba(255, 255, 255, 0.73);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}}
+.wwdc14-copy blockquote {{
+  margin: 1.5rem 0;
+  padding-left: 1.1rem;
+  border-left: 3px solid #00D4FF;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.45;
+}}
+.wwdc14-journey {{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.5rem 0;
+}}
+.wwdc14-journey span {{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.78rem;
+}}
+.wwdc14-journey span:not(:last-child)::after {{
+  content: '→';
+  margin-left: 0.65rem;
+  color: #00D4FF;
+}}
+.wwdc14-actions {{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+}}
+.wwdc14-btn {{
+  display: inline-flex;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(0, 212, 255, 0.38);
+  border-radius: 6px;
+  color: #00D4FF;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: background 0.25s ease, transform 0.25s ease;
+}}
+.wwdc14-btn-primary {{
+  background: #00D4FF;
+  border-color: #00D4FF;
+  color: #00131a;
+}}
+.wwdc14-text-link {{
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}}
+.wwdc14-btn:hover,
+.wwdc14-btn:focus-visible {{
+  background: rgba(0, 212, 255, 0.16);
+  transform: translateY(-2px);
+}}
+.wwdc14-btn-primary:hover,
+.wwdc14-btn-primary:focus-visible {{
+  background: #5be6ff;
+}}
+.wwdc14-text-link:hover,
+.wwdc14-text-link:focus-visible {{
+  color: #00D4FF;
+}}
+.wwdc14-visuals {{
+  position: relative;
+}}
+.wwdc14-slide-link {{
+  display: block;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.78rem;
+  text-align: center;
+}}
+.wwdc14-slide {{
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 8px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}}
+.wwdc14-slide-link:hover .wwdc14-slide,
+.wwdc14-slide-link:focus-visible .wwdc14-slide {{
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 212, 255, 0.18);
+  transform: translateY(-4px);
+}}
+.wwdc14-icon-proof {{
+  position: absolute;
+  right: -1rem;
+  bottom: -1.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem;
+  background: #07111c;
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}}
+.wwdc14-icon-proof img {{
+  width: 76px;
+  height: 76px;
+  border-radius: 10px;
+}}
+.wwdc14-icon-proof p {{
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}}
+.wwdc14-icon-proof strong {{
+  color: #00D4FF;
+}}
+.wwdc14-proof {{
+  grid-column: 1 / -1;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}}
+.wwdc14-proof summary {{
+  padding: 1rem 1.25rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}}
+.wwdc14-proof summary::marker {{
+  color: #00D4FF;
+}}
+.wwdc14-proof-content {{
+  padding: 0 1.25rem 1.25rem;
+}}
+.wwdc14-proof-content p {{
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.65;
+}}
+.wwdc14-proof-content img {{
+  display: block;
+  width: min(100%, 860px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}}
+@media (max-width: 768px) {{
+  .wwdc14-feature {{
+    padding: 4rem 16px;
+  }}
+  .wwdc14-inner {{
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }}
+  .wwdc14-icon-proof {{
+    position: static;
+    width: fit-content;
+    margin: 1rem auto 0;
+  }}
+  .wwdc14-proof {{
+    grid-column: auto;
+  }}
+  .wwdc14-journey span:not(:last-child)::after {{
+    content: '';
+    margin: 0;
+  }}
+}}
+
 /* AI Copyright Weights Citations */
 .citations-section {{
   padding: 6rem 4rem;
@@ -1789,6 +2039,9 @@ nav a:hover {{
     
     {"".join(generate_impact_card(c) for c in HISTORIC_COMPANIES)}
   </section>
+
+  <!-- Apple WWDC14 Ultrakam Recognition -->
+  {generate_wwdc14_feature().strip()}
 
   <!-- Press Quote: Korea Biz Wire -->
   <section class="press-quote-divider">

@@ -179,6 +179,24 @@ HISTORIC_COMPANIES = [
     },
 ]
 
+# APPLE WWDC14 - ULTRAKAM REMOTE CONTROL
+WWDC14_FEATURE = {
+    "eyebrow": "Apple WWDC14 Recognition",
+    "title": "Featured by Apple at WWDC14",
+    "subtitle": "Ultrakam Remote Control selected for Apple's \"Cross Platform Nearby Networking\" session",
+    "description": "In 2014, Apple requested permission to include assets from Ultrakam Remote Control in a Worldwide Developers Conference presentation. The app was subsequently featured in the official WWDC14 Session 709 presentation.",
+    "quote": "Selected by Apple as an example of good design.",
+    "slide_image": "assets/wwdc14-session-709-slide-6.png",
+    "slide_alt": "Slide 6 of Apple's WWDC14 Session 709 presentation, showing Ultrakam Remote Control's blue clapperboard and remote-control icon among selected apps.",
+    "icon_image": "assets/ultrakam-remote-control-icon.png",
+    "icon_alt": "Blue Ultrakam Remote Control icon with a movie clapperboard and remote control.",
+    "email_image": "assets/apple-wwdc14-ultrakam-permission-email.png",
+    "email_alt": "Apple email requesting permission to use Ultrakam Remote Control assets at WWDC 2014 as an example of good design.",
+    "pdf_url": "assets/wwdc14-session-709-cross-platform-nearby-networking.pdf",
+    "video_url": "https://nonstrict.eu/wwdcindex/wwdc2014/709/?t=2604",
+    "medium_url": "https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb?postPublishedType=initial"
+}
+
 # CURRENT AI WORK (2022-2025)
 CURRENT_PROJECTS = [
     {
