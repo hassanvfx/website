@@ -1877,32 +1877,30 @@ nav a:hover {
   text-align: center;
 }
 .professional-profile-canvas-wrap {
-  display: flex;
-  align-items: flex-start;
   min-height: 380px;
   max-height: 760px;
-  justify-content: center;
   overflow: auto;
   padding: 1rem;
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.035), rgba(139, 92, 246, 0.04));
 }
+.professional-profile-page-frame {
+  display: grid;
+  width: 100%;
+  place-items: start center;
+}
 #resumeCanvas {
   display: block;
-  flex: 0 0 auto;
-  margin-inline: auto;
   max-width: none;
   height: auto;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 .professional-profile-preview {
   display: block;
-  flex: 0 1 auto;
   width: min(100%, 612px);
   height: auto;
-  margin-inline: auto;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
-.professional-profile-canvas-wrap > [hidden] {
+.professional-profile-page-frame > [hidden] {
   display: none;
 }
 .professional-profile-fallback {
@@ -1923,18 +1921,20 @@ nav a:hover {
     gap: 2rem;
   }
   .professional-profile-canvas-wrap {
-    align-items: flex-start;
     min-height: 0;
     max-height: none;
-    justify-content: center;
     overflow-x: hidden;
     overflow-y: visible;
     padding: 0.5rem;
   }
+  .professional-profile-page-frame {
+    place-items: start center;
+  }
+  #resumeCanvas,
   .professional-profile-preview {
-    width: 100%;
-    max-width: 100%;
-    margin-inline: auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
   }
   .professional-profile-toolbar {
     align-items: flex-start;
@@ -2905,8 +2905,10 @@ nav a:hover {
           </div>
         </div>
         <div id="resumeCanvasWrap" class="professional-profile-canvas-wrap">
-          <img id="resumePreview" src="assets/hassan-uriostegui-professional-profile-page-1.png" alt="First page of Hassan Uriostegui's professional profile and resume." class="professional-profile-preview" />
-          <canvas id="resumeCanvas" aria-label="Professional profile PDF page" hidden></canvas>
+          <div class="professional-profile-page-frame">
+            <img id="resumePreview" src="assets/hassan-uriostegui-professional-profile-page-1.png" alt="First page of Hassan Uriostegui's professional profile and resume." class="professional-profile-preview" />
+            <canvas id="resumeCanvas" aria-label="Professional profile PDF page" hidden></canvas>
+          </div>
         </div>
         <p class="professional-profile-fallback">Preview shown above. For the full two-page resume, <a href="assets/hassan-uriostegui-professional-profile.pdf" target="_blank" rel="noopener noreferrer">open the PDF</a>.</p>
       </div>
