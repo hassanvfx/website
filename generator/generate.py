@@ -63,7 +63,7 @@ def generate_professional_profile():
       </div>
       <div class="professional-profile-viewer" aria-label="Embedded professional profile PDF viewer">
         <div class="professional-profile-toolbar">
-          <span id="resumeStatus" class="professional-profile-status" aria-live="polite">Loading resume…</span>
+          <span id="resumeStatus" class="professional-profile-status" aria-live="polite">Resume preview — loading full viewer…</span>
           <div class="professional-profile-controls" aria-label="Resume viewer controls">
             <button type="button" id="resumePrevious" aria-label="Previous resume page" disabled>←</button>
             <span id="resumePageIndicator" aria-live="polite">1 / 2</span>
@@ -73,9 +73,10 @@ def generate_professional_profile():
           </div>
         </div>
         <div id="resumeCanvasWrap" class="professional-profile-canvas-wrap">
-          <canvas id="resumeCanvas" aria-label="Professional profile PDF page"></canvas>
+          <img id="resumePreview" src="{PROFESSIONAL_PROFILE["preview"]}" alt="{PROFESSIONAL_PROFILE["preview_alt"]}" class="professional-profile-preview" />
+          <canvas id="resumeCanvas" aria-label="Professional profile PDF page" hidden></canvas>
         </div>
-        <p class="professional-profile-fallback">If the embedded viewer is unavailable, <a href="{PROFESSIONAL_PROFILE["pdf"]}" target="_blank" rel="noopener noreferrer">open the resume PDF</a>.</p>
+        <p class="professional-profile-fallback">Preview shown above. For the full two-page resume, <a href="{PROFESSIONAL_PROFILE["pdf"]}" target="_blank" rel="noopener noreferrer">open the PDF</a>.</p>
       </div>
     </div>
   </section>
@@ -1181,6 +1182,15 @@ nav a:hover {{
   max-width: none;
   height: auto;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}}
+.professional-profile-preview {{
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}}
+.professional-profile-canvas-wrap > [hidden] {{
+  display: none;
 }}
 .professional-profile-fallback {{
   padding: 0.75rem 1rem;
@@ -2454,6 +2464,7 @@ nav a:hover {{
 
     const resumeUrl = '{PROFESSIONAL_PROFILE["pdf"]}';
     const resumeCanvas = document.getElementById('resumeCanvas');
+    const resumePreview = document.getElementById('resumePreview');
     const resumeCanvasWrap = document.getElementById('resumeCanvasWrap');
     const resumeStatus = document.getElementById('resumeStatus');
     const resumePageIndicator = document.getElementById('resumePageIndicator');
@@ -2518,11 +2529,15 @@ nav a:hover {{
     try {{
       const loadingTask = pdfjsLib.getDocument(resumeUrl);
       resumePdf = await loadingTask.promise;
+      resumeCanvas.hidden = false;
       await renderResumePage();
+      resumePreview.hidden = true;
       updateResumeControls();
     }} catch (error) {{
       console.error('Unable to load embedded resume:', error);
-      resumeStatus.textContent = 'Embedded viewer unavailable — use the PDF link below.';
+      resumeCanvas.hidden = true;
+      resumePreview.hidden = false;
+      resumeStatus.textContent = 'Preview available — use the PDF link for the full resume.';
     }}
 
     resumePrevious.addEventListener('click', async () => {{
