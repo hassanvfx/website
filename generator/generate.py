@@ -1170,6 +1170,7 @@ nav a:hover {{
 }}
 .professional-profile-canvas-wrap {{
   display: flex;
+  align-items: flex-start;
   min-height: 380px;
   max-height: 760px;
   justify-content: center;
@@ -1179,14 +1180,18 @@ nav a:hover {{
 }}
 #resumeCanvas {{
   display: block;
+  flex: 0 0 auto;
+  margin-inline: auto;
   max-width: none;
   height: auto;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }}
 .professional-profile-preview {{
   display: block;
-  width: 100%;
+  flex: 0 1 auto;
+  width: min(100%, 612px);
   height: auto;
+  margin-inline: auto;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }}
 .professional-profile-canvas-wrap > [hidden] {{
@@ -1210,9 +1215,18 @@ nav a:hover {{
     gap: 2rem;
   }}
   .professional-profile-canvas-wrap {{
-    min-height: 260px;
-    max-height: 620px;
+    align-items: flex-start;
+    min-height: 0;
+    max-height: none;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: visible;
     padding: 0.5rem;
+  }}
+  .professional-profile-preview {{
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
   }}
   .professional-profile-toolbar {{
     align-items: flex-start;
@@ -2499,7 +2513,8 @@ nav a:hover {{
       resumeStatus.textContent = `Rendering page ${{resumePage}}…`;
       const page = await resumePdf.getPage(resumePage);
       const baseViewport = page.getViewport({{ scale: 1 }});
-      const availableWidth = Math.max(260, resumeCanvasWrap.clientWidth - 32);
+      const viewerPadding = window.matchMedia('(max-width: 768px)').matches ? 16 : 32;
+      const availableWidth = Math.max(1, resumeCanvasWrap.clientWidth - viewerPadding);
       const fitScale = Math.min(1, availableWidth / baseViewport.width);
       const viewport = page.getViewport({{ scale: fitScale * resumeZoom }});
       const outputScale = window.devicePixelRatio || 1;
