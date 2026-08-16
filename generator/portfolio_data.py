@@ -315,6 +315,7 @@ FEATURED_BOOKS = [
         "image": "assets/ai-from-tensors-to-agents-cover.jpg",
         "image_alt": "Cover of AI From Tensors to Agents on Mac Silicon by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html",
+        "ebook_url": "assets/ai-from-tensors-to-agents-free-ebook.pdf",
         "description": "A hands-on, build-first guide to making modern AI work locally on Apple Silicon—from tensors and neural networks to retrieval, evaluation, human approval, and reliable agents.",
         "layout": "cover-first"
     },
@@ -325,6 +326,7 @@ FEATURED_BOOKS = [
         "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
         "image_alt": "Cover of Modern iOS Architecture: Deconstructing the $3B MemeArcade by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html",
+        "ebook_url": "assets/modern-ios-architecture-memearcade-free-ebook.pdf",
         "description": "A practical guide to the modular, hybrid iOS engineering decisions behind an application inspired by MemeArcade—covering SwiftUI, Combine, SPM, async/await, WebViews, persistence, notifications, and observability.",
         "layout": "cover-first"
     }

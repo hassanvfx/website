@@ -36,6 +36,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+a,
+a:hover,
+a:focus,
+a:focus-visible {
+  text-decoration: none;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;

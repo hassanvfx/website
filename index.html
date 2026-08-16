@@ -43,6 +43,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+a,
+a:hover,
+a:focus,
+a:focus-visible {
+  text-decoration: none;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -1734,7 +1741,7 @@ nav a:hover {
   text-decoration: none;
 }
 .press-quote-divider a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Professional Profile / PDF.js Resume Viewer */
@@ -2592,6 +2599,26 @@ nav a:hover {
   font-weight: 700;
   transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
+.featured-book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+}
+.featured-book-cta {
+  margin-top: 0;
+}
+.featured-book-ebook {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 13px 26px;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.9);
+  font-weight: 700;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
 .featured-book-cover-link {
   display: block;
   justify-self: center;
@@ -2609,6 +2636,12 @@ nav a:hover {
   box-shadow: 0 0 28px rgba(0,212,255,0.18);
   transform: translateY(-2px);
 }
+.featured-book-ebook:hover,
+.featured-book-ebook:focus-visible {
+  border-color: rgba(0,212,255,0.58);
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
 .featured-book-cover-link:hover .featured-book-cover,
 .featured-book-cover-link:focus-visible .featured-book-cover {
   box-shadow: 0 28px 65px rgba(0,0,0,0.5), 0 0 42px rgba(0,212,255,0.28);
@@ -2624,6 +2657,9 @@ nav a:hover {
   }
   .featured-book-copy {
     text-align: center;
+  }
+  .featured-book-actions {
+    justify-content: center;
   }
   .featured-book-cover-link {
     width: fit-content;
@@ -3266,7 +3302,10 @@ nav a:hover {
         <h2>AI From Tensors to Agents on Mac Silicon</h2>
         <p class="featured-book-subtitle">Learning Modern AI by Learning It on Apple Silicon</p>
         <p class="featured-book-description">A hands-on, build-first guide to making modern AI work locally on Apple Silicon—from tensors and neural networks to retrieval, evaluation, human approval, and reliable agents.</p>
-        <a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+        <div class="featured-book-actions">
+          <a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+          <a href="assets/ai-from-tensors-to-agents-free-ebook.pdf" target="_blank" rel="noopener noreferrer" class="featured-book-ebook">Free Ebook <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
       <a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
         <img src="assets/ai-from-tensors-to-agents-cover.jpg" alt="Cover of AI From Tensors to Agents on Mac Silicon by Hassan Uriostegui" class="featured-book-cover" />
@@ -3330,7 +3369,10 @@ nav a:hover {
         <h2>Modern iOS Architecture: Deconstructing the $3B MemeArcade</h2>
         <p class="featured-book-subtitle">Modular Applications with SPM, SwiftUI and Hybrid Web</p>
         <p class="featured-book-description">A practical guide to the modular, hybrid iOS engineering decisions behind an application inspired by MemeArcade—covering SwiftUI, Combine, SPM, async/await, WebViews, persistence, notifications, and observability.</p>
-        <a href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+        <div class="featured-book-actions">
+          <a href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+          <a href="assets/modern-ios-architecture-memearcade-free-ebook.pdf" target="_blank" rel="noopener noreferrer" class="featured-book-ebook">Free Ebook <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
       <a href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
         <img src="assets/modern-ios-architecture-memearcade-cover.jpg" alt="Cover of Modern iOS Architecture: Deconstructing the $3B MemeArcade by Hassan Uriostegui" class="featured-book-cover" />

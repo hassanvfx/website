@@ -220,7 +220,10 @@ def generate_featured_book(book):
         <h2>{book["title"]}</h2>
         <p class="featured-book-subtitle">{book["subtitle"]}</p>
         <p class="featured-book-description">{book["description"]}</p>
-        <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+        <div class="featured-book-actions">
+          <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+          <a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-ebook">Free Ebook <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
       <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
         <img src="{book["image"]}" alt="{book["image_alt"]}" class="featured-book-cover" />
@@ -1074,7 +1077,7 @@ nav a:hover {{
   text-decoration: none;
 }}
 .press-quote-divider a:hover {{
-  text-decoration: underline;
+  text-decoration: none;
 }}
 
 /* Professional Profile / PDF.js Resume Viewer */
@@ -1932,6 +1935,26 @@ nav a:hover {{
   font-weight: 700;
   transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }}
+.featured-book-actions {{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+}}
+.featured-book-cta {{
+  margin-top: 0;
+}}
+.featured-book-ebook {{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 13px 26px;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.9);
+  font-weight: 700;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}}
 .featured-book-cover-link {{
   display: block;
   justify-self: center;
@@ -1949,6 +1972,12 @@ nav a:hover {{
   box-shadow: 0 0 28px rgba(0,212,255,0.18);
   transform: translateY(-2px);
 }}
+.featured-book-ebook:hover,
+.featured-book-ebook:focus-visible {{
+  border-color: rgba(0,212,255,0.58);
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}}
 .featured-book-cover-link:hover .featured-book-cover,
 .featured-book-cover-link:focus-visible .featured-book-cover {{
   box-shadow: 0 28px 65px rgba(0,0,0,0.5), 0 0 42px rgba(0,212,255,0.28);
@@ -1964,6 +1993,9 @@ nav a:hover {{
   }}
   .featured-book-copy {{
     text-align: center;
+  }}
+  .featured-book-actions {{
+    justify-content: center;
   }}
   .featured-book-cover-link {{
     width: fit-content;
