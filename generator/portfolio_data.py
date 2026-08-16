@@ -89,8 +89,8 @@ STATS = [
 NAV_ITEMS = [
     {"label": "HOME", "href": "#home"},
     {"label": "CLINEFLOW", "href": "https://github.com/hassanvfx/clineflow", "featured": True, "external": True},
+    {"label": "APPS", "href": "#memearcade", "featured": True},
     {"label": "IMPACT", "href": "#impact"},
-    {"label": "WORK", "href": "#work"},
     {"label": "RESEARCH", "href": "#research"},
     {"label": "PRESS", "href": "#interviews"},
     {"label": "CONTACT", "href": "#contact"},
@@ -307,6 +307,29 @@ WAKEN_AI = {
 }
 
 # AI COPYRIGHT WEIGHTS - CITATIONS
+FEATURED_BOOKS = [
+    {
+        "title": "AI From Tensors to Agents on Mac Silicon",
+        "subtitle": "Learning Modern AI by Learning It on Apple Silicon",
+        "eyebrow": "New Book · 2026",
+        "image": "assets/ai-from-tensors-to-agents-cover.jpg",
+        "image_alt": "Cover of AI From Tensors to Agents on Mac Silicon by Hassan Uriostegui",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html",
+        "description": "A hands-on, build-first guide to making modern AI work locally on Apple Silicon—from tensors and neural networks to retrieval, evaluation, human approval, and reliable agents.",
+        "layout": "cover-first"
+    },
+    {
+        "title": "Modern iOS Architecture: Deconstructing the $3B MemeArcade",
+        "subtitle": "Modular Applications with SPM, SwiftUI and Hybrid Web",
+        "eyebrow": "New Book · 2026",
+        "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
+        "image_alt": "Cover of Modern iOS Architecture: Deconstructing the $3B MemeArcade by Hassan Uriostegui",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html",
+        "description": "A practical guide to the modular, hybrid iOS engineering decisions behind an application inspired by MemeArcade—covering SwiftUI, Combine, SPM, async/await, WebViews, persistence, notifications, and observability.",
+        "layout": "cover-first"
+    }
+]
+
 CITATIONS = {
     "title": "AI-Copyright Weights",
     "eyebrow": "Research Recognition",
@@ -384,6 +407,22 @@ CLINEFLOW = {
     "positioning": "This is not just another tool. ClineFlow is the foundation for the next generation of AI-human collaboration in software development."
 }
 
+# MEME ARCADE - Featured iPhone App
+MEME_ARCADE = {
+    "eyebrow": "Meme Arcade for iPhone",
+    "title": "Your next favorite game is one scroll away.",
+    "description": "Discover bite-size games, jump straight into the action, and build your personal arcade. Meme Arcade brings quick games and the culture around them into one lively, scrollable place.",
+    "url": "https://hassanvfx.github.io/meme-arcade-book/",
+    "cta": "Explore Meme Arcade",
+    "icon": "assets/memearcade-arcade-icon.webp",
+    "icon_alt": "Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble",
+    "screens": [
+        {"image": "assets/memearcade-play.jpg", "alt": "Meme Arcade game screen showing a fast arcade driving game with brake and gas controls", "caption": "Play instantly"},
+        {"image": "assets/memearcade-discover.jpg", "alt": "Meme Arcade discovery screen with community-made games and categories", "caption": "Discover new favorites"},
+        {"image": "assets/memearcade-profile.jpg", "alt": "Meme Arcade profile screen with play history, favorites, and game cards", "caption": "Track your hype"}
+    ]
+}
+
 # RESEARCH & INNOVATIONS (other projects)
 INNOVATIONS = [
     {
@@ -452,6 +491,26 @@ FILMOGRAPHY = {
 
 # BOOKS
 BOOKS = [
+    {
+        "title": "AI From Tensors to Agents on Mac Silicon",
+        "subtitle": "Learning Modern AI by Learning It on Apple Silicon",
+        "year": "2026",
+        "language": "English",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html",
+        "press": "A build-first guide to modern AI on Apple Silicon",
+        "image": "assets/ai-from-tensors-to-agents-cover.jpg",
+        "portrait_cover": True
+    },
+    {
+        "title": "Modern iOS Architecture: Deconstructing the $3B MemeArcade",
+        "subtitle": "Modular Applications with SPM, SwiftUI and Hybrid Web",
+        "year": "2026",
+        "language": "English",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html",
+        "press": "Practical hybrid iOS architecture for maintainable products",
+        "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
+        "portrait_cover": True
+    },
     {
         "title": "MST: Mind Simulation Technology",
         "subtitle": "A Comprehensive Framework for Cognitive Profiling and Digital Twin Creation",

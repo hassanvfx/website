@@ -1522,6 +1522,11 @@ nav a:hover {
   box-shadow: 0 0 30px rgba(0, 212, 255, 0.15), 0 10px 40px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
+.book-cover--portrait {
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  background: #050505;
+}
 .book-card:hover .book-cover {
   border-color: rgba(0, 212, 255, 0.4);
   box-shadow: 0 0 50px rgba(0, 212, 255, 0.3), 0 15px 60px rgba(0, 0, 0, 0.4);
@@ -2084,6 +2089,103 @@ nav a:hover {
   font-size: 0.9rem;
 }
 
+/* MemeArcade Featured App Callout */
+.meme-arcade-callout {
+  padding: 6rem 4rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(234, 56, 255, 0.22), transparent 32%),
+    radial-gradient(circle at 84% 28%, rgba(0, 212, 255, 0.16), transparent 30%),
+    linear-gradient(180deg, #07010d 0%, #0e0520 50%, #04060f 100%);
+  border-top: 1px solid rgba(234, 56, 255, 0.28);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.24);
+}
+.meme-arcade-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.meme-arcade-icon {
+  display: block;
+  width: min(100%, 210px);
+  margin: -1rem auto 0.25rem;
+  filter: drop-shadow(0 0 30px rgba(234, 56, 255, 0.55));
+}
+.meme-arcade-badge {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(234, 56, 255, 0.45);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(234, 56, 255, 0.2), rgba(0, 212, 255, 0.16));
+  color: #f3a8ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.meme-arcade-callout h2 {
+  max-width: 840px;
+  margin: 0 auto 1.25rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 1.04;
+  background: linear-gradient(135deg, #fff 12%, #f16bff 55%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.meme-arcade-description {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 1.14rem;
+  line-height: 1.75;
+}
+.meme-arcade-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 16px 36px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f04dff, #00d4ff);
+  box-shadow: 0 0 32px rgba(234, 56, 255, 0.35), 0 0 44px rgba(0, 212, 255, 0.16);
+  color: #08000f;
+  font-size: 1.05rem;
+  font-weight: 800;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.meme-arcade-cta:hover,
+.meme-arcade-cta:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 0 46px rgba(234, 56, 255, 0.56), 0 0 68px rgba(0, 212, 255, 0.3);
+}
+.meme-arcade-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+.meme-arcade-screen-card {
+  margin: 0;
+}
+.meme-arcade-screen-card img {
+  display: block;
+  width: min(100%, 255px);
+  margin: 0 auto;
+  border: 1px solid rgba(234, 56, 255, 0.42);
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.48), 0 0 28px rgba(0, 212, 255, 0.14);
+}
+.meme-arcade-screen-card figcaption {
+  margin-top: 0.9rem;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 /* Waken AI Featured Callout */
 .waken-callout {
   padding: 6rem 4rem;
@@ -2430,6 +2532,122 @@ nav a:hover {
 }
 
 /* AI Copyright Weights Citations */
+.featured-book-section {
+  padding: 6rem 4rem;
+  background: linear-gradient(135deg, #080b12 0%, #0b1930 52%, #10101d 100%);
+  border-top: 1px solid rgba(0,212,255,0.16);
+  border-bottom: 1px solid rgba(139,92,246,0.16);
+}
+.featured-book-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.62fr);
+  align-items: center;
+  gap: 3rem 5rem;
+}
+.featured-book-section--cover-first .featured-book-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+.featured-book-section--cover-first .featured-book-cover-link {
+  grid-column: 1;
+  grid-row: 1;
+}
+.featured-book-eyebrow {
+  display: block;
+  color: #00D4FF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.featured-book-copy h2 {
+  margin: 0.65rem 0 0.9rem;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.6vw, 3.55rem);
+  line-height: 1.08;
+}
+.featured-book-subtitle {
+  margin-bottom: 1.25rem;
+  color: rgba(0,212,255,0.84);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.featured-book-description {
+  max-width: 650px;
+  color: rgba(255,255,255,0.76);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.featured-book-cta {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding: 13px 26px;
+  border: 1px solid rgba(0,212,255,0.42);
+  border-radius: 999px;
+  color: #00D4FF;
+  font-weight: 700;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.featured-book-cover-link {
+  display: block;
+  justify-self: center;
+}
+.featured-book-cover {
+  display: block;
+  width: min(100%, 330px);
+  border: 1px solid rgba(0,212,255,0.35);
+  box-shadow: 0 24px 55px rgba(0,0,0,0.45), 0 0 35px rgba(0,212,255,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.featured-book-cta:hover,
+.featured-book-cta:focus-visible {
+  background: rgba(0,212,255,0.12);
+  box-shadow: 0 0 28px rgba(0,212,255,0.18);
+  transform: translateY(-2px);
+}
+.featured-book-cover-link:hover .featured-book-cover,
+.featured-book-cover-link:focus-visible .featured-book-cover {
+  box-shadow: 0 28px 65px rgba(0,0,0,0.5), 0 0 42px rgba(0,212,255,0.28);
+  transform: translateY(-4px);
+}
+@media (max-width: 768px) {
+  .featured-book-section {
+    padding: 4rem 16px;
+  }
+  .featured-book-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .featured-book-copy {
+    text-align: center;
+  }
+  .featured-book-cover-link {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .featured-book-section--cover-first .featured-book-copy,
+  .featured-book-section--cover-first .featured-book-cover-link {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .featured-book-cover-link {
+    grid-row: 2;
+  }
+  .featured-book-section--cover-first .featured-book-copy {
+    grid-row: 1;
+  }
+  .featured-book-section--cover-first .featured-book-cover-link {
+    grid-row: 2;
+  }
+  .featured-book-cover {
+    width: min(100%, 290px);
+  }
+}
+
 .citations-section {
   padding: 6rem 4rem;
   background: linear-gradient(135deg, #061522 0%, #080b12 55%, #10101d 100%);
@@ -2750,6 +2968,20 @@ nav a:hover {
   .clineflow-features {
     grid-template-columns: 1fr;
   }
+  .meme-arcade-callout {
+    padding: 4rem 16px;
+  }
+  .meme-arcade-icon {
+    width: min(100%, 170px);
+  }
+  .meme-arcade-gallery {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .meme-arcade-screen-card img {
+    width: min(100%, 280px);
+  }
   
   /* Section headers - minimal padding */
   .section-header {
@@ -2788,11 +3020,6 @@ nav a:hover {
     padding: 0 16px;
   }
   
-  /* AI Influencer & Product Shots - Portrait videos on mobile */
-  #ai-influencer .waken-video-container,
-  #ai-product-shots .waken-video-container {
-    padding-top: 177.78%;
-  }
 }
   </style>
 </head>
@@ -2803,8 +3030,8 @@ nav a:hover {
     <div class="nav-inner">
       <a href="#home">HOME</a>
       <a href="https://github.com/hassanvfx/clineflow" class="featured" target="_blank">CLINEFLOW</a>
+      <a href="#memearcade" class="featured">APPS</a>
       <a href="#impact">IMPACT</a>
-      <a href="#work">WORK</a>
       <a href="#research">RESEARCH</a>
       <a href="#interviews">PRESS</a>
       <a href="#contact">CONTACT</a>
@@ -2830,8 +3057,8 @@ nav a:hover {
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home">HOME</a>
       <a href="https://github.com/hassanvfx/clineflow" class="featured" target="_blank">CLINEFLOW</a>
+      <a href="#memearcade" class="featured">APPS</a>
       <a href="#impact">IMPACT</a>
-      <a href="#work">WORK</a>
       <a href="#research">RESEARCH</a>
       <a href="#interviews">PRESS</a>
       <a href="#contact">CONTACT</a>
@@ -2942,6 +3169,31 @@ nav a:hover {
     </div>
   </section>
 
+  <!-- MemeArcade Featured App -->
+  <section class="meme-arcade-callout" id="memearcade">
+    <div class="meme-arcade-inner">
+      <img src="assets/memearcade-arcade-icon.webp" alt="Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble" class="meme-arcade-icon" />
+      <span class="meme-arcade-badge">IPHONE GAME ARCADE</span>
+      <h2>Your next favorite game is one scroll away.</h2>
+      <p class="meme-arcade-description">Discover bite-size games, jump straight into the action, and build your personal arcade. Meme Arcade brings quick games and the culture around them into one lively, scrollable place.</p>
+      <a href="https://hassanvfx.github.io/meme-arcade-book/" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">Explore Meme Arcade <span aria-hidden="true">→</span></a>
+      <div class="meme-arcade-gallery">
+        <figure class="meme-arcade-screen-card">
+          <img src="assets/memearcade-play.jpg" alt="Meme Arcade game screen showing a fast arcade driving game with brake and gas controls" loading="lazy" />
+          <figcaption>Play instantly</figcaption>
+        </figure>
+        <figure class="meme-arcade-screen-card">
+          <img src="assets/memearcade-discover.jpg" alt="Meme Arcade discovery screen with community-made games and categories" loading="lazy" />
+          <figcaption>Discover new favorites</figcaption>
+        </figure>
+        <figure class="meme-arcade-screen-card">
+          <img src="assets/memearcade-profile.jpg" alt="Meme Arcade profile screen with play history, favorites, and game cards" loading="lazy" />
+          <figcaption>Track your hype</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- Apple WWDC14 Ultrakam Recognition -->
   <section class="wwdc14-feature" id="wwdc14">
     <div class="wwdc14-inner">
@@ -3006,6 +3258,22 @@ nav a:hover {
     </div>
   </section>
 
+  <!-- Featured Book: AI From Tensors to Agents -->
+  <section class="featured-book-section featured-book-section--cover-first">
+    <div class="featured-book-inner">
+      <div class="featured-book-copy">
+        <span class="featured-book-eyebrow">New Book · 2026</span>
+        <h2>AI From Tensors to Agents on Mac Silicon</h2>
+        <p class="featured-book-subtitle">Learning Modern AI by Learning It on Apple Silicon</p>
+        <p class="featured-book-description">A hands-on, build-first guide to making modern AI work locally on Apple Silicon—from tensors and neural networks to retrieval, evaluation, human approval, and reliable agents.</p>
+        <a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+      </div>
+      <a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
+        <img src="assets/ai-from-tensors-to-agents-cover.jpg" alt="Cover of AI From Tensors to Agents on Mac Silicon by Hassan Uriostegui" class="featured-book-cover" />
+      </a>
+    </div>
+  </section>
+
   <!-- AI Copyright Weights Citations -->
   <section class="citations-section" id="citations">
     <div class="citations-inner">
@@ -3054,45 +3322,19 @@ nav a:hover {
     </div>
   </section>
 
-  <!-- AI Influencer Simulation Callout -->
-  <section class="waken-callout" id="ai-influencer">
-    <div class="waken-inner">
-      <div class="waken-header">
-        <span class="clineflow-badge">🤖 AI VIDEO GENERATION</span>
-        <h2 class="waken-tagline">AI Influencer Simulation</h2>
-        <p class="waken-subtitle">November 2025 - Cutting Edge AI Video Generation</p>
-        <p class="waken-description">Showcasing the latest advancements in AI-generated influencer content. These simulated personalities demonstrate the state-of-the-art in realistic AI video generation as of November 2025.</p>
+  <!-- Featured Book: Modern iOS Architecture -->
+  <section class="featured-book-section featured-book-section--cover-first">
+    <div class="featured-book-inner">
+      <div class="featured-book-copy">
+        <span class="featured-book-eyebrow">New Book · 2026</span>
+        <h2>Modern iOS Architecture: Deconstructing the $3B MemeArcade</h2>
+        <p class="featured-book-subtitle">Modular Applications with SPM, SwiftUI and Hybrid Web</p>
+        <p class="featured-book-description">A practical guide to the modular, hybrid iOS engineering decisions behind an application inspired by MemeArcade—covering SwiftUI, Combine, SPM, async/await, WebViews, persistence, notifications, and observability.</p>
+        <a href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
       </div>
-      
-      <div class="waken-video-container" style="margin-bottom: 2rem;">
-        <iframe src="https://player.vimeo.com/video/1137579986" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <div class="waken-video-container">
-        <iframe src="https://player.vimeo.com/video/1137973511" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <p class="waken-quote" style="margin-top: 2rem;">"The future of digital personalities is here."</p>
-      <p class="waken-positioning">Pushing the boundaries of AI-generated human simulation.</p>
-    </div>
-  </section>
-
-  <!-- AI Product Shots Callout -->
-  <section class="waken-callout" id="ai-product-shots">
-    <div class="waken-inner">
-      <div class="waken-header">
-        <span class="clineflow-badge">🎬 AI MOTION GRAPHICS</span>
-        <h2 class="waken-tagline">AI Product Shots</h2>
-        <p class="waken-subtitle">November 2025 - Revolutionary Product Visualization</p>
-        <p class="waken-description">Revolutionary AI-powered motion graphics system for automated product visualization and video generation. Pushing the boundaries of what's possible with generative AI in late 2025.</p>
-      </div>
-      
-      <div class="waken-video-container">
-        <iframe src="https://player.vimeo.com/video/1144077038" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <p class="waken-quote" style="margin-top: 2rem;">"Transforming product marketing through AI-generated motion graphics."</p>
-      <p class="waken-positioning">State-of-the-art November 2025 generation motion graphics AI technology.</p>
+      <a href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
+        <img src="assets/modern-ios-architecture-memearcade-cover.jpg" alt="Cover of Modern iOS Architecture: Deconstructing the $3B MemeArcade by Hassan Uriostegui" class="featured-book-cover" />
+      </a>
     </div>
   </section>
 
@@ -3484,6 +3726,22 @@ nav a:hover {
       <h2>Books</h2>
     </div>
     <div class="books-grid">
+      <article class="book-card">
+        <img src="assets/ai-from-tensors-to-agents-cover.jpg" alt="AI From Tensors to Agents on Mac Silicon" class="book-cover book-cover--portrait" />
+        <span class="year">2026 • English</span>
+        <h3>AI From Tensors to Agents on Mac Silicon</h3>
+        <p class="subtitle">Learning Modern AI by Learning It on Apple Silicon</p>
+        <p class="press">A build-first guide to modern AI on Apple Silicon</p>
+        <a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html" target="_blank" class="btn btn-outline">Read More</a>
+      </article>
+      <article class="book-card">
+        <img src="assets/modern-ios-architecture-memearcade-cover.jpg" alt="Modern iOS Architecture: Deconstructing the $3B MemeArcade" class="book-cover book-cover--portrait" />
+        <span class="year">2026 • English</span>
+        <h3>Modern iOS Architecture: Deconstructing the $3B MemeArcade</h3>
+        <p class="subtitle">Modular Applications with SPM, SwiftUI and Hybrid Web</p>
+        <p class="press">Practical hybrid iOS architecture for maintainable products</p>
+        <a href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html" target="_blank" class="btn btn-outline">Read More</a>
+      </article>
       <article class="book-card">
         <img src="https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062559/this_book_cover_in_a_foto_real_display_in_a_book_store_real_fotography_k3r65iuq1nnvj1ljkmhv_1_zrz0o2.png" alt="MST: Mind Simulation Technology" class="book-cover" />
         <span class="year">2024 • English</span>

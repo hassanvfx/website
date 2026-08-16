@@ -12,8 +12,8 @@ from portfolio_data import (
     IDENTITY, PROFESSIONAL_PROFILE, STATS, NAV_ITEMS, SUBMENU_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
     HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS, TIMELINE_MARKERS,
-    BIO, SECTION_QUOTES, CLINEFLOW, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
-    AI_INFLUENCER, AI_PRODUCT_SHOTS, CITATIONS, WWDC14_FEATURE
+    BIO, SECTION_QUOTES, CLINEFLOW, MEME_ARCADE, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
+    CITATIONS, FEATURED_BOOKS, WWDC14_FEATURE
 )
 from templates import CSS_STYLES
 
@@ -210,6 +210,51 @@ def generate_citations_section():
 '''
 
 
+def generate_featured_book(book):
+    """Generate a citation-adjacent editorial feature for a recent book."""
+    return f'''
+  <section class="featured-book-section featured-book-section--{book["layout"]}">
+    <div class="featured-book-inner">
+      <div class="featured-book-copy">
+        <span class="featured-book-eyebrow">{book["eyebrow"]}</span>
+        <h2>{book["title"]}</h2>
+        <p class="featured-book-subtitle">{book["subtitle"]}</p>
+        <p class="featured-book-description">{book["description"]}</p>
+        <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+      </div>
+      <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
+        <img src="{book["image"]}" alt="{book["image_alt"]}" class="featured-book-cover" />
+      </a>
+    </div>
+  </section>
+'''
+
+
+def generate_meme_arcade_callout():
+    """Generate the featured MemeArcade app promotion."""
+    screens = "\n        ".join(
+        f'''<figure class="meme-arcade-screen-card">
+          <img src="{screen["image"]}" alt="{screen["alt"]}" loading="lazy" />
+          <figcaption>{screen["caption"]}</figcaption>
+        </figure>'''
+        for screen in MEME_ARCADE["screens"]
+    )
+    return f'''
+  <section class="meme-arcade-callout" id="memearcade">
+    <div class="meme-arcade-inner">
+      <img src="{MEME_ARCADE["icon"]}" alt="{MEME_ARCADE["icon_alt"]}" class="meme-arcade-icon" />
+      <span class="meme-arcade-badge">IPHONE GAME ARCADE</span>
+      <h2>{MEME_ARCADE["title"]}</h2>
+      <p class="meme-arcade-description">{MEME_ARCADE["description"]}</p>
+      <a href="{MEME_ARCADE["url"]}" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">{MEME_ARCADE["cta"]} <span aria-hidden="true">→</span></a>
+      <div class="meme-arcade-gallery">
+        {screens}
+      </div>
+    </div>
+  </section>
+'''
+
+
 def generate_current_project_card(project):
     """Generate current AI project card"""
     video_url = project["videos"][0]["url"] if project.get("videos") else ""
@@ -306,7 +351,8 @@ def generate_books_html():
     for book in BOOKS:
         press_html = f'<p class="press">{book["press"]}</p>' if book.get("press") else ""
         target = "" if book.get("local") else ' target="_blank"'
-        image_html = f'<img src="{book["image"]}" alt="{book["title"]}" class="book-cover" />' if book.get("image") else ""
+        cover_class = "book-cover book-cover--portrait" if book.get("portrait_cover") else "book-cover"
+        image_html = f'<img src="{book["image"]}" alt="{book["title"]}" class="{cover_class}" />' if book.get("image") else ""
         
         items.append(f'''<article class="book-card">
         {image_html}
@@ -815,6 +861,11 @@ nav a:hover {{
   border: 2px solid rgba(0, 212, 255, 0.2);
   box-shadow: 0 0 30px rgba(0, 212, 255, 0.15), 0 10px 40px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+}}
+.book-cover--portrait {{
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  background: #050505;
 }}
 .book-card:hover .book-cover {{
   border-color: rgba(0, 212, 255, 0.4);
@@ -1378,6 +1429,103 @@ nav a:hover {{
   font-size: 0.9rem;
 }}
 
+/* MemeArcade Featured App Callout */
+.meme-arcade-callout {{
+  padding: 6rem 4rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(234, 56, 255, 0.22), transparent 32%),
+    radial-gradient(circle at 84% 28%, rgba(0, 212, 255, 0.16), transparent 30%),
+    linear-gradient(180deg, #07010d 0%, #0e0520 50%, #04060f 100%);
+  border-top: 1px solid rgba(234, 56, 255, 0.28);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.24);
+}}
+.meme-arcade-inner {{
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}}
+.meme-arcade-icon {{
+  display: block;
+  width: min(100%, 210px);
+  margin: -1rem auto 0.25rem;
+  filter: drop-shadow(0 0 30px rgba(234, 56, 255, 0.55));
+}}
+.meme-arcade-badge {{
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(234, 56, 255, 0.45);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(234, 56, 255, 0.2), rgba(0, 212, 255, 0.16));
+  color: #f3a8ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}}
+.meme-arcade-callout h2 {{
+  max-width: 840px;
+  margin: 0 auto 1.25rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 1.04;
+  background: linear-gradient(135deg, #fff 12%, #f16bff 55%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}}
+.meme-arcade-description {{
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 1.14rem;
+  line-height: 1.75;
+}}
+.meme-arcade-cta {{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 16px 36px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f04dff, #00d4ff);
+  box-shadow: 0 0 32px rgba(234, 56, 255, 0.35), 0 0 44px rgba(0, 212, 255, 0.16);
+  color: #08000f;
+  font-size: 1.05rem;
+  font-weight: 800;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}}
+.meme-arcade-cta:hover,
+.meme-arcade-cta:focus-visible {{
+  transform: translateY(-3px);
+  box-shadow: 0 0 46px rgba(234, 56, 255, 0.56), 0 0 68px rgba(0, 212, 255, 0.3);
+}}
+.meme-arcade-gallery {{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+}}
+.meme-arcade-screen-card {{
+  margin: 0;
+}}
+.meme-arcade-screen-card img {{
+  display: block;
+  width: min(100%, 255px);
+  margin: 0 auto;
+  border: 1px solid rgba(234, 56, 255, 0.42);
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.48), 0 0 28px rgba(0, 212, 255, 0.14);
+}}
+.meme-arcade-screen-card figcaption {{
+  margin-top: 0.9rem;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.95rem;
+  font-weight: 600;
+}}
+
 /* Waken AI Featured Callout */
 .waken-callout {{
   padding: 6rem 4rem;
@@ -1724,6 +1872,122 @@ nav a:hover {{
 }}
 
 /* AI Copyright Weights Citations */
+.featured-book-section {{
+  padding: 6rem 4rem;
+  background: linear-gradient(135deg, #080b12 0%, #0b1930 52%, #10101d 100%);
+  border-top: 1px solid rgba(0,212,255,0.16);
+  border-bottom: 1px solid rgba(139,92,246,0.16);
+}}
+.featured-book-inner {{
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.62fr);
+  align-items: center;
+  gap: 3rem 5rem;
+}}
+.featured-book-section--cover-first .featured-book-copy {{
+  grid-column: 2;
+  grid-row: 1;
+}}
+.featured-book-section--cover-first .featured-book-cover-link {{
+  grid-column: 1;
+  grid-row: 1;
+}}
+.featured-book-eyebrow {{
+  display: block;
+  color: #00D4FF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}}
+.featured-book-copy h2 {{
+  margin: 0.65rem 0 0.9rem;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.6vw, 3.55rem);
+  line-height: 1.08;
+}}
+.featured-book-subtitle {{
+  margin-bottom: 1.25rem;
+  color: rgba(0,212,255,0.84);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}}
+.featured-book-description {{
+  max-width: 650px;
+  color: rgba(255,255,255,0.76);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}}
+.featured-book-cta {{
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding: 13px 26px;
+  border: 1px solid rgba(0,212,255,0.42);
+  border-radius: 999px;
+  color: #00D4FF;
+  font-weight: 700;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}}
+.featured-book-cover-link {{
+  display: block;
+  justify-self: center;
+}}
+.featured-book-cover {{
+  display: block;
+  width: min(100%, 330px);
+  border: 1px solid rgba(0,212,255,0.35);
+  box-shadow: 0 24px 55px rgba(0,0,0,0.45), 0 0 35px rgba(0,212,255,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}}
+.featured-book-cta:hover,
+.featured-book-cta:focus-visible {{
+  background: rgba(0,212,255,0.12);
+  box-shadow: 0 0 28px rgba(0,212,255,0.18);
+  transform: translateY(-2px);
+}}
+.featured-book-cover-link:hover .featured-book-cover,
+.featured-book-cover-link:focus-visible .featured-book-cover {{
+  box-shadow: 0 28px 65px rgba(0,0,0,0.5), 0 0 42px rgba(0,212,255,0.28);
+  transform: translateY(-4px);
+}}
+@media (max-width: 768px) {{
+  .featured-book-section {{
+    padding: 4rem 16px;
+  }}
+  .featured-book-inner {{
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }}
+  .featured-book-copy {{
+    text-align: center;
+  }}
+  .featured-book-cover-link {{
+    width: fit-content;
+    margin: 0 auto;
+  }}
+  .featured-book-section--cover-first .featured-book-copy,
+  .featured-book-section--cover-first .featured-book-cover-link {{
+    grid-column: auto;
+    grid-row: auto;
+  }}
+  .featured-book-cover-link {{
+    grid-row: 2;
+  }}
+  .featured-book-section--cover-first .featured-book-copy {{
+    grid-row: 1;
+  }}
+  .featured-book-section--cover-first .featured-book-cover-link {{
+    grid-row: 2;
+  }}
+  .featured-book-cover {{
+    width: min(100%, 290px);
+  }}
+}}
+
 .citations-section {{
   padding: 6rem 4rem;
   background: linear-gradient(135deg, #061522 0%, #080b12 55%, #10101d 100%);
@@ -2044,6 +2308,20 @@ nav a:hover {{
   .clineflow-features {{
     grid-template-columns: 1fr;
   }}
+  .meme-arcade-callout {{
+    padding: 4rem 16px;
+  }}
+  .meme-arcade-icon {{
+    width: min(100%, 170px);
+  }}
+  .meme-arcade-gallery {{
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }}
+  .meme-arcade-screen-card img {{
+    width: min(100%, 280px);
+  }}
   
   /* Section headers - minimal padding */
   .section-header {{
@@ -2082,11 +2360,6 @@ nav a:hover {{
     padding: 0 16px;
   }}
   
-  /* AI Influencer & Product Shots - Portrait videos on mobile */
-  #ai-influencer .waken-video-container,
-  #ai-product-shots .waken-video-container {{
-    padding-top: 177.78%;
-  }}
 }}
   </style>
 </head>
@@ -2175,6 +2448,9 @@ nav a:hover {{
     </div>
   </section>
 
+  <!-- MemeArcade Featured App -->
+  {generate_meme_arcade_callout().strip()}
+
   <!-- Apple WWDC14 Ultrakam Recognition -->
   {generate_wwdc14_feature().strip()}
 
@@ -2204,50 +2480,14 @@ nav a:hover {{
     </div>
   </section>
 
+  <!-- Featured Book: AI From Tensors to Agents -->
+  {generate_featured_book(FEATURED_BOOKS[0]).strip()}
+
   <!-- AI Copyright Weights Citations -->
   {generate_citations_section().strip()}
 
-  <!-- AI Influencer Simulation Callout -->
-  <section class="waken-callout" id="ai-influencer">
-    <div class="waken-inner">
-      <div class="waken-header">
-        <span class="clineflow-badge">🤖 AI VIDEO GENERATION</span>
-        <h2 class="waken-tagline">{AI_INFLUENCER["name"]}</h2>
-        <p class="waken-subtitle">{AI_INFLUENCER["subtitle"]}</p>
-        <p class="waken-description">{AI_INFLUENCER["description"]}</p>
-      </div>
-      
-      <div class="waken-video-container" style="margin-bottom: 2rem;">
-        <iframe src="{AI_INFLUENCER["videos"][0]["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <div class="waken-video-container">
-        <iframe src="{AI_INFLUENCER["videos"][1]["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <p class="waken-quote" style="margin-top: 2rem;">"{AI_INFLUENCER["quote"]}"</p>
-      <p class="waken-positioning">{AI_INFLUENCER["positioning"]}</p>
-    </div>
-  </section>
-
-  <!-- AI Product Shots Callout -->
-  <section class="waken-callout" id="ai-product-shots">
-    <div class="waken-inner">
-      <div class="waken-header">
-        <span class="clineflow-badge">🎬 AI MOTION GRAPHICS</span>
-        <h2 class="waken-tagline">{AI_PRODUCT_SHOTS["name"]}</h2>
-        <p class="waken-subtitle">{AI_PRODUCT_SHOTS["subtitle"]}</p>
-        <p class="waken-description">{AI_PRODUCT_SHOTS["description"]}</p>
-      </div>
-      
-      <div class="waken-video-container">
-        <iframe src="{AI_PRODUCT_SHOTS["videos"][0]["url"]}" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <p class="waken-quote" style="margin-top: 2rem;">"{AI_PRODUCT_SHOTS["quote"]}"</p>
-      <p class="waken-positioning">{AI_PRODUCT_SHOTS["positioning"]}</p>
-    </div>
-  </section>
+  <!-- Featured Book: Modern iOS Architecture -->
+  {generate_featured_book(FEATURED_BOOKS[1]).strip()}
 
   <!-- Bio / Artist Introduction -->
   <section class="bio-section" id="about">
