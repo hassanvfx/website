@@ -17,8 +17,8 @@ PROFESSIONAL_PROFILE = {
     "eyebrow": "Professional Profile",
     "title": "AI-Native Principal / Founding Engineer",
     "summary": "Building agentic systems, mobile products, and consumer platforms that turn ambitious ideas into resilient, high-impact experiences.",
-    "pdf": "assets/hassan-uriostegui-professional-profile.pdf",
-    "preview": "assets/hassan-uriostegui-professional-profile-page-1.png",
+    "pdf": "assets/hassan-uriostegui-resume-2026-12.pdf",
+    "preview": "assets/hassan-uriostegui-resume-2026-12-page-1.png",
     "preview_alt": "First page of Hassan Uriostegui's professional profile and resume.",
     "download_label": "Download Resume (PDF)",
     "open_label": "Open Fullscreen"
