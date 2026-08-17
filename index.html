@@ -1966,7 +1966,7 @@ nav a:hover {
 
 /* ClineFlow Featured Callout */
 .clineflow-callout {
-  padding: 6rem 4rem;
+  padding: 0 0 6rem;
   background: linear-gradient(180deg, #000 0%, #050510 50%, #000 100%);
   position: relative;
   overflow: hidden;
@@ -1985,9 +1985,23 @@ nav a:hover {
 .clineflow-inner {
   max-width: 900px;
   margin: 0 auto;
+  padding: 5rem 4rem 0;
   text-align: center;
   position: relative;
   z-index: 1;
+}
+.clineflow-hero {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  background: #000;
+}
+.clineflow-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .clineflow-logo {
   width: 80px;
@@ -2946,7 +2960,10 @@ nav a:hover {
   
   /* ClineFlow padding */
   .clineflow-callout {
-    padding: 3rem 16px;
+    padding: 0 0 3rem;
+  }
+  .clineflow-inner {
+    padding: 3rem 16px 0;
   }
   .clineflow-title {
     font-size: 2.5rem;
@@ -3134,6 +3151,9 @@ nav a:hover {
 
   <!-- ClineFlow Featured Callout -->
   <section class="clineflow-callout" id="clineflow">
+    <figure class="clineflow-hero">
+      <img src="assets/clineflow-hero.png" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
+    </figure>
     <div class="clineflow-inner">
       <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" alt="GitHub" class="clineflow-logo" />
       <span class="clineflow-badge">🚀 OPEN SOURCE PROJECT</span>
