@@ -2387,26 +2387,6 @@ nav a:hover {
   font-style: italic;
   line-height: 1.45;
 }
-.wwdc14-journey {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin: 1.5rem 0;
-}
-.wwdc14-journey span {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.45rem 0.7rem;
-  border: 1px solid rgba(0, 212, 255, 0.22);
-  border-radius: 999px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.78rem;
-}
-.wwdc14-journey span:not(:last-child)::after {
-  content: '→';
-  margin-left: 0.65rem;
-  color: #00D4FF;
-}
 .wwdc14-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2493,35 +2473,6 @@ nav a:hover {
 .wwdc14-icon-proof strong {
   color: #00D4FF;
 }
-.wwdc14-proof {
-  grid-column: 1 / -1;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.035);
-}
-.wwdc14-proof summary {
-  padding: 1rem 1.25rem;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-}
-.wwdc14-proof summary::marker {
-  color: #00D4FF;
-}
-.wwdc14-proof-content {
-  padding: 0 1.25rem 1.25rem;
-}
-.wwdc14-proof-content p {
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.65;
-}
-.wwdc14-proof-content img {
-  display: block;
-  width: min(100%, 860px);
-  border: 1px solid rgba(0, 212, 255, 0.2);
-}
 @media (max-width: 768px) {
   .wwdc14-feature {
     padding: 4rem 16px;
@@ -2534,13 +2485,6 @@ nav a:hover {
     position: static;
     width: fit-content;
     margin: 1rem auto 0;
-  }
-  .wwdc14-proof {
-    grid-column: auto;
-  }
-  .wwdc14-journey span:not(:last-child)::after {
-    content: '';
-    margin: 0;
   }
 }
 
@@ -3249,13 +3193,9 @@ nav a:hover {
         <p class="wwdc14-subtitle">Ultrakam Remote Control selected for Apple's "Cross Platform Nearby Networking" session</p>
         <p class="wwdc14-description">In 2014, Apple requested permission to include assets from Ultrakam Remote Control in a Worldwide Developers Conference presentation. The app was subsequently featured in the official WWDC14 Session 709 presentation.</p>
         <blockquote>Selected by Apple as an example of good design.</blockquote>
-        <div class="wwdc14-journey" aria-label="Recognition timeline">
-          <span>Independent iOS product</span><span>Apple permission request</span><span>Featured at WWDC14</span><span>Official presentation archive</span>
-        </div>
         <div class="wwdc14-actions">
-          <a href="assets/wwdc14-session-709-cross-platform-nearby-networking.pdf" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">View Original WWDC14 Presentation</a>
+          <a href="https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb?postPublishedType=initial" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">Read the Story on Medium →</a>
           <a href="https://nonstrict.eu/wwdcindex/wwdc2014/709/?t=2604" target="_blank" rel="noopener noreferrer" class="wwdc14-btn">Watch Session 709</a>
-          <a href="https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb?postPublishedType=initial" target="_blank" rel="noopener noreferrer" class="wwdc14-text-link">Read the Story on Medium →</a>
         </div>
       </div>
       <div class="wwdc14-visuals">
@@ -3268,13 +3208,6 @@ nav a:hover {
           <p>Ultrakam Remote Control<br /><strong>blue clapperboard icon</strong></p>
         </div>
       </div>
-      <details class="wwdc14-proof">
-        <summary>View original Apple asset-usage request</summary>
-        <div class="wwdc14-proof-content">
-          <p>Apple requested permission to use Ultrakam Remote Control app assets, icons, logos, and screen captures at WWDC 2014 as an example of good design.</p>
-          <img src="assets/apple-wwdc14-ultrakam-permission-email.png" alt="Apple email requesting permission to use Ultrakam Remote Control assets at WWDC 2014 as an example of good design." />
-        </div>
-      </details>
     </div>
   </section>
 
