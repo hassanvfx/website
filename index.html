@@ -1264,7 +1264,61 @@ nav a:hover {
     display: none;
   }
   .mobile-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 0.65rem;
+    padding: max(5.75rem, calc(env(safe-area-inset-top) + 4.25rem)) 1rem max(1.25rem, env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }
+  .mobile-menu a {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.6rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 0.72rem;
+    line-height: 1.15;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  .mobile-menu a.featured {
+    border-color: rgba(0, 212, 255, 0.45);
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .mobile-menu a:last-child {
+    grid-column: 1 / -1;
+  }
+  .mobile-menu-close {
+    position: fixed;
+    top: max(1rem, env(safe-area-inset-top));
+    left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .mobile-menu-close:hover {
+    border-color: rgba(0, 212, 255, 0.65);
+    color: #00D4FF;
   }
   .scroll-nav .nav-inner {
     justify-content: space-between;
@@ -3058,6 +3112,7 @@ nav a:hover {
 
   <!-- Mobile Menu Modal -->
   <div class="mobile-menu" id="mobileMenu">
+    <button type="button" class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close navigation menu">&times;</button>
     <a href="https://hassanvfx.github.io/website/#home">HOME</a>
     <a href="#resume">RESUME</a>
     <a href="#clineflow" class="featured">AI-CODING</a>
