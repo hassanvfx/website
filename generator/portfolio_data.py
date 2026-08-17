@@ -326,7 +326,7 @@ FEATURED_BOOKS = [
         "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
         "image_alt": "Cover of Modern iOS Architecture: Deconstructing the $3B MemeArcade by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html",
-        "ebook_url": "assets/modern-ios-architecture-memearcade-free-ebook.pdf",
+        "ebook_url": "assets/modern-ios-architecture-memearcade-free-ebook-2026-08-17.pdf",
         "description": "A practical guide to the modular, hybrid iOS engineering decisions behind an application inspired by MemeArcade—covering SwiftUI, Combine, SPM, async/await, WebViews, persistence, notifications, and observability.",
         "layout": "cover-first"
     }
