@@ -82,26 +82,26 @@ STATS = [
     {"value": "40M+", "label": "Users Impacted"},
     {"value": "$6M+", "label": "Funding Raised"},
     {"value": "3", "label": "Startup Exits"},
-    {"value": "4", "label": "Books Published"},
+    {"value": "7", "label": "Books Published"},
 ]
 
-# Navigation with ClineFlow featured
+# Primary navigation
 NAV_ITEMS = [
     {"label": "HOME", "href": "#home"},
-    {"label": "CLINEFLOW", "href": "https://github.com/hassanvfx/clineflow", "featured": True, "external": True},
+    {"label": "RESUME", "href": "#professional-profile"},
+    {"label": "AI-CODING", "href": "#clineflow", "featured": True},
     {"label": "APPS", "href": "#memearcade", "featured": True},
-    {"label": "IMPACT", "href": "#impact"},
-    {"label": "RESEARCH", "href": "#research"},
-    {"label": "PRESS", "href": "#interviews"},
-    {"label": "CONTACT", "href": "#contact"},
+    {"label": "BOOKS", "href": "#books"},
+    {"label": "CITATIONS", "href": "#citations"},
 ]
 
-# Submenu Items - Secondary navigation
+# Secondary navigation
 SUBMENU_ITEMS = [
-    {"label": "AI", "href": "#waken"},
-    {"label": "Films", "href": "#filmography"},
-    {"label": "Citations", "href": "#citations"},
-    {"label": "Books", "href": "#books"},
+    {"label": "IMPACT", "href": "#impact"},
+    {"label": "RESEARCH", "href": "#research"},
+    {"label": "FILMS", "href": "#filmography"},
+    {"label": "PRESS", "href": "#press"},
+    {"label": "CONTACT", "href": "#contact"},
 ]
 
 # Social Links
@@ -309,13 +309,24 @@ WAKEN_AI = {
 # AI COPYRIGHT WEIGHTS - CITATIONS
 FEATURED_BOOKS = [
     {
+        "title": "ClineFlow and Google's Open Knowledge Format",
+        "subtitle": "Build Durable AI Memory for Developers, Lawyers, and Creatives",
+        "eyebrow": "New Book · 2026",
+        "image": "assets/infinite-ai-context-cover.jpg",
+        "image_alt": "Cover of Infinite AI Context: ClineFlow and Google's Open Knowledge Format by Hassan Uriostegui",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/infinite-ai-context-clineflow-and-googles-open-knowledge-format/paperback/product-rmkn8jg.html?page=1&pageSize=4",
+        "ebook_url": "https://hassanvfx.github.io/infinite-ai-context/downloads/infinite-ai-context-web.pdf",
+        "description": "A practical guide to persistent AI context, ClineFlow, and Google's Open Knowledge Format—designed for people building durable AI memory across development, legal, and creative work.",
+        "layout": "cover-first"
+    },
+    {
         "title": "AI From Tensors to Agents on Mac Silicon",
         "subtitle": "Learning Modern AI by Learning It on Apple Silicon",
         "eyebrow": "New Book · 2026",
         "image": "assets/ai-from-tensors-to-agents-cover.jpg",
         "image_alt": "Cover of AI From Tensors to Agents on Mac Silicon by Hassan Uriostegui",
-        "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html",
-        "ebook_url": "assets/ai-from-tensors-to-agents-free-ebook.pdf",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4",
+        "ebook_url": "https://hassanvfx.github.io/website/assets/ai-from-tensors-to-agents-free-ebook.pdf",
         "description": "A hands-on, build-first guide to making modern AI work locally on Apple Silicon—from tensors and neural networks to retrieval, evaluation, human approval, and reliable agents.",
         "layout": "cover-first"
     },
@@ -325,8 +336,8 @@ FEATURED_BOOKS = [
         "eyebrow": "New Book · 2026",
         "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
         "image_alt": "Cover of Modern iOS Architecture: Deconstructing the $3B MemeArcade by Hassan Uriostegui",
-        "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html",
-        "ebook_url": "assets/modern-ios-architecture-memearcade-free-ebook-2026-08-17.pdf",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html?page=1&pageSize=4",
+        "ebook_url": "https://hassanvfx.github.io/website/assets/modern-ios-architecture-memearcade-free-ebook-2026-08-17.pdf",
         "description": "A practical guide to the modular, hybrid iOS engineering decisions behind an application inspired by MemeArcade—covering SwiftUI, Combine, SPM, async/await, WebViews, persistence, notifications, and observability.",
         "layout": "cover-first"
     }
@@ -404,6 +415,7 @@ CLINEFLOW = {
         "MIT Licensed - Free forever"
     ],
     "github": "https://github.com/hassanvfx/clineflow",
+    "book_url": "https://hassanvfx.github.io/infinite-ai-context/",
     "stars": "⭐ Growing Community",
     "quote": "ClineFlow represents the culmination of 15+ years building products at scale—now distilled into a tool that helps every developer harness AI effectively.",
     "positioning": "This is not just another tool. ClineFlow is the foundation for the next generation of AI-human collaboration in software development."
@@ -498,7 +510,8 @@ BOOKS = [
         "subtitle": "Learning Modern AI by Learning It on Apple Silicon",
         "year": "2026",
         "language": "English",
-        "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4",
+        "ebook_url": "https://hassanvfx.github.io/website/assets/ai-from-tensors-to-agents-free-ebook.pdf",
         "press": "A build-first guide to modern AI on Apple Silicon",
         "image": "assets/ai-from-tensors-to-agents-cover.jpg",
         "portrait_cover": True
@@ -508,7 +521,8 @@ BOOKS = [
         "subtitle": "Modular Applications with SPM, SwiftUI and Hybrid Web",
         "year": "2026",
         "language": "English",
-        "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html",
+        "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html?page=1&pageSize=4",
+        "ebook_url": "https://hassanvfx.github.io/website/assets/modern-ios-architecture-memearcade-free-ebook-2026-08-17.pdf",
         "press": "Practical hybrid iOS architecture for maintainable products",
         "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
         "portrait_cover": True

@@ -36,6 +36,16 @@ def generate_submenu_html():
     return "\n      ".join(items)
 
 
+def generate_mobile_nav_html():
+    """Generate the complete compact navigation menu for mobile."""
+    items = []
+    for nav in NAV_ITEMS + SUBMENU_ITEMS:
+        featured_class = ' class="featured"' if nav.get("featured") else ''
+        target = ' target="_blank"' if nav.get("external") else ''
+        items.append(f'<a href="{nav["href"]}"{featured_class}{target}>{nav["label"]}</a>')
+    return "\n    ".join(items)
+
+
 def generate_stats_html():
     """Generate stats row HTML"""
     items = []
@@ -221,7 +231,7 @@ def generate_featured_book(book):
         <p class="featured-book-subtitle">{book["subtitle"]}</p>
         <p class="featured-book-description">{book["description"]}</p>
         <div class="featured-book-actions">
-          <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">Buy the hardcover <span aria-hidden="true">→</span></a>
+          <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">{book.get("purchase_label", "Printed Edition")} <span aria-hidden="true">→</span></a>
           <a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-ebook">Free Ebook <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -357,13 +367,24 @@ def generate_books_html():
         cover_class = "book-cover book-cover--portrait" if book.get("portrait_cover") else "book-cover"
         image_html = f'<img src="{book["image"]}" alt="{book["title"]}" class="{cover_class}" />' if book.get("image") else ""
         
-        items.append(f'''<article class="book-card">
-        {image_html}
+        ebook_html = (
+            f'<a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Free Ebook ↗</a>'
+            if book.get("ebook_url") else ""
+        )
+        primary_label = "Printed Edition" if ebook_html else "Read More"
+        primary_class = "btn btn-primary" if ebook_html else "btn btn-outline"
+        primary_action = f'<a href="{book["url"]}"{target} class="{primary_class}">{primary_label}</a>'
+        actions_html = (
+            f'<div class="book-actions">{primary_action}{ebook_html}</div>'
+            if ebook_html else primary_action
+        )
+
+        items.append(f'''<article class="book-card">{image_html}
         <span class="year">{book["year"]} • {book.get("language", "English")}</span>
         <h3>{book["title"]}</h3>
         <p class="subtitle">{book["subtitle"]}</p>
         {press_html}
-        <a href="{book["url"]}"{target} class="btn btn-outline">Read More</a>
+        {actions_html}
       </article>''')
     
     return "\n      ".join(items)
@@ -600,7 +621,61 @@ nav a:hover {{
     display: none;
   }}
   .mobile-menu {{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 0.65rem;
+    padding: max(5.75rem, calc(env(safe-area-inset-top) + 4.25rem)) 1rem max(1.25rem, env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }}
+  .mobile-menu a {{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.6rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 0.72rem;
+    line-height: 1.15;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }}
+  .mobile-menu a.featured {{
+    border-color: rgba(0, 212, 255, 0.45);
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }}
+  .mobile-menu a:last-child {{
+    grid-column: 1 / -1;
+  }}
+  .mobile-menu-close {{
+    position: fixed;
+    top: max(1rem, env(safe-area-inset-top));
+    left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+  }}
+  .mobile-menu-close:hover {{
+    border-color: rgba(0, 212, 255, 0.65);
+    color: #00D4FF;
   }}
   .scroll-nav .nav-inner {{
     justify-content: space-between;
@@ -845,11 +920,22 @@ nav a:hover {{
   max-width: 1200px;
   margin: 0 auto;
 }}
+.book-card:last-child:nth-child(odd) {{
+  grid-column: 1 / -1;
+  width: min(100%, calc((100% - 2.5rem) / 2));
+  justify-self: center;
+}}
 .book-card {{
   background: #0a0a0a;
   border-radius: 16px;
   padding: 2.5rem;
   transition: all 0.3s ease;
+}}
+.book-actions {{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
 }}
 .book-card:hover {{
   background: #111;
@@ -1419,7 +1505,14 @@ nav a:hover {{
   font-size: 1rem;
   color: #00D4FF;
   font-weight: 500;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0;
+}}
+.clineflow-actions {{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 3.5rem 0 2.75rem;
 }}
 .clineflow-cta {{
   display: inline-flex;
@@ -2004,6 +2097,7 @@ nav a:hover {{
   .featured-book-inner {{
     grid-template-columns: 1fr;
     gap: 2rem;
+    justify-items: center;
   }}
   .featured-book-copy {{
     text-align: center;
@@ -2013,7 +2107,8 @@ nav a:hover {{
   }}
   .featured-book-cover-link {{
     width: fit-content;
-    margin: 0 auto;
+    justify-self: center;
+    margin-inline: auto;
   }}
   .featured-book-section--cover-first .featured-book-copy,
   .featured-book-section--cover-first .featured-book-cover-link {{
@@ -2031,6 +2126,7 @@ nav a:hover {{
   }}
   .featured-book-cover {{
     width: min(100%, 290px);
+    margin-inline: auto;
   }}
 }}
 
@@ -2403,6 +2499,10 @@ nav a:hover {{
     grid-template-columns: 1fr;
     padding: 0 16px;
   }}
+  .book-card:last-child:nth-child(odd) {{
+    grid-column: auto;
+    width: auto;
+  }}
   
   /* Press grids - some padding */
   .press-grid {{
@@ -2435,7 +2535,8 @@ nav a:hover {{
 
   <!-- Mobile Menu Modal -->
   <div class="mobile-menu" id="mobileMenu">
-    {generate_nav_html()}
+    <button type="button" class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close navigation menu">&times;</button>
+    {generate_mobile_nav_html()}
   </div>
 
   <!-- Hero -->
@@ -2492,9 +2593,14 @@ nav a:hover {{
       
       <p class="clineflow-positioning">{CLINEFLOW["positioning"]}</p>
       
-      <a href="{CLINEFLOW["github"]}" target="_blank" class="clineflow-cta">
-        View on GitHub →
-      </a>
+      <div class="clineflow-actions">
+        <a href="{CLINEFLOW["github"]}" target="_blank" class="clineflow-cta">
+          View on GitHub →
+        </a>
+        <a href="{CLINEFLOW["book_url"]}" target="_blank" rel="noopener noreferrer" class="clineflow-cta">
+          Get the Book →
+        </a>
+      </div>
       
       <span class="clineflow-stars">{CLINEFLOW["stars"]}</span>
     </div>
@@ -2532,14 +2638,14 @@ nav a:hover {{
     </div>
   </section>
 
-  <!-- Featured Book: AI From Tensors to Agents -->
-  {generate_featured_book(FEATURED_BOOKS[0]).strip()}
+  <!-- Featured Books -->
+  {generate_featured_book(FEATURED_BOOKS[1]).strip()}
 
   <!-- AI Copyright Weights Citations -->
   {generate_citations_section().strip()}
 
   <!-- Featured Book: Modern iOS Architecture -->
-  {generate_featured_book(FEATURED_BOOKS[1]).strip()}
+  {generate_featured_book(FEATURED_BOOKS[2]).strip()}
 
   <!-- Bio / Artist Introduction -->
   <section class="bio-section" id="about">
@@ -2665,6 +2771,7 @@ nav a:hover {{
       <span class="eyebrow">Published Works</span>
       <h2>Books</h2>
     </div>
+    {generate_featured_book(FEATURED_BOOKS[0]).strip()}
     <div class="books-grid">
       {generate_books_html()}
     </div>
