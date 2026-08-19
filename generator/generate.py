@@ -2775,16 +2775,6 @@ nav a:hover {{
     <div class="books-grid">
       {generate_books_html()}
     </div>
-    
-    <!-- AI Art Videos -->
-    <div class="ai-art-row">
-      <div class="art-video">
-        <iframe src="https://player.vimeo.com/video/457716566" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="art-video">
-        <iframe src="https://player.vimeo.com/video/426521636" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-    </div>
   </section>
 
   <!-- Interviews -->
