@@ -28,7 +28,7 @@ PROFESSIONAL_PROFILE = {
 BIO = {
     "headline": "A Silicon Valley Visionary Shaping the Future of AI",
     "headline_link": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
-    "intro": "Hassan Uriostegui is a Mexican-American technologist, author, and AI pioneer whose work has touched over 40 million users worldwide. Recognized by the United States government with the prestigious EB1A visa for individuals of extraordinary ability, Hassan's career spans groundbreaking innovations in mobile video technology, AI-human interaction, and visual effects for Hollywood films.",
+    "intro": "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.",
     "eb1a_overview": {
         "title": "EB1A Extraordinary Ability Recognition",
         "description": "In 2020, Hassan was granted U.S. Permanent Residency through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.",
@@ -40,7 +40,7 @@ BIO = {
             "Lead/critical role in distinguished organizations (CTO, Principal Architect)"
         ]
     },
-    "career_summary": "From pioneering real-time video filters a decade before Snapchat to building AI systems that have processed over 200,000 therapeutic conversations, Hassan continues to push the boundaries of what's possible at the intersection of human creativity and artificial intelligence."
+    "career_summary": "His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions."
 }
 
 # Section Divider Quotes - From articles/press mentioning his work
@@ -316,6 +316,8 @@ FEATURED_BOOKS = [
         "image_alt": "Cover of Infinite AI Context: ClineFlow and Google's Open Knowledge Format by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/infinite-ai-context-clineflow-and-googles-open-knowledge-format/paperback/product-rmkn8jg.html?page=1&pageSize=4",
         "ebook_url": "https://hassanvfx.github.io/infinite-ai-context/downloads/infinite-ai-context-web.pdf",
+        "cta_url": "https://www.ClineFlow.com/",
+        "cta_label": "www.ClineFlow.com",
         "description": "A practical guide to persistent AI context, ClineFlow, and Google's Open Knowledge Format—designed for people building durable AI memory across development, legal, and creative work.",
         "layout": "cover-first"
     },
@@ -414,8 +416,7 @@ CLINEFLOW = {
         "Built-in best practices from enterprise experience",
         "MIT Licensed - Free forever"
     ],
-    "github": "https://github.com/hassanvfx/clineflow",
-    "book_url": "https://hassanvfx.github.io/infinite-ai-context/",
+    "website": "https://www.ClineFlow.com/",
     "stars": "⭐ Growing Community",
     "quote": "ClineFlow represents the culmination of 15+ years building products at scale—now distilled into a tool that helps every developer harness AI effectively.",
     "positioning": "This is not just another tool. ClineFlow is the foundation for the next generation of AI-human collaboration in software development."

@@ -222,6 +222,15 @@ def generate_citations_section():
 
 def generate_featured_book(book):
     """Generate a citation-adjacent editorial feature for a recent book."""
+    if book.get("cta_url"):
+        actions_html = f'''<div class="featured-book-actions">
+          <a href="{book["cta_url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">{book["cta_label"]} <span aria-hidden="true">→</span></a>
+        </div>'''
+    else:
+        actions_html = f'''<div class="featured-book-actions">
+          <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">{book.get("purchase_label", "Printed Edition")} <span aria-hidden="true">→</span></a>
+          <a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-ebook">Free Ebook <span aria-hidden="true">↗</span></a>
+        </div>'''
     return f'''
   <section class="featured-book-section featured-book-section--{book["layout"]}">
     <div class="featured-book-inner">
@@ -230,10 +239,7 @@ def generate_featured_book(book):
         <h2>{book["title"]}</h2>
         <p class="featured-book-subtitle">{book["subtitle"]}</p>
         <p class="featured-book-description">{book["description"]}</p>
-        <div class="featured-book-actions">
-          <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cta">{book.get("purchase_label", "Printed Edition")} <span aria-hidden="true">→</span></a>
-          <a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-ebook">Free Ebook <span aria-hidden="true">↗</span></a>
-        </div>
+        {actions_html}
       </div>
       <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
         <img src="{book["image"]}" alt="{book["image_alt"]}" class="featured-book-cover" />
@@ -2594,11 +2600,8 @@ nav a:hover {{
       <p class="clineflow-positioning">{CLINEFLOW["positioning"]}</p>
       
       <div class="clineflow-actions">
-        <a href="{CLINEFLOW["github"]}" target="_blank" class="clineflow-cta">
-          View on GitHub →
-        </a>
-        <a href="{CLINEFLOW["book_url"]}" target="_blank" rel="noopener noreferrer" class="clineflow-cta">
-          Get the Book →
+        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-cta">
+          www.ClineFlow.com →
         </a>
       </div>
       
