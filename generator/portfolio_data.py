@@ -9,6 +9,10 @@ IDENTITY = {
     "title": "Silicon Valley Innovator | AI Pioneer | Author",
     "email": "hassan.uriostegui@gmail.com",
     "portrait": "https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/db719a43-cc9c-4930-b4f8-21112bb508d3/HassanUriostegui1.jpeg?format=1500w",
+    "footer_bio": [
+        "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.",
+        "His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions."
+    ],
     "quote": "Intelligence might be appreciated as the most primitive form of life. As such, the Universe won't be just a pathway full of intelligent life, but an absolute reflection of human awareness."
 }
 

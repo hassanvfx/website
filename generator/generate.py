@@ -57,6 +57,14 @@ def generate_stats_html():
     return "\n        ".join(items)
 
 
+def generate_footer_bio_html():
+    """Generate the footer biography from the central identity data."""
+    return "\n    ".join(
+        f'<p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">{paragraph}</p>'
+        for paragraph in IDENTITY["footer_bio"]
+    )
+
+
 def generate_professional_profile():
     """Generate the embedded PDF.js professional profile viewer."""
     return f'''
@@ -2805,9 +2813,7 @@ nav a:hover {{
   <footer id="contact">
     <h2>{IDENTITY["name"]}</h2>
     <p>{IDENTITY["status"]}</p>
-    <p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
-      From pioneering mobile video technology a decade before Snapchat to building AI systems that have processed 200,000+ therapeutic conversations—Hassan brings exceptional technical depth, proven leadership, and a track record of turning visionary ideas into products that reach millions. Always open to compelling opportunities that push the boundaries of what's possible.
-    </p>
+    {generate_footer_bio_html()}
     <div class="social-links">
       {generate_social_links()}
     </div>
