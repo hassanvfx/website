@@ -5,6 +5,7 @@ Portfolio Generator v3 - Impact First Structure
 
 import os
 import sys
+import json
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -18,6 +19,8 @@ from portfolio_data import (
 from templates import CSS_STYLES
 
 SELECTED_WORK_PAGE = "selected-work.html"
+SITE_URL = "https://hassanvfx.github.io/website"
+SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, author, and creator of ClineFlow, building agentic systems, consumer products, and AI platforms."
 SELECTED_WORK_SECTION_IDS = {"impact", "work", "twinchat-paper", "research", "filmography"}
 SELECTED_WORK_ITEMS = [
     ("Impact & Exits", "impact"),
@@ -26,6 +29,92 @@ SELECTED_WORK_ITEMS = [
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
 ]
+
+
+def get_page_metadata(page):
+    """Return SEO metadata for a generated page."""
+    if page == "selected-work":
+        return {
+            "title": "Selected Work | Hassan Uriostegui",
+            "description": "Selected work by Hassan Uriostegui across AI innovation, research, products, startup impact, and visual effects.",
+            "path": SELECTED_WORK_PAGE,
+        }
+    return {
+        "title": "Hassan Uriostegui | AI-Native Principal Engineer & ClineFlow Creator",
+        "description": SITE_DESCRIPTION,
+        "path": "",
+    }
+
+
+def generate_structured_data(metadata):
+    """Generate a search-engine-readable author and site graph."""
+    canonical_url = f'{SITE_URL}/{metadata["path"]}'
+    author_id = f"{SITE_URL}/#hassan-uriostegui"
+    clineflow_id = "https://clineflow.com/#software"
+    structured_data = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": f"{SITE_URL}/#website",
+                "url": f"{SITE_URL}/",
+                "name": IDENTITY["name"],
+                "description": SITE_DESCRIPTION,
+                "inLanguage": "en-US",
+            },
+            {
+                "@type": "Person",
+                "@id": author_id,
+                "name": IDENTITY["name"],
+                "url": f"{SITE_URL}/",
+                "image": IDENTITY["portrait"],
+                "jobTitle": "AI-Native Principal Engineer, Founder, and Author",
+                "sameAs": [link["url"] for link in SOCIAL_LINKS],
+                "knowsAbout": ["Artificial Intelligence", "Context Engineering", "Mobile Product Development", "ClineFlow"],
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": clineflow_id,
+                "name": "ClineFlow",
+                "url": CLINEFLOW["website"],
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Any",
+            },
+            {
+                "@type": "WebPage",
+                "@id": canonical_url,
+                "url": canonical_url,
+                "name": metadata["title"],
+                "description": metadata["description"],
+                "inLanguage": "en-US",
+                "author": {"@id": author_id},
+                "about": [{"@id": author_id}, {"@id": clineflow_id}],
+                "isPartOf": {"@id": f"{SITE_URL}/#website"},
+            },
+        ],
+    }
+    return json.dumps(structured_data, ensure_ascii=False, separators=(",", ":"))
+
+
+def generate_robots_txt():
+    return f"""User-agent: *
+Allow: /
+
+Sitemap: {SITE_URL}/sitemap.xml
+"""
+
+
+def generate_sitemap_xml():
+    pages = ("", SELECTED_WORK_PAGE)
+    urls = "\n".join(
+        f"  <url><loc>{SITE_URL}/{page}</loc><priority>{'1.0' if not page else '0.8'}</priority></url>"
+        for page in pages
+    )
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{urls}
+</urlset>
+'''
 
 
 def resolve_navigation_href(href, page):
@@ -493,13 +582,33 @@ def render_portfolio(page="home"):
     """Render a portfolio page from the shared generator source."""
     if page not in {"home", "selected-work"}:
         raise ValueError(f"Unsupported portfolio page: {page}")
+    metadata = get_page_metadata(page)
+    canonical_url = f'{SITE_URL}/{metadata["path"]}'
+    structured_data = generate_structured_data(metadata)
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{IDENTITY["name"]} - {"Selected Work" if page == "selected-work" else IDENTITY["status"]}</title>
+  <title>{metadata["title"]}</title>
+  <meta name="description" content="{metadata["description"]}">
+  <meta name="author" content="{IDENTITY["name"]}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="{canonical_url}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{IDENTITY["name"]}">
+  <meta property="og:title" content="{metadata["title"]}">
+  <meta property="og:description" content="{metadata["description"]}">
+  <meta property="og:url" content="{canonical_url}">
+  <meta property="og:image" content="{IDENTITY["portrait"]}">
+  <meta property="og:image:alt" content="Portrait of {IDENTITY["name"]}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{metadata["title"]}">
+  <meta name="twitter:description" content="{metadata["description"]}">
+  <meta name="twitter:image" content="{IDENTITY["portrait"]}">
+  <script type="application/ld+json">{structured_data}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -3281,13 +3390,16 @@ def generate_portfolio():
     outputs = {
         "index.html": render_portfolio("home"),
         SELECTED_WORK_PAGE: render_portfolio("selected-work"),
+        "robots.txt": generate_robots_txt(),
+        "sitemap.xml": generate_sitemap_xml(),
     }
-    for filename, html in outputs.items():
-        html = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
+    for filename, content in outputs.items():
+        if filename.endswith(".html"):
+            content = "\n".join(line.rstrip() for line in content.splitlines()) + "\n"
         output_path = os.path.join(root, filename)
         with open(output_path, "w", encoding="utf-8") as output_file:
-            output_file.write(html)
-        print(f"Portfolio generated: {output_path} ({len(html):,} bytes)")
+            output_file.write(content)
+        print(f"Portfolio generated: {output_path} ({len(content):,} bytes)")
     return [os.path.join(root, filename) for filename in outputs]
 
 

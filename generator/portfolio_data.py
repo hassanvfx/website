@@ -321,7 +321,7 @@ FEATURED_BOOKS = [
         "image_alt": "Cover of Infinite AI Context: ClineFlow and Google's Open Knowledge Format by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/infinite-ai-context-clineflow-and-googles-open-knowledge-format/paperback/product-rmkn8jg.html?page=1&pageSize=4",
         "ebook_url": "https://hassanvfx.github.io/infinite-ai-context/downloads/infinite-ai-context-web.pdf",
-        "cta_url": "https://www.ClineFlow.com/",
+        "cta_url": "https://clineflow.com/",
         "cta_label": "www.ClineFlow.com",
         "description": "A practical guide to persistent AI context, ClineFlow, and Google's Open Knowledge Format—designed for people building durable AI memory across development, legal, and creative work.",
         "layout": "cover-first"
@@ -410,7 +410,7 @@ TWINCHAT_PAPER = {
 # CLINEFLOW - Featured Hero Project
 CLINEFLOW = {
     "name": "ClineFlow",
-    "website": "https://www.ClineFlow.com/",
+    "website": "https://clineflow.com/",
     "installer_prompt": "Please initialize a local Git repository if needed, then install ClineFlow using the instructions at https://github.com/hassanvfx/clineflow"
 }
 
