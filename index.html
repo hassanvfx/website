@@ -1793,6 +1793,25 @@ nav a:hover {
   color: #00D4FF;
   font-weight: bold;
 }
+.eb1a-wikipedia-link {
+  display: flex;
+  width: fit-content;
+  margin: 1.5rem auto 0;
+  padding: 0.72rem 1.1rem;
+  color: #00131a;
+  background: #00D4FF;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.eb1a-wikipedia-link:hover,
+.eb1a-wikipedia-link:focus-visible {
+  background: #63e6ff;
+  outline: none;
+  transform: translateY(-2px);
+}
 .bio-summary {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -3518,10 +3537,11 @@ nav a:hover {
     <div class="bio-content">
       <div class="eb1a-card">
         <h3>EB1A Extraordinary Ability Recognition</h3>
-        <p class="eb1a-description">In 2020, Hassan was granted U.S. Permanent Residency through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
+        <p class="eb1a-description">In 2018, Hassan was granted U.S. Citizenship through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
         <ul class="eb1a-criteria">
           <li>Published works of major significance (4 books on AI for general audiences)</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
         </ul>
+        <a href="https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)" target="_blank" rel="noopener noreferrer" class="eb1a-wikipedia-link">EB1A on Wikipedia →</a>
       </div>
     </div>
   </section>
@@ -3866,7 +3886,7 @@ nav a:hover {
 
   <script>
     // Preserve links to sections that now live on Selected Work.
-    const legacySelectedWorkHashes = new Set(['research', 'work', 'filmography', 'twinchat-paper', 'impact']);
+    const legacySelectedWorkHashes = new Set(['research', 'twinchat-paper', 'filmography', 'work', 'impact']);
     if ("home" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {
       window.location.replace("selected-work.html" + window.location.hash);
     }

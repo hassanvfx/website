@@ -1215,6 +1215,25 @@ nav a:hover {{
   color: #00D4FF;
   font-weight: bold;
 }}
+.eb1a-wikipedia-link {{
+  display: flex;
+  width: fit-content;
+  margin: 1.5rem auto 0;
+  padding: 0.72rem 1.1rem;
+  color: #00131a;
+  background: #00D4FF;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}}
+.eb1a-wikipedia-link:hover,
+.eb1a-wikipedia-link:focus-visible {{
+  background: #63e6ff;
+  outline: none;
+  transform: translateY(-2px);
+}}
 .bio-summary {{
   font-size: 1.1rem;
   line-height: 1.8;
@@ -2879,6 +2898,7 @@ nav a:hover {{
         <ul class="eb1a-criteria">
           {"".join(f'<li>{c}</li>' for c in BIO["eb1a_overview"]["criteria_met"])}
         </ul>
+        <a href="{BIO["eb1a_overview"]["wikipedia_url"]}" target="_blank" rel="noopener noreferrer" class="eb1a-wikipedia-link">EB1A on Wikipedia →</a>
       </div>
     </div>
   </section>

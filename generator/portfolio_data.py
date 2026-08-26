@@ -36,7 +36,8 @@ BIO = {
     "image_alt": "Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him.",
     "eb1a_overview": {
         "title": "EB1A Extraordinary Ability Recognition",
-        "description": "In 2020, Hassan was granted U.S. Permanent Residency through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.",
+        "description": "In 2018, Hassan was granted U.S. Citizenship through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)",
         "criteria_met": [
             "Published works of major significance (4 books on AI for general audiences)",
             "Original contributions to the field (Patents, first-of-kind mobile technologies)",
