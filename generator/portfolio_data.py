@@ -32,6 +32,8 @@ PROFESSIONAL_PROFILE = {
 BIO = {
     "headline": "A Silicon Valley Visionary Shaping the Future of AI",
     "headline_link": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
+    "image": "assets/hassan-silicon-valley-profile.jpg",
+    "image_alt": "Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him.",
     "intro": "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.",
     "eb1a_overview": {
         "title": "EB1A Extraordinary Ability Recognition",
@@ -102,7 +104,7 @@ NAV_ITEMS = [
 # Secondary navigation
 SUBMENU_ITEMS = [
     {"label": "IMPACT", "href": "#impact"},
-    {"label": "RESEARCH", "href": "#research"},
+    {"label": "RESEARCH", "href": "#twinchat-paper"},
     {"label": "FILMS", "href": "#filmography"},
     {"label": "PRESS", "href": "#press"},
     {"label": "CONTACT", "href": "#contact"},

@@ -1104,6 +1104,18 @@ nav a:hover {{
   margin-bottom: 1.5rem;
   text-align: center;
 }}
+.bio-profile-image {{
+  margin: 0 auto 3rem;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+}}
+.bio-profile-image img {{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}}
 .bio-featured-article {{
   max-width: 600px;
   margin: 0 auto 3rem;
@@ -2993,6 +3005,9 @@ nav a:hover {{
   <section class="bio-section" id="about">
     <div class="bio-content">
       <h2 class="bio-headline">{BIO["headline"]}</h2>
+      <figure class="bio-profile-image">
+        <img src="{BIO["image"]}" alt="{BIO["image_alt"]}" loading="lazy" />
+      </figure>
       <div class="bio-featured-article">
         <a href="{BIO["headline_link"]}" target="_blank">
           <div class="article-label">Featured Article</div>

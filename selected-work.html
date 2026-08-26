@@ -1682,6 +1682,18 @@ nav a:hover {
   margin-bottom: 1.5rem;
   text-align: center;
 }
+.bio-profile-image {
+  margin: 0 auto 3rem;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+}
+.bio-profile-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
 .bio-featured-article {
   max-width: 600px;
   margin: 0 auto 3rem;
@@ -3382,7 +3394,7 @@ nav a:hover {
   <nav class="submenu-nav">
     <div class="submenu-inner">
       <a href="#impact" class="submenu-link">IMPACT</a>
-      <a href="#research" class="submenu-link">RESEARCH</a>
+      <a href="#twinchat-paper" class="submenu-link">RESEARCH</a>
       <a href="#filmography" class="submenu-link">FILMS</a>
       <a href="index.html#press" class="submenu-link">PRESS</a>
       <a href="#contact" class="submenu-link">CONTACT</a>
@@ -3399,7 +3411,7 @@ nav a:hover {
     <a href="index.html#books">BOOKS</a>
     <a href="index.html#citations">CITATIONS</a>
     <a href="#impact">IMPACT</a>
-    <a href="#research">RESEARCH</a>
+    <a href="#twinchat-paper">RESEARCH</a>
     <a href="#filmography">FILMS</a>
     <a href="index.html#press">PRESS</a>
     <a href="#contact">CONTACT</a>
@@ -3723,7 +3735,7 @@ nav a:hover {
 
   <script>
     // Preserve links to sections that now live on Selected Work.
-    const legacySelectedWorkHashes = new Set(['filmography', 'impact', 'twinchat-paper', 'work', 'research']);
+    const legacySelectedWorkHashes = new Set(['research', 'filmography', 'twinchat-paper', 'work', 'impact']);
     if ("selected-work" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {
       window.location.replace("selected-work.html" + window.location.hash);
     }

@@ -1682,6 +1682,18 @@ nav a:hover {
   margin-bottom: 1.5rem;
   text-align: center;
 }
+.bio-profile-image {
+  margin: 0 auto 3rem;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+}
+.bio-profile-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
 .bio-featured-article {
   max-width: 600px;
   margin: 0 auto 3rem;
@@ -3382,7 +3394,7 @@ nav a:hover {
   <nav class="submenu-nav">
     <div class="submenu-inner">
       <a href="selected-work.html#impact" class="submenu-link">IMPACT</a>
-      <a href="selected-work.html#research" class="submenu-link">RESEARCH</a>
+      <a href="selected-work.html#twinchat-paper" class="submenu-link">RESEARCH</a>
       <a href="selected-work.html#filmography" class="submenu-link">FILMS</a>
       <a href="#press" class="submenu-link">PRESS</a>
       <a href="#contact" class="submenu-link">CONTACT</a>
@@ -3399,7 +3411,7 @@ nav a:hover {
     <a href="#books">BOOKS</a>
     <a href="#citations">CITATIONS</a>
     <a href="selected-work.html#impact">IMPACT</a>
-    <a href="selected-work.html#research">RESEARCH</a>
+    <a href="selected-work.html#twinchat-paper">RESEARCH</a>
     <a href="selected-work.html#filmography">FILMS</a>
     <a href="#press">PRESS</a>
     <a href="#contact">CONTACT</a>
@@ -3792,6 +3804,9 @@ nav a:hover {
   <section class="bio-section" id="about">
     <div class="bio-content">
       <h2 class="bio-headline">A Silicon Valley Visionary Shaping the Future of AI</h2>
+      <figure class="bio-profile-image">
+        <img src="assets/hassan-silicon-valley-profile.jpg" alt="Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him." loading="lazy" />
+      </figure>
       <div class="bio-featured-article">
         <a href="https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e" target="_blank">
           <div class="article-label">Featured Article</div>
@@ -3836,7 +3851,7 @@ nav a:hover {
 
   <script>
     // Preserve links to sections that now live on Selected Work.
-    const legacySelectedWorkHashes = new Set(['filmography', 'impact', 'twinchat-paper', 'work', 'research']);
+    const legacySelectedWorkHashes = new Set(['research', 'filmography', 'twinchat-paper', 'work', 'impact']);
     if ("home" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {
       window.location.replace("selected-work.html" + window.location.hash);
     }
