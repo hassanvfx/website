@@ -1697,22 +1697,14 @@ nav a:hover {
 .bio-featured-article {
   max-width: 600px;
   margin: 0 auto 3rem;
-  text-align: center;
-}
-.bio-featured-article a {
-  display: block;
+  padding: 1.5rem;
   background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(139,92,246,0.08));
   border: 1px solid rgba(0,212,255,0.2);
   border-radius: 12px;
-  padding: 1.5rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  text-align: center;
 }
-.bio-featured-article a:hover {
-  background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(139,92,246,0.12));
-  border-color: rgba(0,212,255,0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+.bio-featured-article a {
+  text-decoration: none;
 }
 .bio-featured-article .article-label {
   color: #00D4FF;
@@ -1723,10 +1715,36 @@ nav a:hover {
   margin-bottom: 0.5rem;
 }
 .bio-featured-article .article-title {
+  display: block;
   color: #fff;
   font-size: 1.1rem;
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+.bio-featured-article .article-title:hover,
+.bio-featured-article .article-title:focus-visible {
+  color: #00D4FF;
+  outline: none;
+}
+.bio-read-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 116px;
+  margin-bottom: 1.1rem;
+  padding: 0.7rem 1.15rem;
+  color: #00131a;
+  background: #00D4FF;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.bio-read-button:hover,
+.bio-read-button:focus-visible {
+  background: #63e6ff;
+  outline: none;
+  transform: translateY(-2px);
 }
 .bio-featured-article .article-source {
   color: rgba(255,255,255,0.5);
@@ -3735,7 +3753,7 @@ nav a:hover {
 
   <script>
     // Preserve links to sections that now live on Selected Work.
-    const legacySelectedWorkHashes = new Set(['research', 'filmography', 'twinchat-paper', 'work', 'impact']);
+    const legacySelectedWorkHashes = new Set(['research', 'filmography', 'work', 'impact', 'twinchat-paper']);
     if ("selected-work" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {
       window.location.replace("selected-work.html" + window.location.hash);
     }

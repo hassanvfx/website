@@ -34,7 +34,6 @@ BIO = {
     "headline_link": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
     "image": "assets/hassan-silicon-valley-profile.jpg",
     "image_alt": "Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him.",
-    "intro": "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.",
     "eb1a_overview": {
         "title": "EB1A Extraordinary Ability Recognition",
         "description": "In 2020, Hassan was granted U.S. Permanent Residency through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.",
@@ -45,8 +44,7 @@ BIO = {
             "High remuneration for services (Silicon Valley executive roles)",
             "Lead/critical role in distinguished organizations (CTO, Principal Architect)"
         ]
-    },
-    "career_summary": "His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions."
+    }
 }
 
 # Section Divider Quotes - From articles/press mentioning his work

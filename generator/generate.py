@@ -1119,22 +1119,14 @@ nav a:hover {{
 .bio-featured-article {{
   max-width: 600px;
   margin: 0 auto 3rem;
-  text-align: center;
-}}
-.bio-featured-article a {{
-  display: block;
+  padding: 1.5rem;
   background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(139,92,246,0.08));
   border: 1px solid rgba(0,212,255,0.2);
   border-radius: 12px;
-  padding: 1.5rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  text-align: center;
 }}
-.bio-featured-article a:hover {{
-  background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(139,92,246,0.12));
-  border-color: rgba(0,212,255,0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+.bio-featured-article a {{
+  text-decoration: none;
 }}
 .bio-featured-article .article-label {{
   color: #00D4FF;
@@ -1145,10 +1137,36 @@ nav a:hover {{
   margin-bottom: 0.5rem;
 }}
 .bio-featured-article .article-title {{
+  display: block;
   color: #fff;
   font-size: 1.1rem;
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  margin-bottom: 1.25rem;
+}}
+.bio-featured-article .article-title:hover,
+.bio-featured-article .article-title:focus-visible {{
+  color: #00D4FF;
+  outline: none;
+}}
+.bio-read-button {{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 116px;
+  margin-bottom: 1.1rem;
+  padding: 0.7rem 1.15rem;
+  color: #00131a;
+  background: #00D4FF;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: background 0.2s ease, transform 0.2s ease;
+}}
+.bio-read-button:hover,
+.bio-read-button:focus-visible {{
+  background: #63e6ff;
+  outline: none;
+  transform: translateY(-2px);
 }}
 .bio-featured-article .article-source {{
   color: rgba(255,255,255,0.5);
@@ -3009,14 +3027,11 @@ nav a:hover {{
         <img src="{BIO["image"]}" alt="{BIO["image_alt"]}" loading="lazy" />
       </figure>
       <div class="bio-featured-article">
-        <a href="{BIO["headline_link"]}" target="_blank">
-          <div class="article-label">Featured Article</div>
-          <div class="article-title">On the Future of Artificial Intelligence</div>
-          <div class="article-source">Authority Magazine</div>
-        </a>
+        <div class="article-label">Featured Profile</div>
+        <a href="{BIO["headline_link"]}" target="_blank" rel="noopener noreferrer" class="article-title">On the Future of Artificial Intelligence</a>
+        <a href="{BIO["headline_link"]}" target="_blank" rel="noopener noreferrer" class="bio-read-button">Read Bio</a>
+        <div class="article-source">Authority Magazine</div>
       </div>
-      <p class="bio-intro">{BIO["intro"]}</p>
-      <p class="bio-summary">{BIO["career_summary"]}</p>
     </div>
   </section>
 
