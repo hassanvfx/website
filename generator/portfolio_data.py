@@ -95,8 +95,8 @@ NAV_ITEMS = [
     {"label": "RESUME", "href": "#professional-profile"},
     {"label": "AI-CODING", "href": "#clineflow", "featured": True},
     {"label": "APPS", "href": "#memearcade", "featured": True},
-    {"label": "BOOKS", "href": "#books"},
     {"label": "CITATIONS", "href": "#citations"},
+    {"label": "BOOKS", "href": "#books"},
 ]
 
 # Secondary navigation
