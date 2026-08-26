@@ -409,21 +409,8 @@ TWINCHAT_PAPER = {
 # CLINEFLOW - Featured Hero Project
 CLINEFLOW = {
     "name": "ClineFlow",
-    "tagline": "The Future of AI-Assisted Development",
-    "subtitle": "Open Source Workflow Automation for Cline",
-    "logo": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
-    "description": "ClineFlow is a powerful, open-source workflow automation tool that transforms how developers interact with AI assistants. Built on decades of software engineering experience, it provides structured prompts, intelligent context management, and scalable workflows that make AI development accessible to everyone.",
-    "features": [
-        "Modular workflow system with customizable prompts",
-        "Intelligent context management for large codebases", 
-        "Plan Mode & Act Mode for systematic development",
-        "Built-in best practices from enterprise experience",
-        "MIT Licensed - Free forever"
-    ],
     "website": "https://www.ClineFlow.com/",
-    "stars": "⭐ Growing Community",
-    "quote": "ClineFlow represents the culmination of 15+ years building products at scale—now distilled into a tool that helps every developer harness AI effectively.",
-    "positioning": "This is not just another tool. ClineFlow is the foundation for the next generation of AI-human collaboration in software development."
+    "installer_prompt": "Please initialize a local Git repository if needed, then install ClineFlow using the instructions at https://github.com/hassanvfx/clineflow"
 }
 
 # MEME ARCADE - Featured iPhone App

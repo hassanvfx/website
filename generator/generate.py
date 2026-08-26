@@ -11,38 +11,64 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from portfolio_data import (
     IDENTITY, PROFESSIONAL_PROFILE, STATS, NAV_ITEMS, SUBMENU_ITEMS, SOCIAL_LINKS, CURRENT_PROJECTS,
     HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
-    INNOVATIONS, TIMELINE_MARKERS,
+    INNOVATIONS,
     BIO, SECTION_QUOTES, CLINEFLOW, MEME_ARCADE, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
     CITATIONS, FEATURED_BOOKS, WWDC14_FEATURE
 )
 from templates import CSS_STYLES
 
+SELECTED_WORK_PAGE = "selected-work.html"
+SELECTED_WORK_SECTION_IDS = {"impact", "work", "twinchat-paper", "research", "filmography"}
+SELECTED_WORK_ITEMS = [
+    ("Impact & Exits", "impact"),
+    ("AI Innovation", "work"),
+    ("TwinChat Paper", "twinchat-paper"),
+    ("Innovations", "research"),
+    ("Filmography & VFX", "filmography"),
+]
 
-def generate_nav_html():
+
+def resolve_navigation_href(href, page):
+    """Resolve an in-site anchor against the page where navigation is rendered."""
+    if not href.startswith("#"):
+        return href
+
+    section_id = href[1:]
+    if section_id in SELECTED_WORK_SECTION_IDS:
+        return href if page == "selected-work" else f"{SELECTED_WORK_PAGE}{href}"
+    if section_id == "contact":
+        return href
+    return href if page == "home" else f"index.html{href}"
+
+
+def generate_nav_html(page):
     """Generate navigation with ClineFlow featured"""
     items = []
     for nav in NAV_ITEMS:
         featured_class = ' class="featured"' if nav.get("featured") else ''
         target = ' target="_blank"' if nav.get("external") else ''
-        items.append(f'<a href="{nav["href"]}"{featured_class}{target}>{nav["label"]}</a>')
+        href = resolve_navigation_href(nav["href"], page)
+        items.append(f'<a href="{href}"{featured_class}{target}>{nav["label"]}</a>')
     return "\n      ".join(items)
 
 
-def generate_submenu_html():
+def generate_submenu_html(page):
     """Generate submenu navigation"""
     items = []
     for item in SUBMENU_ITEMS:
-        items.append(f'<a href="{item["href"]}" class="submenu-link">{item["label"]}</a>')
+        href = resolve_navigation_href(item["href"], page)
+        items.append(f'<a href="{href}" class="submenu-link">{item["label"]}</a>')
     return "\n      ".join(items)
 
 
-def generate_mobile_nav_html():
+def generate_mobile_nav_html(page):
     """Generate the complete compact navigation menu for mobile."""
     items = []
     for nav in NAV_ITEMS + SUBMENU_ITEMS:
         featured_class = ' class="featured"' if nav.get("featured") else ''
         target = ' target="_blank"' if nav.get("external") else ''
-        items.append(f'<a href="{nav["href"]}"{featured_class}{target}>{nav["label"]}</a>')
+        href = resolve_navigation_href(nav["href"], page)
+        items.append(f'<a href="{href}"{featured_class}{target}>{nav["label"]}</a>')
     return "\n    ".join(items)
 
 
@@ -63,6 +89,54 @@ def generate_footer_bio_html():
         f'<p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">{paragraph}</p>'
         for paragraph in IDENTITY["footer_bio"]
     )
+
+
+def generate_selected_work_grid():
+    """Generate the small home-page gateway to the Selected Work page."""
+    links = "\n        ".join(
+        f'<a href="{SELECTED_WORK_PAGE}#{section_id}" class="selected-work-link">{label}<span aria-hidden="true">→</span></a>'
+        for label, section_id in SELECTED_WORK_ITEMS
+    )
+    return f'''
+  <!-- Selected Work Gateway -->
+  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
+    <div class="selected-work-gateway-inner">
+      <span class="eyebrow">Selected Work</span>
+      <h2 id="selected-work-title">Explore the full body of work</h2>
+      <div class="selected-work-grid">
+        {links}
+      </div>
+    </div>
+  </section>
+'''
+
+
+def generate_clineflow_section():
+    """Generate the focused ClineFlow installer callout."""
+    return f'''
+  <!-- ClineFlow Agentic Installer -->
+  <section class="clineflow-callout clineflow-installer" id="clineflow">
+    <figure class="clineflow-hero clineflow-installer-hero">
+      <img src="assets/clineflow-hero.jpg" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
+    </figure>
+    <div class="clineflow-installer-inner">
+      <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">{CLINEFLOW["name"]}</a>
+      <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
+      <div class="clineflow-installer-panel">
+        <p>Try the agentic installer</p>
+        <div class="clineflow-prompt-wrap">
+          <code id="clineflow-installer-prompt">{CLINEFLOW["installer_prompt"]}</code>
+          <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button>
+        </div>
+      </div>
+      <div class="clineflow-masterclass">
+        <p>Learn More from Hassan's Master Class</p>
+        <div class="clineflow-masterclass-divider" aria-hidden="true"></div>
+        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">www.ClineFlow.com <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+'''
 
 
 def generate_professional_profile():
@@ -99,18 +173,6 @@ def generate_professional_profile():
         <p class="professional-profile-fallback">Preview shown above. For the full two-page resume, <a href="{PROFESSIONAL_PROFILE["pdf"]}" target="_blank" rel="noopener noreferrer">open the PDF</a>.</p>
       </div>
     </div>
-  </section>
-'''
-
-
-def generate_timeline_marker(year, label):
-    """Generate timeline intersection marker"""
-    return f'''
-  <section class="timeline-marker">
-    <div class="marker-line"></div>
-    <div class="marker-circle">{year}</div>
-    <div class="marker-label">{label}</div>
-    <div class="marker-line"></div>
   </section>
 '''
 
@@ -154,13 +216,8 @@ def generate_wwdc14_feature():
         <p class="wwdc14-subtitle">{WWDC14_FEATURE["subtitle"]}</p>
         <p class="wwdc14-description">{WWDC14_FEATURE["description"]}</p>
         <blockquote>{WWDC14_FEATURE["quote"]}</blockquote>
-        <div class="wwdc14-journey" aria-label="Recognition timeline">
-          <span>Independent iOS product</span><span>Apple permission request</span><span>Featured at WWDC14</span><span>Official presentation archive</span>
-        </div>
         <div class="wwdc14-actions">
-          <a href="{WWDC14_FEATURE["pdf_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">View Original WWDC14 Presentation</a>
-          <a href="{WWDC14_FEATURE["video_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-btn">Watch Session 709</a>
-          <a href="{WWDC14_FEATURE["medium_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-text-link">Read the Story on Medium →</a>
+          <a href="{WWDC14_FEATURE["medium_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">Read the Story on Medium →</a>
         </div>
       </div>
       <div class="wwdc14-visuals">
@@ -173,13 +230,6 @@ def generate_wwdc14_feature():
           <p>Ultrakam Remote Control<br /><strong>blue clapperboard icon</strong></p>
         </div>
       </div>
-      <details class="wwdc14-proof">
-        <summary>View original Apple asset-usage request</summary>
-        <div class="wwdc14-proof-content">
-          <p>Apple requested permission to use Ultrakam Remote Control app assets, icons, logos, and screen captures at WWDC 2014 as an example of good design.</p>
-          <img src="{WWDC14_FEATURE["email_image"]}" alt="{WWDC14_FEATURE["email_alt"]}" />
-        </div>
-      </details>
     </div>
   </section>
 '''
@@ -439,16 +489,17 @@ def generate_interviews_html():
     return "\n      ".join(items)
 
 
-def generate_portfolio():
-    """Main generation function - Impact First"""
-    print("Generating Impact-First Portfolio v3...")
+def render_portfolio(page="home"):
+    """Render a portfolio page from the shared generator source."""
+    if page not in {"home", "selected-work"}:
+        raise ValueError(f"Unsupported portfolio page: {page}")
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{IDENTITY["name"]} - {IDENTITY["status"]}</title>
+  <title>{IDENTITY["name"]} - {"Selected Work" if page == "selected-work" else IDENTITY["status"]}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -1553,6 +1604,159 @@ nav a:hover {{
   font-size: 0.9rem;
 }}
 
+/* Focused ClineFlow installer */
+.clineflow-callout.clineflow-installer {{
+  margin: clamp(2.5rem, 5vw, 5rem) 0;
+  padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 2.5vw, 3.25rem);
+  background: #03090d;
+}}
+.clineflow-installer::before {{
+  display: none;
+}}
+.clineflow-installer-inner {{
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}}
+.clineflow-installer-hero {{
+  width: 100vw;
+  max-width: none;
+  margin: 0 0 clamp(3rem, 6vw, 6rem);
+  margin-left: 50%;
+  border: 0;
+  transform: translateX(-50%);
+}}
+.clineflow-installer-hero img {{
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}}
+.clineflow-wordmark {{
+  display: inline-block;
+  color: #eaf6ff;
+  font-family: Inter, sans-serif;
+  font-size: clamp(3.75rem, 8vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 0.85;
+  text-decoration: none;
+}}
+.clineflow-wordmark:hover,
+.clineflow-wordmark:focus-visible {{
+  color: #fff;
+  outline: none;
+}}
+.clineflow-installer h2 {{
+  max-width: 1120px;
+  margin: clamp(4rem, 8vw, 8rem) 0 clamp(3rem, 6vw, 5.5rem);
+  color: #eaf6ff;
+  font-family: Inter, sans-serif;
+  font-size: clamp(2.15rem, 4.35vw, 4.25rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.32;
+}}
+.clineflow-installer h2 span {{
+  color: #00bfff;
+}}
+.clineflow-installer-panel {{
+  padding: clamp(1.75rem, 3.25vw, 4rem);
+  background: linear-gradient(115deg, #0b2d45 0%, #0b2538 100%);
+  border: 1px solid #1684ba;
+  border-left: 7px solid #00a8ff;
+}}
+.clineflow-installer-panel > p {{
+  margin: 0 0 1.7rem;
+  color: #42a9ff;
+  font-family: Inter, sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}}
+.clineflow-prompt-wrap {{
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem;
+  background: #030e1b;
+  border: 1px solid #22658e;
+  border-radius: 7px;
+}}
+.clineflow-prompt-wrap code {{
+  flex: 1;
+  color: #d5eaff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(0.9rem, 1.55vw, 1.35rem);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}}
+.clineflow-copy-button {{
+  flex: 0 0 auto;
+  padding: 0.65rem 1rem;
+  color: #d9efff;
+  background: #123d5b;
+  border: 1px solid #3c9ed4;
+  border-radius: 6px;
+  cursor: pointer;
+  font: 700 0.9rem Inter, sans-serif;
+}}
+.clineflow-copy-button:hover,
+.clineflow-copy-button:focus-visible {{
+  background: #18567e;
+  outline: 2px solid #00bfff;
+  outline-offset: 2px;
+}}
+.clineflow-masterclass {{
+  max-width: 560px;
+  margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+  text-align: center;
+}}
+.clineflow-masterclass p {{
+  margin: 0 0 1rem;
+  color: rgba(234, 246, 255, 0.78);
+  font: 600 clamp(1rem, 1.5vw, 1.2rem)/1.45 Inter, sans-serif;
+}}
+.clineflow-masterclass-divider {{
+  width: 100%;
+  height: 1px;
+  margin-bottom: 1.1rem;
+  background: linear-gradient(90deg, #00bfff 0%, rgba(0, 191, 255, 0.12) 100%);
+}}
+.clineflow-masterclass-cta {{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.1rem;
+  color: #00121d;
+  background: #00bfff;
+  border: 1px solid #00d4ff;
+  border-radius: 4px;
+  box-shadow: 0 0 28px rgba(0, 191, 255, 0.23);
+  font: 800 clamp(1rem, 1.4vw, 1.15rem)/1.35 Inter, sans-serif;
+  text-decoration: none;
+  transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}}
+.clineflow-masterclass-cta span {{
+  font-size: 1.2em;
+  line-height: 1;
+}}
+.clineflow-masterclass-cta:hover,
+.clineflow-masterclass-cta:focus-visible {{
+  background: #63dcff;
+  box-shadow: 0 0 36px rgba(0, 191, 255, 0.42);
+  outline: none;
+  transform: translateY(-2px);
+}}
+@media (max-width: 700px) {{
+  .clineflow-wordmark {{ letter-spacing: -0.07em; }}
+  .clineflow-installer h2 {{ margin-top: 4rem; }}
+  .clineflow-prompt-wrap {{ flex-direction: column; }}
+  .clineflow-copy-button {{ width: 100%; }}
+  .clineflow-masterclass {{ max-width: none; }}
+  .clineflow-masterclass-cta {{ width: 100%; justify-content: center; }}
+}}
+
 /* MemeArcade Featured App Callout */
 .meme-arcade-callout {{
   padding: 6rem 4rem;
@@ -2524,6 +2728,57 @@ nav a:hover {{
   }}
   
 }}
+
+/* Selected Work gateway */
+.selected-work-gateway {{
+  padding: 88px 24px;
+  background: #050505;
+  border-top: 1px solid rgba(0, 194, 255, 0.16);
+}}
+.selected-work-gateway-inner {{
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}}
+.selected-work-gateway h2 {{
+  margin: 14px 0 36px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.75rem);
+  color: #fff;
+}}
+.selected-work-grid {{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}}
+.selected-work-link {{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 62px;
+  padding: 0 20px;
+  color: #eaf8ff;
+  border: 1px solid rgba(0, 194, 255, 0.4);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}}
+.selected-work-link span {{
+  color: #00c2ff;
+  font-size: 1.2rem;
+}}
+.selected-work-link:hover,
+.selected-work-link:focus-visible {{
+  color: #fff;
+  background: rgba(0, 194, 255, 0.1);
+  border-color: #00c2ff;
+  outline: none;
+}}
+@media (max-width: 700px) {{
+  .selected-work-gateway {{ padding: 64px 16px; }}
+  .selected-work-grid {{ grid-template-columns: 1fr; }}
+}}
   </style>
 </head>
 <body>
@@ -2531,7 +2786,7 @@ nav a:hover {{
   <!-- Navigation -->
   <nav class="scroll-nav">
     <div class="nav-inner">
-      {generate_nav_html()}
+      {generate_nav_html(page)}
       <div class="hamburger" onclick="toggleMobileMenu()">
         <span></span>
         <span></span>
@@ -2543,14 +2798,14 @@ nav a:hover {{
   <!-- Submenu Row -->
   <nav class="submenu-nav">
     <div class="submenu-inner">
-      {generate_submenu_html()}
+      {generate_submenu_html(page)}
     </div>
   </nav>
 
   <!-- Mobile Menu Modal -->
   <div class="mobile-menu" id="mobileMenu">
     <button type="button" class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close navigation menu">&times;</button>
-    {generate_mobile_nav_html()}
+    {generate_mobile_nav_html(page)}
   </div>
 
   <!-- Hero -->
@@ -2585,37 +2840,20 @@ nav a:hover {{
   <!-- Professional Profile / Resume -->
   {generate_professional_profile().strip()}
 
-  <!-- ClineFlow Featured Callout -->
-  <section class="clineflow-callout" id="clineflow">
-    <figure class="clineflow-hero">
-      <img src="assets/clineflow-hero.png" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
-    </figure>
-    <div class="clineflow-inner">
-      <img src="{CLINEFLOW["logo"]}" alt="GitHub" class="clineflow-logo" />
-      <span class="clineflow-badge">🚀 OPEN SOURCE PROJECT</span>
-      <h2 class="clineflow-title">{CLINEFLOW["name"]}</h2>
-      <p class="clineflow-tagline">{CLINEFLOW["tagline"]}</p>
-      <p class="clineflow-subtitle">{CLINEFLOW["subtitle"]}</p>
-      
-      <p class="clineflow-description">{CLINEFLOW["description"]}</p>
-      
-      <div class="clineflow-features">
-        {"".join(f'<div class="clineflow-feature"><span>{f}</span></div>' for f in CLINEFLOW["features"])}
+  <!-- EB1A Recognition -->
+  <section class="bio-section" id="eb1a">
+    <div class="bio-content">
+      <div class="eb1a-card">
+        <h3>{BIO["eb1a_overview"]["title"]}</h3>
+        <p class="eb1a-description">{BIO["eb1a_overview"]["description"]}</p>
+        <ul class="eb1a-criteria">
+          {"".join(f'<li>{c}</li>' for c in BIO["eb1a_overview"]["criteria_met"])}
+        </ul>
       </div>
-      
-      <p class="clineflow-quote">"{CLINEFLOW["quote"]}"</p>
-      
-      <p class="clineflow-positioning">{CLINEFLOW["positioning"]}</p>
-      
-      <div class="clineflow-actions">
-        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-cta">
-          www.ClineFlow.com →
-        </a>
-      </div>
-      
-      <span class="clineflow-stars">{CLINEFLOW["stars"]}</span>
     </div>
   </section>
+
+  {generate_clineflow_section().strip()}
 
   <!-- MemeArcade Featured App -->
   {generate_meme_arcade_callout().strip()}
@@ -2649,53 +2887,10 @@ nav a:hover {{
     </div>
   </section>
 
-  <!-- Featured Books -->
-  {generate_featured_book(FEATURED_BOOKS[1]).strip()}
-
   <!-- AI Copyright Weights Citations -->
   {generate_citations_section().strip()}
 
-  <!-- Featured Book: Modern iOS Architecture -->
-  {generate_featured_book(FEATURED_BOOKS[2]).strip()}
-
-  <!-- Bio / Artist Introduction -->
-  <section class="bio-section" id="about">
-    <div class="bio-content">
-      <h2 class="bio-headline">{BIO["headline"]}</h2>
-      
-      <div class="bio-featured-article">
-        <a href="{BIO["headline_link"]}" target="_blank">
-          <div class="article-label">Featured Article</div>
-          <div class="article-title">On the Future of Artificial Intelligence</div>
-          <div class="article-source">Authority Magazine</div>
-        </a>
-      </div>
-      
-      <p class="bio-intro">{BIO["intro"]}</p>
-      
-      <div class="eb1a-card">
-        <h3>{BIO["eb1a_overview"]["title"]}</h3>
-        <p class="eb1a-description">{BIO["eb1a_overview"]["description"]}</p>
-        <ul class="eb1a-criteria">
-          {"".join(f'<li>{c}</li>' for c in BIO["eb1a_overview"]["criteria_met"])}
-        </ul>
-      </div>
-      
-      <p class="bio-summary">{BIO["career_summary"]}</p>
-    </div>
-  </section>
-
-  <!-- Press Quote: TechCrunch -->
-  <section class="press-quote-divider">
-    <blockquote>"{SECTION_QUOTES[0]["quote"]}"</blockquote>
-    <div class="source">
-      <a href="{SECTION_QUOTES[0]["url"]}" target="_blank" class="source-name">{SECTION_QUOTES[0]["source"]}</a>
-      <span class="source-context">— {SECTION_QUOTES[0]["context"]}</span>
-    </div>
-  </section>
-
-  {generate_timeline_marker("2012-2020", "Track Record")}
-
+  <!-- Selected Work Sequence -->
   <!-- Impact Section -->
   <section class="section" id="impact">
     <div class="section-header white">
@@ -2706,17 +2901,6 @@ nav a:hover {{
     
     {"".join(generate_impact_card(c) for c in HISTORIC_COMPANIES)}
   </section>
-
-  <!-- Press Quote: Korea Biz Wire -->
-  <section class="press-quote-divider">
-    <blockquote>"{SECTION_QUOTES[1]["quote"]}"</blockquote>
-    <div class="source">
-      <a href="{SECTION_QUOTES[1]["url"]}" target="_blank" class="source-name">{SECTION_QUOTES[1]["source"]}</a>
-      <span class="source-context">— {SECTION_QUOTES[1]["context"]}</span>
-    </div>
-  </section>
-
-  {generate_timeline_marker("2022-2025", "AI Era")}
 
   <!-- Current Work -->
   <section class="section" id="work">
@@ -2756,8 +2940,6 @@ nav a:hover {{
     </div>
   </section>
 
-  {generate_timeline_marker("2010-2020", "Innovation")}
-
   <!-- Research & Innovations -->
   <section class="section" id="research">
     <div class="section-header white">
@@ -2770,8 +2952,6 @@ nav a:hover {{
       {"".join(generate_innovation_card(i) for i in INNOVATIONS)}
     </div>
   </section>
-
-  {generate_timeline_marker("2006-2010", "VFX & Film")}
 
   <!-- Filmography -->
   {generate_filmography_section()}
@@ -2809,6 +2989,24 @@ nav a:hover {{
     </div>
   </section>
 
+  <!-- Bio / Artist Introduction -->
+  <section class="bio-section" id="about">
+    <div class="bio-content">
+      <h2 class="bio-headline">{BIO["headline"]}</h2>
+      <div class="bio-featured-article">
+        <a href="{BIO["headline_link"]}" target="_blank">
+          <div class="article-label">Featured Article</div>
+          <div class="article-title">On the Future of Artificial Intelligence</div>
+          <div class="article-source">Authority Magazine</div>
+        </a>
+      </div>
+      <p class="bio-intro">{BIO["intro"]}</p>
+      <p class="bio-summary">{BIO["career_summary"]}</p>
+    </div>
+  </section>
+
+  {generate_selected_work_grid().strip()}
+
   <!-- Footer -->
   <footer id="contact">
     <h2>{IDENTITY["name"]}</h2>
@@ -2821,6 +3019,12 @@ nav a:hover {{
   </footer>
 
   <script>
+    // Preserve links to sections that now live on Selected Work.
+    const legacySelectedWorkHashes = new Set({list(SELECTED_WORK_SECTION_IDS)!r});
+    if ("{page}" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {{
+      window.location.replace("{SELECTED_WORK_PAGE}" + window.location.hash);
+    }}
+
     // Scroll-synced navigation
     const sections = document.querySelectorAll('section[id], footer[id]');
     const navLinks = document.querySelectorAll('.scroll-nav a[href^="#"]');
@@ -2871,8 +3075,24 @@ nav a:hover {{
         document.body.style.overflow = '';
       }});
     }});
+
+    document.querySelectorAll('[data-copy-prompt]').forEach(button => {{
+      button.addEventListener('click', async () => {{
+        const prompt = document.getElementById(button.dataset.copyPrompt)?.textContent?.trim();
+        if (!prompt || !navigator.clipboard) return;
+        try {{
+          await navigator.clipboard.writeText(prompt);
+          const label = button.textContent;
+          button.textContent = 'Copied';
+          window.setTimeout(() => {{ button.textContent = label; }}, 1600);
+        }} catch (error) {{
+          console.error('Unable to copy ClineFlow installer prompt:', error);
+        }}
+      }});
+    }});
   </script>
 
+  <!-- Resume Viewer Script -->
   <script type="module">
     import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.mjs';
 
@@ -2983,19 +3203,42 @@ nav a:hover {{
       resumeResizeTimer = window.setTimeout(() => renderResumePage(), 150);
     }});
   </script>
+  <!-- /Resume Viewer Script -->
 
 </body>
 </html>
 '''
     
-    output_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "index.html")
-    
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(html)
-    
-    print(f"Portfolio generated: {output_path}")
-    print(f"Total size: {len(html):,} bytes")
-    return output_path
+    selected_start = html.index("  <!-- Selected Work Sequence -->")
+    selected_end = html.index("  <!-- Books -->")
+
+    if page == "home":
+        return html[:selected_start] + html[selected_end:]
+
+    page_content_start = html.index("  <!-- Hero -->")
+    footer_start = html.index("  <!-- Footer -->")
+    selected_html = html[:page_content_start] + html[selected_start:selected_end] + html[footer_start:]
+    resume_script_start = selected_html.index("  <!-- Resume Viewer Script -->")
+    resume_script_end = selected_html.index("  <!-- /Resume Viewer Script -->")
+    resume_script_end += len("  <!-- /Resume Viewer Script -->")
+    return selected_html[:resume_script_start] + selected_html[resume_script_end:]
+
+
+def generate_portfolio():
+    """Generate all static portfolio pages from the Python source."""
+    print("Generating portfolio pages...")
+    root = os.path.dirname(os.path.dirname(__file__))
+    outputs = {
+        "index.html": render_portfolio("home"),
+        SELECTED_WORK_PAGE: render_portfolio("selected-work"),
+    }
+    for filename, html in outputs.items():
+        html = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
+        output_path = os.path.join(root, filename)
+        with open(output_path, "w", encoding="utf-8") as output_file:
+            output_file.write(html)
+        print(f"Portfolio generated: {output_path} ({len(html):,} bytes)")
+    return [os.path.join(root, filename) for filename in outputs]
 
 
 if __name__ == "__main__":
