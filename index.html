@@ -3903,7 +3903,7 @@ nav a:hover {
 
   <script>
     // Preserve links to sections that now live on Selected Work.
-    const legacySelectedWorkHashes = new Set(['filmography', 'research', 'work', 'twinchat-paper', 'impact']);
+    const legacySelectedWorkHashes = new Set(['filmography', 'impact', 'research', 'twinchat-paper', 'work']);
     if ("home" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {
       window.location.replace("selected-work.html" + window.location.hash);
     }

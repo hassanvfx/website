@@ -3179,7 +3179,7 @@ nav a:hover {{
 
   <script>
     // Preserve links to sections that now live on Selected Work.
-    const legacySelectedWorkHashes = new Set({list(SELECTED_WORK_SECTION_IDS)!r});
+    const legacySelectedWorkHashes = new Set({sorted(SELECTED_WORK_SECTION_IDS)!r});
     if ("{page}" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {{
       window.location.replace("{SELECTED_WORK_PAGE}" + window.location.hash);
     }}
