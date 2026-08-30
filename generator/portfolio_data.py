@@ -411,7 +411,7 @@ TWINCHAT_PAPER = {
 CLINEFLOW = {
     "name": "ClineFlow",
     "website": "https://clineflow.com/",
-    "installer_prompt": "Please initialize a local Git repository if needed, then install ClineFlow using the instructions at https://github.com/hassanvfx/clineflow"
+    "installer_prompt": "Please install ClineFlow by following the instructions provided at https://github.com/hassanvfx/clineflow"
 }
 
 # MEME ARCADE - Featured iPhone App
