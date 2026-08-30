@@ -401,7 +401,7 @@ TWINCHAT_PAPER = {
         "Personality simulation techniques",
         "Ethical guidelines for AI companions"
     ],
-    "github": "https://github.com/hassanvfx/twinchat-paper",
+    "github": "https://hassanvfx.github.io/twinchat-paper/",
     "stars": "📄 Research Publication",
     "quote": "Understanding human cognition through the lens of artificial intelligence opens new frontiers in emotional wellness and therapeutic applications.",
     "positioning": "The scientific foundation behind BTwin Friends, TwinChat, and Waken AI Labs."

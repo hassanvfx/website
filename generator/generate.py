@@ -3092,7 +3092,7 @@ nav a:hover {{
       <p class="clineflow-positioning">{TWINCHAT_PAPER["positioning"]}</p>
       
       <a href="{TWINCHAT_PAPER["github"]}" target="_blank" class="clineflow-cta">
-        View on GitHub →
+        Read TwinChat Paper →
       </a>
       
       <span class="clineflow-stars">{TWINCHAT_PAPER["stars"]}</span>
