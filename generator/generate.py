@@ -24,7 +24,7 @@ SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founde
 SELECTED_WORK_SECTION_IDS = {"impact", "work", "twinchat-paper", "research", "filmography"}
 SELECTED_WORK_ITEMS = [
     ("Impact & Exits", "impact"),
-    ("AI Innovation", "work"),
+    ("Featured Projects", "work"),
     ("TwinChat Paper", "twinchat-paper"),
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
@@ -3085,7 +3085,7 @@ nav a:hover {{
   <section class="section" id="work">
     <div class="section-header white">
       <span class="eyebrow">Current Focus</span>
-      <h2>AI Innovation</h2>
+      <h2>Featured Projects</h2>
       <p class="lead">Building the future of AI-human interaction through ethical, ergonomic technology.</p>
     </div>
     
