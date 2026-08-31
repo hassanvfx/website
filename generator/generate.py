@@ -224,7 +224,7 @@ def generate_clineflow_section():
           <figcaption>ClineFlow is supported by all major Agents</figcaption>
         </figure>
         <div class="clineflow-masterclass">
-          <p>Learn More from Hassan's Master Class</p>
+          <p>Learn More about ClineFlow:</p>
           <div class="clineflow-masterclass-divider" aria-hidden="true"></div>
           <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">www.ClineFlow.com <span aria-hidden="true">→</span></a>
         </div>
