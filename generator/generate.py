@@ -205,23 +205,29 @@ def generate_clineflow_section():
     return f'''
   <!-- ClineFlow Agentic Installer -->
   <section class="clineflow-callout clineflow-installer" id="clineflow">
-    <figure class="clineflow-hero clineflow-installer-hero">
-      <img src="assets/clineflow-hero.jpg" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
-    </figure>
-    <div class="clineflow-installer-inner">
-      <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">{CLINEFLOW["name"]}</a>
-      <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
-      <div class="clineflow-installer-panel">
-        <p>Try the agentic installer</p>
-        <div class="clineflow-prompt-wrap">
-          <code id="clineflow-installer-prompt">{CLINEFLOW["installer_prompt"]}</code>
-          <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button>
+    <div class="clineflow-installer-shell">
+      <figure class="clineflow-hero clineflow-installer-hero">
+        <img src="assets/clineflow-hero.jpg" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
+      </figure>
+      <div class="clineflow-installer-inner">
+        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">{CLINEFLOW["name"]}</a>
+        <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
+        <div class="clineflow-installer-panel">
+          <p>Try the agentic installer</p>
+          <div class="clineflow-prompt-wrap">
+            <code id="clineflow-installer-prompt">{CLINEFLOW["installer_prompt"]}</code>
+            <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button>
+          </div>
         </div>
-      </div>
-      <div class="clineflow-masterclass">
-        <p>Learn More from Hassan's Master Class</p>
-        <div class="clineflow-masterclass-divider" aria-hidden="true"></div>
-        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">www.ClineFlow.com <span aria-hidden="true">→</span></a>
+        <figure class="clineflow-agent-compatibility">
+          <img src="assets/clineflow-agent-compatibility.png" alt="ClineFlow compatibility with major AI coding agents" loading="lazy" />
+          <figcaption>ClineFlow is supported by all major Agents</figcaption>
+        </figure>
+        <div class="clineflow-masterclass">
+          <p>Learn More from Hassan's Master Class</p>
+          <div class="clineflow-masterclass-divider" aria-hidden="true"></div>
+          <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">www.ClineFlow.com <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -1771,19 +1777,19 @@ nav a:hover {{
 .clineflow-installer::before {{
   display: none;
 }}
-.clineflow-installer-inner {{
-  max-width: 1920px;
+.clineflow-installer-shell {{
+  width: min(100%, 1480px);
   margin: 0 auto;
+}}
+.clineflow-installer-inner {{
+  width: 100%;
   position: relative;
   z-index: 1;
 }}
 .clineflow-installer-hero {{
-  width: 100vw;
-  max-width: none;
+  width: 100%;
   margin: 0 0 clamp(3rem, 6vw, 6rem);
-  margin-left: 50%;
   border: 0;
-  transform: translateX(-50%);
 }}
 .clineflow-installer-hero img {{
   aspect-ratio: 16 / 9;
@@ -1809,7 +1815,7 @@ nav a:hover {{
   margin: clamp(4rem, 8vw, 8rem) 0 clamp(3rem, 6vw, 5.5rem);
   color: #eaf6ff;
   font-family: Inter, sans-serif;
-  font-size: clamp(2.15rem, 4.35vw, 4.25rem);
+  font-size: clamp(2rem, 3.2vw, 3.25rem);
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 1.32;
@@ -1827,7 +1833,7 @@ nav a:hover {{
   margin: 0 0 1.7rem;
   color: #42a9ff;
   font-family: Inter, sans-serif;
-  font-size: clamp(0.9rem, 1.5vw, 1.35rem);
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1845,7 +1851,7 @@ nav a:hover {{
   flex: 1;
   color: #d5eaff;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: clamp(0.9rem, 1.55vw, 1.35rem);
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
   line-height: 1.55;
   overflow-wrap: anywhere;
 }}
@@ -1864,6 +1870,20 @@ nav a:hover {{
   background: #18567e;
   outline: 2px solid #00bfff;
   outline-offset: 2px;
+}}
+.clineflow-agent-compatibility {{
+  margin: clamp(2.5rem, 5vw, 5rem) 0 0;
+  text-align: center;
+}}
+.clineflow-agent-compatibility img {{
+  display: block;
+  width: 100%;
+  height: auto;
+}}
+.clineflow-agent-compatibility figcaption {{
+  margin-top: 1.25rem;
+  color: rgba(234, 246, 255, 0.82);
+  font: 600 clamp(1rem, 1.5vw, 1.2rem)/1.45 Inter, sans-serif;
 }}
 .clineflow-masterclass {{
   max-width: 560px;
