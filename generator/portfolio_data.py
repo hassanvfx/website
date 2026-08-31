@@ -13,7 +13,7 @@ IDENTITY = {
         "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.",
         "His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions."
     ],
-    "quote": "Intelligence might be appreciated as the most primitive form of life. As such, the Universe won't be just a pathway full of intelligent life, but an absolute reflection of human awareness."
+    "quote": "One of the biggest lessons from my journey is the power of self-learning and perseverance. Passion, curiosity, and relentless drive can open doors you never imagined."
 }
 
 # PROFESSIONAL PROFILE / RESUME
