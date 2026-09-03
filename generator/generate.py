@@ -3059,32 +3059,6 @@ nav a:hover {{
   <!-- Apple WWDC14 Ultrakam Recognition -->
   {generate_wwdc14_feature().strip()}
 
-  <!-- Waken AI Featured Callout -->
-  <section class="waken-callout" id="waken">
-    <div class="waken-inner">
-      <div class="waken-header">
-        <img src="{WAKEN_AI["logo"]}" alt="{WAKEN_AI["name"]}" class="waken-logo" />
-        <h2 class="waken-tagline">{WAKEN_AI["tagline"]}</h2>
-        <p class="waken-subtitle">{WAKEN_AI["subtitle"]}</p>
-        <p class="waken-description">{WAKEN_AI["description"]}</p>
-      </div>
-      
-      <div class="waken-video-container">
-        <iframe src="{WAKEN_AI["video"]}" 
-                frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      </div>
-      
-      <p class="waken-quote">"{WAKEN_AI["quote"]}"</p>
-      <p class="waken-positioning">{WAKEN_AI["positioning"]}</p>
-      
-      <div class="waken-footer">
-        <a href="{WAKEN_AI["website"]}" target="_blank" class="waken-cta">
-          Visit Waken AI →
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- AI Copyright Weights Citations -->
   {generate_citations_section().strip()}
 
@@ -3109,6 +3083,32 @@ nav a:hover {{
     </div>
     
     {"".join(generate_current_project_card(p) for p in CURRENT_PROJECTS)}
+  </section>
+
+  <!-- Waken AI Featured Callout -->
+  <section class="waken-callout" id="waken">
+    <div class="waken-inner">
+      <div class="waken-header">
+        <img src="{WAKEN_AI["logo"]}" alt="{WAKEN_AI["name"]}" class="waken-logo" />
+        <h2 class="waken-tagline">{WAKEN_AI["tagline"]}</h2>
+        <p class="waken-subtitle">{WAKEN_AI["subtitle"]}</p>
+        <p class="waken-description">{WAKEN_AI["description"]}</p>
+      </div>
+
+      <div class="waken-video-container">
+        <iframe src="{WAKEN_AI["video"]}"
+                frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+
+      <p class="waken-quote">"{WAKEN_AI["quote"]}"</p>
+      <p class="waken-positioning">{WAKEN_AI["positioning"]}</p>
+
+      <div class="waken-footer">
+        <a href="{WAKEN_AI["website"]}" target="_blank" class="waken-cta">
+          Visit Waken AI →
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- TwinChat Paper Callout -->
