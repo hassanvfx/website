@@ -103,7 +103,7 @@ NAV_ITEMS = [
 # Secondary navigation
 SUBMENU_ITEMS = [
     {"label": "IMPACT", "href": "#impact"},
-    {"label": "RESEARCH", "href": "#twinchat-paper"},
+    {"label": "RESEARCH", "href": "#waken"},
     {"label": "FILMS", "href": "#filmography"},
     {"label": "PRESS", "href": "#press"},
     {"label": "CONTACT", "href": "#contact"},

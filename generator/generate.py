@@ -21,7 +21,7 @@ from templates import CSS_STYLES
 SELECTED_WORK_PAGE = "selected-work.html"
 SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, author, and creator of ClineFlow, building agentic systems, consumer products, and AI platforms."
-SELECTED_WORK_SECTION_IDS = {"impact", "work", "twinchat-paper", "research", "filmography"}
+SELECTED_WORK_SECTION_IDS = {"impact", "work", "waken", "twinchat-paper", "research", "filmography"}
 SELECTED_WORK_ITEMS = [
     ("Impact & Exits", "impact"),
     ("Featured Projects", "work"),
