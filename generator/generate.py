@@ -3074,17 +3074,6 @@ nav a:hover {{
     {"".join(generate_impact_card(c) for c in HISTORIC_COMPANIES)}
   </section>
 
-  <!-- Current Work -->
-  <section class="section" id="work">
-    <div class="section-header white">
-      <span class="eyebrow">Current Focus</span>
-      <h2>Featured Projects</h2>
-      <p class="lead">Building the future of AI-human interaction through ethical, ergonomic technology.</p>
-    </div>
-    
-    {"".join(generate_current_project_card(p) for p in CURRENT_PROJECTS)}
-  </section>
-
   <!-- Waken AI Featured Callout -->
   <section class="waken-callout" id="waken">
     <div class="waken-inner">
@@ -3109,6 +3098,17 @@ nav a:hover {{
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- Current Work -->
+  <section class="section" id="work">
+    <div class="section-header white">
+      <span class="eyebrow">Current Focus</span>
+      <h2>Featured Projects</h2>
+      <p class="lead">Building the future of AI-human interaction through ethical, ergonomic technology.</p>
+    </div>
+
+    {"".join(generate_current_project_card(p) for p in CURRENT_PROJECTS)}
   </section>
 
   <!-- TwinChat Paper Callout -->
