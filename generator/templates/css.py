@@ -3918,6 +3918,8 @@ SIGNAL_STYLES += r'''
 /* Each chapter and card has scroll-linked depth, independently of its content. */
 .has-scroll-depth { position: relative; isolation: isolate; }
 .scroll-depth-layer { position: absolute; inset: 24px 2%; z-index: -1; pointer-events: none; border-radius: 24px; background: radial-gradient(ellipse at 92% var(--scroll-depth-light,38%),rgba(117,225,244,.09),transparent 65%),radial-gradient(ellipse at 12% 75%,rgba(158,137,255,.035),transparent 65%); transform: translate3d(0,var(--scroll-depth-y,0px),0); }
+/* Edge-positioned light must fade out before its decorative box ends. */
+.scroll-depth-layer { -webkit-mask-image: radial-gradient(ellipse closest-side, #000 35%, transparent 100%); mask-image: radial-gradient(ellipse closest-side, #000 35%, transparent 100%); }
 html[data-motion-quality="calm"] .scroll-depth-layer { background: none; }
 .section-header { translate: 0 calc(var(--scroll-depth-y,0px) * .35); }
 .depth-rig, .work-orbit { translate: 0 var(--scroll-depth-y,0px); }

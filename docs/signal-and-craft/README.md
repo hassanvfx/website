@@ -91,3 +91,7 @@ Additional details: [Meme Arcade desktop](captures/after-memearcade-desktop.jpg)
 Verification caught and corrected intrinsic grid-width overflow at 200% text, header measurement feedback, a carousel Pause/focus ordering issue, the universal video aspect ratio, and screenshot viewport/export-size mismatches. Capture exports were identified as JPEG and given matching extensions.
 
 No physical iPhone/Android testing, touch-hardware scrolling, full assistive-technology audit, cross-browser certification, exhaustive external-link availability check, or automated cold-network audit was performed. Third-party players remain subject to their own loading, permissions, and availability. The original content’s EB1A/citizenship wording and differing book-count claims were preserved rather than independently fact-checked or rewritten.
+
+## Follow-up: clipped glow edges
+
+Hassan’s footer screenshot revealed rectangular edges where the off-center decorative gradients were clipped before reaching transparency. The shared depth layer now has an elliptical alpha mask that fades to fully transparent at every boundary. This applies to both pages and preserves scroll movement, controls, and layout. Verified the desktop footer at 1440 × 900 and phone layout at 390 × 844, with no horizontal overflow; generation, seven output regressions, and image verification pass. [Corrected footer](captures/footer-glow-fix-desktop.jpg). The original comparison tags, captures, and render hashes above remain tied to the initial redesign commit; this is a subsequent correction.
