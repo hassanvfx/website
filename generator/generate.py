@@ -843,6 +843,16 @@ def generate_books_media():
     </div>
   </section>
 
+  <!-- Press -->
+  <section class="section" id="press" style="padding-top: 0;">
+    <div class="section-header" style="margin-bottom: 40px; margin-top: 24px;">
+      <h2>Press</h2>
+    </div>
+    <div class="press-grid">
+      {generate_press_html()}
+    </div>
+  </section>
+
   <!-- Interviews -->
   <section class="section" id="interviews">
     <div class="section-header">
@@ -851,16 +861,6 @@ def generate_books_media():
     </div>
     <div class="interviews-grid">
       {generate_interviews_html()}
-    </div>
-  </section>
-
-  <!-- Press -->
-  <section class="section" id="press" style="padding-top: 0;">
-    <div class="section-header" style="margin-bottom: 40px; margin-top: 24px;">
-      <h2>Press</h2>
-    </div>
-    <div class="press-grid">
-      {generate_press_html()}
     </div>
   </section>
 
