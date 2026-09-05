@@ -91,9 +91,12 @@ class SiteTests(unittest.TestCase):
         self.assertIn('Prompt Engineering',home)
         self.assertNotIn('TwinChat Paper',home)
         self.assertIn('<h2 id="selected-work-title">Explore Sparks</h2>',home)
+        self.assertLess(home.index('AI Context Engineering'),home.index('Prompt Engineering'))
+        self.assertLess(home.index('Prompt Engineering'),home.index('Agentic Products'))
+        self.assertIn('AI SYSTEMS',home)
         self.assertIn('href="selected-work.html#casual-books" class="selected-work-link">Writing About Trends',home)
-        self.assertIn('href="#clineflow" class="selected-work-link">AI Context & Memory',home)
-        self.assertIn('href="index.html#clineflow">AI Context & Memory',self.pages['selected-work.html'])
+        self.assertIn('href="#clineflow" class="selected-work-link selected-work-link--ai">AI Context Engineering',home)
+        self.assertIn('href="index.html#clineflow">AI Context Engineering',self.pages['selected-work.html'])
         self.assertNotIn('selected-work-link--external',home)
     def test_ultrakam_exit_card_and_coverage(self):
         work=self.pages['selected-work.html']

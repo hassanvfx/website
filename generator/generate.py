@@ -25,15 +25,18 @@ PROFILE_PAGE = "profile.html"
 SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, author, and creator of ClineFlow, building agentic systems, consumer products, and AI platforms."
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
-SELECTED_WORK_ITEMS = [
-    ("Impact & Exits", "impact"),
-    ("Featured Projects", "work"),
+AI_SPARK_ITEMS = [
+    ("AI Context Engineering", "clineflow"),
     ("Prompt Engineering", "twinchat-paper"),
+    ("Agentic Products", "work"),
+]
+OTHER_SPARK_ITEMS = [
+    ("Impact & Exits", "impact"),
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
     ("Writing About Trends", "casual-books"),
-    ("AI Context & Memory", "clineflow"),
 ]
+SELECTED_WORK_ITEMS = AI_SPARK_ITEMS + OTHER_SPARK_ITEMS
 IMAGE_MANIFEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_manifest.json")
 
 
@@ -248,19 +251,38 @@ def generate_footer_bio_html():
 
 def generate_selected_work_grid(page="home"):
     """Generate the small home-page gateway to the Selected Work page."""
-    links = "\n        ".join(
-        f'<a href="{resolve_navigation_href(f"#{section_id}", page)}" class="selected-work-link">{label}<span aria-hidden="true">→</span></a>'
-        for label, section_id in SELECTED_WORK_ITEMS
-    )
+    def links(items, modifier=""):
+        return "\n          ".join(
+            f'<a href="{resolve_navigation_href(f"#{section_id}", page)}" class="selected-work-link{modifier}">{label}<span aria-hidden="true">→</span></a>'
+            for label, section_id in items
+        )
+
+    ai_links = links(AI_SPARK_ITEMS, " selected-work-link--ai")
+    other_links = links(OTHER_SPARK_ITEMS)
     return f'''
   <!-- Selected Work Gateway -->
   <section class="selected-work-gateway" aria-labelledby="selected-work-title">
     <div class="selected-work-gateway-inner">
       <span class="eyebrow">Selected Work</span>
       <h2 id="selected-work-title">Explore Sparks</h2>
-      <div class="selected-work-grid">
-        {links}
-      </div>
+      <section class="selected-work-topic-group selected-work-topic-group--ai" aria-labelledby="ai-sparks-title">
+        <div class="selected-work-topic-heading">
+          <p id="ai-sparks-title">AI SYSTEMS</p>
+          <span>Context, prompts, and products</span>
+        </div>
+        <div class="selected-work-grid selected-work-grid--ai">
+          {ai_links}
+        </div>
+      </section>
+      <section class="selected-work-topic-group" aria-labelledby="more-sparks-title">
+        <div class="selected-work-topic-heading">
+          <p id="more-sparks-title">MORE SPARKS</p>
+          <span>Venture, research, and creative work</span>
+        </div>
+        <div class="selected-work-grid">
+          {other_links}
+        </div>
+      </section>
     </div>
   </section>
 '''

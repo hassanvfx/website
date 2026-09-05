@@ -3668,6 +3668,15 @@ img { max-width: 100%; }
 .selected-work-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
 .selected-work-link { background: var(--surface);  border-radius: 4px; padding: 24px; min-height: 88px; font-size: 1rem; color: var(--paper); }
 .selected-work-link:hover { transform: none; background: #14232e;  }
+.selected-work-topic-group + .selected-work-topic-group { margin-top: 32px; }
+.selected-work-topic-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin: 0 0 12px; text-align: left; }
+.selected-work-topic-heading p { margin: 0; color: var(--paper); font-size: .7rem; font-weight: 700; letter-spacing: .18em; }
+.selected-work-topic-heading span { color: var(--muted); font-size: .78rem; }
+.selected-work-topic-group--ai { padding: 20px; background: linear-gradient(115deg, rgba(0, 194, 255, .1), rgba(98, 214, 240, .025) 58%, transparent); border-radius: 8px; }
+.selected-work-topic-group--ai .selected-work-topic-heading { margin-bottom: 16px; }
+.selected-work-topic-group--ai .selected-work-topic-heading p, .selected-work-link--ai span { color: #69e4ff; }
+.selected-work-link--ai { background: rgba(12, 36, 47, .86); box-shadow: inset 0 1px 0 rgba(128, 233, 255, .12); }
+.selected-work-link--ai:hover, .selected-work-link--ai:focus-visible { background: rgba(18, 57, 72, .98); }
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }
@@ -4156,15 +4165,29 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="selected-work-gateway-inner">
       <span class="eyebrow">Selected Work</span>
       <h2 id="selected-work-title">Explore Sparks</h2>
-      <div class="selected-work-grid">
-        <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#work" class="selected-work-link">Featured Projects<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#twinchat-paper" class="selected-work-link">Prompt Engineering<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#casual-books" class="selected-work-link">Writing About Trends<span aria-hidden="true">→</span></a>
-        <a href="#clineflow" class="selected-work-link">AI Context & Memory<span aria-hidden="true">→</span></a>
-      </div>
+      <section class="selected-work-topic-group selected-work-topic-group--ai" aria-labelledby="ai-sparks-title">
+        <div class="selected-work-topic-heading">
+          <p id="ai-sparks-title">AI SYSTEMS</p>
+          <span>Context, prompts, and products</span>
+        </div>
+        <div class="selected-work-grid selected-work-grid--ai">
+          <a href="#clineflow" class="selected-work-link selected-work-link--ai">AI Context Engineering<span aria-hidden="true">→</span></a>
+          <a href="selected-work.html#twinchat-paper" class="selected-work-link selected-work-link--ai">Prompt Engineering<span aria-hidden="true">→</span></a>
+          <a href="selected-work.html#work" class="selected-work-link selected-work-link--ai">Agentic Products<span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="selected-work-topic-group" aria-labelledby="more-sparks-title">
+        <div class="selected-work-topic-heading">
+          <p id="more-sparks-title">MORE SPARKS</p>
+          <span>Venture, research, and creative work</span>
+        </div>
+        <div class="selected-work-grid">
+          <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
+          <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
+          <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
+          <a href="selected-work.html#casual-books" class="selected-work-link">Writing About Trends<span aria-hidden="true">→</span></a>
+        </div>
+      </section>
     </div>
   </section>
 
