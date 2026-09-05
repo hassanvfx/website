@@ -517,10 +517,11 @@ def generate_filmography_section():
 '''
 
 
-def generate_books_html():
-    """Generate books section"""
+def generate_books_html(books=None):
+    """Generate book cards for the requested collection."""
+    books = BOOKS if books is None else books
     items = []
-    for book in BOOKS:
+    for book in books:
         press_html = f'<p class="press">{book["press"]}</p>' if book.get("press") else ""
         target = "" if book.get("local") else ' target="_blank"'
         cover_class = "book-cover book-cover--portrait" if book.get("portrait_cover") else "book-cover"
@@ -617,6 +618,7 @@ def render_portfolio(page="home"):
   <script type="application/ld+json">{structured_data}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
 {CSS_STYLES}
 
@@ -2973,6 +2975,134 @@ nav a:hover {{
   .selected-work-gateway {{ padding: 64px 16px; }}
   .selected-work-grid {{ grid-template-columns: 1fr; }}
 }}
+
+/* Persistent booking CTA */
+:root {{
+  --booking-bar-height: 82px;
+}}
+body {{
+  padding-bottom: calc(var(--booking-bar-height) + 32px + env(safe-area-inset-bottom));
+}}
+.booking-call-bar {{
+  position: fixed;
+  z-index: 998;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: min(calc(100% - 32px), 900px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 11px 11px 11px 22px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 18px;
+  background: rgba(8, 8, 12, 0.88);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5), 0 0 32px rgba(0, 212, 255, 0.08);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}}
+.booking-call-copy {{
+  min-width: 0;
+}}
+.booking-call-kicker {{
+  display: block;
+  margin-bottom: 1px;
+  color: #00d4ff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}}
+.booking-call-title {{
+  display: block;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.8vw, 1.28rem);
+  line-height: 1.25;
+}}
+.booking-call-note {{
+  display: block;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.76rem;
+  line-height: 1.35;
+}}
+.booking-call-cta {{
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 50px;
+  padding: 0 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+  color: #050505;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.18);
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}}
+.booking-call-cta .fa-video {{
+  font-size: 0.96em;
+}}
+.booking-call-arrow {{
+  margin-left: 0.05em;
+}}
+.booking-call-cta:hover,
+.booking-call-cta:focus-visible {{
+  color: #050505 !important;
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.28);
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}}
+@media (max-width: 640px) {{
+  :root {{ --booking-bar-height: 132px; }}
+  body {{
+    padding-bottom: calc(var(--booking-bar-height) + 20px + env(safe-area-inset-bottom));
+  }}
+  .booking-call-bar {{
+    bottom: max(10px, env(safe-area-inset-bottom));
+    width: calc(100% - 20px);
+    display: grid;
+    justify-content: stretch;
+    gap: 9px;
+    padding: 12px;
+    border-radius: 16px;
+  }}
+  .booking-call-copy {{
+    padding: 0 3px;
+  }}
+  .booking-call-kicker {{
+    font-size: 0.61rem;
+  }}
+  .booking-call-title {{
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }}
+  .booking-call-note {{
+    font-size: 0.7rem;
+  }}
+  .booking-call-cta {{
+    width: auto;
+    min-height: 48px;
+    border-radius: 11px;
+  }}
+}}
+@media (max-width: 370px) {{
+  .booking-call-note {{ display: none; }}
+}}
+@media (prefers-reduced-motion: reduce) {{
+  .booking-call-cta {{ transition: none; }}
+}}
   </style>
 </head>
 <body>
@@ -3154,6 +3284,17 @@ nav a:hover {{
   <!-- Filmography -->
   {generate_filmography_section()}
 
+  <!-- Casual & Trending Books -->
+  <section class="section" id="casual-books">
+    <div class="section-header white">
+      <span class="eyebrow">Published Works</span>
+      <h2>Casual & Trending Books</h2>
+    </div>
+    <div class="books-grid">
+      {generate_books_html(BOOKS[2:])}
+    </div>
+  </section>
+
   <!-- Books -->
   <section class="section" id="books">
     <div class="section-header white">
@@ -3162,7 +3303,7 @@ nav a:hover {{
     </div>
     {generate_featured_book(FEATURED_BOOKS[0]).strip()}
     <div class="books-grid">
-      {generate_books_html()}
+      {generate_books_html(BOOKS[:2])}
     </div>
   </section>
 
@@ -3216,7 +3357,30 @@ nav a:hover {{
     <p class="copyright">© 2025 Hassan Uriostegui. All rights reserved.</p>
   </footer>
 
+  <!-- Persistent Booking CTA -->
+  <aside class="booking-call-bar" aria-label="Book a consultation with Hassan Uriostegui">
+    <div class="booking-call-copy">
+      <span class="booking-call-kicker">One-on-one conversation</span>
+      <strong class="booking-call-title">Have a project or idea worth exploring?</strong>
+      <span class="booking-call-note">Choose a time that works for you.</span>
+    </div>
+    <a href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer" class="booking-call-cta"><i class="fa-solid fa-video" aria-hidden="true"></i><span>Book a call with Hassan</span><span class="booking-call-arrow" aria-hidden="true">→</span></a>
+  </aside>
+
   <script>
+    // Keep generated page content clear of the fixed booking bar at every viewport size.
+    const bookingCallBar = document.querySelector('.booking-call-bar');
+    const syncBookingBarHeight = () => {{
+      if (!bookingCallBar) return;
+      document.documentElement.style.setProperty('--booking-bar-height', `${{Math.ceil(bookingCallBar.getBoundingClientRect().height)}}px`);
+    }};
+    syncBookingBarHeight();
+    if ('ResizeObserver' in window && bookingCallBar) {{
+      new ResizeObserver(syncBookingBarHeight).observe(bookingCallBar);
+    }} else {{
+      window.addEventListener('resize', syncBookingBarHeight);
+    }}
+
     // Preserve links to sections that now live on Selected Work.
     const legacySelectedWorkHashes = new Set({sorted(SELECTED_WORK_SECTION_IDS)!r});
     if ("{page}" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {{
