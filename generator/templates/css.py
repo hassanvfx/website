@@ -3951,7 +3951,7 @@ SIGNAL_STYLES += r'''
   transform-origin: center;
 }
 .scene-row.is-arriving::after, .motion-frame.is-arriving::after {
-  animation: var(--scene-animation,scene-bloom) var(--scene-duration,800ms) cubic-bezier(.2,.75,.2,1) both;
+  animation: var(--scene-animation,scene-bloom) var(--scene-duration,800ms) cubic-bezier(.22,.61,.36,1) var(--entrance-delay,0ms) 1 both;
 }
 .scene-row[data-scene="memory-flow"]::after,
 .scene-row[data-scene="masthead"]::after,
@@ -3973,9 +3973,10 @@ SIGNAL_STYLES += r'''
   background: linear-gradient(105deg,transparent 25%,rgba(var(--scene-color),.12) 47%,rgba(var(--scene-color),.03) 58%,transparent 80%);
 }
 @keyframes scene-bloom {
-  0% { opacity:0; transform:scale(.72); }
-  45% { opacity:1; }
-  100% { opacity:0; transform:scale(1.04); }
+  0% { opacity:0; transform:scale(.8); }
+  40% { opacity:.9; transform:scale(.98); }
+  70% { opacity:.5; transform:scale(1.02); }
+  100% { opacity:0; transform:scale(1.06); }
 }
 @keyframes scene-rise {
   0% { opacity:0; transform:translateY(28px) scaleY(.6); }
@@ -3988,14 +3989,16 @@ SIGNAL_STYLES += r'''
   100% { opacity:0; transform:translateX(calc(var(--scene-direction,1) * 20px)) scaleX(1); }
 }
 @keyframes scene-scan {
-  0% { opacity:0; transform:translateX(-24px) skewX(-8deg) scaleX(.45); }
-  35% { opacity:1; }
+  0% { opacity:0; transform:translateX(-24px) skewX(-6deg) scaleX(.55); }
+  45% { opacity:.9; transform:translateX(0) skewX(-2deg) scaleX(.95); }
+  75% { opacity:.4; transform:translateX(14px) skewX(0) scaleX(1.02); }
   100% { opacity:0; transform:translateX(24px) skewX(0) scaleX(1.1); }
 }
 @keyframes scene-prism {
-  0% { opacity:0; transform:rotate(-4deg) scale(.78); }
-  40% { opacity:1; }
-  100% { opacity:0; transform:rotate(3deg) scale(1.03); }
+  0% { opacity:0; transform:rotate(-3deg) scale(.86); }
+  50% { opacity:.9; transform:rotate(0) scale(.99); }
+  75% { opacity:.4; transform:rotate(1deg) scale(1.01); }
+  100% { opacity:0; transform:rotate(2deg) scale(1.03); }
 }
 @keyframes scene-spotlight {
   0% { opacity:0; transform:translateY(-20px) scale(.86); }
@@ -4013,8 +4016,9 @@ SIGNAL_STYLES += r'''
   100% { opacity:0; transform:perspective(1000px) rotateY(calc(var(--scene-direction,1) * 8deg)) translateX(calc(var(--scene-direction,1) * 16px)); }
 }
 @keyframes scene-curtain {
-  0% { opacity:0; transform:scaleX(.3); }
-  45% { opacity:1; }
+  0% { opacity:0; transform:scale(.45,.94); }
+  40% { opacity:.9; transform:scale(.88,1); }
+  75% { opacity:.4; transform:scale(1.02,1); }
   100% { opacity:0; transform:scaleX(1.05); }
 }
 @keyframes scene-orbit {
@@ -4029,6 +4033,7 @@ SIGNAL_STYLES += r'''
 @keyframes scene-mobile { 0%,100% { opacity:0; } 45% { opacity:.6; } }
 .scene-row.is-arriving.motion-offscreen::after,
 .motion-frame.is-arriving.motion-offscreen::after { animation-play-state:paused; }
+:is(.scene-row,.motion-frame)[data-entrance-state="complete"]::after { animation:none; opacity:0; }
 @media (max-width:800px), (hover:none), (pointer:coarse) {
   .scene-row.is-arriving::after, .motion-frame.is-arriving::after { animation-name:scene-mobile; animation-duration:360ms; transform:none; }
   .scroll-depth-layer { transform:none; }

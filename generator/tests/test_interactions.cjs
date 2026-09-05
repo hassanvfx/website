@@ -17,7 +17,7 @@ class Node {
   getAttribute(k) { return this.attrs[k]; }
   closest() { return this.sceneRoot??null; }
   contains(n) { return n===this; }
-  animate(frames,options) { const a={frames,options,state:'running',pause(){this.state='paused'},play(){this.state='running'},cancel(){this.state='cancelled'}}; this.lastAnimation=a; return a; }
+  animate(frames,options) { this.animationCount=(this.animationCount??0)+1; const a={frames,options,state:'running',pause(){this.state='paused'},play(){this.state='running'},cancel(){this.state='cancelled'}}; this.lastAnimation=a; return a; }
 }
 function setup({systemReduced=false,storageFails=false,scene=null}={}) {
   const doc=new Node('document');doc.createElement=()=>new Node();doc.documentElement=new Node('root');doc.body=new Node('body');doc.hidden=false;doc.activeElement=null;
@@ -38,7 +38,7 @@ function setup({systemReduced=false,storageFails=false,scene=null}={}) {
   const context={performance:{now:()=>time},document:doc,window:win,Element:Node,IntersectionObserver:IO,matchMedia,localStorage:{getItem(){if(storageFails)throw Error('blocked');return null},setItem(){if(storageFails)throw Error('blocked')}},location:{hash:'',pathname:'/',replace(){}},URL,navigator:{},requestAnimationFrame:fn=>{frames.set(++frameID,fn);return frameID},cancelAnimationFrame:id=>frames.delete(id),setTimeout:(fn,ms)=>{timers.set(++timerID,{fn,ms});return timerID},clearTimeout:id=>timers.delete(id),console};
   vm.runInNewContext(source,context);
   function visible(el,state){for(const o of observers)if(o.targets.has(el))o.callback([{target:el,isIntersecting:state}])}
-  return {doc,toggle,chapter,carousel,pause,prev,next,position,status,slides,dots,timers,queries,visible,win,frames,advance(ms){time+=ms},flush(){const pending=[...frames.values()];frames.clear();pending.forEach(fn=>fn())}};
+  return {observers,reinitialize(){vm.runInNewContext(source,context)},doc,toggle,chapter,carousel,pause,prev,next,position,status,slides,dots,timers,queries,visible,win,frames,advance(ms){time+=ms},flush(){const pending=[...frames.values()];frames.clear();pending.forEach(fn=>fn())}};
 }
 const tests=[];function test(name,fn){fn();tests.push(name);console.log('PASS',name)}
 test('Autoplay waits for visibility, advances every 3000ms, and stops on interaction',()=>{
@@ -63,8 +63,8 @@ test('Reduced motion disables auto but preserves manual slide navigation',()=>{
 test('Storage failures do not break toggle or canceling an active entrance',()=>{
  const t=setup({storageFails:true});t.visible(t.chapter,true);assert.equal(t.chapter.lastAnimation.state,'running');t.toggle.fire('click');assert.equal(t.doc.documentElement.dataset.reducedMotion,'true');assert.equal(t.chapter.lastAnimation.state,'cancelled');
 });
-test('Offscreen entrances pause and complete without retaining transforms',()=>{
- const t=setup();t.visible(t.chapter,true);const animation=t.chapter.lastAnimation;t.visible(t.chapter,false);assert.equal(animation.state,'paused');t.visible(t.chapter,true);assert.equal(animation.state,'running');animation.onfinish();assert.equal(animation.state,'cancelled');
+test('Leaving the viewport settles an entrance so returning cannot resume it halfway',()=>{
+ const t=setup();t.visible(t.chapter,true);const animation=t.chapter.lastAnimation;t.visible(t.chapter,false);assert.equal(animation.state,'cancelled');assert.equal(t.chapter.dataset.entranceState,'complete');t.visible(t.chapter,true);assert.equal(t.chapter.animationCount,1);assert.equal(t.chapter.classes.has('is-arriving'),false);
 });
 test('Keyboard pagination announces a stable selected slide and stops autoplay',()=>{
  const t=setup();t.visible(t.carousel,true);let prevented=false;t.carousel.fire('keydown',{key:'ArrowRight',preventDefault(){prevented=true}});assert.equal(prevented,true);assert.equal(t.position.textContent,'2 / 3');assert.match(t.status.textContent,/Screen 2/);assert.equal(t.dots[1].attrs['aria-current'],'true');assert.equal(t.timers.size,0);
@@ -84,9 +84,25 @@ test('Sustained slow requested frames simplify depth, then retain a static visit
 });
 test('Rows receive distinct identities while interactive chapter geometry stays fixed',()=>{
  const memory=setup({scene:'#clineflow'}), arcade=setup({scene:'#memearcade'}), film=setup({scene:'#filmography'});
- for(const t of [memory,arcade,film]){t.visible(t.chapter,true);assert.ok(t.chapter.lastAnimation.frames.every(frame=>!('transform' in frame)));assert.equal(t.chapter.children[0].attrs['aria-hidden'],'true')}
+ for(const t of [memory,arcade,film]){t.visible(t.chapter,true);assert.ok(t.chapter.lastAnimation.frames.every(frame=>!('transform' in frame)&&frame.opacity===1));assert.equal(t.chapter.children[0].attrs['aria-hidden'],'true')}
  assert.equal(memory.chapter.dataset.transition,'memory-flow');assert.equal(arcade.chapter.dataset.transition,'arcade-pop');assert.equal(film.chapter.dataset.transition,'cinema-curtain');
  assert.equal(memory.chapter.style['--scene-animation'],'scene-scan');assert.equal(arcade.chapter.style['--scene-animation'],'scene-prism');assert.equal(film.chapter.style['--scene-animation'],'scene-curtain');
  memory.doc.hidden=true;memory.doc.fire('visibilitychange');assert.equal(memory.chapter.lastAnimation.state,'paused');memory.toggle.fire('click');assert.equal(memory.chapter.lastAnimation.state,'cancelled');
+});
+test('Completed entrances never replay after scroll, motion toggles, or page restore',()=>{
+ const t=setup({scene:'#clineflow'});t.visible(t.chapter,true);const animation=t.chapter.lastAnimation;
+ assert.equal(t.chapter.dataset.entranceState,'running');assert.equal(animation.options.iterations,1);
+ animation.onfinish();assert.equal(t.chapter.dataset.entranceState,'complete');assert.equal(t.chapter.animationCount,1);
+ t.visible(t.chapter,false);t.visible(t.chapter,true);t.toggle.fire('click');t.toggle.fire('click');t.win.fire('pageshow',{persisted:true});t.visible(t.chapter,true);
+ assert.equal(t.chapter.animationCount,1);assert.equal(t.chapter.classes.has('is-arriving'),false);
+});
+test('Reinitialization creates no duplicate listeners, layers, observers, or timers',()=>{
+ const t=setup();t.visible(t.carousel,true);const observers=t.observers.length,layers=t.chapter.children.length,scrollListeners=t.win.listeners.scroll.length;
+ t.reinitialize();assert.equal(t.observers.length,observers);assert.equal(t.chapter.children.length,layers);assert.equal(t.win.listeners.scroll.length,scrollListeners);assert.equal(t.timers.size,1);
+});
+test('A page-cache restore settles an interrupted entrance without replaying it',()=>{
+ const t=setup();t.visible(t.chapter,true);const animation=t.chapter.lastAnimation;t.doc.hidden=true;t.doc.fire('visibilitychange');
+ t.win.fire('pageshow',{persisted:true});assert.equal(animation.state,'cancelled');assert.equal(t.chapter.dataset.entranceState,'complete');
+ t.doc.hidden=false;t.doc.fire('visibilitychange');t.visible(t.chapter,true);assert.equal(t.chapter.animationCount,1);
 });
 console.log(`${tests.length} controller tests passed.`);

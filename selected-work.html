@@ -3957,7 +3957,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   transform-origin: center;
 }
 .scene-row.is-arriving::after, .motion-frame.is-arriving::after {
-  animation: var(--scene-animation,scene-bloom) var(--scene-duration,800ms) cubic-bezier(.2,.75,.2,1) both;
+  animation: var(--scene-animation,scene-bloom) var(--scene-duration,800ms) cubic-bezier(.22,.61,.36,1) var(--entrance-delay,0ms) 1 both;
 }
 .scene-row[data-scene="memory-flow"]::after,
 .scene-row[data-scene="masthead"]::after,
@@ -3979,9 +3979,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   background: linear-gradient(105deg,transparent 25%,rgba(var(--scene-color),.12) 47%,rgba(var(--scene-color),.03) 58%,transparent 80%);
 }
 @keyframes scene-bloom {
-  0% { opacity:0; transform:scale(.72); }
-  45% { opacity:1; }
-  100% { opacity:0; transform:scale(1.04); }
+  0% { opacity:0; transform:scale(.8); }
+  40% { opacity:.9; transform:scale(.98); }
+  70% { opacity:.5; transform:scale(1.02); }
+  100% { opacity:0; transform:scale(1.06); }
 }
 @keyframes scene-rise {
   0% { opacity:0; transform:translateY(28px) scaleY(.6); }
@@ -3994,14 +3995,16 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   100% { opacity:0; transform:translateX(calc(var(--scene-direction,1) * 20px)) scaleX(1); }
 }
 @keyframes scene-scan {
-  0% { opacity:0; transform:translateX(-24px) skewX(-8deg) scaleX(.45); }
-  35% { opacity:1; }
+  0% { opacity:0; transform:translateX(-24px) skewX(-6deg) scaleX(.55); }
+  45% { opacity:.9; transform:translateX(0) skewX(-2deg) scaleX(.95); }
+  75% { opacity:.4; transform:translateX(14px) skewX(0) scaleX(1.02); }
   100% { opacity:0; transform:translateX(24px) skewX(0) scaleX(1.1); }
 }
 @keyframes scene-prism {
-  0% { opacity:0; transform:rotate(-4deg) scale(.78); }
-  40% { opacity:1; }
-  100% { opacity:0; transform:rotate(3deg) scale(1.03); }
+  0% { opacity:0; transform:rotate(-3deg) scale(.86); }
+  50% { opacity:.9; transform:rotate(0) scale(.99); }
+  75% { opacity:.4; transform:rotate(1deg) scale(1.01); }
+  100% { opacity:0; transform:rotate(2deg) scale(1.03); }
 }
 @keyframes scene-spotlight {
   0% { opacity:0; transform:translateY(-20px) scale(.86); }
@@ -4019,8 +4022,9 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   100% { opacity:0; transform:perspective(1000px) rotateY(calc(var(--scene-direction,1) * 8deg)) translateX(calc(var(--scene-direction,1) * 16px)); }
 }
 @keyframes scene-curtain {
-  0% { opacity:0; transform:scaleX(.3); }
-  45% { opacity:1; }
+  0% { opacity:0; transform:scale(.45,.94); }
+  40% { opacity:.9; transform:scale(.88,1); }
+  75% { opacity:.4; transform:scale(1.02,1); }
   100% { opacity:0; transform:scaleX(1.05); }
 }
 @keyframes scene-orbit {
@@ -4035,6 +4039,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 @keyframes scene-mobile { 0%,100% { opacity:0; } 45% { opacity:.6; } }
 .scene-row.is-arriving.motion-offscreen::after,
 .motion-frame.is-arriving.motion-offscreen::after { animation-play-state:paused; }
+:is(.scene-row,.motion-frame)[data-entrance-state="complete"]::after { animation:none; opacity:0; }
 @media (max-width:800px), (hover:none), (pointer:coarse) {
   .scene-row.is-arriving::after, .motion-frame.is-arriving::after { animation-name:scene-mobile; animation-duration:360ms; transform:none; }
   .scroll-depth-layer { transform:none; }
@@ -4460,6 +4465,9 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 (() => {
   'use strict';
   const root = document.documentElement;
+  // A second script execution must not install observers, listeners, or layers again.
+  if (root.dataset.signalInitialized === 'true') return;
+  root.dataset.signalInitialized = 'true';
   const header = document.querySelector('.site-header');
   const measureHeader = () => {
     if (header) root.style.setProperty('--header-clearance', `${Math.ceil(header.getBoundingClientRect().height)}px`);
@@ -4516,10 +4524,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       motionButton.disabled = reducedQuery.matches || performanceReduced;
     }
     if (reduced) {
-      for (const [element, record] of animations) {
-        record.animation.cancel(); element.classList.remove('is-arriving');
-      }
-      animations.clear();
+      for (const element of animations.keys()) finishEntrance(element);
     }
     syncPlayback();
   }
@@ -4641,36 +4646,47 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       const direction = index % 2 ? -1 : 1;
       targets.set(element, { kind, scene, direction, delay: (index % 3) * 65 });
       element.dataset.transition = scene.name;
+      element.dataset.entranceState = 'pending';
       element.style.setProperty('--scene-direction', String(direction));
       element.dataset.motion = kind;
       if (kind === 'frame' || kind === 'block') element.classList.add('motion-frame');
     });
   });
   function finishEntrance(element) {
+    seen.add(element);
     const record = animations.get(element);
     if (record) record.animation.cancel();
     animations.delete(element);
     element.classList.remove('is-arriving');
     element.classList.remove('motion-offscreen');
+    element.dataset.entranceState = 'complete';
     entranceObserver?.unobserve(element);
   }
   const entranceObserver = 'IntersectionObserver' in window && Element.prototype.animate ? new IntersectionObserver(entries => {
     for (const entry of entries) {
       const element = entry.target;
       const record = animations.get(element);
-      if (record) { record.visible = entry.isIntersecting; continue; }
-      if (!entry.isIntersecting || seen.has(element)) continue;
+      if (record) {
+        // Fast scrolling consumes the entrance; returning must show a settled row.
+        if (!entry.isIntersecting) finishEntrance(element);
+        continue;
+      }
+      if (!entry.isIntersecting || seen.has(element) || element.dataset.entranceState === 'complete') continue;
       seen.add(element);
-      if (reduced || element.contains(document.activeElement)) { entranceObserver.unobserve(element); continue; }
+      if (reduced || element.contains(document.activeElement)) { finishEntrance(element); continue; }
       const { kind, delay, scene, direction } = targets.get(element);
       const mobile = compactQuery.matches || !fineQuery.matches;
       const duration = mobile ? 360 : scene.duration;
       let frames;
       if (kind === 'chapter' || kind === 'frame') {
-        // Interactive media and their hit areas do not translate or rotate.
-        frames = [{ opacity: .65 }, { opacity: 1 }];
+        // The clock controls decorative light only: nested fades would dim controls.
+        frames = [{ opacity: 1 }, { opacity: 1 }];
       } else if (kind === 'depth' && !mobile) {
-        frames = [{ opacity: .2, transform: 'perspective(1000px) translateY(22px) rotateY(-4deg)' }, { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0)' }];
+        frames = [
+          { opacity: .55, transform: 'perspective(1000px) translateY(20px) rotateY(-4deg) scale(.97)', offset: 0 },
+          { opacity: .95, transform: 'perspective(1000px) translateY(4px) rotateY(-.6deg) scale(.995)', offset: .65 },
+          { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0) scale(1)', offset: 1 }
+        ];
       } else {
         const entrances = {
           rise: 'translateY(24px)',
@@ -4678,10 +4694,13 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
           slide: `translateX(${direction * 22}px)`,
           scale: 'translateY(8px) scale(.975)'
         };
-        frames = [{ opacity: .3, transform: mobile ? 'translateY(8px)' : entrances[scene.entrance] }, { opacity: 1, transform: 'translate(0,0) scale(1)' }];
+        frames = [{ opacity: .55, transform: mobile ? 'translateY(8px)' : entrances[scene.entrance] }, { opacity: 1, transform: 'translate(0,0) scale(1)' }];
       }
-      const animation = element.animate(frames, { duration, delay: mobile ? 0 : delay, easing: 'cubic-bezier(.2,.75,.2,1)', fill: 'backwards' });
+      const entranceDelay = mobile ? 0 : delay;
+      element.style.setProperty('--entrance-delay', `${entranceDelay}ms`);
+      const animation = element.animate(frames, { duration, delay: entranceDelay, iterations: 1, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
       animations.set(element, { animation, visible: true });
+      element.dataset.entranceState = 'running';
       element.classList.add('is-arriving');
       animation.onfinish = () => finishEntrance(element);
     }
@@ -4693,6 +4712,9 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   };
   compactQuery.addEventListener('change', settleEntrances);
   fineQuery.addEventListener('change', settleEntrances);
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) { settleEntrances(); syncPlayback(); }
+  });
   document.addEventListener('focusin', event => {
     for (const element of animations.keys()) if (element.contains(event.target)) finishEntrance(element);
   });

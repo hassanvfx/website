@@ -128,6 +128,9 @@ INTERACTION_SCRIPT = r'''
 (() => {
   'use strict';
   const root = document.documentElement;
+  // A second script execution must not install observers, listeners, or layers again.
+  if (root.dataset.signalInitialized === 'true') return;
+  root.dataset.signalInitialized = 'true';
   const header = document.querySelector('.site-header');
   const measureHeader = () => {
     if (header) root.style.setProperty('--header-clearance', `${Math.ceil(header.getBoundingClientRect().height)}px`);
@@ -184,10 +187,7 @@ INTERACTION_SCRIPT = r'''
       motionButton.disabled = reducedQuery.matches || performanceReduced;
     }
     if (reduced) {
-      for (const [element, record] of animations) {
-        record.animation.cancel(); element.classList.remove('is-arriving');
-      }
-      animations.clear();
+      for (const element of animations.keys()) finishEntrance(element);
     }
     syncPlayback();
   }
@@ -309,36 +309,47 @@ INTERACTION_SCRIPT = r'''
       const direction = index % 2 ? -1 : 1;
       targets.set(element, { kind, scene, direction, delay: (index % 3) * 65 });
       element.dataset.transition = scene.name;
+      element.dataset.entranceState = 'pending';
       element.style.setProperty('--scene-direction', String(direction));
       element.dataset.motion = kind;
       if (kind === 'frame' || kind === 'block') element.classList.add('motion-frame');
     });
   });
   function finishEntrance(element) {
+    seen.add(element);
     const record = animations.get(element);
     if (record) record.animation.cancel();
     animations.delete(element);
     element.classList.remove('is-arriving');
     element.classList.remove('motion-offscreen');
+    element.dataset.entranceState = 'complete';
     entranceObserver?.unobserve(element);
   }
   const entranceObserver = 'IntersectionObserver' in window && Element.prototype.animate ? new IntersectionObserver(entries => {
     for (const entry of entries) {
       const element = entry.target;
       const record = animations.get(element);
-      if (record) { record.visible = entry.isIntersecting; continue; }
-      if (!entry.isIntersecting || seen.has(element)) continue;
+      if (record) {
+        // Fast scrolling consumes the entrance; returning must show a settled row.
+        if (!entry.isIntersecting) finishEntrance(element);
+        continue;
+      }
+      if (!entry.isIntersecting || seen.has(element) || element.dataset.entranceState === 'complete') continue;
       seen.add(element);
-      if (reduced || element.contains(document.activeElement)) { entranceObserver.unobserve(element); continue; }
+      if (reduced || element.contains(document.activeElement)) { finishEntrance(element); continue; }
       const { kind, delay, scene, direction } = targets.get(element);
       const mobile = compactQuery.matches || !fineQuery.matches;
       const duration = mobile ? 360 : scene.duration;
       let frames;
       if (kind === 'chapter' || kind === 'frame') {
-        // Interactive media and their hit areas do not translate or rotate.
-        frames = [{ opacity: .65 }, { opacity: 1 }];
+        // The clock controls decorative light only: nested fades would dim controls.
+        frames = [{ opacity: 1 }, { opacity: 1 }];
       } else if (kind === 'depth' && !mobile) {
-        frames = [{ opacity: .2, transform: 'perspective(1000px) translateY(22px) rotateY(-4deg)' }, { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0)' }];
+        frames = [
+          { opacity: .55, transform: 'perspective(1000px) translateY(20px) rotateY(-4deg) scale(.97)', offset: 0 },
+          { opacity: .95, transform: 'perspective(1000px) translateY(4px) rotateY(-.6deg) scale(.995)', offset: .65 },
+          { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0) scale(1)', offset: 1 }
+        ];
       } else {
         const entrances = {
           rise: 'translateY(24px)',
@@ -346,10 +357,13 @@ INTERACTION_SCRIPT = r'''
           slide: `translateX(${direction * 22}px)`,
           scale: 'translateY(8px) scale(.975)'
         };
-        frames = [{ opacity: .3, transform: mobile ? 'translateY(8px)' : entrances[scene.entrance] }, { opacity: 1, transform: 'translate(0,0) scale(1)' }];
+        frames = [{ opacity: .55, transform: mobile ? 'translateY(8px)' : entrances[scene.entrance] }, { opacity: 1, transform: 'translate(0,0) scale(1)' }];
       }
-      const animation = element.animate(frames, { duration, delay: mobile ? 0 : delay, easing: 'cubic-bezier(.2,.75,.2,1)', fill: 'backwards' });
+      const entranceDelay = mobile ? 0 : delay;
+      element.style.setProperty('--entrance-delay', `${entranceDelay}ms`);
+      const animation = element.animate(frames, { duration, delay: entranceDelay, iterations: 1, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
       animations.set(element, { animation, visible: true });
+      element.dataset.entranceState = 'running';
       element.classList.add('is-arriving');
       animation.onfinish = () => finishEntrance(element);
     }
@@ -361,6 +375,9 @@ INTERACTION_SCRIPT = r'''
   };
   compactQuery.addEventListener('change', settleEntrances);
   fineQuery.addEventListener('change', settleEntrances);
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) { settleEntrances(); syncPlayback(); }
+  });
   document.addEventListener('focusin', event => {
     for (const element of animations.keys()) if (element.contains(event.target)) finishEntrance(element);
   });
