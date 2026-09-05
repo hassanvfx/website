@@ -87,7 +87,7 @@ STATS = [
     {"value": "40M+", "label": "Users Impacted"},
     {"value": "$6M+", "label": "Funding Raised"},
     {"value": "3", "label": "Startup Exits"},
-    {"value": "7", "label": "Books Published"},
+    {"value": "3", "label": "Books Published"},
 ]
 
 # Primary navigation
