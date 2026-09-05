@@ -104,7 +104,7 @@ NAV_ITEMS = [
 SUBMENU_ITEMS = [
     {"label": "IMPACT", "href": "#impact"},
     {"label": "RESEARCH", "href": "#waken"},
-    {"label": "FILMS", "href": "#filmography"},
+    {"label": "HOBBIES", "href": "#filmography"},
     {"label": "PRESS", "href": "#press"},
     {"label": "CONTACT", "href": "#contact"},
 ]
