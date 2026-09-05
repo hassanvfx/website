@@ -250,6 +250,28 @@ CURRENT_PROJECTS = [
         "quote": "Headlines in. Original YouTube-ready music videos out."
     },
     {
+        "id": "lyrics-refiner",
+        "name": "Lyrics Refiner",
+        "year": "Current",
+        "description": "A local creative tool that structures raw Spanish lyrics into performance-ready arrangements, with genre analysis, phonetic suggestions, and staged production directions.",
+        "stats": "Lyrics → arrangement",
+        "website": "https://github.com/hassanvfx/lyrics-refiner",
+        "link_label": "View on GitHub",
+        "art_label": "LYRIC\nLAB",
+        "quote": "Structure, flow, and performance for Spanish lyrics."
+    },
+    {
+        "id": "kie-api",
+        "name": "KIE API",
+        "year": "Current",
+        "description": "An open-source Python CLI and MCP server for KIE.AI workflows, covering media upload, image, video, chat, Suno audio, and asynchronous job polling.",
+        "stats": "CLI + MCP server",
+        "website": "https://github.com/hassanvfx/kie-api-python",
+        "link_label": "View on GitHub",
+        "art_label": "KIE\nAPI",
+        "quote": "A focused interface for KIE media-generation workflows."
+    },
+    {
         "id": "btwinfriends",
         "name": "BTwin Friends",
         "year": "2024-Present",

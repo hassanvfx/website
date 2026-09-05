@@ -109,9 +109,13 @@ class SiteTests(unittest.TestCase):
     def test_current_projects_follow_the_requested_sequence(self):
         work=self.pages['selected-work.html']
         self.assertLess(work.index('id="brb2me"'),work.index('id="newsmusic"'))
-        self.assertLess(work.index('id="newsmusic"'),work.index('id="btwinfriends"'))
+        self.assertLess(work.index('id="newsmusic"'),work.index('id="lyrics-refiner"'))
+        self.assertLess(work.index('id="lyrics-refiner"'),work.index('id="kie-api"'))
+        self.assertLess(work.index('id="kie-api"'),work.index('id="btwinfriends"'))
         self.assertLess(work.index('id="btwinfriends"'),work.index('id="twinchat"'))
         self.assertIn('href="https://github.com/hassanvfx/newsmusic"',work)
+        self.assertIn('href="https://github.com/hassanvfx/lyrics-refiner"',work)
+        self.assertIn('href="https://github.com/hassanvfx/kie-api-python"',work)
         self.assertIn('View on GitHub',work)
         self.assertIn('An early exploration of cognitive profiling and conversational AI companions.',work)
         self.assertNotIn('The predecessor to modern AI mind simulation.',work)
