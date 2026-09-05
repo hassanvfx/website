@@ -3677,6 +3677,8 @@ img { max-width: 100%; }
 .selected-work-topic-group--ai .selected-work-topic-heading p, .selected-work-link--ai span { color: #69e4ff; }
 .selected-work-link--ai { background: rgba(12, 36, 47, .86); box-shadow: inset 0 1px 0 rgba(128, 233, 255, .12); }
 .selected-work-link--ai:hover, .selected-work-link--ai:focus-visible { background: rgba(18, 57, 72, .98); }
+.project-card-art { display: grid; place-items: center; min-height: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: radial-gradient(circle at 70% 22%, rgba(120, 229, 255, .3), transparent 28%), linear-gradient(135deg, #062734, #0c111c 58%, #24183a); box-shadow: 0 20px 60px rgba(0, 212, 255, .15); }
+.project-card-art span { color: var(--paper); font-family: Inter, sans-serif; font-size: clamp(2rem, 5vw, 4.25rem); font-weight: 700; letter-spacing: -.08em; line-height: .76; text-align: center; text-shadow: 0 0 34px rgba(116, 228, 255, .35); }
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }
@@ -4266,20 +4268,6 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     </div>
 
 
-  <article class="project-card" id="btwinfriends">
-    <div class="card-video">
-      <div class="video-frame" style="--video-ratio: 240 / 240"><iframe src="https://player.vimeo.com/video/1005370651" title="BTwin Friends" width="240" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    <div class="card-content">
-      <span class="highlight">20,000 conversations | 200,000 messages</span>
-      <h3>BTwin Friends</h3>
-      <p class="year">2024-Present</p>
-      <p class="description">Advanced AI platform creating cognitive profiles for conversational simulations. Emotionally responsive AI companions that enhance user interaction with highly accurate personality profiles. Evolution of BRB2Me mind simulation research.</p>
-      <p class="quote">"Our AI delves into the human essence, giving voice to silent thoughts."</p>
-      <a href="https://btwinai.com/" target="_blank" class="btn btn-outline">Visit Website</a>
-    </div>
-  </article>
-
   <article class="project-card" id="brb2me">
     <div class="card-video">
       <div class="video-frame" style="--video-ratio: 426 / 240"><iframe src="https://player.vimeo.com/video/913284078?h=82df73027a" title="BRB2Me" width="426" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
@@ -4294,6 +4282,34 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     </div>
   </article>
 
+  <article class="project-card" id="newsmusic">
+    <div class="card-video project-card-art" aria-hidden="true">
+      <span>NEWS<br />MUSIC</span>
+    </div>
+    <div class="card-content">
+      <span class="highlight">News → music → video</span>
+      <h3>Newsmusic</h3>
+      <p class="year">Current</p>
+      <p class="description">An automated news-to-video generator that turns current reporting into an English-language story, original lyrics, music, visuals, and a YouTube-ready video.</p>
+      <p class="quote">"Headlines in. Original YouTube-ready music videos out."</p>
+      <a href="https://github.com/hassanvfx/newsmusic" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View on GitHub</a>
+    </div>
+  </article>
+
+  <article class="project-card" id="btwinfriends">
+    <div class="card-video">
+      <div class="video-frame" style="--video-ratio: 240 / 240"><iframe src="https://player.vimeo.com/video/1005370651" title="BTwin Friends" width="240" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    </div>
+    <div class="card-content">
+      <span class="highlight">20,000 conversations | 200,000 messages</span>
+      <h3>BTwin Friends</h3>
+      <p class="year">2024-Present</p>
+      <p class="description">Advanced AI platform creating cognitive profiles for conversational simulations. Emotionally responsive AI companions that enhance user interaction with highly accurate personality profiles. Evolution of BRB2Me mind simulation research.</p>
+      <p class="quote">"Our AI delves into the human essence, giving voice to silent thoughts."</p>
+      <a href="https://btwinai.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Visit Website</a>
+    </div>
+  </article>
+
   <article class="project-card" id="twinchat">
     <div class="card-video">
       <div class="video-frame" style="--video-ratio: 240 / 240"><iframe src="https://player.vimeo.com/video/839937602" title="TwinChat" width="240" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
@@ -4304,7 +4320,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <p class="year">2023-Present</p>
       <p class="description">AI-Podcast platform that disrupts social media with 10,000 famous personalities' Mind-Deepfakes. Revolutionary AI that creates compelling conversational experiences with celebrity digital twins.</p>
       <p class="quote">"Unlocking VIP Celebrity conversations through AI."</p>
-      <a href="https://btwinai.com/" target="_blank" class="btn btn-outline">Visit Website</a>
+      <a href="https://btwinai.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Visit Website</a>
     </div>
   </article>
 

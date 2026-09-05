@@ -540,14 +540,22 @@ def generate_meme_arcade_callout():
 def generate_current_project_card(project):
     """Generate current AI project card"""
     video_url = project["videos"][0]["url"] if project.get("videos") else ""
-    website_btn = f'<a href="{project["website"]}" target="_blank" class="btn btn-outline">Visit Website</a>' if project.get("website") else ""
+    if video_url:
+        media = f'''<div class="card-video">
+      {generate_video_frame(video_url, project["name"])}
+    </div>'''
+    else:
+        art_label = escape(project.get("art_label", project["name"])).replace("\n", "<br />")
+        media = f'''<div class="card-video project-card-art" aria-hidden="true">
+      <span>{art_label}</span>
+    </div>'''
+    link_label = escape(project.get("link_label", "Visit Website"))
+    website_btn = f'<a href="{project["website"]}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{link_label}</a>' if project.get("website") else ""
     quote = f'<p class="quote">"{project["quote"]}"</p>' if project.get("quote") else ""
     
     return f'''
   <article class="project-card" id="{project["id"]}">
-    <div class="card-video">
-      {generate_video_frame(video_url, project["name"])}
-    </div>
+    {media}
     <div class="card-content">
       <span class="highlight">{project["stats"]}</span>
       <h3>{project["name"]}</h3>

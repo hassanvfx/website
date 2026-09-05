@@ -228,6 +228,28 @@ WWDC14_FEATURE = {
 # CURRENT AI WORK (2022-2025)
 CURRENT_PROJECTS = [
     {
+        "id": "brb2me",
+        "name": "BRB2Me",
+        "year": "2020-2022",
+        "description": "Pioneering mind simulation platform that laid the foundation for BTwin Friends. Early research into cognitive profiling and conversational AI companions with therapeutic applications.",
+        "stats": "Mind Simulation Pioneer",
+        "videos": [
+            {"url": "https://player.vimeo.com/video/913284078?h=82df73027a", "title": "BRB2Me Demo"},
+        ],
+        "quote": "An early exploration of cognitive profiling and conversational AI companions."
+    },
+    {
+        "id": "newsmusic",
+        "name": "Newsmusic",
+        "year": "Current",
+        "description": "An automated news-to-video generator that turns current reporting into an English-language story, original lyrics, music, visuals, and a YouTube-ready video.",
+        "stats": "News → music → video",
+        "website": "https://github.com/hassanvfx/newsmusic",
+        "link_label": "View on GitHub",
+        "art_label": "NEWS\nMUSIC",
+        "quote": "Headlines in. Original YouTube-ready music videos out."
+    },
+    {
         "id": "btwinfriends",
         "name": "BTwin Friends",
         "year": "2024-Present",
@@ -238,17 +260,6 @@ CURRENT_PROJECTS = [
             {"url": "https://player.vimeo.com/video/1005370651", "title": "BTwin Friends"},
         ],
         "quote": "Our AI delves into the human essence, giving voice to silent thoughts."
-    },
-    {
-        "id": "brb2me",
-        "name": "BRB2Me",
-        "year": "2020-2022",
-        "description": "Pioneering mind simulation platform that laid the foundation for BTwin Friends. Early research into cognitive profiling and conversational AI companions with therapeutic applications.",
-        "stats": "Mind Simulation Pioneer",
-        "videos": [
-            {"url": "https://player.vimeo.com/video/913284078?h=82df73027a", "title": "BRB2Me Demo"},
-        ],
-        "quote": "An early exploration of cognitive profiling and conversational AI companions."
     },
     {
         "id": "twinchat",

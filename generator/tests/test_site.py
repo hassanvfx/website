@@ -108,7 +108,11 @@ class SiteTests(unittest.TestCase):
         self.assertEqual({company['name'] for company in generate.HISTORIC_COMPANIES if company.get('exit')},{'Viddy','Ultrakam','FlyrTV'})
     def test_current_projects_follow_the_requested_sequence(self):
         work=self.pages['selected-work.html']
-        self.assertLess(work.index('id="brb2me"'),work.index('id="twinchat"'))
+        self.assertLess(work.index('id="brb2me"'),work.index('id="newsmusic"'))
+        self.assertLess(work.index('id="newsmusic"'),work.index('id="btwinfriends"'))
+        self.assertLess(work.index('id="btwinfriends"'),work.index('id="twinchat"'))
+        self.assertIn('href="https://github.com/hassanvfx/newsmusic"',work)
+        self.assertIn('View on GitHub',work)
         self.assertIn('An early exploration of cognitive profiling and conversational AI companions.',work)
         self.assertNotIn('The predecessor to modern AI mind simulation.',work)
     def test_spreeai_valuation_and_coverage(self):
