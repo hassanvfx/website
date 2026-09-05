@@ -3257,11 +3257,11 @@ body {{
   <!-- Filmography -->
   {generate_filmography_section()}
 
-  <!-- Writing About Trending -->
+  <!-- Writing About Trends -->
   <section class="section" id="casual-books">
     <div class="section-header white">
       <span class="eyebrow">Published Works</span>
-      <h2>Writing About Trending</h2>
+      <h2>Writing About Trends</h2>
     </div>
     <div class="books-grid">
       {generate_books_html(BOOKS[2:])}
