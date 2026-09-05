@@ -29,6 +29,35 @@ SELECTED_WORK_ITEMS = [
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
 ]
+IMAGE_MANIFEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_manifest.json")
+
+
+def load_image_manifest():
+    """Load the generated-image URLs that are safe to render on the site."""
+    with open(IMAGE_MANIFEST_PATH, encoding="utf-8") as manifest_file:
+        return json.load(manifest_file)
+
+
+IMAGE_MANIFEST = load_image_manifest()
+
+
+def image_attributes(key, loading=None, fetchpriority=None):
+    """Return safe intrinsic image attributes for a manifest-backed asset."""
+    try:
+        asset = IMAGE_MANIFEST[key]
+    except KeyError as error:
+        raise ValueError(f"Unknown image manifest key: {key}") from error
+    attributes = [
+        f'src="{asset["url"]}"',
+        f'width="{asset["width"]}"',
+        f'height="{asset["height"]}"',
+        'decoding="async"',
+    ]
+    if loading:
+        attributes.append(f'loading="{loading}"')
+    if fetchpriority:
+        attributes.append(f'fetchpriority="{fetchpriority}"')
+    return " ".join(attributes)
 
 
 def get_page_metadata(page):
@@ -67,7 +96,7 @@ def generate_structured_data(metadata):
                 "@id": author_id,
                 "name": IDENTITY["name"],
                 "url": f"{SITE_URL}/",
-                "image": IDENTITY["portrait"],
+                "image": IMAGE_MANIFEST[IDENTITY["portrait"]]["url"],
                 "jobTitle": "AI-Native Principal Engineer, Founder, and Author",
                 "sameAs": [link["url"] for link in SOCIAL_LINKS],
                 "knowsAbout": ["Artificial Intelligence", "Context Engineering", "Mobile Product Development", "ClineFlow"],
@@ -207,7 +236,7 @@ def generate_clineflow_section():
   <section class="clineflow-callout clineflow-installer" id="clineflow">
     <div class="clineflow-installer-shell">
       <figure class="clineflow-hero clineflow-installer-hero">
-        <img src="assets/clineflow-hero.jpg" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
+        <img {image_attributes("clineflow-hero", loading="lazy")} alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
       </figure>
       <div class="clineflow-installer-inner">
         <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">{CLINEFLOW["name"]}</a>
@@ -220,7 +249,7 @@ def generate_clineflow_section():
           </div>
         </div>
         <figure class="clineflow-agent-compatibility">
-          <img src="assets/clineflow-agent-compatibility.png" alt="ClineFlow compatibility with major AI coding agents" loading="lazy" />
+          <img {image_attributes("clineflow-agent-compatibility", loading="lazy")} alt="ClineFlow compatibility with major AI coding agents" />
           <figcaption>ClineFlow is supported by all major Agents</figcaption>
         </figure>
         <div class="clineflow-masterclass">
@@ -261,7 +290,7 @@ def generate_professional_profile():
         </div>
         <div id="resumeCanvasWrap" class="professional-profile-canvas-wrap">
           <div class="professional-profile-page-frame">
-            <img id="resumePreview" src="{PROFESSIONAL_PROFILE["preview"]}" alt="{PROFESSIONAL_PROFILE["preview_alt"]}" class="professional-profile-preview" />
+            <img id="resumePreview" {image_attributes(PROFESSIONAL_PROFILE["preview"], loading="lazy")} alt="{PROFESSIONAL_PROFILE["preview_alt"]}" class="professional-profile-preview" />
             <canvas id="resumeCanvas" aria-label="Professional profile PDF page" hidden></canvas>
           </div>
         </div>
@@ -317,11 +346,11 @@ def generate_wwdc14_feature():
       </div>
       <div class="wwdc14-visuals">
         <a href="{WWDC14_FEATURE["pdf_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-slide-link">
-          <img src="{WWDC14_FEATURE["slide_image"]}" alt="{WWDC14_FEATURE["slide_alt"]}" class="wwdc14-slide" />
+          <img {image_attributes(WWDC14_FEATURE["slide_image"], loading="lazy")} alt="{WWDC14_FEATURE["slide_alt"]}" class="wwdc14-slide" />
           <span>WWDC14 Session 709, slide 6</span>
         </a>
         <div class="wwdc14-icon-proof">
-          <img src="{WWDC14_FEATURE["icon_image"]}" alt="{WWDC14_FEATURE["icon_alt"]}" />
+          <img {image_attributes(WWDC14_FEATURE["icon_image"], loading="lazy")} alt="{WWDC14_FEATURE["icon_alt"]}" />
           <p>Ultrakam Remote Control<br /><strong>blue clapperboard icon</strong></p>
         </div>
       </div>
@@ -354,7 +383,7 @@ def generate_citations_section():
       </div>
 
       <a href="{CITATIONS["article_url"]}" target="_blank" rel="noopener noreferrer" class="citations-cover-link">
-        <img src="{CITATIONS["image"]}" alt="{CITATIONS["image_alt"]}" class="citations-cover" />
+        <img {image_attributes(CITATIONS["image"], loading="lazy")} alt="{CITATIONS["image_alt"]}" class="citations-cover" />
         <span>Read the original article on Medium →</span>
       </a>
 
@@ -395,7 +424,7 @@ def generate_featured_book(book):
         {actions_html}
       </div>
       <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
-        <img src="{book["image"]}" alt="{book["image_alt"]}" class="featured-book-cover" />
+        <img {image_attributes(book["image"], loading="lazy")} alt="{book["image_alt"]}" class="featured-book-cover" />
       </a>
     </div>
   </section>
@@ -406,7 +435,7 @@ def generate_meme_arcade_callout():
     """Generate the featured MemeArcade app promotion."""
     screens = "\n        ".join(
         f'''<figure class="meme-arcade-screen-card">
-          <img src="{screen["image"]}" alt="{screen["alt"]}" loading="lazy" />
+          <img {image_attributes(screen["image"], loading="lazy")} alt="{screen["alt"]}" />
           <figcaption>{screen["caption"]}</figcaption>
         </figure>'''
         for screen in MEME_ARCADE["screens"]
@@ -414,7 +443,7 @@ def generate_meme_arcade_callout():
     return f'''
   <section class="meme-arcade-callout" id="memearcade">
     <div class="meme-arcade-inner">
-      <img src="{MEME_ARCADE["icon"]}" alt="{MEME_ARCADE["icon_alt"]}" class="meme-arcade-icon" />
+      <img {image_attributes(MEME_ARCADE["icon"], loading="lazy")} alt="{MEME_ARCADE["icon_alt"]}" class="meme-arcade-icon" />
       <span class="meme-arcade-badge">IPHONE GAME ARCADE</span>
       <h2>{MEME_ARCADE["title"]}</h2>
       <p class="meme-arcade-description">{MEME_ARCADE["description"]}</p>
@@ -525,7 +554,7 @@ def generate_books_html(books=None):
         press_html = f'<p class="press">{book["press"]}</p>' if book.get("press") else ""
         target = "" if book.get("local") else ' target="_blank"'
         cover_class = "book-cover book-cover--portrait" if book.get("portrait_cover") else "book-cover"
-        image_html = f'<img src="{book["image"]}" alt="{book["title"]}" class="{cover_class}" />' if book.get("image") else ""
+        image_html = f'<img {image_attributes(book["image"], loading="lazy")} alt="{book["title"]}" class="{cover_class}" />' if book.get("image") else ""
         
         ebook_html = (
             f'<a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Free Ebook ↗</a>'
@@ -555,7 +584,7 @@ def generate_press_html():
     items = []
     for article in PRESS:
         items.append(f'''<a href="{article["url"]}" target="_blank" class="press-card">
-        <img src="{article["logo"]}" alt="{article["publication"]}" class="press-logo" />
+        <img {image_attributes(article["logo"], loading="lazy")} alt="{article["publication"]}" class="press-logo" />
         <span class="publication">{article["publication"]}</span>
         <h4>{article["headline"]}</h4>
         <p class="excerpt">{article["excerpt"]}</p>
@@ -609,12 +638,12 @@ def render_portfolio(page="home"):
   <meta property="og:title" content="{metadata["title"]}">
   <meta property="og:description" content="{metadata["description"]}">
   <meta property="og:url" content="{canonical_url}">
-  <meta property="og:image" content="{IDENTITY["portrait"]}">
+  <meta property="og:image" content="{SITE_URL}/{IMAGE_MANIFEST[IDENTITY["portrait"]]["url"]}">
   <meta property="og:image:alt" content="Portrait of {IDENTITY["name"]}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{metadata["title"]}">
   <meta name="twitter:description" content="{metadata["description"]}">
-  <meta name="twitter:image" content="{IDENTITY["portrait"]}">
+  <meta name="twitter:image" content="{SITE_URL}/{IMAGE_MANIFEST[IDENTITY["portrait"]]["url"]}">
   <script type="application/ld+json">{structured_data}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -3111,7 +3140,7 @@ body {{
   <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-portrait">
-      <img src="{IDENTITY["portrait"]}" alt="{IDENTITY["name"]}" />
+      <img {image_attributes(IDENTITY["portrait"], fetchpriority="high")} alt="{IDENTITY["name"]}" />
     </div>
     <span class="eyebrow">{IDENTITY["status"]}</span>
     <h1>{IDENTITY["name"]}</h1>
@@ -3131,8 +3160,8 @@ body {{
   <section class="press-showcase" onclick="window.location.href='#interviews'">
     <div class="press-marquee-container">
       <div class="press-logos-scroll">
-        {"".join(f'<div class="press-logo-item"><img src="{logo["logo"]}" alt="{logo["name"]}" /></div>' for logo in PRESS_LOGOS)}
-        {"".join(f'<div class="press-logo-item"><img src="{logo["logo"]}" alt="{logo["name"]}" /></div>' for logo in PRESS_LOGOS)}
+        {"".join(f'<div class="press-logo-item"><img {image_attributes(logo["logo"], loading="lazy")} alt="{logo["name"]}" /></div>' for logo in PRESS_LOGOS)}
+        {"".join(f'<div class="press-logo-item"><img {image_attributes(logo["logo"], loading="lazy")} alt="{logo["name"]}" /></div>' for logo in PRESS_LOGOS)}
       </div>
     </div>
   </section>
@@ -3181,7 +3210,7 @@ body {{
   <section class="waken-callout" id="waken">
     <div class="waken-inner">
       <div class="waken-header">
-        <img src="{WAKEN_AI["logo"]}" alt="{WAKEN_AI["name"]}" class="waken-logo" />
+        <img {image_attributes(WAKEN_AI["logo"], loading="lazy")} alt="{WAKEN_AI["name"]}" class="waken-logo" />
         <h2 class="waken-tagline">{WAKEN_AI["tagline"]}</h2>
         <p class="waken-subtitle">{WAKEN_AI["subtitle"]}</p>
         <p class="waken-description">{WAKEN_AI["description"]}</p>
@@ -3217,7 +3246,7 @@ body {{
   <!-- TwinChat Paper Callout -->
   <section class="clineflow-callout" id="twinchat-paper">
     <div class="clineflow-inner">
-      <img src="{TWINCHAT_PAPER["logo"]}" alt="GitHub" class="clineflow-logo" />
+      <img {image_attributes(TWINCHAT_PAPER["logo"], loading="lazy")} alt="GitHub" class="clineflow-logo" />
       <span class="clineflow-badge">📄 RESEARCH PUBLICATION</span>
       <h2 class="clineflow-title">{TWINCHAT_PAPER["name"]}</h2>
       <p class="clineflow-tagline">{TWINCHAT_PAPER["tagline"]}</p>
@@ -3306,7 +3335,7 @@ body {{
     <div class="bio-content">
       <h2 class="bio-headline">{BIO["headline"]}</h2>
       <figure class="bio-profile-image">
-        <img src="{BIO["image"]}" alt="{BIO["image_alt"]}" loading="lazy" />
+        <img {image_attributes(BIO["image"], loading="lazy")} alt="{BIO["image_alt"]}" />
       </figure>
       <div class="bio-featured-article">
         <div class="article-label">Featured Profile</div>
