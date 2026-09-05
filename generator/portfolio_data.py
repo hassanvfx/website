@@ -8,7 +8,7 @@ IDENTITY = {
     "status": "EB1A Systems Engineer",
     "title": "Silicon Valley Innovator | AI Pioneer | Author",
     "email": "hassan.uriostegui@gmail.com",
-    "portrait": "portrait",
+    "portrait": "https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/db719a43-cc9c-4930-b4f8-21112bb508d3/HassanUriostegui1.jpeg?format=1500w",
     "footer_bio": [
         "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.",
         "His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions."
@@ -22,7 +22,7 @@ PROFESSIONAL_PROFILE = {
     "title": "AI-Native Principal / Founding Engineer",
     "summary": "Building agentic systems, mobile products, and consumer platforms that turn ambitious ideas into resilient, high-impact experiences.",
     "pdf": "assets/hassan-uriostegui-resume-2026-12.pdf",
-    "preview": "resume-preview",
+    "preview": "assets/hassan-uriostegui-resume-2026-12-page-1.png",
     "preview_alt": "First page of Hassan Uriostegui's professional profile and resume.",
     "download_label": "Download Resume (PDF)",
     "open_label": "Open Fullscreen"
@@ -32,7 +32,7 @@ PROFESSIONAL_PROFILE = {
 BIO = {
     "headline": "A Silicon Valley Visionary Shaping the Future of AI",
     "headline_link": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
-    "image": "bio-profile",
+    "image": "assets/hassan-silicon-valley-profile.jpg",
     "image_alt": "Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him.",
     "eb1a_overview": {
         "title": "EB1A Extraordinary Ability Recognition",
@@ -188,10 +188,11 @@ WWDC14_FEATURE = {
     "subtitle": "Ultrakam Remote Control selected for Apple's \"Cross Platform Nearby Networking\" session",
     "description": "In 2014, Apple requested permission to include assets from Ultrakam Remote Control in a Worldwide Developers Conference presentation. The app was subsequently featured in the official WWDC14 Session 709 presentation.",
     "quote": "Selected by Apple as an example of good design.",
-    "slide_image": "wwdc14-slide",
+    "slide_image": "assets/wwdc14-session-709-slide-6.png",
     "slide_alt": "Slide 6 of Apple's WWDC14 Session 709 presentation, showing Ultrakam Remote Control's blue clapperboard and remote-control icon among selected apps.",
-    "icon_image": "ultrakam-icon",
+    "icon_image": "assets/ultrakam-remote-control-icon.png",
     "icon_alt": "Blue Ultrakam Remote Control icon with a movie clapperboard and remote control.",
+    "email_image": "assets/apple-wwdc14-ultrakam-permission-email.png",
     "email_alt": "Apple email requesting permission to use Ultrakam Remote Control assets at WWDC 2014 as an example of good design.",
     "pdf_url": "assets/wwdc14-session-709-cross-platform-nearby-networking.pdf",
     "video_url": "https://nonstrict.eu/wwdcindex/wwdc2014/709/?t=2604",
@@ -303,7 +304,7 @@ WAKEN_AI = {
     "tagline": "A New Lux — Elevating The Human Mind",
     "subtitle": "Mind Simulation Technology for Emotional Wellness",
     "description": "Waken AI Labs represents Hassan's ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, this work pioneers the intersection of AI and human emotional wellness through advanced conversational companions.",
-    "logo": "waken-ai-logo",
+    "logo": "https://images.squarespace-cdn.com/content/v1/63bb0ee9acd2b07dec642a7b/9a4b6ba5-4ce5-4cb4-9750-7b9be4b2de0e/waken-ai-black.png?format=1500w",
     "video": "https://player.vimeo.com/video/960460813",
     "website": "https://www.wakenai.com/",
     "quote": "Our AI delves into the human essence, giving voice to silent thoughts.",
@@ -316,7 +317,7 @@ FEATURED_BOOKS = [
         "title": "ClineFlow and Google's Open Knowledge Format",
         "subtitle": "Build Durable AI Memory for Developers, Lawyers, and Creatives",
         "eyebrow": "New Book · 2026",
-        "image": "infinite-ai-context-cover",
+        "image": "assets/infinite-ai-context-cover.jpg",
         "image_alt": "Cover of Infinite AI Context: ClineFlow and Google's Open Knowledge Format by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/infinite-ai-context-clineflow-and-googles-open-knowledge-format/paperback/product-rmkn8jg.html?page=1&pageSize=4",
         "ebook_url": "https://hassanvfx.github.io/infinite-ai-context/downloads/infinite-ai-context-web.pdf",
@@ -329,7 +330,7 @@ FEATURED_BOOKS = [
         "title": "AI From Tensors to Agents on Mac Silicon",
         "subtitle": "Learning Modern AI by Learning It on Apple Silicon",
         "eyebrow": "New Book · 2026",
-        "image": "ai-from-tensors-to-agents-cover",
+        "image": "assets/ai-from-tensors-to-agents-cover.jpg",
         "image_alt": "Cover of AI From Tensors to Agents on Mac Silicon by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4",
         "ebook_url": "https://hassanvfx.github.io/website/assets/ai-from-tensors-to-agents-free-ebook.pdf",
@@ -340,7 +341,7 @@ FEATURED_BOOKS = [
         "title": "Modern iOS Architecture: Deconstructing the $3B MemeArcade",
         "subtitle": "Modular Applications with SPM, SwiftUI and Hybrid Web",
         "eyebrow": "New Book · 2026",
-        "image": "modern-ios-architecture-cover",
+        "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
         "image_alt": "Cover of Modern iOS Architecture: Deconstructing the $3B MemeArcade by Hassan Uriostegui",
         "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html?page=1&pageSize=4",
         "ebook_url": "https://hassanvfx.github.io/website/assets/modern-ios-architecture-memearcade-free-ebook-2026-08-17.pdf",
@@ -354,7 +355,7 @@ CITATIONS = {
     "eyebrow": "Research Recognition",
     "description": "A 2023 article examining whether AI model weights may raise derivative-work and compensation questions in copyright law.",
     "article_url": "https://medium.com/twinchat/ai-copyright-weights-a-new-frontier-in-intellectual-property-law-d8ee1b6c55ee",
-    "image": "citations-cover",
+    "image": "assets/ai-copyright-house-task-force-report.png",
     "image_alt": "Cover of the 2024 Bipartisan House Task Force Report on Artificial Intelligence",
     "house": {
         "source": "Bipartisan House AI Task Force Report",
@@ -391,7 +392,7 @@ TWINCHAT_PAPER = {
     "name": "TwinChat Paper",
     "tagline": "AI Mind Simulation Research",
     "subtitle": "Open Source Research on Cognitive Profiling & Digital Twins",
-    "logo": "github-logo",
+    "logo": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
     "description": "The TwinChat Paper documents the theoretical foundations and technical implementation of Mind Simulation Technology (MST). This research explores how AI can create accurate cognitive profiles for conversational simulations, enabling emotionally responsive digital companions.",
     "features": [
         "Cognitive profiling methodology",
@@ -420,12 +421,12 @@ MEME_ARCADE = {
     "description": "Discover bite-size games, jump straight into the action, and build your personal arcade. Meme Arcade brings quick games and the culture around them into one lively, scrollable place.",
     "url": "https://hassanvfx.github.io/meme-arcade-book/",
     "cta": "Explore Meme Arcade",
-    "icon": "meme-arcade-icon",
+    "icon": "assets/memearcade-arcade-icon.webp",
     "icon_alt": "Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble",
     "screens": [
-        {"image": "meme-arcade-play", "alt": "Meme Arcade game screen showing a fast arcade driving game with brake and gas controls", "caption": "Play instantly"},
-        {"image": "meme-arcade-discover", "alt": "Meme Arcade discovery screen with community-made games and categories", "caption": "Discover new favorites"},
-        {"image": "meme-arcade-profile", "alt": "Meme Arcade profile screen with play history, favorites, and game cards", "caption": "Track your hype"}
+        {"image": "assets/memearcade-play.jpg", "alt": "Meme Arcade game screen showing a fast arcade driving game with brake and gas controls", "caption": "Play instantly"},
+        {"image": "assets/memearcade-discover.jpg", "alt": "Meme Arcade discovery screen with community-made games and categories", "caption": "Discover new favorites"},
+        {"image": "assets/memearcade-profile.jpg", "alt": "Meme Arcade profile screen with play history, favorites, and game cards", "caption": "Track your hype"}
     ]
 }
 
@@ -505,7 +506,7 @@ BOOKS = [
         "url": "https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4",
         "ebook_url": "https://hassanvfx.github.io/website/assets/ai-from-tensors-to-agents-free-ebook.pdf",
         "press": "A build-first guide to modern AI on Apple Silicon",
-        "image": "ai-from-tensors-to-agents-cover",
+        "image": "assets/ai-from-tensors-to-agents-cover.jpg",
         "portrait_cover": True
     },
     {
@@ -516,7 +517,7 @@ BOOKS = [
         "url": "https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html?page=1&pageSize=4",
         "ebook_url": "https://hassanvfx.github.io/website/assets/modern-ios-architecture-memearcade-free-ebook-2026-08-17.pdf",
         "press": "Practical hybrid iOS architecture for maintainable products",
-        "image": "modern-ios-architecture-cover",
+        "image": "assets/modern-ios-architecture-memearcade-cover.jpg",
         "portrait_cover": True
     },
     {
@@ -527,7 +528,7 @@ BOOKS = [
         "url": "https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993",
         "press": "The definitive guide to AI personality simulation",
         "featured": True,
-        "image": "bookstore-display",
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062559/this_book_cover_in_a_foto_real_display_in_a_book_store_real_fotography_k3r65iuq1nnvj1ljkmhv_1_zrz0o2.png",
         "description": "This groundbreaking work introduces the theoretical and practical foundations of Mind Simulation Technology—the science behind BTwin Friends and TwinChat. Drawing from years of research in cognitive profiling, conversational AI, and therapeutic applications, this book provides a comprehensive framework for understanding how AI can simulate human cognition, personality, and emotional intelligence."
     },
     {
@@ -537,7 +538,7 @@ BOOKS = [
         "language": "English",
         "url": "https://www.amazon.com/-/en/AI-Exploring-Singular-Self-Awareness-ChatGPT/dp/1365528669",
         "press": "Featured in Korea Biz Wire",
-        "image": "bookstore-coffee"
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062694/this_book_hold_by_this_guy_in_a_startbucks_coffee_uuoxtjvsv8tpp3imnsjj_0_yj2p6m.jpg"
     },
     {
         "title": "Yo, IA: Cyberpunks",
@@ -546,7 +547,7 @@ BOOKS = [
         "language": "Español",
         "url": "https://www.amazon.com/Yo-IA-Cyberpunks-Inteligencia-Artificial/dp/1312446501",
         "press": "Featured on Imagen Radio Mexico",
-        "image": "bookstore-barnes-noble"
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062693/this_book_cover_in_a_foto_real_display_in_a_book_store_real_fotography_at_barnes__noble_07l8939fc8cxlyirqp40_0_wir41f.jpg"
     },
     {
         "title": "The Fly of the Humanized Robot",
@@ -555,25 +556,25 @@ BOOKS = [
         "language": "English",
         "url": "book/eng.pdf",
         "local": True,
-        "image": "bookstore-woods"
+        "image": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765062693/this_book_hold_by_this_guy_in_the_woods_8h7ed2ri8wqtfycbeb16_1_kd3iwp.jpg"
     },
 ]
 
 # PRESS LOGOS SHOWCASE - "In the News" section
 PRESS_LOGOS = [
-    {"logo": "authority-magazine-logo", "name": "Authority Magazine"},
-    {"logo": "forbes-logo", "name": "Forbes"},
-    {"logo": "techcrunch-logo", "name": "TechCrunch"},
-    {"logo": "athletechnews-logo", "name": "Athletechnews"},
-    {"logo": "cybernews-logo", "name": "CyberNews"},
-    {"logo": "yahoo-news-logo", "name": "Yahoo News"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/authority_magazine_logo_on_black_kpqqs5uhydk9m839b88e_0_ahq1hk.png", "name": "Authority Magazine"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/forbes_logo_on_black_958c8d0mlceji9etw3d2_0_kwbfsx.png", "name": "Forbes"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/techrunch_logo_on_black_r2pskd3j2ibgflk4ape1_1_dlxfyb.png", "name": "TechCrunch"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/athletechnews_logo_on_black_0sqg1tayo0zrda137byl_0_gcfdee.png", "name": "Athletechnews"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214650/cybernews_logo_on_black_ej9hnl3fibwuffvi17hb_1_r30zmn.png", "name": "CyberNews"},
+    {"logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/yahoo_news_logo_on_black_lxx9qlheyue42r3u4rnr_0_rh3pg6.png", "name": "Yahoo News"},
 ]
 
 # PRESS
 PRESS = [
     {
         "publication": "TechCrunch",
-        "logo": "techcrunch-logo",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/techrunch_logo_on_black_r2pskd3j2ibgflk4ape1_1_dlxfyb.png",
         "headline": "Flyr launches an app for rapid creation of Snapchat Discover-style stories",
         "excerpt": "FlyrTV becomes the first third-party company granted access to Snapchat's content API, enabling rapid creation of professional video content for Snapchat Discover.",
         "url": "https://techcrunch.com/2017/03/13/flyr-launch/",
@@ -581,7 +582,7 @@ PRESS = [
     },
     {
         "publication": "Forbes",
-        "logo": "forbes-logo",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/forbes_logo_on_black_958c8d0mlceji9etw3d2_0_kwbfsx.png",
         "headline": "Ultrakam 4K video app arrives for iPhone 6",
         "excerpt": "Revolutionary mobile video recording technology brings 4K capabilities to iPhone 6, pushing the boundaries of mobile filmmaking.",
         "url": "https://www.forbes.com",
@@ -589,7 +590,7 @@ PRESS = [
     },
     {
         "publication": "Authority Magazine",
-        "logo": "authority-magazine-logo",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/authority_magazine_logo_on_black_kpqqs5uhydk9m839b88e_0_ahq1hk.png",
         "headline": "Hassan Uriostegui On the Future of Artificial Intelligence",
         "excerpt": "In-depth interview exploring AI ethics, digital empathy, and the future of human-AI interaction with the Waken AI founder.",
         "url": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
@@ -597,7 +598,7 @@ PRESS = [
     },
     {
         "publication": "Athletechnews",
-        "logo": "athletechnews-logo",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/athletechnews_logo_on_black_0sqg1tayo0zrda137byl_0_gcfdee.png",
         "headline": "BTwin AI Friends App: Revolutionizing Emotional Wellness",
         "excerpt": "How BTwin AI Friends is transforming emotional wellness through advanced AI companions and mind simulation technology.",
         "url": "https://athletechnews.com/btwin-ai-friends-app-emotional-wellness/",
@@ -605,7 +606,7 @@ PRESS = [
     },
     {
         "publication": "CyberNews",
-        "logo": "cybernews-logo",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214650/cybernews_logo_on_black_ej9hnl3fibwuffvi17hb_1_r30zmn.png",
         "headline": "BTwin AI Emotional Support App: Privacy Considerations",
         "excerpt": "An in-depth analysis of privacy and data protection practices in BTwin AI's emotional support platform.",
         "url": "https://cybernews.com/privacy/btwin-ai-emotional-support-app-privacy/",
@@ -613,7 +614,7 @@ PRESS = [
     },
     {
         "publication": "Yahoo News",
-        "logo": "yahoo-news-logo",
+        "logo": "https://res.cloudinary.com/dmje5xfzh/image/upload/v1765214479/yahoo_news_logo_on_black_lxx9qlheyue42r3u4rnr_0_rh3pg6.png",
         "headline": "Conscious AI Imagined: ChatGPT and Waken AI",
         "excerpt": "Exploring the boundaries of AI consciousness and the philosophical implications of ChatGPT through Waken AI's research.",
         "url": "https://finance.yahoo.com/news/conscious-ai-imagined-chatgpt-waken-190000098.html",
