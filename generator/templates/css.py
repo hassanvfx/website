@@ -3680,6 +3680,11 @@ img { max-width: 100%; }
 .card-content h3 { font-weight: 400; }
 .card-content .highlight { white-space: normal; background: #14212c; color: #a9e8f3;  border-radius: 3px; box-shadow: none; }
 .company-press-quote { background: transparent;  }
+.impact-labels { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.impact-exit { color: var(--cyan); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.impact-coverage { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 20px; }
+.impact-coverage a { color: #a9e8f3; font-size: .875rem; line-height: 1.5; }
+.impact-coverage a:hover, .impact-coverage a:focus-visible { color: var(--paper); }
 .books-grid, .press-grid, .interviews-grid { max-width: 1224px; margin-left: auto; margin-right: auto; padding: 0; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
 .books-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .book-card, .press-card, .citation-card, .citation-house-card, .interview-card { border-radius: 4px; background: #0e141b;  box-shadow: none; }

@@ -68,6 +68,13 @@ class SiteTests(unittest.TestCase):
         self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">SPARKS</a>',home)
         self.assertLess(home.index('<section class="quote-section">'),home.index('class="selected-work-gateway"'))
         self.assertLess(home.index('class="selected-work-gateway"'),home.index('id="eb1a"'))
+    def test_ultrakam_exit_card_and_coverage(self):
+        work=self.pages['selected-work.html']
+        self.assertLess(work.index('id="viddy"'),work.index('id="ultrakam"'))
+        self.assertLess(work.index('id="ultrakam"'),work.index('id="flyr"'))
+        self.assertIn('https://www.youtube.com/embed/zkO-b6uA6t0',work)
+        self.assertIn('Apple’s WWDC14 feature on Medium',work)
+        self.assertEqual({company['name'] for company in generate.HISTORIC_COMPANIES if company.get('exit')},{'Viddy','Ultrakam','FlyrTV'})
     def test_image_budgets_and_responsive_assets(self):
         for name,budget in [('index.html',1450000),('selected-work.html',360000)]:
             total=sum((ROOT/url).stat().st_size for url in {im['src'] for im in self.docs[name].images})

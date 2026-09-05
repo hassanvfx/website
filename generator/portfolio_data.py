@@ -139,6 +139,7 @@ HISTORIC_COMPANIES = [
         "id": "viddy",
         "name": "Viddy",
         "year": "2012-2013",
+        "exit": True,
         "role": "Director of Video Engineering",
         "highlight": "$370M Valuation | 40M Users",
         "description": "Built iOS + Android VFX rendering engine. Created the most advanced video editor when Instagram was photos-only. At peak engagement, served 40M+ users.",
@@ -151,9 +152,31 @@ HISTORIC_COMPANIES = [
         }
     },
     {
+        "id": "ultrakam",
+        "name": "Ultrakam",
+        "year": "2014",
+        "exit": True,
+        "role": "Founder",
+        "highlight": "First iOS app for 2K film-quality capture",
+        "description": "Built a mobile filmmaking suite that brought 2K capture, time-lapse, slow motion, and a companion remote-control app to iPhone and iPad. Apple later featured Ultrakam Remote Control at WWDC14.",
+        "video": "https://www.youtube.com/embed/zkO-b6uA6t0",
+        "stats": "Featured by Apple at WWDC14",
+        "press_quote": {
+            "quote": "Tools for the next generation of content creators.",
+            "source": "Hassan Uriostegui",
+            "source_title": "on Ultrakam's launch"
+        },
+        "article_links": [
+            {"label": "The Next Web: film-quality 2K on iOS", "url": "https://thenextweb.com/news/ultrakam-paves-way-2k-video-ios"},
+            {"label": "Apple’s WWDC14 feature on Medium", "url": "https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb"},
+            {"label": "Authority Magazine: career profile", "url": "https://medium.com/authority-magazine/hassan-uriostegui-of-wakenai-on-the-future-of-artificial-intelligence-57d39bf22ced"}
+        ]
+    },
+    {
         "id": "flyr",
         "name": "FlyrTV",
         "year": "2014-2018",
+        "exit": True,
         "role": "CTO & Co-founder",
         "highlight": "$6M Raised | Acquired 2018",
         "description": "Raised $6M+, built team of 30 professionals, launched 10,000+ HD video templates. First company to access Snapchat's content API. Acquired by POND5.",

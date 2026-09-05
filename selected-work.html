@@ -3702,6 +3702,11 @@ img { max-width: 100%; }
 .card-content h3 { font-weight: 400; }
 .card-content .highlight { white-space: normal; background: #14212c; color: #a9e8f3;  border-radius: 3px; box-shadow: none; }
 .company-press-quote { background: transparent;  }
+.impact-labels { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.impact-exit { color: var(--cyan); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.impact-coverage { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 20px; }
+.impact-coverage a { color: #a9e8f3; font-size: .875rem; line-height: 1.5; }
+.impact-coverage a:hover, .impact-coverage a:focus-visible { color: var(--paper); }
 .books-grid, .press-grid, .interviews-grid { max-width: 1224px; margin-left: auto; margin-right: auto; padding: 0; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
 .books-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .book-card, .press-card, .citation-card, .citation-house-card, .interview-card { border-radius: 4px; background: #0e141b;  box-shadow: none; }
@@ -4127,7 +4132,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 426 / 240"><iframe src="https://player.vimeo.com/video/1143600495" title="SpreeAI" width="426" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <span class="highlight">Naomi Campbell Board Member | AI Fashion</span>
+      <div class="impact-labels"><span class="highlight">Naomi Campbell Board Member | AI Fashion</span></div>
       <h3>SpreeAI</h3>
       <p class="role">Principal iOS Architect • 2024-Present</p>
       <p class="description">Building AI-powered virtual try-on technology for fashion e-commerce. SpreeAI transforms how customers shop online with real-time garment visualization. Partners include CFDA, MIT, Carnegie Mellon, and major fashion brands.</p>
@@ -4136,6 +4141,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <p class="quote-text">"SpreeAI is pushing the forefront of e-commerce personalization, by leveraging collaborations with academia and assembling a team that understands both the deep technical challenges and their product impact."</p>
         <p class="quote-source">— <strong>Professor Deva Ramanan</strong> CMU Robotics Institute Professor</p>
       </div>
+
     </div>
   </article>
 
@@ -4144,7 +4150,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 200 / 150"><iframe src="https://www.youtube.com/embed/avccq32KfOE" title="Viddy" width="200" height="150" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <span class="highlight">$370M Valuation | 40M Users</span>
+      <div class="impact-labels"><span class="highlight">$370M Valuation | 40M Users</span><span class="impact-exit">Exit</span></div>
       <h3>Viddy</h3>
       <p class="role">Director of Video Engineering • 2012-2013</p>
       <p class="description">Built iOS + Android VFX rendering engine. Created the most advanced video editor when Instagram was photos-only. At peak engagement, served 40M+ users.</p>
@@ -4152,6 +4158,27 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="company-press-quote">
         <p class="quote-text">"Viddy, the video-sharing app that has been called 'Instagram for video,' raised $30 million in funding at a valuation of $370 million."</p>
         <p class="quote-source">— <strong>The Wall Street Journal</strong> on Viddy's funding round</p>
+      </div>
+
+    </div>
+  </article>
+
+  <article class="impact-card" id="ultrakam">
+    <div class="card-video">
+      <div class="video-frame" style="--video-ratio: 200 / 113"><iframe src="https://www.youtube.com/embed/zkO-b6uA6t0" title="Ultrakam" width="200" height="113" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    </div>
+    <div class="card-content">
+      <div class="impact-labels"><span class="highlight">First iOS app for 2K film-quality capture</span><span class="impact-exit">Exit</span></div>
+      <h3>Ultrakam</h3>
+      <p class="role">Founder • 2014</p>
+      <p class="description">Built a mobile filmmaking suite that brought 2K capture, time-lapse, slow motion, and a companion remote-control app to iPhone and iPad. Apple later featured Ultrakam Remote Control at WWDC14.</p>
+
+      <div class="company-press-quote">
+        <p class="quote-text">"Tools for the next generation of content creators."</p>
+        <p class="quote-source">— <strong>Hassan Uriostegui</strong> on Ultrakam's launch</p>
+      </div>
+      <div class="impact-coverage" aria-label="Ultrakam coverage">
+        <a href="https://thenextweb.com/news/ultrakam-paves-way-2k-video-ios" target="_blank" rel="noopener noreferrer">The Next Web: film-quality 2K on iOS <span aria-hidden="true">↗</span></a><a href="https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb" target="_blank" rel="noopener noreferrer">Apple’s WWDC14 feature on Medium <span aria-hidden="true">↗</span></a><a href="https://medium.com/authority-magazine/hassan-uriostegui-of-wakenai-on-the-future-of-artificial-intelligence-57d39bf22ced" target="_blank" rel="noopener noreferrer">Authority Magazine: career profile <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </article>
@@ -4161,7 +4188,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 200 / 113"><iframe src="https://www.youtube.com/embed/7GQm8h70PRg" title="FlyrTV" width="200" height="113" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <span class="highlight">$6M Raised | Acquired 2018</span>
+      <div class="impact-labels"><span class="highlight">$6M Raised | Acquired 2018</span><span class="impact-exit">Exit</span></div>
       <h3>FlyrTV</h3>
       <p class="role">CTO & Co-founder • 2014-2018</p>
       <p class="description">Raised $6M+, built team of 30 professionals, launched 10,000+ HD video templates. First company to access Snapchat's content API. Acquired by POND5.</p>
@@ -4170,6 +4197,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <p class="quote-text">"Flyr was the first third-party company granted access to Snapchat's content API, a testament to their groundbreaking work in mobile video storytelling."</p>
         <p class="quote-source">— <strong>TechCrunch</strong> on FlyrTV's Snapchat partnership</p>
       </div>
+
     </div>
   </article>
 
@@ -4178,7 +4206,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 200 / 113"><iframe src="https://www.youtube.com/embed/ZOWuy-HhQxE" title="Community" width="200" height="113" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <span class="highlight">Backed by Madonna & Ashton Kutcher</span>
+      <div class="impact-labels"><span class="highlight">Backed by Madonna & Ashton Kutcher</span></div>
       <h3>Community</h3>
       <p class="role">Principal iOS Architect • 2019-2020</p>
       <p class="description">Architected reactive iOS Swift app. Built and led iOS team of 5 engineers in 6 months. Served 10M+ users.</p>
@@ -4187,6 +4215,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <p class="quote-text">"Community has raised $35 million in new funding to bring celebrities closer to their fans through direct messaging."</p>
         <p class="quote-source">— <strong>Forbes</strong> on Community's Series A</p>
       </div>
+
     </div>
   </article>
 

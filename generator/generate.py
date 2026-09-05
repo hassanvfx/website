@@ -341,6 +341,12 @@ def generate_impact_card(company):
         <p class="quote-text">"{pq["quote"]}"</p>
         <p class="quote-source">— <strong>{pq["source"]}</strong> {pq["source_title"]}</p>
       </div>'''
+    exit_html = '<span class="impact-exit">Exit</span>' if company.get("exit") else ""
+    article_links_html = ""
+    if company.get("article_links"):
+        article_links_html = f'''<div class="impact-coverage" aria-label="{company["name"]} coverage">
+        {"".join(f'<a href="{article["url"]}" target="_blank" rel="noopener noreferrer">{article["label"]} <span aria-hidden="true">↗</span></a>' for article in company["article_links"])}
+      </div>'''
     
     return f'''
   <article class="impact-card" id="{company["id"]}">
@@ -348,11 +354,12 @@ def generate_impact_card(company):
       {generate_video_frame(company["video"], company["name"])}
     </div>
     <div class="card-content">
-      <span class="highlight">{company["highlight"]}</span>
+      <div class="impact-labels"><span class="highlight">{company["highlight"]}</span>{exit_html}</div>
       <h3>{company["name"]}</h3>
       <p class="role">{company["role"]} • {company["year"]}</p>
       <p class="description">{company["description"]}</p>
       {press_quote_html}
+      {article_links_html}
     </div>
   </article>
 '''
