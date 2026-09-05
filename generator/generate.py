@@ -276,6 +276,8 @@ def generate_clineflow_section():
             <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span>
           </div>
         </div>
+      </div>
+      <div class="clineflow-support">
         <figure class="clineflow-agent-compatibility">
           <img {image_attributes("clineflow-agent-compatibility", loading="lazy")} alt="ClineFlow compatibility with major AI coding agents" />
           <figcaption>ClineFlow is supported by all major Agents</figcaption>

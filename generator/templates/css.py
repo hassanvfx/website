@@ -3659,6 +3659,7 @@ img { max-width: 100%; }
 .clineflow-prompt-wrap code { flex-basis: 100%; min-width: 0; overflow-wrap: anywhere; white-space: normal; font-size: .875rem; }
 .clineflow-copy-button { position: static; min-height: 44px; transform: none; }
 .copy-status { color: var(--cyan); font-size: .875rem; align-self: center; }
+.clineflow-support { grid-column: 1 / -1; order: 3; width: 100%; text-align: center; }
 .clineflow-agent-compatibility { width: 100%; max-width: 420px; margin: 24px auto; text-align: center; }
 .clineflow-agent-compatibility figcaption { font-size: .75rem; }
 .clineflow-masterclass { margin: 20px auto 0; padding: 0; text-align: center; }
@@ -3765,7 +3766,8 @@ html[data-reduced-motion="true"] { scroll-behavior: auto; }
   .selected-work-link { min-height: 68px; padding: 18px 20px; }
   .clineflow-installer-shell { grid-template-columns: 1fr; gap: 32px; }
   .clineflow-installer-inner { order: 0; }
-  .clineflow-installer-hero { order: 1; margin: 0 8px 8px 0; }
+  .clineflow-support { order: 1; }
+  .clineflow-installer-hero { order: 2; margin: 0 8px 8px 0; }
   .clineflow-installer-panel { padding: 18px; }
   .clineflow-installer-inner h2 { font-size: 2rem; }
   .section-header { margin-bottom: 32px; }

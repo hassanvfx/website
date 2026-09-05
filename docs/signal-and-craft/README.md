@@ -130,4 +130,4 @@ Verified 13 controller regressions plus seven generated-output regressions and i
 
 Border exception requested by Hassan: the homepage impact metrics retain subtle vertical dividers. Desktop separates the four metrics; mobile separates each two-column pair, with no outer right edge. This rule is scoped to the proof section.
 
-ClineFlow alignment refinement: the agent-logo figure, support caption, and website link share the centerline of the content column on desktop and mobile. The installer heading and prompt retain their existing alignment.
+ClineFlow alignment correction: the agent-logo figure, support caption, and website link occupy a full-width support row beneath both desktop columns. Their centerline matches the section and page (720 px at 1440 px desktop; 195 px at 390 px mobile), with no horizontal overflow. This corrects the earlier interpretation that centered the group only inside the left content column. Mobile retains the support group before the banner; the installer heading and prompt retain their existing alignment.

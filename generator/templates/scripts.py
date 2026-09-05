@@ -299,7 +299,7 @@ INTERACTION_SCRIPT = r'''
     ['.featured-book-section, .signal-footer', 'chapter'],
     ['.section-header, .selected-work-gateway-inner > h2', 'type'],
     ['.stat-item, .selected-work-link, .book-card, .press-card, .citation-card, .citation-house-card, .interview-card, .innovation-card', 'block'],
-    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
+    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .clineflow-support, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
   ];
   const seen = new WeakSet();
   const targets = new Map();
