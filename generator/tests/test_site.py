@@ -72,7 +72,8 @@ class SiteTests(unittest.TestCase):
         work=self.pages['selected-work.html']
         self.assertLess(work.index('id="viddy"'),work.index('id="ultrakam"'))
         self.assertLess(work.index('id="ultrakam"'),work.index('id="flyr"'))
-        self.assertIn('https://www.youtube.com/embed/zkO-b6uA6t0',work)
+        self.assertIn('https://www.youtube.com/embed/jqs6dXF9wDU',work)
+        self.assertIn('style="--video-ratio: 200 / 150"',work)
         self.assertIn('Apple’s WWDC14 feature on Medium',work)
         self.assertEqual({company['name'] for company in generate.HISTORIC_COMPANIES if company.get('exit')},{'Viddy','Ultrakam','FlyrTV'})
     def test_press_precedes_interviews_on_home(self):

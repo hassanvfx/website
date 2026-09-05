@@ -159,7 +159,7 @@ HISTORIC_COMPANIES = [
         "role": "Founder",
         "highlight": "First iOS app for 2K film-quality capture",
         "description": "Built a mobile filmmaking suite that brought 2K capture, time-lapse, slow motion, and a companion remote-control app to iPhone and iPad. Apple later featured Ultrakam Remote Control at WWDC14.",
-        "video": "https://www.youtube.com/embed/zkO-b6uA6t0",
+        "video": "https://www.youtube.com/embed/jqs6dXF9wDU",
         "stats": "Featured by Apple at WWDC14",
         "press_quote": {
             "quote": "Tools for the next generation of content creators.",
