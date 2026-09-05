@@ -3606,7 +3606,9 @@ img { max-width: 100%; }
 .site-nav a { text-transform: none; letter-spacing: 0; padding: 12px 0; font-size: .875rem; color: #c8d1d9; }
 .site-nav .site-identity { display: flex; gap: 14px; align-items: center; margin-right: auto; font-size: .9rem; color: var(--paper); font-weight: 600; }
 .identity-mark { font-family: 'Playfair Display', Georgia, serif; font-size: 2.1rem; letter-spacing: -.08em; color: var(--cyan); line-height: 1; }
-.desktop-links { display: flex; gap: 28px; align-items: center; }
+.desktop-links { display: flex; gap: clamp(10px,1.75vw,28px); align-items: center; }
+.desktop-links .desktop-clineflow { color: var(--cyan); white-space: nowrap; }
+.desktop-clineflow span { margin-left: 4px; }
 .site-nav .header-book {  border-radius: 4px; padding: 11px 17px; color: var(--paper); }
 .header-book span { margin-left: 16px; }
 .menu-toggle, .menu-close {  background: var(--surface); color: var(--paper); padding: 11px 14px; min-height: 44px; border-radius: 4px; }
@@ -3752,6 +3754,12 @@ html[data-reduced-motion="true"] { scroll-behavior: auto; }
   .signal-hero-inner { gap: 40px; padding: 64px 36px; }
   .proof-section, .work-index { margin-left: 36px; margin-right: 36px; }
   .work-orbit { right: 4%; width: 280px; height: 280px; }
+}
+@media (max-width: 920px) {
+  .desktop-links { gap: 12px; }
+  .site-nav a { font-size: .8rem; }
+  .site-nav .header-book { padding-left: 13px; padding-right: 13px; }
+  .header-book span { margin-left: 10px; }
 }
 @media (max-width: 800px) {
   :root { --header-height: 70px; }
@@ -4059,7 +4067,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <header class="site-header">
       <nav class="site-nav" aria-label="Main navigation">
         <a class="site-identity" href="#home"><span class="identity-mark" aria-hidden="true">hu.</span><span>Hassan Uriostegui</span></a>
-        <div class="desktop-links"><a href="selected-work.html">Selected Work</a><a href="#clineflow">ClineFlow</a><a href="#books">Books</a><a href="#professional-profile">Profile</a></div>
+        <div class="desktop-links"><a href="#professional-profile">Profile</a><a href="#clineflow">AI coding</a><a href="#memearcade">Apps</a><a href="#citations">Citations</a><a href="#books">Books</a><a href="#press">Press</a><a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="desktop-clineflow">ClineFlow <span aria-hidden="true">↗</span></a></div>
         <a class="header-book" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a call <span aria-hidden="true">↗</span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" hidden>Menu <span aria-hidden="true">＋</span></button>
       </nav>
@@ -4165,21 +4173,6 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
           </div>
         </div>
         <p class="professional-profile-fallback">Preview shown above. For the full two-page resume, <a href="assets/hassan-uriostegui-resume-2026-12.pdf" target="_blank" rel="noopener noreferrer">open the PDF</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Selected Work Gateway -->
-  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
-    <div class="selected-work-gateway-inner">
-      <span class="eyebrow">Selected Work</span>
-      <h2 id="selected-work-title">Explore Portfolio Highlights</h2>
-      <div class="selected-work-grid">
-        <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#work" class="selected-work-link">Featured Projects<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#twinchat-paper" class="selected-work-link">TwinChat Paper<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -4455,6 +4448,28 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   </section>
 
 
+  <!-- Quote -->
+  <section class="quote-section">
+    <blockquote>"One of the biggest lessons from my journey is the power of self-learning and perseverance. Passion, curiosity, and relentless drive can open doors you never imagined."</blockquote>
+    <cite>— Hassan Uriostegui</cite>
+  </section>
+
+
+  <!-- Selected Work Gateway -->
+  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
+    <div class="selected-work-gateway-inner">
+      <span class="eyebrow">Selected Work</span>
+      <h2 id="selected-work-title">Explore Portfolio Highlights</h2>
+      <div class="selected-work-grid">
+        <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#work" class="selected-work-link">Featured Projects<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#twinchat-paper" class="selected-work-link">TwinChat Paper<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- EB1A Recognition -->
   <section class="bio-section" id="eb1a">
     <div class="bio-content">
@@ -4467,13 +4482,6 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <a href="https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)" target="_blank" rel="noopener noreferrer" class="eb1a-wikipedia-link">EB1A on Wikipedia →</a>
       </div>
     </div>
-  </section>
-
-
-  <!-- Quote -->
-  <section class="quote-section">
-    <blockquote>"One of the biggest lessons from my journey is the power of self-learning and perseverance. Passion, curiosity, and relentless drive can open doors you never imagined."</blockquote>
-    <cite>— Hassan Uriostegui</cite>
   </section>
 
 </main>

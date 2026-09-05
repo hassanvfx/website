@@ -708,11 +708,11 @@ def render_portfolio(page="home"):
 
 
 def generate_home_content():
-    return (generate_hero() + generate_proof() + generate_professional_profile() + generate_selected_work_grid()
+    return (generate_hero() + generate_proof() + generate_professional_profile()
             + generate_clineflow_section() + generate_meme_arcade_callout()
             + generate_wwdc14_feature() + generate_citations_section()
             + generate_books_media()
-            + generate_about() + generate_recognition() + generate_quote())
+            + generate_about() + generate_quote() + generate_selected_work_grid() + generate_recognition())
 
 
 def generate_selected_content():
@@ -911,9 +911,20 @@ def generate_quote():
 '''
 
 def generate_header(page):
-    primary = [('Selected Work', SELECTED_WORK_PAGE), ('ClineFlow', '#clineflow'),
-               ('Books', '#books'), ('Profile', '#professional-profile')]
-    links = ''.join(f'<a href="{resolve_navigation_href(href, page)}">{label}</a>' for label, href in primary)
+    desktop_links = [
+        ('Profile', '#professional-profile'),
+        ('AI coding', '#clineflow'),
+        ('Apps', '#memearcade'),
+        ('Citations', '#citations'),
+        ('Books', '#books'),
+        ('Press', '#press'),
+    ]
+    links = ''.join(
+        f'<a href="{resolve_navigation_href(href, page)}">{label}</a>'
+        for label, href in desktop_links
+    )
+    links += (f'<a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" '
+              'class="desktop-clineflow">ClineFlow <span aria-hidden="true">↗</span></a>')
     mobile_links = generate_mobile_nav_html(page)
     return f'''
     <a class="skip-link" href="#main-content">Skip to content</a>

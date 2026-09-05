@@ -52,6 +52,20 @@ class SiteTests(unittest.TestCase):
             for iframe in doc.iframes:
                 self.assertTrue(iframe.get('title'))
                 self.assertEqual(iframe.get('loading'),'lazy')
+    def test_desktop_navigation_and_home_portfolio_placement(self):
+        home=self.pages['index.html']
+        header=home[home.index('<header'):home.index('</header>')]
+        expected=[
+            ('Profile','#professional-profile'), ('AI coding','#clineflow'),
+            ('Apps','#memearcade'), ('Citations','#citations'), ('Books','#books'),
+            ('Press','#press'),
+        ]
+        positions=[header.index(f'href="{href}">{label}') for label,href in expected]
+        self.assertEqual(positions,sorted(positions))
+        self.assertIn(f'href="{generate.CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="desktop-clineflow"',header)
+        self.assertIn('ClineFlow <span aria-hidden="true">↗</span>',header)
+        self.assertLess(home.index('<section class="quote-section">'),home.index('class="selected-work-gateway"'))
+        self.assertLess(home.index('class="selected-work-gateway"'),home.index('id="eb1a"'))
     def test_image_budgets_and_responsive_assets(self):
         for name,budget in [('index.html',1450000),('selected-work.html',360000)]:
             total=sum((ROOT/url).stat().st_size for url in {im['src'] for im in self.docs[name].images})
