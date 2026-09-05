@@ -83,6 +83,15 @@ def main() -> int:
                 fail(f"missing or incorrect intrinsic dimensions in {page}: {url}")
             if attributes.get("decoding") != "async":
                 fail(f"missing async decoding in {page}: {url}")
+            if "srcset" in attributes:
+                if not attributes.get("sizes"):
+                    fail(f"responsive image without sizes in {page}: {url}")
+                for candidate in attributes["srcset"].split(","):
+                    candidate_url, descriptor = candidate.strip().split()
+                    if candidate_url not in entries_by_url:
+                        fail(f"unmanifested responsive image in {page}: {candidate_url}")
+                    if descriptor != f"{entries_by_url[candidate_url]['width']}w":
+                        fail(f"incorrect responsive width in {page}: {candidate_url}")
         for selector in PROPORTIONAL_IMAGE_SELECTORS:
             rule = re.search(rf"{re.escape(selector)}\s*\{{([^}}]*)\}}", page_html)
             if not rule or "height: auto" not in rule.group(1):

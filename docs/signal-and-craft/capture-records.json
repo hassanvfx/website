@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-05",
+  "browser": "Codex in-app browser on macOS",
+  "outputScale": "1 image pixel per CSS pixel",
+  "motion": "default, entrance settled",
+  "externalMedia": "not playing",
+  "captures": [
+    {
+      "file": "before-home-desktop.jpg",
+      "revision": "signal-and-craft-before",
+      "dpr": 1,
+      "height": 900,
+      "scrollY": 0,
+      "width": 1440
+    },
+    {
+      "file": "after-home-desktop.jpg",
+      "revision": "signal-and-craft-after",
+      "dpr": 1,
+      "height": 900,
+      "scrollY": 0,
+      "width": 1440
+    },
+    {
+      "file": "before-work-desktop.jpg",
+      "revision": "signal-and-craft-before",
+      "dpr": 1,
+      "height": 900,
+      "scrollY": 0,
+      "width": 1440
+    },
+    {
+      "file": "after-work-desktop.jpg",
+      "revision": "signal-and-craft-after",
+      "dpr": 1,
+      "height": 900,
+      "scrollY": 0,
+      "width": 1440
+    },
+    {
+      "file": "before-home-mobile.jpg",
+      "revision": "signal-and-craft-before",
+      "dpr": 1,
+      "height": 844,
+      "scrollY": 0,
+      "width": 390
+    },
+    {
+      "file": "after-home-mobile.jpg",
+      "revision": "signal-and-craft-after",
+      "dpr": 1,
+      "height": 844,
+      "scrollY": 0,
+      "width": 390
+    },
+    {
+      "file": "before-work-mobile.jpg",
+      "revision": "signal-and-craft-before",
+      "dpr": 1,
+      "height": 844,
+      "scrollY": 0,
+      "width": 390
+    },
+    {
+      "file": "after-work-mobile.jpg",
+      "revision": "signal-and-craft-after",
+      "dpr": 1,
+      "height": 844,
+      "scrollY": 0,
+      "width": 390
+    }
+  ]
+}

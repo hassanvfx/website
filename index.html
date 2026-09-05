@@ -3576,45 +3576,388 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .booking-call-cta { transition: none; }
 }
+
+
+/* Signal & Craft: a shared editorial system with dimensional accents. */
+:root {
+  --ink: #070a0e; --surface: #0e141b; --line: #25313c;
+  --paper: #f3f5f7; --muted: #a3b0bd; --cyan: #75e1f4;
+  --blue: #75e1f4; --purple: #9e89ff;
+  --ease: cubic-bezier(.2,.75,.2,1); --header-height: 82px;
+}
+html { scroll-padding-top: calc(var(--header-height) + 24px); }
+body { background: var(--ink); color: var(--paper); padding: 0; overflow-wrap: break-word; }
+[hidden] { display: none !important; }
+main { outline: none; }
+main > *, footer { scroll-margin-top: calc(var(--header-height) + 24px); }
+main section[id], main article[id], footer[id] { scroll-margin-top: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; cursor: pointer; }
+a { color: var(--cyan); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+img { max-width: 100%; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 3000; background: var(--cyan); color: #070a0e; padding: 12px 24px; }
+.skip-link:focus { top: 12px; }
+.site-header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--line); background: rgba(7,10,14,.96); }
+.site-nav { width: min(1320px, calc(100% - 96px)); margin: auto; min-height: var(--header-height); display: flex; align-items: center; gap: 30px; }
+.site-nav a { text-transform: none; letter-spacing: 0; padding: 12px 0; font-size: .875rem; color: #c8d1d9; }
+.site-nav .site-identity { display: flex; gap: 14px; align-items: center; margin-right: auto; font-size: .9rem; color: var(--paper); font-weight: 600; }
+.identity-mark { font-family: 'Playfair Display', Georgia, serif; font-size: 2.1rem; letter-spacing: -.08em; color: var(--cyan); line-height: 1; }
+.desktop-links { display: flex; gap: 28px; align-items: center; }
+.site-nav .header-book { border: 1px solid #63727d; border-radius: 4px; padding: 11px 17px; color: var(--paper); }
+.header-book span { margin-left: 16px; }
+.menu-toggle, .menu-close { border: 1px solid var(--line); background: var(--surface); color: var(--paper); padding: 11px 14px; min-height: 44px; border-radius: 4px; }
+.menu-toggle { display: none; }
+.signal-menu { position: fixed; inset: 0; width: 100%; max-width: 100%; max-height: 100dvh; height: 100dvh; margin: 0; border: 0; padding: 24px; color: var(--paper); background: var(--ink); overflow-y: auto; }
+.signal-menu::backdrop { background: #070a0e; }
+.menu-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 32px; }
+.menu-heading h2 { font-size: 2rem; }
+.signal-menu nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; }
+.signal-menu nav a { font-size: .875rem; letter-spacing: .04em; color: #c8d1d9; padding: 16px 8px; border-bottom: 1px solid var(--line); min-height: 48px; }
+.noscript-nav { padding: 16px; display: flex; flex-wrap: wrap; gap: 16px; }
+.signal-hero { isolation: isolate; position: relative; overflow: clip; background: radial-gradient(ellipse at 82% 35%, #123044 0%, transparent 49%), var(--ink); }
+.signal-hero-inner { max-width: 1320px; margin: auto; padding: 88px 48px 76px; display: grid; grid-template-columns: 1.22fr 1fr; gap: 72px; align-items: center; }
+.signal-eyebrow { font-size: .75rem; letter-spacing: .16em; color: var(--cyan); font-weight: 600; margin: 0 0 28px; display: flex; align-items: center; gap: 12px; }
+.signal-eyebrow > span { width: 6px; height: 6px; background: var(--cyan); display: inline-block; }
+.signal-copy h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(3.4rem, 6.5vw, 6rem); line-height: 1.05; letter-spacing: -.055em; margin: 0 0 32px; }
+.signal-copy h1 em, .work-intro h1 em, .contact-callout h2 em { font-weight: 400; color: var(--cyan); }
+.signal-position { font-size: clamp(1.4rem, 2.25vw, 2rem); line-height: 1.35; letter-spacing: -.03em; margin-bottom: 20px; }
+.signal-position span { color: var(--cyan); }
+.signal-summary { font-size: 1rem; color: #acbac6; line-height: 1.85; max-width: 480px; }
+.signal-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 24px; margin-top: 30px; }
+.signal-button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 50px; padding: 14px 22px; background: var(--cyan); border: 1px solid var(--cyan); border-radius: 4px; color: #071015; font-size: .875rem; line-height: 1.45; font-weight: 600; transition: background 180ms var(--ease), box-shadow 180ms var(--ease); }
+.signal-button:hover { background: #b1f2fc; color: #071015; box-shadow: 0 0 26px #75e1f425; }
+.signal-text-link { font-size: .875rem; color: var(--paper); padding: 12px 0; min-height: 44px; }
+.signal-text-link span { color: var(--cyan); margin-left: 10px; }
+.hero-footnote { color: #91a1b0; font-size: .75rem; margin-top: 20px; }
+.portrait-stage { position: relative; perspective: 1000px; width: min(100%, 400px); margin: 0 auto; padding: 30px 20px 0; }
+.portrait-window { position: relative; border: 1px solid #6e8593; border-radius: 3px; overflow: hidden; background: #172430; box-shadow: 20px 24px 60px #0008; }
+.portrait-window img { display: block; width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 28%; filter: saturate(.65); }
+.depth-rig { position: absolute; inset: 0 0 44px; pointer-events: none; transform-style: preserve-3d; transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
+.depth-plane { position: absolute; inset: 18px 10px; border: 1px solid #75e1f46b; border-radius: 3px; }
+.plane-back { transform: translateZ(-55px) rotate(-10deg); background: linear-gradient(150deg,#75e1f409,#9e89ff18); border-color: #9e89ff75; }
+.plane-middle { transform: translateZ(-25px) rotate(7deg); background: linear-gradient(120deg,#75e1f418, transparent 60%); }
+.plane-front { transform: translateZ(22px) rotate(-3deg); border-color: #75e1f42b; }
+.portrait-stage figcaption { display: flex; flex-direction: column; gap: 7px; margin-top: 22px; padding-left: 12px; border-left: 2px solid var(--cyan); font-size: .75rem; color: var(--muted); }
+.portrait-stage figcaption span:first-child { font-size: .75rem; letter-spacing: .15em; color: #e2e8ed; }
+.stage-index { position: absolute; right: -14px; top: 28%; writing-mode: vertical-rl; font-size: .75rem; letter-spacing: .2em; color: #97b6c7; }
+.hero-baseline { max-width: 1320px; margin: auto; border-top: 1px solid var(--line); padding: 22px 48px; display: flex; justify-content: space-between; gap: 24px; font-size: .75rem; letter-spacing: .14em; color: #93a5b3; }
+.hero-baseline a { color: var(--cyan); }
+.proof-section { max-width: 1224px; margin: auto; padding: 52px 0 0; }
+.proof-section .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin: 0; padding: 0; }
+.stat-item { text-align: left; padding: 4px 32px; border-right: 1px solid var(--line); }
+.stat-item:first-child { padding-left: 0; }
+.stat-item:last-child { border: 0; }
+.stat-item .value { font-size: clamp(2rem,4vw,3.5rem); color: var(--paper); font-weight: 400; letter-spacing: -.04em; line-height: 1.15; }
+.stat-item .label { font-size: .75rem; color: var(--muted); letter-spacing: .13em; margin-top: 10px; }
+.proof-press { display: flex; gap: 40px; align-items: center; padding: 38px 0; margin-top: 38px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.proof-press > a { flex-shrink: 0; font-size: .75rem; letter-spacing: .1em; }
+.proof-logos { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex: 1; flex-wrap: wrap; }
+.proof-logos .press-logo-item { flex: 0 1 100px; padding: 0; }
+.proof-logos .press-logo-item img { width: 100%; height: 30px; object-fit: contain; filter: grayscale(1) brightness(1.6); opacity: .7; }
+.selected-work-gateway { background: var(--ink); padding: 80px 48px; }
+.selected-work-gateway-inner { max-width: 1224px; margin: auto; }
+.selected-work-gateway h2 { text-align: left; font-size: clamp(2rem,3vw,3rem); font-weight: 400; margin-bottom: 28px; }
+.selected-work-gateway .eyebrow { display: block; text-align: left; font-size: .75rem; }
+.selected-work-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.selected-work-link { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 24px; min-height: 88px; font-size: 1rem; color: var(--paper); }
+.selected-work-link:hover { transform: none; background: #14232e; border-color: #75e1f470; }
+/* Product chapters: stable media with dimensional frames and generous typography. */
+.clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink); border-top: 1px solid var(--line); }
+.clineflow-installer { padding: 80px 48px; }
+.clineflow-installer-shell { max-width: 1224px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; overflow: visible; border: 0; background: transparent; box-shadow: none; }
+.clineflow-installer-hero { order: 2; position: relative; border: 1px solid #344958; border-radius: 4px; box-shadow: 12px 12px 0 #101d28, 13px 13px 0 #294154; }
+.clineflow-installer-hero img { width: 100%; height: auto; display: block; }
+.clineflow-installer-inner { padding: 0; text-align: left; min-width: 0; }
+.clineflow-installer-inner h2 { font-size: clamp(2rem,3.1vw,3rem); line-height: 1.2; letter-spacing: -.025em; margin: 20px 0 28px; }
+.clineflow-installer-inner h2 span { color: var(--cyan); }
+.clineflow-wordmark { font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; }
+.clineflow-installer-panel { padding: 22px; background: #0e1720; border: 1px solid #293c4b; border-radius: 4px; text-align: left; }
+.clineflow-prompt-wrap { display: flex; flex-wrap: wrap; gap: 16px; }
+.clineflow-prompt-wrap code { flex-basis: 100%; min-width: 0; overflow-wrap: anywhere; white-space: normal; font-size: .875rem; }
+.clineflow-copy-button { position: static; min-height: 44px; transform: none; }
+.copy-status { color: var(--cyan); font-size: .875rem; align-self: center; }
+.clineflow-agent-compatibility { margin: 24px 0; max-width: 420px; }
+.clineflow-agent-compatibility figcaption { font-size: .75rem; }
+.clineflow-masterclass { margin-top: 20px; padding: 0; }
+.clineflow-masterclass p, .clineflow-masterclass-divider { display: none; }
+.clineflow-masterclass-cta { font-size: 1rem; padding: 12px 0; background: transparent; box-shadow: none; border: 0; color: var(--cyan); }
+.section, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { padding: 80px 48px; }
+.section-header { max-width: 1224px; margin: 0 auto 44px; text-align: left; position: relative; padding: 0; }
+.section-header::before { content: ''; display: block; width: 48px; height: 2px; background: var(--cyan); margin-bottom: 26px; transform-origin: left; }
+.section-header h2, .wwdc14-copy h2, .citations-intro h2, .professional-profile-copy h2, .bio-headline { font-size: clamp(2rem,3.5vw,3.3rem); font-weight: 400; line-height: 1.2; }
+.section-header .lead { font-size: 1.1rem; color: var(--muted); max-width: 620px; }
+.eyebrow { color: var(--cyan); font-size: .75rem; }
+.impact-card, .project-card { border: 1px solid var(--line); background: #0c1117; border-radius: 5px; box-shadow: none; margin: 0 auto 40px; max-width: 1224px; overflow: visible; position: relative; }
+.impact-card .card-video, .project-card .card-video { position: relative; border: 1px solid #324656; border-radius: 3px; overflow: hidden; box-shadow: 8px 8px 0 #121f2a; }
+.impact-card:hover, .project-card:hover { transform: none; box-shadow: none; }
+.card-content { min-width: 0; }
+.card-content h3 { font-weight: 400; }
+.card-content .highlight { white-space: normal; background: #14212c; color: #a9e8f3; border: 1px solid #2d4657; border-radius: 3px; box-shadow: none; }
+.company-press-quote { background: transparent; border-color: #55727e; }
+.books-grid, .press-grid, .interviews-grid { max-width: 1224px; margin-left: auto; margin-right: auto; padding: 0; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.books-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.book-card, .press-card, .citation-card, .citation-house-card, .interview-card { border-radius: 4px; background: #0e141b; border-color: var(--line); box-shadow: none; }
+.book-card:hover, .press-card:hover, .interview-card:hover { transform: none; box-shadow: none; border-color: #5b8896; }
+.featured-book-section { background: transparent; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+.featured-book-cover-link:hover .featured-book-cover, .citations-cover-link:hover .citations-cover { transform: none; }
+.featured-book-inner { padding-left: 0; padding-right: 0; }
+.bio-headline { max-width: 840px; margin-left: auto; margin-right: auto; }
+.quote-section { background: #0b1118; padding: 80px 48px; }
+.quote-section blockquote { max-width: 850px; font-size: clamp(1.5rem,2.8vw,2.4rem); }
+.professional-profile { border-radius: 0; }
+.professional-profile-viewer { min-width: 0; }
+.work-intro { position: relative; isolation: isolate; overflow: clip; background: radial-gradient(ellipse at 90% 60%,#123044,transparent 60%); padding: 90px 48px 76px; }
+.work-intro-inner { max-width: 1224px; margin: auto; position: relative; z-index: 1; }
+.work-intro h1 { font-family: 'Playfair Display',Georgia,serif; font-size: clamp(3.5rem,7vw,6.5rem); line-height: 1.05; font-weight: 400; letter-spacing: -.055em; margin: 0 0 28px; }
+.work-intro p:not(.signal-eyebrow) { max-width: 510px; font-size: 1.1rem; color: var(--muted); }
+.work-intro-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 36px; color: var(--cyan); font-size: .75rem; letter-spacing: .12em; }
+.work-orbit { position: absolute; top: 16%; right: 12%; width: 340px; height: 340px; perspective: 1000px; pointer-events: none; }
+.work-orbit span { position: absolute; inset: 0; border: 1px solid #75e1f487; background: linear-gradient(130deg,#75e1f409,#9e89ff0d); transform: rotateY(-30deg) rotateX(25deg) rotateZ(-15deg); box-shadow: 0 0 50px #75e1f409; }
+.work-orbit span:nth-child(2) { inset: 30px; transform: translateZ(45px) rotateY(-30deg) rotateX(25deg) rotateZ(-15deg); border-color: #9e89ff87; }
+.work-orbit span:nth-child(3) { inset: 60px; transform: translateZ(90px) rotateY(-30deg) rotateX(25deg) rotateZ(-15deg); }
+.work-index { max-width: 1224px; padding: 28px 0; margin: auto; display: flex; flex-wrap: wrap; gap: 12px 32px; border-bottom: 1px solid var(--line); }
+.work-index a { display: flex; align-items: center; gap: 18px; min-height: 44px; font-size: .875rem; color: #c2cdd5; letter-spacing: 0; padding: 8px 0; text-transform: none; }
+.work-index span { color: var(--cyan); }
+.signal-footer { background: #0c131b; padding: 80px 48px 28px; text-align: left; }
+.contact-callout { max-width: 1224px; margin: auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center; padding-bottom: 64px; border-bottom: 1px solid #2a3743; }
+.contact-callout h2 { font-size: clamp(2rem,3.4vw,3.4rem); font-weight: 400; line-height: 1.2; margin-bottom: 22px; }
+.contact-callout p:not(.signal-eyebrow) { max-width: 540px; color: var(--muted); font-size: 1rem; }
+.contact-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; justify-self: end; }
+.contact-actions > a:last-child { font-size: .875rem; color: var(--muted); min-height: 44px; display: flex; align-items: center; }
+.footer-details { max-width: 1224px; margin: 50px auto; display: grid; grid-template-columns: 2fr 1fr; gap: 80px; }
+.footer-details strong { font-size: 1.1rem; }
+.footer-details p { text-align: left; font-size: .875rem !important; margin: 16px 0 !important; color: var(--muted) !important; }
+.footer-links { display: flex; flex-wrap: wrap; align-content: start; gap: 12px 24px; }
+.footer-links a { min-height: 44px; display: inline-flex; align-items: center; color: var(--paper); font-size: .875rem; }
+#motion-toggle { display: block; flex-basis: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); color: var(--cyan); margin-top: 8px; padding: 16px 0; min-height: 44px; font-size: .875rem; }
+.signal-footer .copyright { max-width: 1224px; margin: auto; font-size: .75rem; }
+/* Decoration responds independently of interactive content. */
+.motion-frame { position: relative; isolation: isolate; }
+.motion-frame::after { content: ''; position: absolute; inset: 0; border: 1px solid #75e1f400; border-radius: inherit; pointer-events: none; z-index: 2; }
+.motion-frame.is-arriving::after { animation: frame-light 900ms var(--ease) both; }
+.section-header.is-arriving::before { animation: chapter-line 650ms var(--ease) both; }
+html[data-motion-state="paused"] .is-arriving::after,
+html[data-motion-state="paused"] .is-arriving::before,
+.motion-offscreen::before, .motion-offscreen::after { animation-play-state: paused; }
+@keyframes frame-light { 0% { border-color: #75e1f400; box-shadow: inset 20px 0 35px #75e1f400; } 35% { border-color: #75e1f490; box-shadow: inset 20px 0 35px #75e1f40f; } 100% { border-color: #75e1f400; box-shadow: inset -20px 0 35px #75e1f400; } }
+@keyframes chapter-line { from { transform: scaleX(.1); } to { transform: scaleX(1); } }
+html[data-reduced-motion="true"] *, html[data-reduced-motion="true"] *::before, html[data-reduced-motion="true"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+html[data-reduced-motion="true"] { scroll-behavior: auto; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media (max-width: 1100px) {
+  .site-nav { width: calc(100% - 48px); gap: 20px; }
+  .desktop-links { gap: 18px; }
+  .site-identity > span:last-child { display: none; }
+  .signal-hero-inner { gap: 40px; padding: 64px 36px; }
+  .proof-section, .work-index { margin-left: 36px; margin-right: 36px; }
+  .work-orbit { right: 4%; width: 280px; height: 280px; }
+}
+@media (max-width: 800px) {
+  :root { --header-height: 70px; }
+  .site-nav { width: calc(100% - 40px); gap: 12px; }
+  .site-nav .site-identity { gap: 10px; }
+  .site-identity > span:last-child { display: inline; font-size: .75rem; }
+  .desktop-links, .site-nav .header-book { display: none; }
+  .menu-toggle { display: inline-flex; align-items: center; gap: 12px; font-size: .875rem; }
+  .signal-hero-inner { grid-template-columns: 1fr; padding: 48px 24px 40px; gap: 46px; }
+  .signal-copy h1 { font-size: clamp(3rem,10.5vw,4.6rem); margin-bottom: 24px; }
+  .signal-eyebrow { font-size: .75rem; margin-bottom: 24px; letter-spacing: .13em; }
+  .signal-position { font-size: 1.5rem; }
+  .signal-summary { font-size: 1rem; max-width: 560px; line-height: 1.75; }
+  .signal-actions { gap: 10px 22px; margin-top: 24px; }
+  .portrait-stage { width: min(78%,320px); padding-top: 16px; }
+  .portrait-window img { aspect-ratio: 4/4.5; }
+  .plane-front { display: none; }
+  .stage-index { right: -6px; }
+  .hero-baseline { padding: 20px 24px; flex-wrap: wrap; font-size: .75rem; gap: 16px; }
+  .hero-baseline > span:nth-child(2) { display: none; }
+  .proof-section { margin: 0 24px; padding-top: 36px; }
+  .proof-section .stats-row { grid-template-columns: repeat(2,1fr); row-gap: 24px; }
+  .stat-item, .stat-item:first-child { padding: 4px 16px; }
+  .stat-item:nth-child(odd) { padding-left: 0; }
+  .stat-item:nth-child(even) { border: 0; }
+  .stat-item .value { font-size: 2.3rem; }
+  .stat-item .label { font-size: .75rem; }
+  .proof-press { display: block; padding: 28px 0; margin-top: 30px; }
+  .proof-logos { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 24px; gap: 20px; }
+  .proof-logos .press-logo-item { min-width: 0; }
+  .proof-logos .press-logo-item img { height: 24px; }
+  .selected-work-gateway, .section, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout, .clineflow-installer { padding: 56px 24px; }
+  .selected-work-grid { grid-template-columns: 1fr; }
+  .selected-work-link { min-height: 68px; padding: 18px 20px; }
+  .clineflow-installer-shell { grid-template-columns: 1fr; gap: 32px; }
+  .clineflow-installer-inner { order: 0; }
+  .clineflow-installer-hero { order: 1; margin: 0 8px 8px 0; }
+  .clineflow-installer-panel { padding: 18px; }
+  .clineflow-installer-inner h2 { font-size: 2rem; }
+  .section-header { margin-bottom: 32px; }
+  .impact-card, .project-card { margin-bottom: 32px; overflow: hidden; }
+  .impact-card .card-content, .project-card .card-content { padding: 24px; }
+  .impact-card .card-video, .project-card .card-video { box-shadow: none; border: 0; }
+  .books-grid, .press-grid, .interviews-grid { grid-template-columns: 1fr; gap: 24px; }
+  .featured-book-inner { padding: 24px 0; }
+  .work-intro { padding: 56px 24px; }
+  .work-intro h1 { font-size: 4rem; }
+  .work-intro p:not(.signal-eyebrow) { font-size: 1rem; }
+  .work-intro-meta { gap: 16px; font-size: .75rem; }
+  .work-orbit { opacity: .25; top: 20px; right: -120px; width: 240px; height: 240px; }
+  .work-orbit span:nth-child(3) { display: none; }
+  .work-index { margin: 0 24px; gap: 8px 22px; }
+  .work-index a { font-size: .875rem; }
+  .quote-section { padding: 56px 24px; }
+  .signal-footer { padding: 56px 24px 24px; }
+  .contact-callout { grid-template-columns: 1fr; gap: 16px; padding-bottom: 40px; }
+  .contact-actions { justify-self: start; }
+  .footer-details { grid-template-columns: 1fr; gap: 24px; margin: 36px auto; }
+}
+@media (hover: none), (pointer: coarse) {
+  .depth-rig { transform: none; }
+  .book-card:hover, .press-card:hover, .featured-book-cover-link:hover .featured-book-cover, .citations-cover-link:hover .citations-cover { transform: none; }
+}
+
+/* Familiar press marquee, with an explicit pause control and static fallback. */
+.proof-press { display: block; padding: 24px 0 28px; }
+.press-strip-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+.press-strip-heading > a { font-size: .75rem; letter-spacing: .12em; }
+.press-pause { background: transparent; border: 0; color: #a3b0bd; font-size: .75rem; min-height: 44px; padding: 8px 0 8px 16px; }
+.proof-marquee { overflow: hidden; padding: 12px 0; mask-image: linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); }
+.proof-track { display: flex; width: max-content; }
+.proof-logo-group { display: flex; gap: 52px; align-items: center; padding-right: 52px; }
+.proof-logo-group .press-logo-item { width: 132px; flex: 0 0 132px; padding: 0; }
+.proof-logo-group .press-logo-item img { width: 132px; height: 45px; object-fit: contain; opacity: .8; filter: grayscale(1) brightness(1.6); }
+.proof-marquee.is-live .proof-track { animation: press-drift 44s linear infinite; }
+.proof-marquee.is-paused .proof-track { animation-play-state: paused; }
+.proof-marquee:not(.is-live) .logo-repeat { display: none; }
+.proof-marquee:not(.is-live) { overflow-x: auto; mask-image: none; }
+@keyframes press-drift { to { transform: translateX(-50%); } }
+html[data-reduced-motion="true"] .proof-marquee { overflow-x: auto; mask-image: none; }
+html[data-reduced-motion="true"] .logo-repeat { display: none; }
+/* A single stable app viewer; all slides remain available without JavaScript. */
+.meme-carousel { width: min(100%,350px); margin: 40px auto 0; }
+.meme-carousel .meme-arcade-gallery { display: grid; grid-template-columns: 1fr; gap: 28px; margin: 0; }
+.meme-carousel.is-carousel-live .meme-arcade-gallery { display: grid; grid-template-columns: 1fr; align-items: start; }
+.meme-carousel .meme-arcade-screen-card { min-width: 0; }
+.meme-carousel .meme-arcade-screen-card img { width: min(100%,300px); height: auto; aspect-ratio: 416/900; object-fit: contain; background: #090615; }
+.meme-carousel figcaption { min-height: 2.7em; font-size: .95rem; }
+.carousel-controls { display: flex; gap: 10px; align-items: center; justify-content: center; padding: 0 0 22px; }
+.carousel-controls button { min-height: 44px; min-width: 44px; border: 1px solid #625880; background: #171322; color: #ece4ff; border-radius: 4px; padding: 10px 12px; }
+.carousel-position { font-size: .875rem; color: #c4bcd4; min-width: 42px; }
+.carousel-status { min-height: 1.5em; color: #c4bcd4; font-size: .75rem; }
+@media (max-width:800px) {
+  .proof-logo-group { gap: 32px; padding-right: 32px; }
+  .proof-logo-group .press-logo-item { width: 110px; flex-basis: 110px; }
+  .proof-logo-group .press-logo-item img { width: 110px; height: 36px; }
+  .meme-carousel { width: min(100%,290px); }
+}
+
+/* App showcase: an editorial left column and one compact device on the right. */
+.meme-arcade-callout { padding: 80px 48px; background: radial-gradient(ellipse at 78% 55%,#261a3b,transparent 55%),var(--ink); }
+.meme-arcade-inner { max-width: 1224px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; text-align: left; }
+.meme-arcade-icon { width: 96px; margin: 0 0 22px; filter: drop-shadow(0 0 24px #a975fa35); }
+.meme-arcade-badge { display: block; padding: 0; border: 0; background: none; border-radius: 0; font-size: .75rem; letter-spacing: .15em; margin-bottom: 20px; }
+.meme-arcade-callout h2 { font-size: clamp(2.3rem,4vw,3.5rem); line-height: 1.12; margin: 0 0 24px; }
+.meme-arcade-description { font-size: 1rem; margin: 0 0 28px; max-width: 510px; }
+.meme-arcade-cta { padding: 14px 22px; border-radius: 4px; font-size: .875rem; box-shadow: none; background: #d3b0ff; font-weight: 600; }
+.meme-arcade-cta:hover, .meme-arcade-cta:focus-visible { transform: none; box-shadow: 0 0 24px #c59cfa22; }
+.meme-carousel { width: min(100%,320px); margin: 0 auto; display: flex; flex-direction: column; text-align: center; }
+.meme-carousel .meme-arcade-gallery { order: 0; }
+.meme-carousel .meme-arcade-screen-card img { width: min(100%,280px); box-shadow: 15px 18px 50px #0008,0 0 0 6px #241d32; border-color: #6b527d; }
+.meme-carousel figcaption { margin-top: 20px; min-height: 1.6em; font-size: .875rem; font-weight: 400; color: #b9accc; }
+.carousel-controls { order: 1; padding: 8px 0 0; gap: 0; justify-content: center; }
+.carousel-controls button { border: 0; padding: 10px; background: transparent; color: #b9accc; }
+.carousel-controls button:hover { color: #e5d2ff; background: #cda5ff0a; }
+.carousel-controls .carousel-pause { order: 4; font-size: .75rem; margin-left: 8px; min-width: 52px; }
+.carousel-dots { display: flex; align-items: center; }
+.carousel-dot { display: grid; place-items: center; }
+.carousel-dot span { display: block; width: 5px; height: 5px; border-radius: 50%; background: #655d73; }
+.carousel-dot[aria-current="true"] span { width: 16px; border-radius: 5px; background: #cfabff; }
+.carousel-position { order: 2; font-size: .75rem; color: #8e849f; margin-top: 4px; }
+.carousel-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.proof-logo-group { gap: 52px; padding-right: 52px; }
+.proof-logo-group .press-logo-item { width: 220px; flex-basis: 220px; }
+.proof-logo-group .press-logo-item img { width: 220px; height: auto; opacity: .85; filter: brightness(1.3); }
+.professional-profile-controls button { width: 44px; height: 44px; }
+.professional-profile-toolbar { flex-wrap: wrap; }
+@media (max-width:800px) {
+  .meme-arcade-callout { padding: 56px 24px; }
+  .meme-arcade-inner { grid-template-columns: 1fr; gap: 40px; }
+  .meme-arcade-icon { width: 80px; }
+  .meme-arcade-callout h2 { font-size: 2.4rem; }
+  .meme-carousel { width: min(100%,290px); }
+  .meme-carousel .meme-arcade-screen-card img { width: min(100% - 16px,260px); }
+  .carousel-controls button { padding: 8px; }
+  .carousel-controls .carousel-pause { margin-left: 0; }
+  .proof-logo-group .press-logo-item { width: 160px; flex-basis: 160px; }
+  .proof-logo-group .press-logo-item img { width: 160px; height: auto; }
+}
+
+/* Meme Arcade keeps its own product typography and iOS-style icon treatment. */
+#memearcade, #memearcade h2, #memearcade button { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+#memearcade h2 { font-weight: 600; letter-spacing: -.045em; line-height: 1.12; }
+.meme-app-icon { width: 104px; aspect-ratio: 1; padding: 12px; border-radius: 24px; background: linear-gradient(145deg,#36115b,#18092e 65%,#102537); border: 1px solid #b68ae65c; box-shadow: inset 0 1px 1px #e4c9ff29,0 12px 30px #0006; margin-bottom: 28px; overflow: hidden; }
+.meme-app-icon .meme-arcade-icon { width: 100%; height: auto; margin: 0; filter: none; }
+@media (max-width:800px) { .meme-app-icon { width: 88px; border-radius: 21px; padding: 10px; margin-bottom: 24px; } }
+
+/* Provider dimensions reserve square, 4:3, and widescreen players without crops. */
+.video-frame { position: relative; width: 100%; aspect-ratio: var(--video-ratio); background: #070b10; overflow: hidden; border-radius: 3px; }
+main .video-frame iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; aspect-ratio: auto; border: 0; border-radius: 0; box-shadow: none; }
+.impact-card .card-video, .project-card .card-video, .innovation-card .card-video { align-self: center; height: auto; }
+.waken-video-container { padding-top: 0; }
+.filmography .film-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+@media (max-width:800px) { .filmography .film-grid { grid-template-columns: 1fr; padding: 0; } }
+
+/* Intrinsic sizing stays robust when visitors enlarge text. */
+html { scroll-padding-top: calc(var(--header-clearance, var(--header-height)) + 24px); }
+main *, .signal-footer * { min-width: 0; }
+.site-identity { min-width: 0; }
+.site-nav { min-width: 0; }
+.site-nav .site-identity { flex-shrink: 1; }
+.identity-mark { flex-shrink: 0; }
+.menu-toggle { flex-shrink: 0; }
+.signal-copy, .citations-inner > *, .featured-book-inner > *, .meme-arcade-inner > * { min-width: 0; }
+.signal-actions > a, .meme-arcade-cta, .citations-cta, .featured-book-cta, .professional-profile-download { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.carousel-controls { flex-wrap: wrap; }
+@media (max-width:800px) {
+  .signal-hero-inner, .meme-arcade-inner, .citations-inner, .featured-book-inner, .professional-profile-inner { grid-template-columns: minmax(0,1fr); }
+  .site-nav .site-identity > span:last-child { overflow-wrap: anywhere; }
+}
+
+/* Each chapter and card has scroll-linked depth, independently of its content. */
+.has-scroll-depth { position: relative; isolation: isolate; }
+.scroll-depth-layer { position: absolute; inset: 24px 2%; z-index: -1; pointer-events: none; border-radius: 24px; background: radial-gradient(ellipse at 92% var(--scroll-depth-light,38%),rgba(117,225,244,.09),transparent 65%),radial-gradient(ellipse at 12% 75%,rgba(158,137,255,.035),transparent 65%); transform: translate3d(0,var(--scroll-depth-y,0px),0); }
+html[data-motion-quality="calm"] .scroll-depth-layer { background: none; }
+.section-header { translate: 0 calc(var(--scroll-depth-y,0px) * .35); }
+.depth-rig, .work-orbit { translate: 0 var(--scroll-depth-y,0px); }
+#memearcade .scroll-depth-layer { background: radial-gradient(ellipse at 85% var(--scroll-depth-light,38%),rgba(197,145,255,.12),transparent 55%); }
+html[data-reduced-motion="true"] .scroll-depth-layer { transform: none; }
+html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { translate: none; }
+@media (max-width:800px), (hover:none), (pointer:coarse), (prefers-reduced-motion:reduce) {
+  .scroll-depth-layer { transform: none; opacity: .5; }
+  .section-header, .depth-rig, .work-orbit { translate: none; }
+}
+
+
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="scroll-nav">
-    <div class="nav-inner">
-      <a href="#home" class="mobile-title" aria-label="Hassan Uriostegui — Home">
-        <span class="mobile-title-first">Hassan</span><span class="mobile-title-last">Uriostegui</span>
-      </a>
-      <a href="#home">HOME</a>
-      <a href="#professional-profile">RESUME</a>
-      <a href="#clineflow" class="featured">AI-CODING</a>
-      <a href="#memearcade" class="featured">APPS</a>
-      <a href="#citations">CITATIONS</a>
-      <a href="#books">BOOKS</a>
-      <button type="button" class="hamburger" onclick="toggleMobileMenu()" aria-label="Open navigation menu" aria-controls="mobileMenu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
 
-  <!-- Submenu Row -->
-  <nav class="submenu-nav">
-    <div class="submenu-inner">
-      <a href="selected-work.html#impact" class="submenu-link">IMPACT</a>
-      <a href="selected-work.html#waken" class="submenu-link">RESEARCH</a>
-      <a href="selected-work.html#filmography" class="submenu-link">HOBBIES</a>
-      <a href="#press" class="submenu-link">PRESS</a>
-      <a href="#contact" class="submenu-link">CONTACT</a>
-    </div>
-  </nav>
 
-  <!-- Mobile Menu Modal -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button type="button" class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close navigation menu">&times;</button>
-    <a href="#home">HOME</a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="site-identity" href="#home"><span class="identity-mark" aria-hidden="true">hu.</span><span>Hassan Uriostegui</span></a>
+        <div class="desktop-links"><a href="selected-work.html">Selected Work</a><a href="#clineflow">ClineFlow</a><a href="#books">Books</a><a href="#professional-profile">Profile</a></div>
+        <a class="header-book" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a call <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" hidden>Menu <span aria-hidden="true">＋</span></button>
+      </nav>
+    </header>
+    <dialog id="mobileMenu" class="signal-menu" aria-labelledby="menu-title">
+      <div class="menu-heading"><h2 id="menu-title">Explore</h2><button type="button" class="menu-close" aria-label="Close navigation menu">Close ×</button></div>
+      <nav aria-label="All sections"><a href="#home">HOME</a>
     <a href="#professional-profile">RESUME</a>
     <a href="#clineflow" class="featured">AI-CODING</a>
     <a href="#memearcade" class="featured">APPS</a>
@@ -3624,19 +3967,46 @@ body {
     <a href="selected-work.html#waken">RESEARCH</a>
     <a href="selected-work.html#filmography">HOBBIES</a>
     <a href="#press">PRESS</a>
-    <a href="#contact">CONTACT</a>
-  </div>
+    <a href="#contact">CONTACT</a><a href="selected-work.html">SELECTED WORK</a></nav>
+      <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a>
+    </dialog>
+    <noscript><nav class="noscript-nav" aria-label="All sections"><a href="#home">HOME</a>
+    <a href="#professional-profile">RESUME</a>
+    <a href="#clineflow" class="featured">AI-CODING</a>
+    <a href="#memearcade" class="featured">APPS</a>
+    <a href="#citations">CITATIONS</a>
+    <a href="#books">BOOKS</a>
+    <a href="selected-work.html#impact">IMPACT</a>
+    <a href="selected-work.html#waken">RESEARCH</a>
+    <a href="selected-work.html#filmography">HOBBIES</a>
+    <a href="#press">PRESS</a>
+    <a href="#contact">CONTACT</a></nav></noscript>
+    <main id="main-content" tabindex="-1">
+    <section class="signal-hero" id="home" aria-labelledby="hero-title">
+      <div class="signal-hero-inner">
+        <div class="signal-copy">
+          <p class="signal-eyebrow"><span aria-hidden="true"></span>ENGINEER · FOUNDER · AUTHOR</p>
+          <h1 id="hero-title">Hassan<br /><em>Uriostegui.</em></h1>
+          <p class="signal-position">Ambitious ideas.<br />Engineered for <span>real impact.</span></p>
+          <p class="signal-summary">AI systems, mobile products, and the engineering decisions that move them forward. Work directly with a principal engineer who has built for millions.</p>
+          <div class="signal-actions">
+            <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a>
+            <a class="signal-text-link" href="selected-work.html">Explore selected work <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="hero-footnote">Silicon Valley experience. Independent perspective.</p>
+        </div>
+        <figure class="portrait-stage">
+          <div class="depth-rig" aria-hidden="true"><span class="depth-plane plane-back"></span><span class="depth-plane plane-middle"></span><span class="depth-plane plane-front"></span></div>
+          <div class="portrait-window"><img src="assets/portrait.3f70ee5e394b.webp" width="560" height="996" decoding="async" srcset="assets/portrait-small.1c5bbdef2e55.webp 320w, assets/portrait.3f70ee5e394b.webp 560w" sizes="(max-width: 800px) 250px, 360px" fetchpriority="high" alt="Portrait of Hassan Uriostegui" /></div>
+          <figcaption><span>HASSAN URIOSTEGUI</span><span>AI-native principal engineer</span></figcaption>
+          <span class="stage-index" aria-hidden="true">01 / HUMAN IN THE LOOP</span>
+        </figure>
+      </div>
+      <div class="hero-baseline"><span>AI & CONTEXT ENGINEERING</span><span>MOBILE & CONSUMER PRODUCTS</span><a href="#proof">THE WORK SPEAKS <span aria-hidden="true">↓</span></a></div>
+    </section>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-portrait">
-      <img src="assets/portrait.3f70ee5e394b.webp" width="560" height="996" decoding="async" fetchpriority="high" alt="Hassan Uriostegui" />
-    </div>
-    <span class="eyebrow">EB1A Systems Engineer</span>
-    <h1>Hassan Uriostegui</h1>
-    <p class="subtitle">Silicon Valley Innovator | AI Pioneer | Author</p>
-    <div class="stats-row">
-      <div class="stat-item">
+    <section id="proof" class="proof-section" aria-label="Experience and recognition">
+      <div class="stats-row"><div class="stat-item">
           <div class="value">40M+</div>
           <div class="label">Users Impacted</div>
         </div>
@@ -3651,27 +4021,12 @@ body {
         <div class="stat-item">
           <div class="value">3</div>
           <div class="label">Books Published</div>
-        </div>
-    </div>
-  </section>
-
-  <!-- Quote -->
-  <section class="quote-section">
-    <blockquote>"One of the biggest lessons from my journey is the power of self-learning and perseverance. Passion, curiosity, and relentless drive can open doors you never imagined."</blockquote>
-    <cite>— Hassan Uriostegui</cite>
-  </section>
-
-  <!-- Press Logos Showcase - "In the News" Marquee -->
-  <section class="press-showcase" onclick="window.location.href='#interviews'">
-    <div class="press-marquee-container">
-      <div class="press-logos-scroll">
-        <div class="press-logo-item"><img src="assets/authority-magazine-logo.cd9bbe112e7f.webp" width="400" height="268" decoding="async" loading="lazy" alt="Authority Magazine" /></div><div class="press-logo-item"><img src="assets/forbes-logo.7d340c4a8a50.webp" width="400" height="268" decoding="async" loading="lazy" alt="Forbes" /></div><div class="press-logo-item"><img src="assets/techcrunch-logo.cdf8825e1164.webp" width="400" height="268" decoding="async" loading="lazy" alt="TechCrunch" /></div><div class="press-logo-item"><img src="assets/athletechnews-logo.448963dfd2a6.webp" width="400" height="268" decoding="async" loading="lazy" alt="Athletechnews" /></div><div class="press-logo-item"><img src="assets/cybernews-logo.c6a48da5b887.webp" width="400" height="268" decoding="async" loading="lazy" alt="CyberNews" /></div><div class="press-logo-item"><img src="assets/yahoo-news-logo.b1ab3f21ed39.webp" width="400" height="268" decoding="async" loading="lazy" alt="Yahoo News" /></div>
-        <div class="press-logo-item"><img src="assets/authority-magazine-logo.cd9bbe112e7f.webp" width="400" height="268" decoding="async" loading="lazy" alt="Authority Magazine" /></div><div class="press-logo-item"><img src="assets/forbes-logo.7d340c4a8a50.webp" width="400" height="268" decoding="async" loading="lazy" alt="Forbes" /></div><div class="press-logo-item"><img src="assets/techcrunch-logo.cdf8825e1164.webp" width="400" height="268" decoding="async" loading="lazy" alt="TechCrunch" /></div><div class="press-logo-item"><img src="assets/athletechnews-logo.448963dfd2a6.webp" width="400" height="268" decoding="async" loading="lazy" alt="Athletechnews" /></div><div class="press-logo-item"><img src="assets/cybernews-logo.c6a48da5b887.webp" width="400" height="268" decoding="async" loading="lazy" alt="CyberNews" /></div><div class="press-logo-item"><img src="assets/yahoo-news-logo.b1ab3f21ed39.webp" width="400" height="268" decoding="async" loading="lazy" alt="Yahoo News" /></div>
+        </div></div>
+      <div class="proof-press">
+        <div class="press-strip-heading"><a href="#press">IN THE PRESS ↗</a><button type="button" class="press-pause" hidden>Pause logos</button></div>
+        <div class="proof-marquee"><div class="proof-track"><div class="proof-logo-group"><div class="press-logo-item"><img src="assets/authority-magazine-logo.cd9bbe112e7f.webp" width="400" height="268" decoding="async" loading="lazy" alt="Authority Magazine" /></div><div class="press-logo-item"><img src="assets/forbes-logo.7d340c4a8a50.webp" width="400" height="268" decoding="async" loading="lazy" alt="Forbes" /></div><div class="press-logo-item"><img src="assets/techcrunch-logo.cdf8825e1164.webp" width="400" height="268" decoding="async" loading="lazy" alt="TechCrunch" /></div><div class="press-logo-item"><img src="assets/athletechnews-logo.448963dfd2a6.webp" width="400" height="268" decoding="async" loading="lazy" alt="Athletechnews" /></div><div class="press-logo-item"><img src="assets/cybernews-logo.c6a48da5b887.webp" width="400" height="268" decoding="async" loading="lazy" alt="CyberNews" /></div><div class="press-logo-item"><img src="assets/yahoo-news-logo.b1ab3f21ed39.webp" width="400" height="268" decoding="async" loading="lazy" alt="Yahoo News" /></div></div><div class="proof-logo-group logo-repeat" aria-hidden="true"><div class="press-logo-item"><img src="assets/authority-magazine-logo.cd9bbe112e7f.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/forbes-logo.7d340c4a8a50.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/techcrunch-logo.cdf8825e1164.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/athletechnews-logo.448963dfd2a6.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/cybernews-logo.c6a48da5b887.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/yahoo-news-logo.b1ab3f21ed39.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div></div></div></div>
       </div>
-    </div>
-  </section>
-
-  <!-- Professional Profile / Resume -->
+    </section>
   <section class="professional-profile" id="professional-profile">
     <div class="professional-profile-inner">
       <div class="professional-profile-copy">
@@ -3696,7 +4051,7 @@ body {
         </div>
         <div id="resumeCanvasWrap" class="professional-profile-canvas-wrap">
           <div class="professional-profile-page-frame">
-            <img id="resumePreview" src="assets/resume-preview.352b546e8917.webp" width="1224" height="1584" decoding="async" loading="lazy" alt="First page of Hassan Uriostegui's professional profile and resume." class="professional-profile-preview" />
+            <img id="resumePreview" src="assets/resume-preview.352b546e8917.webp" width="1224" height="1584" decoding="async" srcset="assets/resume-preview-small.0f30c2c64c1c.webp 640w, assets/resume-preview.352b546e8917.webp 1224w" sizes="(max-width: 800px) calc(100vw - 80px), 620px" loading="lazy" alt="First page of Hassan Uriostegui's professional profile and resume." class="professional-profile-preview" />
             <canvas id="resumeCanvas" aria-label="Professional profile PDF page" hidden></canvas>
           </div>
         </div>
@@ -3705,16 +4060,17 @@ body {
     </div>
   </section>
 
-  <!-- EB1A Recognition -->
-  <section class="bio-section" id="eb1a">
-    <div class="bio-content">
-      <div class="eb1a-card">
-        <h3>EB1A Extraordinary Ability Recognition</h3>
-        <p class="eb1a-description">In 2018, Hassan was granted U.S. Citizenship through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
-        <ul class="eb1a-criteria">
-          <li>Published works of major significance (4 books on AI for general audiences)</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
-        </ul>
-        <a href="https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)" target="_blank" rel="noopener noreferrer" class="eb1a-wikipedia-link">EB1A on Wikipedia →</a>
+  <!-- Selected Work Gateway -->
+  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
+    <div class="selected-work-gateway-inner">
+      <span class="eyebrow">Selected Work</span>
+      <h2 id="selected-work-title">Explore Portfolio Highlights</h2>
+      <div class="selected-work-grid">
+        <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#work" class="selected-work-link">Featured Projects<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#twinchat-paper" class="selected-work-link">TwinChat Paper<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -3723,7 +4079,7 @@ body {
   <section class="clineflow-callout clineflow-installer" id="clineflow">
     <div class="clineflow-installer-shell">
       <figure class="clineflow-hero clineflow-installer-hero">
-        <img src="assets/clineflow-hero.89cfa689bf7d.webp" width="1600" height="900" decoding="async" loading="lazy" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
+        <img src="assets/clineflow-hero.89cfa689bf7d.webp" width="1600" height="900" decoding="async" srcset="assets/clineflow-hero-small.8fbbb7a8b97d.webp 640w, assets/clineflow-hero.89cfa689bf7d.webp 1600w" sizes="(max-width: 800px) calc(100vw - 56px), 580px" loading="lazy" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
       </figure>
       <div class="clineflow-installer-inner">
         <a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">ClineFlow</a>
@@ -3732,7 +4088,7 @@ body {
           <p>Try the agentic installer</p>
           <div class="clineflow-prompt-wrap">
             <code id="clineflow-installer-prompt">Please install ClineFlow by following the instructions provided at https://github.com/hassanvfx/clineflow</code>
-            <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button>
+            <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span>
           </div>
         </div>
         <figure class="clineflow-agent-compatibility">
@@ -3748,32 +4104,40 @@ body {
     </div>
   </section>
 
-  <!-- MemeArcade Featured App -->
   <section class="meme-arcade-callout" id="memearcade">
     <div class="meme-arcade-inner">
-      <img src="assets/meme-arcade-icon.63064fd55bcd.webp" width="420" height="420" decoding="async" loading="lazy" alt="Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble" class="meme-arcade-icon" />
+      <div class="meme-arcade-copy">
+      <div class="meme-app-icon"><img src="assets/meme-arcade-icon.63064fd55bcd.webp" width="420" height="420" decoding="async" loading="lazy" alt="Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble" class="meme-arcade-icon" /></div>
       <span class="meme-arcade-badge">IPHONE GAME ARCADE</span>
       <h2>Your next favorite game is one scroll away.</h2>
       <p class="meme-arcade-description">Discover bite-size games, jump straight into the action, and build your personal arcade. Meme Arcade brings quick games and the culture around them into one lively, scrollable place.</p>
       <a href="https://hassanvfx.github.io/meme-arcade-book/" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">Explore Meme Arcade <span aria-hidden="true">→</span></a>
-      <div class="meme-arcade-gallery">
-        <figure class="meme-arcade-screen-card">
+      </div>
+      <div class="meme-carousel" role="region" aria-roledescription="carousel" aria-label="Meme Arcade app screens">
+        <div class="carousel-controls" hidden>
+          <button type="button" class="carousel-pause" aria-label="Pause slideshow">Pause</button>
+          <button type="button" class="carousel-prev" aria-label="Previous app screen">←</button>
+          <div class="carousel-dots"><button type="button" class="carousel-dot" aria-label="Show app screen 1: Play instantly" aria-current="true" data-slide="0"><span aria-hidden="true"></span></button><button type="button" class="carousel-dot" aria-label="Show app screen 2: Discover new favorites" aria-current="false" data-slide="1"><span aria-hidden="true"></span></button><button type="button" class="carousel-dot" aria-label="Show app screen 3: Track your hype" aria-current="false" data-slide="2"><span aria-hidden="true"></span></button></div>
+          <button type="button" class="carousel-next" aria-label="Next app screen">→</button>
+        </div>
+        <div class="meme-arcade-gallery" aria-live="off"><figure class="meme-arcade-screen-card" role="group" aria-roledescription="slide" aria-label="1 of 3">
           <img src="assets/meme-arcade-play.c06251d39842.webp" width="416" height="900" decoding="async" loading="lazy" alt="Meme Arcade game screen showing a fast arcade driving game with brake and gas controls" />
           <figcaption>Play instantly</figcaption>
         </figure>
-        <figure class="meme-arcade-screen-card">
+        <figure class="meme-arcade-screen-card" role="group" aria-roledescription="slide" aria-label="2 of 3">
           <img src="assets/meme-arcade-discover.d34d1c001b38.webp" width="416" height="900" decoding="async" loading="lazy" alt="Meme Arcade discovery screen with community-made games and categories" />
           <figcaption>Discover new favorites</figcaption>
         </figure>
-        <figure class="meme-arcade-screen-card">
+        <figure class="meme-arcade-screen-card" role="group" aria-roledescription="slide" aria-label="3 of 3">
           <img src="assets/meme-arcade-profile.9b2ac94e9348.webp" width="414" height="900" decoding="async" loading="lazy" alt="Meme Arcade profile screen with play history, favorites, and game cards" />
           <figcaption>Track your hype</figcaption>
-        </figure>
+        </figure></div>
+        <span class="carousel-position">1 / 3</span>
+        <p class="carousel-status" role="status" aria-live="polite"></p>
       </div>
     </div>
   </section>
 
-  <!-- Apple WWDC14 Ultrakam Recognition -->
   <section class="wwdc14-feature" id="wwdc14">
     <div class="wwdc14-inner">
       <div class="wwdc14-copy">
@@ -3799,7 +4163,6 @@ body {
     </div>
   </section>
 
-  <!-- AI Copyright Weights Citations -->
   <section class="citations-section" id="citations">
     <div class="citations-inner">
       <div class="citations-intro">
@@ -3895,21 +4258,21 @@ body {
     </div>
     <div class="interviews-grid">
       <div class="interview-card">
-        <iframe src="https://player.vimeo.com/video/1001075745" frameborder="0" allowfullscreen></iframe>
+        <div class="video-frame" style="--video-ratio: 426 / 240"><iframe src="https://player.vimeo.com/video/1001075745" title="AI &amp; Future of Technology" width="426" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
         <div class="interview-info">
           <h4>AI & Future of Technology</h4>
           <p>Interview on AI ethics and innovation</p>
         </div>
       </div>
       <div class="interview-card">
-        <iframe src="https://player.vimeo.com/video/843499496" frameborder="0" allowfullscreen></iframe>
+        <div class="video-frame" style="--video-ratio: 426 / 240"><iframe src="https://player.vimeo.com/video/843499496" title="Silicon Valley Journey" width="426" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
         <div class="interview-info">
           <h4>Silicon Valley Journey</h4>
           <p>Career retrospective</p>
         </div>
       </div>
       <div class="interview-card">
-        <iframe src="https://player.vimeo.com/video/843495231" frameborder="0" allowfullscreen></iframe>
+        <div class="video-frame" style="--video-ratio: 426 / 240"><iframe src="https://player.vimeo.com/video/843495231" title="Entrepreneurship &amp; Innovation" width="426" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
         <div class="interview-info">
           <h4>Entrepreneurship & Innovation</h4>
           <p>Startup insights</p>
@@ -3963,12 +4326,13 @@ body {
     </div>
   </section>
 
+
   <!-- Bio / Artist Introduction -->
   <section class="bio-section" id="about">
     <div class="bio-content">
       <h2 class="bio-headline">A Silicon Valley Visionary Shaping the Future of AI</h2>
       <figure class="bio-profile-image">
-        <img src="assets/bio-profile.5e6732670a8f.webp" width="1672" height="942" decoding="async" loading="lazy" alt="Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him." />
+        <img src="assets/bio-profile.5e6732670a8f.webp" width="1672" height="942" decoding="async" srcset="assets/bio-profile-small.a4efa4e19685.webp 640w, assets/bio-profile.5e6732670a8f.webp 1672w" sizes="(max-width: 800px) calc(100vw - 48px), 900px" loading="lazy" alt="Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him." />
       </figure>
       <div class="bio-featured-article">
         <div class="article-label">Featured Profile</div>
@@ -3979,142 +4343,453 @@ body {
     </div>
   </section>
 
-  <!-- Selected Work Gateway -->
-  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
-    <div class="selected-work-gateway-inner">
-      <span class="eyebrow">Selected Work</span>
-      <h2 id="selected-work-title">Explore Portfolio Highlights</h2>
-      <div class="selected-work-grid">
-        <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#work" class="selected-work-link">Featured Projects<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#twinchat-paper" class="selected-work-link">TwinChat Paper<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
+
+  <!-- EB1A Recognition -->
+  <section class="bio-section" id="eb1a">
+    <div class="bio-content">
+      <div class="eb1a-card">
+        <h3>EB1A Extraordinary Ability Recognition</h3>
+        <p class="eb1a-description">In 2018, Hassan was granted U.S. Citizenship through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
+        <ul class="eb1a-criteria">
+          <li>Published works of major significance (4 books on AI for general audiences)</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
+        </ul>
+        <a href="https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)" target="_blank" rel="noopener noreferrer" class="eb1a-wikipedia-link">EB1A on Wikipedia →</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer id="contact">
-    <h2>Hassan Uriostegui</h2>
-    <p>EB1A Systems Engineer</p>
-    <p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.</p>
-    <p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions.</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/bensabbah" target="_blank" class="btn btn-outline">LinkedIn</a>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <blockquote>"One of the biggest lessons from my journey is the power of self-learning and perseverance. Passion, curiosity, and relentless drive can open doors you never imagined."</blockquote>
+    <cite>— Hassan Uriostegui</cite>
+  </section>
+
+</main>
+    <footer id="contact" class="signal-footer">
+      <div class="contact-callout">
+        <div><p class="signal-eyebrow">LET’S BUILD WHAT’S NEXT</p><h2>A clearer path<br /><em>from idea to product.</em></h2><p>Bring your AI, mobile, or product engineering challenge. Let’s work through it together.</p></div>
+        <div class="contact-actions"><a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a><a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer">50% goes to UnidosUS ↗</a></div>
+      </div>
+      <div class="footer-details"><div><strong>Hassan Uriostegui</strong><p>EB1A Systems Engineer</p><p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.</p>
+    <p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions.</p></div><div class="footer-links"><a href="https://www.linkedin.com/in/bensabbah" target="_blank" class="btn btn-outline">LinkedIn</a>
       <a href="https://github.com/hassanvfx" target="_blank" class="btn btn-outline">GitHub</a>
       <a href="https://www.imdb.com/name/nm2843359/" target="_blank" class="btn btn-outline">IMDB</a>
-      <a href="https://uriostegui.medium.com" target="_blank" class="btn btn-outline">Medium</a>
-    </div>
-    <p class="copyright">© 2025 Hassan Uriostegui. All rights reserved.</p>
-  </footer>
+      <a href="https://uriostegui.medium.com" target="_blank" class="btn btn-outline">Medium</a><a href="mailto:hassan.uriostegui@gmail.com">Email ↗</a><button type="button" id="motion-toggle" aria-pressed="false" hidden>Reduce motion</button></div></div>
+      <p class="copyright">© 2026 Hassan Uriostegui. All rights reserved.</p>
+    </footer><script>
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const header = document.querySelector('.site-header');
+  const measureHeader = () => {
+    if (header) root.style.setProperty('--header-clearance', `${Math.ceil(header.getBoundingClientRect().height)}px`);
+  };
+  measureHeader();
+  if (header && 'ResizeObserver' in window) new ResizeObserver(measureHeader).observe(header);
+  else window.addEventListener('resize', measureHeader);
+  const reducedQuery = matchMedia('(prefers-reduced-motion: reduce)');
+  const compactQuery = matchMedia('(max-width: 800px)');
+  const fineQuery = matchMedia('(hover: hover) and (pointer: fine)');
+  const menu = document.getElementById('mobileMenu');
+  const menuButton = document.querySelector('.menu-toggle');
+  const motionButton = document.getElementById('motion-toggle');
+  let manualReduced = false;
+  try { manualReduced = localStorage.getItem('signal-reduce-motion') === 'true'; } catch (_) {}
+  let reduced = false;
+  let performanceReduced = false;
+  let depthQuality = 1;
+  let frameQueuedAt = 0;
+  let frameSamples = [];
+  let menuOpen = false;
+  let previousOverflow = '';
+  const animations = new Map();
+  const playbackSubscribers = [];
+  let pointerFrame = 0;
+  let pointer = { x: 0, y: 0 };
+  const stage = document.querySelector('.portrait-stage');
+  const rig = document.querySelector('.depth-rig');
+  let stageRect = null;
+  let stageVisible = false;
+  const stopped = () => reduced || document.hidden || menuOpen;
 
-  <!-- Persistent Booking CTA -->
-  <aside class="booking-call-bar" aria-label="Book a consultation with Hassan Uriostegui">
-    <div class="booking-call-copy">
-      <strong class="booking-call-title">Book a 1:1 Consultation</strong>
-      <a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer" class="booking-call-charity">50% Goes to UnidosUS</a>
-    </div>
-    <a href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer" class="booking-call-cta"><i class="fa-solid fa-video" aria-hidden="true"></i><span>Book a call with Hassan</span><span class="booking-call-arrow" aria-hidden="true">→</span></a>
-  </aside>
-
-  <script>
-    // Keep generated page content clear of the fixed booking bar at every viewport size.
-    const bookingCallBar = document.querySelector('.booking-call-bar');
-    const syncBookingBarHeight = () => {
-      if (!bookingCallBar) return;
-      document.documentElement.style.setProperty('--booking-bar-height', `${Math.ceil(bookingCallBar.getBoundingClientRect().height)}px`);
-    };
-    syncBookingBarHeight();
-    if ('ResizeObserver' in window && bookingCallBar) {
-      new ResizeObserver(syncBookingBarHeight).observe(bookingCallBar);
-    } else {
-      window.addEventListener('resize', syncBookingBarHeight);
+  function resetDepth() {
+    cancelAnimationFrame(pointerFrame); pointerFrame = 0;
+    if (rig) { rig.style.removeProperty('--tilt-x'); rig.style.removeProperty('--tilt-y'); }
+  }
+  function syncPlayback() {
+    for (const [element, record] of animations) {
+      element.classList.toggle('motion-offscreen', !record.visible);
+      if (stopped() || !record.visible) record.animation.pause();
+      else record.animation.play();
     }
-
-    // Preserve links to sections that now live on Selected Work.
-    const legacySelectedWorkHashes = new Set(['filmography', 'impact', 'research', 'twinchat-paper', 'waken', 'work']);
-    if ("home" === "home" && legacySelectedWorkHashes.has(window.location.hash.slice(1))) {
-      window.location.replace("selected-work.html" + window.location.hash);
+    root.dataset.motionState = reduced ? 'reduced' : (document.hidden || menuOpen ? 'paused' : 'ready');
+    if (stopped()) resetDepth();
+    playbackSubscribers.forEach(update => update());
+  }
+  function syncMotion() {
+    reduced = reducedQuery.matches || manualReduced || performanceReduced;
+    root.dataset.reducedMotion = String(reduced);
+    if (motionButton) {
+      motionButton.hidden = false;
+      motionButton.setAttribute('aria-pressed', String(reduced));
+      motionButton.textContent = performanceReduced ? 'Reduced motion · performance' : (reducedQuery.matches ? 'Reduced motion · system preference' : (manualReduced ? 'Enable animations' : 'Reduce motion'));
+      motionButton.disabled = reducedQuery.matches || performanceReduced;
     }
-
-    // Scroll-synced navigation
-    const sections = document.querySelectorAll('section[id], footer[id]');
-    const navLinks = document.querySelectorAll('.scroll-nav a[href^="#"]');
-
-    function updateNav() {
-      let current = '';
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          current = section.id;
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
+    if (reduced) {
+      for (const [element, record] of animations) {
+        record.animation.cancel(); element.classList.remove('is-arriving');
+      }
+      animations.clear();
     }
+    syncPlayback();
+  }
+  motionButton?.addEventListener('click', () => {
+    manualReduced = !manualReduced;
+    try { localStorage.setItem('signal-reduce-motion', String(manualReduced)); } catch (_) {}
+    syncMotion();
+  });
+  reducedQuery.addEventListener('change', syncMotion);
+  document.addEventListener('visibilitychange', syncPlayback);
+  syncMotion();
 
-    window.addEventListener('scroll', updateNav);
-    updateNav();
+  // A native modal keeps keyboard focus and background content separate.
+  function closeMenu(restoreFocus = true) {
+    if (!menuOpen) return;
+    menuOpen = false;
+    menu.close();
+    document.body.style.overflow = previousOverflow;
+    menuButton.setAttribute('aria-expanded', 'false');
+    syncPlayback();
+    if (restoreFocus) {
+      if (compactQuery.matches) menuButton.focus({ preventScroll: true });
+      else document.querySelector('.site-identity')?.focus({ preventScroll: true });
+    }
+  }
+  if (menu && menuButton && typeof menu.showModal === 'function') {
+    menuButton.hidden = false;
+    menuButton.addEventListener('click', () => {
+      previousOverflow = document.body.style.overflow;
+      menuOpen = true; menu.showModal();
+      document.body.style.overflow = 'hidden';
+      menuButton.setAttribute('aria-expanded', 'true');
+      menu.querySelector('.menu-close').focus(); syncPlayback();
+    });
+    menu.querySelector('.menu-close').addEventListener('click', () => closeMenu());
+    menu.addEventListener('cancel', event => { event.preventDefault(); closeMenu(); });
+    menu.addEventListener('keydown', event => {
+      if (event.key !== 'Tab') return;
+      const items = [...menu.querySelectorAll('a[href], button:not([disabled])')];
+      const first = items[0], last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      const url = new URL(link.href);
+      closeMenu(false);
+      if (url.pathname === location.pathname && url.hash) {
+        const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+        if (target) { target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true }); }
+      } else menuButton.focus({ preventScroll: true });
+    }));
+    compactQuery.addEventListener('change', () => { if (!compactQuery.matches) closeMenu(); resetDepth(); });
+  }
 
-    // Mobile Menu Toggle
-    function toggleMobileMenu() {
-      const hamburger = document.querySelector('.hamburger');
-      const mobileMenu = document.getElementById('mobileMenu');
+  // Preserve old inbound anchors for content hosted on Selected Work.
+  const legacyHashes = new Set(['impact', 'work', 'waken', 'twinchat-paper', 'research', 'filmography']);
+  if (!document.getElementById('selected-work') && legacyHashes.has(location.hash.slice(1))) {
+    location.replace('selected-work.html' + location.hash);
+  }
 
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      const isOpen = mobileMenu.classList.contains('active');
-      hamburger.setAttribute('aria-expanded', String(isOpen));
-      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-
-      // Prevent body scroll when menu is open
-      if (isOpen) {
-        document.body.style.overflow = 'hidden';
+  // Every chapter has an entrance; nested blocks use a restrained stagger.
+  // Nothing is hidden in CSS: unsupported APIs and script failures leave content readable.
+  const selectors = [
+    ['.signal-copy > *, .work-intro-inner > *', 'type'],
+    ['.portrait-stage, .work-orbit', 'depth'],
+    ['main > section', 'chapter'],
+    ['.section-header, .selected-work-gateway-inner > h2', 'type'],
+    ['.stat-item, .selected-work-link, .book-card, .press-card, .citation-card, .citation-house-card, .interview-card, .innovation-card', 'block'],
+    ['.impact-card, .project-card, .clineflow-installer-shell, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
+  ];
+  const seen = new WeakSet();
+  const targets = new Map();
+  selectors.forEach(([selector, kind]) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      targets.set(element, { kind, delay: (index % 3) * 65 });
+      element.dataset.motion = kind;
+      if (kind === 'frame' || kind === 'block') element.classList.add('motion-frame');
+    });
+  });
+  function finishEntrance(element) {
+    const record = animations.get(element);
+    if (record) record.animation.cancel();
+    animations.delete(element);
+    element.classList.remove('is-arriving');
+    element.classList.remove('motion-offscreen');
+    entranceObserver?.unobserve(element);
+  }
+  const entranceObserver = 'IntersectionObserver' in window && Element.prototype.animate ? new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      const element = entry.target;
+      const record = animations.get(element);
+      if (record) { record.visible = entry.isIntersecting; continue; }
+      if (!entry.isIntersecting || seen.has(element)) continue;
+      seen.add(element);
+      if (reduced || element.contains(document.activeElement)) { entranceObserver.unobserve(element); continue; }
+      const { kind, delay } = targets.get(element);
+      const mobile = compactQuery.matches || !fineQuery.matches;
+      const duration = mobile ? 360 : (kind === 'depth' ? 850 : 650);
+      let frames;
+      if (kind === 'chapter' || kind === 'frame') {
+        // Interactive media and their hit areas do not translate or rotate.
+        frames = [{ opacity: .65 }, { opacity: 1 }];
+      } else if (kind === 'depth' && !mobile) {
+        frames = [{ opacity: .2, transform: 'perspective(1000px) translateY(22px) rotateY(-7deg)' }, { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0)' }];
       } else {
-        document.body.style.overflow = '';
+        frames = [{ opacity: .25, transform: `translateY(${mobile ? 8 : 18}px)` }, { opacity: 1, transform: 'translateY(0)' }];
+      }
+      const animation = element.animate(frames, { duration, delay: mobile ? 0 : delay, easing: 'cubic-bezier(.2,.75,.2,1)', fill: 'backwards' });
+      animations.set(element, { animation, visible: true });
+      element.classList.add('is-arriving');
+      animation.onfinish = () => finishEntrance(element);
+    }
+    syncPlayback();
+  }, { threshold: .06 }) : null;
+  if (entranceObserver) targets.forEach((_, element) => entranceObserver.observe(element));
+  document.addEventListener('focusin', event => {
+    for (const element of animations.keys()) if (element.contains(event.target)) finishEntrance(element);
+  });
+
+  // Scroll depth is decoration-only for cards and media. No perpetual frame loop.
+  const depthEntries = new Map();
+  const visibleDepth = new Set();
+  const depthEnabled = () => !stopped() && !compactQuery.matches && fineQuery.matches;
+  function measureDepth() {
+    depthEntries.forEach((entry, element) => {
+      const rect = element.getBoundingClientRect();
+      entry.top = rect.top + window.scrollY; entry.height = rect.height;
+    });
+    scheduleDepth();
+  }
+  function renderDepth() {
+    pointerFrame = 0;
+    if (!depthEnabled()) return;
+    // Sample only requested frames. Idle time never counts as a slow frame.
+    frameSamples.push(performance.now() - frameQueuedAt);
+    if (frameSamples.length === 20) {
+      const slowFrames = frameSamples.filter(ms => ms > 50).length;
+      frameSamples = [];
+      if (slowFrames >= 12) {
+        if (depthQuality === 1) {
+          depthQuality = .5; root.dataset.motionQuality = 'calm'; resetDepth();
+        } else {
+          performanceReduced = true; root.dataset.motionQuality = 'static'; syncMotion(); return;
+        }
       }
     }
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Open navigation menu');
-        document.body.style.overflow = '';
-      });
+    const scrollTop = window.scrollY, viewportHeight = window.innerHeight;
+    visibleDepth.forEach(element => {
+      const entry = depthEntries.get(element);
+      const progress = Math.max(-1, Math.min(1, ((scrollTop + viewportHeight / 2) - (entry.top + entry.height / 2)) / ((viewportHeight + entry.height) / 2)));
+      element.style.setProperty('--scroll-depth-y', `${(progress * entry.range * depthQuality).toFixed(2)}px`);
+      element.style.setProperty('--scroll-depth-light', `${(38 + progress * 24).toFixed(1)}%`);
     });
+    if (rig && stageVisible && depthQuality === 1) {
+      rig.style.setProperty('--tilt-x', `${-pointer.y * 4}deg`);
+      rig.style.setProperty('--tilt-y', `${pointer.x * 4}deg`);
+    }
+  }
+  function scheduleDepth() {
+    if (depthEnabled() && !pointerFrame && visibleDepth.size) {
+      frameQueuedAt = performance.now(); pointerFrame = requestAnimationFrame(renderDepth);
+    }
+  }
+  targets.forEach(({kind}, element) => {
+    if (!['chapter','frame','block'].includes(kind)) return;
+    const layer = document.createElement('span'); layer.className = 'scroll-depth-layer'; layer.setAttribute('aria-hidden', 'true');
+    element.appendChild(layer); element.classList.add('has-scroll-depth');
+    const rect = element.getBoundingClientRect();
+    depthEntries.set(element, {top:rect.top+window.scrollY,height:rect.height,range:kind==='chapter'?24:12});
+  });
+  const depthObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) visibleDepth.add(entry.target); else visibleDepth.delete(entry.target);
+    }); scheduleDepth();
+  }, {rootMargin:'80px'}) : null;
+  if (depthObserver) depthEntries.forEach((_,element)=>depthObserver.observe(element));
+  function updateDepthPolicy() {
+    if (depthEnabled()) scheduleDepth();
+    else {
+      frameSamples = [];
+      resetDepth();
+      depthEntries.forEach((_,element)=>{element.style.removeProperty('--scroll-depth-y');element.style.removeProperty('--scroll-depth-light');});
+    }
+  }
+  playbackSubscribers.push(updateDepthPolicy);
+  compactQuery.addEventListener('change', updateDepthPolicy);
+  fineQuery.addEventListener('change', updateDepthPolicy);
+  window.addEventListener('scroll', () => {
+    pointer = {x:0,y:0}; stageRect = null; scheduleDepth();
+  }, {passive:true});
+  window.addEventListener('resize', measureDepth, {passive:true});
+  if ('ResizeObserver' in window && document.querySelector('main')) new ResizeObserver(measureDepth).observe(document.querySelector('main'));
 
-    document.querySelectorAll('[data-copy-prompt]').forEach(button => {
-      button.addEventListener('click', async () => {
-        const prompt = document.getElementById(button.dataset.copyPrompt)?.textContent?.trim();
-        if (!prompt || !navigator.clipboard) return;
-        try {
-          await navigator.clipboard.writeText(prompt);
-          const label = button.textContent;
-          button.textContent = 'Copied';
-          window.setTimeout(() => { button.textContent = label; }, 1600);
-        } catch (error) {
-          console.error('Unable to copy ClineFlow installer prompt:', error);
-        }
-      });
+  // One demand-driven frame for pointer depth; no idle animation loop.
+  function measureStage() { if (stage) stageRect = stage.getBoundingClientRect(); }
+  if (stage && rig) {
+    measureStage();
+    if ('ResizeObserver' in window) new ResizeObserver(measureStage).observe(stage);
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+      stageVisible = entries[0].isIntersecting;
+      if (stageVisible) measureStage(); else resetDepth();
+    }).observe(stage);
+    else stageVisible = true;
+    stage.addEventListener('pointerenter', measureStage, { passive: true });
+    stage.addEventListener('pointermove', event => {
+      if (stopped() || !stageVisible || compactQuery.matches || !fineQuery.matches || event.pointerType === 'touch') return;
+      if (!stageRect) measureStage();
+      const rect = stageRect;
+      if (!rect?.width || !rect.height) return;
+      pointer = { x: Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1)), y: Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1)) };
+      scheduleDepth();
+    }, { passive: true });
+    stage.addEventListener('pointerleave', resetDepth, { passive: true });
+    fineQuery.addEventListener('change', resetDepth);
+  }
+
+  // The press strip shares the same visibility and motion policy as entrances.
+  const marquee = document.querySelector('.proof-marquee');
+  if (marquee) {
+    const pressButton = document.querySelector('.press-pause');
+    let pressVisible = false, pressPaused = false, pressHovered = false;
+    const updatePress = () => {
+      const pause = stopped() || !pressVisible || pressPaused || pressHovered;
+      marquee.classList.toggle('is-live', !reduced);
+      marquee.classList.toggle('is-paused', pause);
+      pressButton.textContent = pressPaused ? 'Play logos' : 'Pause logos';
+      pressButton.disabled = reduced;
+    };
+    pressButton.hidden = false;
+    pressButton.addEventListener('click', () => { pressPaused = !pressPaused; updatePress(); });
+    marquee.addEventListener('pointerenter', () => { pressHovered = true; updatePress(); });
+    marquee.addEventListener('pointerleave', () => { pressHovered = false; updatePress(); });
+    playbackSubscribers.push(updatePress);
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+      pressVisible = entries[0].isIntersecting; updatePress();
+    }).observe(marquee);
+    else pressVisible = true;
+    updatePress();
+  }
+
+  // Autoplay is a single visible-only timer. Manual navigation stops it until Play.
+  const carousel = document.querySelector('.meme-carousel');
+  if (carousel) {
+    const slides = [...carousel.querySelectorAll('.meme-arcade-screen-card')];
+    const pauseButton = carousel.querySelector('.carousel-pause');
+    const position = carousel.querySelector('.carousel-position');
+    const status = carousel.querySelector('.carousel-status');
+    const gallery = carousel.querySelector('.meme-arcade-gallery');
+    let current = 0, timer = 0, visible = false, paused = false, hovered = false;
+    let slideAnimation = null, requestedPause = null;
+    carousel.classList.add('is-carousel-live');
+    carousel.querySelector('.carousel-controls').hidden = false;
+    slides.forEach((slide, index) => { slide.hidden = index !== 0; });
+    function updateCarousel() {
+      clearTimeout(timer); timer = 0;
+      const active = !stopped() && visible && !paused && !hovered;
+      carousel.dataset.autoplay = active ? 'playing' : 'paused';
+      pauseButton.textContent = paused ? 'Play' : 'Pause';
+      pauseButton.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+      pauseButton.disabled = reduced;
+      if (reduced) { pauseButton.textContent = 'Motion off'; pauseButton.setAttribute('aria-label', 'Slideshow disabled by reduced motion'); }
+      if (!active) { slideAnimation?.cancel(); slideAnimation = null; }
+      if (active) timer = setTimeout(() => { showSlide(current + 1, false); }, 3000);
+    }
+    function showSlide(index, manual) {
+      slideAnimation?.cancel();
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => { slide.hidden = i !== current; });
+      position.textContent = `${current + 1} / ${slides.length}`;
+      carousel.querySelectorAll('.carousel-dot').forEach((dot, index) => dot.setAttribute('aria-current', String(index === current)));
+      if (manual) { paused = true; status.textContent = `${current + 1} of ${slides.length}: ${slides[current].querySelector('figcaption').textContent}`; }
+      updateCarousel();
+      if (!stopped() && !manual && Element.prototype.animate) {
+        slideAnimation = slides[current].animate([{opacity:.2},{opacity:1}], { duration: compactQuery.matches ? 250 : 450, easing:'ease-out' });
+      }
+    }
+    carousel.querySelector('.carousel-prev').addEventListener('click', () => showSlide(current - 1, true));
+    carousel.querySelector('.carousel-next').addEventListener('click', () => showSlide(current + 1, true));
+    carousel.querySelectorAll('.carousel-dot').forEach(dot => dot.addEventListener('click', () => showSlide(Number(dot.dataset.slide), true)));
+    pauseButton.addEventListener('pointerdown', () => { requestedPause = !paused; });
+    pauseButton.addEventListener('click', () => {
+      paused = requestedPause === null ? !paused : requestedPause;
+      requestedPause = null;
+      status.textContent = paused ? 'Slideshow paused' : 'Slideshow playing'; updateCarousel();
     });
-  </script>
+    carousel.addEventListener('focusin', () => { paused = true; updateCarousel(); });
+    carousel.addEventListener('pointerdown', () => { paused = true; updateCarousel(); }, {passive:true});
+    carousel.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') { hovered = true; updateCarousel(); } });
+    carousel.addEventListener('pointerleave', () => { hovered = false; updateCarousel(); });
+    carousel.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); showSlide(current + (event.key === 'ArrowRight' ? 1 : -1), true); }
+    });
+    let touchStart = null;
+    gallery.style.touchAction = 'pan-y';
+    gallery.addEventListener('pointerdown', event => { if (event.pointerType === 'touch') touchStart = {x:event.clientX,y:event.clientY}; }, {passive:true});
+    gallery.addEventListener('pointerup', event => {
+      if (!touchStart) return;
+      const dx = event.clientX-touchStart.x, dy = event.clientY-touchStart.y; touchStart = null;
+      if (Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.5) showSlide(current+(dx<0?1:-1),true);
+    }, {passive:true});
+    gallery.addEventListener('pointercancel', () => { touchStart = null; }, {passive:true});
+    playbackSubscribers.push(updateCarousel);
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => { visible = entries[0].isIntersecting; updateCarousel(); }, {threshold:.25}).observe(carousel);
+    else visible = true;
+    updateCarousel();
+  }
 
-  <!-- Resume Viewer Script -->
-  <script type="module">
-    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.mjs';
+  document.querySelectorAll('[data-copy-prompt]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const prompt = document.getElementById(button.dataset.copyPrompt)?.textContent?.trim();
+      const status = button.parentElement.querySelector('.copy-status');
+      try {
+        if (!prompt || !navigator.clipboard) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(prompt);
+        status.textContent = 'Prompt copied';
+      } catch (_) {
+        status.textContent = 'Select and copy the prompt above.';
+      }
+    });
+  });
 
-    const resumeUrl = 'assets/hassan-uriostegui-resume-2026-12.pdf';
+  if ('IntersectionObserver' in window) {
+    const navLinks = [...document.querySelectorAll('.desktop-links a[href^="#"]')];
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(link => {
+          if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-15% 0px -65% 0px' });
+    document.querySelectorAll('main > section[id]').forEach(section => navObserver.observe(section));
+  }
+})();
+</script><script type="module">
+
+    const viewer = document.querySelector('.professional-profile-viewer');
+    if ('IntersectionObserver' in window) {
+      await new Promise(resolve => {
+        const observer = new IntersectionObserver(entries => {
+          if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); resolve(); }
+        }, { rootMargin: '250px' });
+        observer.observe(viewer);
+      });
+    }
+    let pdfjsLib;
+
+    const resumeUrl = document.querySelector('.professional-profile-download').getAttribute('href');
     const resumeCanvas = document.getElementById('resumeCanvas');
     const resumePreview = document.getElementById('resumePreview');
     const resumeCanvasWrap = document.getElementById('resumeCanvasWrap');
@@ -4130,7 +4805,7 @@ body {
     let resumeZoom = 1;
     let resumeRenderTask = null;
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.worker.mjs';
+
 
     function updateResumeControls() {
       const ready = Boolean(resumePdf);
@@ -4180,6 +4855,8 @@ body {
     }
 
     try {
+      pdfjsLib = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.mjs');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.worker.mjs';
       const loadingTask = pdfjsLib.getDocument(resumeUrl);
       resumePdf = await loadingTask.promise;
       resumeCanvas.hidden = false;
@@ -4220,8 +4897,5 @@ body {
       window.clearTimeout(resumeResizeTimer);
       resumeResizeTimer = window.setTimeout(() => renderResumePage(), 150);
     });
-  </script>
-  <!-- /Resume Viewer Script -->
 
-</body>
-</html>
+</script></body></html>

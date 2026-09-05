@@ -43,6 +43,17 @@
     "url": "assets/bio-profile.5e6732670a8f.webp",
     "width": 1672
   },
+  "bio-profile-small": {
+    "fingerprint": "a4efa4e19685",
+    "height": 360,
+    "max_width": 640,
+    "original_height": 942,
+    "original_width": 1672,
+    "preset": "photo",
+    "source": "assets/bio-profile.5e6732670a8f.webp",
+    "url": "assets/bio-profile-small.a4efa4e19685.webp",
+    "width": 640
+  },
   "bookstore-barnes-noble": {
     "fingerprint": "e9f409aa2438",
     "height": 660,
@@ -119,6 +130,17 @@
     "source": "assets/clineflow-hero.jpg",
     "url": "assets/clineflow-hero.89cfa689bf7d.webp",
     "width": 1600
+  },
+  "clineflow-hero-small": {
+    "fingerprint": "8fbbb7a8b97d",
+    "height": 360,
+    "max_width": 640,
+    "original_height": 900,
+    "original_width": 1600,
+    "preset": "graphic",
+    "source": "assets/clineflow-hero.89cfa689bf7d.webp",
+    "url": "assets/clineflow-hero-small.8fbbb7a8b97d.webp",
+    "width": 640
   },
   "cybernews-logo": {
     "fingerprint": "c6a48da5b887",
@@ -230,6 +252,17 @@
     "url": "assets/portrait.3f70ee5e394b.webp",
     "width": 560
   },
+  "portrait-small": {
+    "fingerprint": "1c5bbdef2e55",
+    "height": 570,
+    "max_width": 320,
+    "original_height": 996,
+    "original_width": 560,
+    "preset": "photo",
+    "source": "assets/portrait.3f70ee5e394b.webp",
+    "url": "assets/portrait-small.1c5bbdef2e55.webp",
+    "width": 320
+  },
   "resume-preview": {
     "fingerprint": "352b546e8917",
     "height": 1584,
@@ -240,6 +273,17 @@
     "source": "assets/hassan-uriostegui-resume-2026-12-page-1.png",
     "url": "assets/resume-preview.352b546e8917.webp",
     "width": 1224
+  },
+  "resume-preview-small": {
+    "fingerprint": "0f30c2c64c1c",
+    "height": 828,
+    "max_width": 640,
+    "original_height": 1584,
+    "original_width": 1224,
+    "preset": "graphic",
+    "source": "assets/resume-preview.352b546e8917.webp",
+    "url": "assets/resume-preview-small.0f30c2c64c1c.webp",
+    "width": 640
   },
   "techcrunch-logo": {
     "fingerprint": "cdf8825e1164",
