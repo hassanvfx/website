@@ -939,7 +939,7 @@ def generate_header(page):
     </header>
     <dialog id="mobileMenu" class="signal-menu" aria-labelledby="menu-title">
       <div class="menu-heading"><h2 id="menu-title">Explore</h2><button type="button" class="menu-close" aria-label="Close navigation menu">Close ×</button></div>
-      <nav aria-label="All sections">{mobile_links}<a href="{SELECTED_WORK_PAGE}">SELECTED WORK</a></nav>
+      <nav aria-label="All sections">{mobile_links}</nav>
       <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a>
     </dialog>
     <noscript><nav class="noscript-nav" aria-label="All sections">{mobile_links}</nav></noscript>

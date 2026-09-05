@@ -98,6 +98,7 @@ NAV_ITEMS = [
     {"label": "APPS", "href": "#memearcade", "featured": True},
     {"label": "CITATIONS", "href": "#citations"},
     {"label": "BOOKS", "href": "#books"},
+    {"label": "SPARKS", "href": "#selected-work"},
 ]
 
 # Secondary navigation

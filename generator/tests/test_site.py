@@ -64,6 +64,8 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(positions,sorted(positions))
         self.assertIn(f'href="{generate.CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="desktop-clineflow"',header)
         self.assertIn('ClineFlow <span aria-hidden="true">↗</span>',header)
+        self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">Sparks</a>',header)
+        self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">SPARKS</a>',home)
         self.assertLess(home.index('<section class="quote-section">'),home.index('class="selected-work-gateway"'))
         self.assertLess(home.index('class="selected-work-gateway"'),home.index('id="eb1a"'))
     def test_image_budgets_and_responsive_assets(self):
