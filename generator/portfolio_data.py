@@ -170,7 +170,7 @@ HISTORIC_COMPANIES = [
         "year": "2019-2020",
         "role": "Principal iOS Architect",
         "highlight": "Backed by Madonna & Ashton Kutcher",
-        "description": "Implemented Princeton CS Ph.D. paper in Swift. Architected reactive iOS app. Built and led iOS team of 5 engineers in 6 months.",
+        "description": "Architected reactive iOS Swift app. Built and led iOS team of 5 engineers in 6 months. Served 10M+ users.",
         "video": "https://www.youtube.com/embed/ZOWuy-HhQxE",
         "stats": "Millions of users",
         "press_quote": {
