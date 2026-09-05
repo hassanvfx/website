@@ -93,7 +93,7 @@ STATS = [
 # Primary navigation
 NAV_ITEMS = [
     {"label": "HOME", "href": "#home"},
-    {"label": "RESUME", "href": "#professional-profile"},
+    {"label": "RESUME", "href": "profile.html"},
     {"label": "AI-CODING", "href": "#clineflow", "featured": True},
     {"label": "APPS", "href": "#memearcade", "featured": True},
     {"label": "CITATIONS", "href": "#citations"},

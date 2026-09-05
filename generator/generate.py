@@ -21,13 +21,14 @@ from templates.css import CSS_STYLES, COMPONENT_STYLES, SIGNAL_STYLES
 from templates.scripts import INTERACTION_SCRIPT, RESUME_SCRIPT
 
 SELECTED_WORK_PAGE = "selected-work.html"
+PROFILE_PAGE = "profile.html"
 SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, author, and creator of ClineFlow, building agentic systems, consumer products, and AI platforms."
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "waken", "twinchat-paper", "research", "filmography"}
 SELECTED_WORK_ITEMS = [
     ("Impact & Exits", "impact"),
     ("Featured Projects", "work"),
-    ("TwinChat Paper", "twinchat-paper"),
+    ("Prompt Engineering", "twinchat-paper"),
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
 ]
@@ -96,6 +97,12 @@ def get_page_metadata(page):
             "description": "Selected work by Hassan Uriostegui across AI innovation, research, products, startup impact, and visual effects.",
             "path": SELECTED_WORK_PAGE,
         }
+    if page == "profile":
+        return {
+            "title": "Resume | Hassan Uriostegui",
+            "description": "Professional resume and profile for Hassan Uriostegui, AI-native principal and founding engineer.",
+            "path": PROFILE_PAGE,
+        }
     return {
         "title": "Hassan Uriostegui | AI-Native Principal Engineer & ClineFlow Creator",
         "description": SITE_DESCRIPTION,
@@ -162,7 +169,7 @@ Sitemap: {SITE_URL}/sitemap.xml
 
 
 def generate_sitemap_xml():
-    pages = ("", SELECTED_WORK_PAGE)
+    pages = ("", SELECTED_WORK_PAGE, PROFILE_PAGE)
     urls = "\n".join(
         f"  <url><loc>{SITE_URL}/{page}</loc><priority>{'1.0' if not page else '0.8'}</priority></url>"
         for page in pages
@@ -293,14 +300,14 @@ def generate_clineflow_section():
 '''
 
 
-def generate_professional_profile():
+def generate_professional_profile(heading_tag="h2"):
     """Generate the embedded PDF.js professional profile viewer."""
     return f'''
   <section class="professional-profile" id="professional-profile">
     <div class="professional-profile-inner">
       <div class="professional-profile-copy">
         <span class="professional-profile-eyebrow">{PROFESSIONAL_PROFILE["eyebrow"]}</span>
-        <h2>{PROFESSIONAL_PROFILE["title"]}</h2>
+        <{heading_tag}>{PROFESSIONAL_PROFILE["title"]}</{heading_tag}>
         <p>{PROFESSIONAL_PROFILE["summary"]}</p>
         <div class="professional-profile-actions">
           <a href="{PROFESSIONAL_PROFILE["pdf"]}" download class="professional-profile-download">{PROFESSIONAL_PROFILE["download_label"]}</a>
@@ -664,7 +671,7 @@ def generate_interviews_html():
 
 def render_portfolio(page="home"):
     """Render a portfolio page from the shared generator source."""
-    if page not in {"home", "selected-work"}:
+    if page not in {"home", "selected-work", "profile"}:
         raise ValueError(f"Unsupported portfolio page: {page}")
     metadata = get_page_metadata(page)
     canonical_url = f'{SITE_URL}/{metadata["path"]}'
@@ -707,19 +714,28 @@ def render_portfolio(page="home"):
 
 
 '''
-    content = generate_home_content() if page == "home" else generate_selected_content()
-    resume_script = f'<script type="module">{RESUME_SCRIPT}</script>' if page == "home" else ''
+    content = {
+        "home": generate_home_content,
+        "selected-work": generate_selected_content,
+        "profile": generate_profile_content,
+    }[page]()
+    resume_script = f'<script type="module">{RESUME_SCRIPT}</script>' if page == "profile" else ''
     return (html + generate_header(page) + '<main id="main-content" tabindex="-1">'
             + content + '</main>' + generate_contact() +
             f'<script>{INTERACTION_SCRIPT}</script>' + resume_script + '</body></html>')
 
 
 def generate_home_content():
-    return (generate_hero() + generate_proof() + generate_professional_profile()
+    return (generate_hero() + generate_proof() + generate_selected_work_grid()
             + generate_clineflow_section() + generate_meme_arcade_callout()
             + generate_wwdc14_feature() + generate_citations_section()
             + generate_books_media()
-            + generate_about() + generate_quote() + generate_selected_work_grid() + generate_recognition())
+            + generate_about() + generate_quote() + generate_recognition())
+
+
+def generate_profile_content():
+    """Generate the focused professional resume page."""
+    return generate_professional_profile(heading_tag="h1")
 
 
 def generate_selected_content():
@@ -919,7 +935,7 @@ def generate_quote():
 
 def generate_header(page):
     desktop_links = [
-        ('Profile', '#professional-profile'),
+        ('Resume', PROFILE_PAGE),
         ('AI coding', '#clineflow'),
         ('Apps', '#memearcade'),
         ('Citations', '#citations'),
@@ -1028,6 +1044,7 @@ def generate_portfolio():
     outputs = {
         "index.html": render_portfolio("home"),
         SELECTED_WORK_PAGE: render_portfolio("selected-work"),
+        PROFILE_PAGE: render_portfolio("profile"),
         "robots.txt": generate_robots_txt(),
         "sitemap.xml": generate_sitemap_xml(),
     }

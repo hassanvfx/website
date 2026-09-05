@@ -64,7 +64,7 @@ def main() -> int:
         urls.add(entry["url"])
         entries_by_url[entry["url"]] = entry
 
-    for page in ("index.html", "selected-work.html"):
+    for page in ("index.html", "selected-work.html", "profile.html"):
         page_html = (ROOT / page).read_text(encoding="utf-8")
         image_tags = IMAGE_TAG_RE.findall(page_html)
         if not image_tags:

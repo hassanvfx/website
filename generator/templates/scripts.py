@@ -247,6 +247,9 @@ INTERACTION_SCRIPT = r'''
   if (!document.getElementById('selected-work') && legacyHashes.has(location.hash.slice(1))) {
     location.replace('selected-work.html' + location.hash);
   }
+  if (!document.getElementById('professional-profile') && location.hash === '#professional-profile') {
+    location.replace('profile.html');
+  }
 
   // Each editorial row owns a motion identity; nested cards inherit its palette
   // and alternate their entrance direction rather than repeating one global fade.

@@ -24,7 +24,7 @@ class Document(HTMLParser):
 
 class SiteTests(unittest.TestCase):
     def setUp(self):
-        self.pages={name:generate.render_portfolio(page) for name,page in [('index.html','home'),('selected-work.html','selected-work')]}
+        self.pages={name:generate.render_portfolio(page) for name,page in [('index.html','home'),('selected-work.html','selected-work'),('profile.html','profile')]}
         self.docs={name:Document(html) for name,html in self.pages.items()}
     def test_outputs_match_generator(self):
         for name,html in self.pages.items():
@@ -39,17 +39,36 @@ class SiteTests(unittest.TestCase):
                 elif '.html#' in href and not href.startswith('http'):
                     route,anchor=href.split('#'); self.assertIn(anchor,self.docs[route].ids,href)
     def test_existing_content_destinations_preserved(self):
-        approved_removed_ids={'sendkarma'}
+        approved_removed_ids={'sendkarma','professional-profile'}
         approved_removed_destinations={'https://www.sendkarma.app/','https://player.vimeo.com/video/1138631992'}
+        relocated_profile_ids={'resumeCanvas','resumeCanvasWrap','resumeNext','resumePageIndicator','resumePreview','resumePrevious','resumeStatus','resumeZoomIn','resumeZoomOut'}
+        resume_pdf='assets/hassan-uriostegui-resume-2026-12.pdf'
+        profile_doc=self.docs['profile.html']
+        self.assertTrue(relocated_profile_ids.issubset(set(profile_doc.ids)))
+        self.assertIn(resume_pdf,profile_doc.links)
         for name,doc in self.docs.items():
+            if name == 'profile.html':
+                continue
             baseline=Document(subprocess.check_output(['git','show',f'7e34a70:{name}'],cwd=ROOT,text=True))
             baseline_ids=set(baseline.ids)-approved_removed_ids
+            if name == 'index.html':
+                baseline_ids-=relocated_profile_ids
             self.assertTrue(baseline_ids.issubset(set(doc.ids)),name)
             baseline_destinations={h for h in baseline.links if not h.startswith('#')}-approved_removed_destinations
+            if name == 'index.html':
+                baseline_destinations.discard(resume_pdf)
+            baseline_destinations.discard('index.html#professional-profile')
             self.assertTrue(baseline_destinations.issubset(set(doc.links)),baseline_destinations-set(doc.links))
-    def test_resume_priority_and_media_contract(self):
+    def test_resume_page_and_media_contract(self):
         home=self.pages['index.html']
-        self.assertLess(home.index('id="professional-profile"'),home.index('id="clineflow"'))
+        profile=self.pages['profile.html']
+        self.assertNotIn('id="professional-profile"',home)
+        self.assertLess(home.index('class="selected-work-gateway"'),home.index('id="clineflow"'))
+        self.assertIn('id="professional-profile"',profile)
+        self.assertIn('id="resumeCanvas"',profile)
+        self.assertNotIn('id="clineflow"',profile)
+        self.assertIn('id="contact"',profile)
+        self.assertIn("location.replace('profile.html');",generate.INTERACTION_SCRIPT)
         self.assertNotIn('id="resumeCanvas"',self.pages['selected-work.html'])
         for doc in self.docs.values():
             for iframe in doc.iframes:
@@ -59,7 +78,7 @@ class SiteTests(unittest.TestCase):
         home=self.pages['index.html']
         header=home[home.index('<header'):home.index('</header>')]
         expected=[
-            ('Profile','#professional-profile'), ('AI coding','#clineflow'),
+            ('Resume',generate.PROFILE_PAGE), ('AI coding','#clineflow'),
             ('Apps','#memearcade'), ('Citations','#citations'), ('Books','#books'),
             ('Press','#press'), ('Sparks',f'{generate.SELECTED_WORK_PAGE}#selected-work'),
         ]
@@ -69,8 +88,8 @@ class SiteTests(unittest.TestCase):
         self.assertIn('ClineFlow <span aria-hidden="true">↗</span>',header)
         self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">Sparks</a>',header)
         self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">SPARKS</a>',home)
-        self.assertLess(home.index('<section class="quote-section">'),home.index('class="selected-work-gateway"'))
-        self.assertLess(home.index('class="selected-work-gateway"'),home.index('id="eb1a"'))
+        self.assertIn('Prompt Engineering',home)
+        self.assertNotIn('TwinChat Paper',home)
     def test_ultrakam_exit_card_and_coverage(self):
         work=self.pages['selected-work.html']
         self.assertLess(work.index('id="viddy"'),work.index('id="ultrakam"'))

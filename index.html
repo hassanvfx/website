@@ -1943,7 +1943,7 @@ nav a:hover {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
-.professional-profile-copy h2 {
+.professional-profile-copy :is(h1, h2) {
   margin: 0.7rem 0 1.2rem;
   color: #fff;
   font-family: 'Playfair Display', serif;
@@ -3692,7 +3692,7 @@ img { max-width: 100%; }
 .section, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { padding: 80px 48px; }
 .section-header { max-width: 1224px; margin: 0 auto 44px; text-align: left; position: relative; padding: 0; }
 .section-header::before { content: ''; display: block; width: 48px; height: 2px; background: var(--cyan); margin-bottom: 26px; transform-origin: left; }
-.section-header h2, .wwdc14-copy h2, .citations-intro h2, .professional-profile-copy h2, .bio-headline { font-size: clamp(2rem,3.5vw,3.3rem); font-weight: 400; line-height: 1.2; }
+.section-header h2, .wwdc14-copy h2, .citations-intro h2, .professional-profile-copy :is(h1, h2), .bio-headline { font-size: clamp(2rem,3.5vw,3.3rem); font-weight: 400; line-height: 1.2; }
 .section-header .lead { font-size: 1.1rem; color: var(--muted); max-width: 620px; }
 .eyebrow { color: var(--cyan); font-size: .75rem; }
 .impact-card, .project-card {  background: #0c1117; border-radius: 5px; box-shadow: none; margin: 0 auto 40px; max-width: 1224px; overflow: visible; position: relative; }
@@ -4072,7 +4072,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <header class="site-header">
       <nav class="site-nav" aria-label="Main navigation">
         <a class="site-identity" href="#home"><span class="identity-mark" aria-hidden="true">hu.</span><span>Hassan Uriostegui</span></a>
-        <div class="desktop-links"><a href="#professional-profile">Profile</a><a href="#clineflow">AI coding</a><a href="#memearcade">Apps</a><a href="#citations">Citations</a><a href="#books">Books</a><a href="#press">Press</a><a href="selected-work.html#selected-work">Sparks</a><a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="desktop-clineflow">ClineFlow <span aria-hidden="true">↗</span></a></div>
+        <div class="desktop-links"><a href="profile.html">Resume</a><a href="#clineflow">AI coding</a><a href="#memearcade">Apps</a><a href="#citations">Citations</a><a href="#books">Books</a><a href="#press">Press</a><a href="selected-work.html#selected-work">Sparks</a><a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="desktop-clineflow">ClineFlow <span aria-hidden="true">↗</span></a></div>
         <a class="header-book" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a call <span aria-hidden="true">↗</span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" hidden>Menu <span aria-hidden="true">＋</span></button>
       </nav>
@@ -4080,7 +4080,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <dialog id="mobileMenu" class="signal-menu" aria-labelledby="menu-title">
       <div class="menu-heading"><h2 id="menu-title">Explore</h2><button type="button" class="menu-close" aria-label="Close navigation menu">Close ×</button></div>
       <nav aria-label="All sections"><a href="#home">HOME</a>
-    <a href="#professional-profile">RESUME</a>
+    <a href="profile.html">RESUME</a>
     <a href="#clineflow" class="featured">AI-CODING</a>
     <a href="#memearcade" class="featured">APPS</a>
     <a href="#citations">CITATIONS</a>
@@ -4094,7 +4094,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a>
     </dialog>
     <noscript><nav class="noscript-nav" aria-label="All sections"><a href="#home">HOME</a>
-    <a href="#professional-profile">RESUME</a>
+    <a href="profile.html">RESUME</a>
     <a href="#clineflow" class="featured">AI-CODING</a>
     <a href="#memearcade" class="featured">APPS</a>
     <a href="#citations">CITATIONS</a>
@@ -4151,35 +4151,17 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <div class="proof-marquee"><div class="proof-track"><div class="proof-logo-group"><div class="press-logo-item"><img src="assets/authority-magazine-logo.cd9bbe112e7f.webp" width="400" height="268" decoding="async" loading="lazy" alt="Authority Magazine" /></div><div class="press-logo-item"><img src="assets/forbes-logo.7d340c4a8a50.webp" width="400" height="268" decoding="async" loading="lazy" alt="Forbes" /></div><div class="press-logo-item"><img src="assets/techcrunch-logo.cdf8825e1164.webp" width="400" height="268" decoding="async" loading="lazy" alt="TechCrunch" /></div><div class="press-logo-item"><img src="assets/athletechnews-logo.448963dfd2a6.webp" width="400" height="268" decoding="async" loading="lazy" alt="Athletechnews" /></div><div class="press-logo-item"><img src="assets/cybernews-logo.c6a48da5b887.webp" width="400" height="268" decoding="async" loading="lazy" alt="CyberNews" /></div><div class="press-logo-item"><img src="assets/yahoo-news-logo.b1ab3f21ed39.webp" width="400" height="268" decoding="async" loading="lazy" alt="Yahoo News" /></div></div><div class="proof-logo-group logo-repeat" aria-hidden="true"><div class="press-logo-item"><img src="assets/authority-magazine-logo.cd9bbe112e7f.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/forbes-logo.7d340c4a8a50.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/techcrunch-logo.cdf8825e1164.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/athletechnews-logo.448963dfd2a6.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/cybernews-logo.c6a48da5b887.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div><div class="press-logo-item"><img src="assets/yahoo-news-logo.b1ab3f21ed39.webp" width="400" height="268" decoding="async" loading="lazy" alt="" /></div></div></div></div>
       </div>
     </section>
-  <section class="professional-profile" id="professional-profile">
-    <div class="professional-profile-inner">
-      <div class="professional-profile-copy">
-        <span class="professional-profile-eyebrow">Professional Profile</span>
-        <h2>AI-Native Principal / Founding Engineer</h2>
-        <p>Building agentic systems, mobile products, and consumer platforms that turn ambitious ideas into resilient, high-impact experiences.</p>
-        <div class="professional-profile-actions">
-          <a href="assets/hassan-uriostegui-resume-2026-12.pdf" download class="professional-profile-download">Download Resume (PDF)</a>
-          <a href="assets/hassan-uriostegui-resume-2026-12.pdf" target="_blank" rel="noopener noreferrer" class="professional-profile-open">Open Fullscreen →</a>
-        </div>
-      </div>
-      <div class="professional-profile-viewer" aria-label="Embedded professional profile PDF viewer">
-        <div class="professional-profile-toolbar">
-          <span id="resumeStatus" class="professional-profile-status" aria-live="polite">Resume preview — loading full viewer…</span>
-          <div class="professional-profile-controls" aria-label="Resume viewer controls">
-            <button type="button" id="resumePrevious" aria-label="Previous resume page" disabled>←</button>
-            <span id="resumePageIndicator" aria-live="polite">1 / 2</span>
-            <button type="button" id="resumeNext" aria-label="Next resume page" disabled>→</button>
-            <button type="button" id="resumeZoomOut" aria-label="Zoom out" disabled>−</button>
-            <button type="button" id="resumeZoomIn" aria-label="Zoom in" disabled>+</button>
-          </div>
-        </div>
-        <div id="resumeCanvasWrap" class="professional-profile-canvas-wrap">
-          <div class="professional-profile-page-frame">
-            <img id="resumePreview" src="assets/resume-preview.352b546e8917.webp" width="1224" height="1584" decoding="async" srcset="assets/resume-preview-small.0f30c2c64c1c.webp 640w, assets/resume-preview.352b546e8917.webp 1224w" sizes="(max-width: 800px) calc(100vw - 80px), 620px" loading="lazy" alt="First page of Hassan Uriostegui's professional profile and resume." class="professional-profile-preview" />
-            <canvas id="resumeCanvas" aria-label="Professional profile PDF page" hidden></canvas>
-          </div>
-        </div>
-        <p class="professional-profile-fallback">Preview shown above. For the full two-page resume, <a href="assets/hassan-uriostegui-resume-2026-12.pdf" target="_blank" rel="noopener noreferrer">open the PDF</a>.</p>
+  <!-- Selected Work Gateway -->
+  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
+    <div class="selected-work-gateway-inner">
+      <span class="eyebrow">Selected Work</span>
+      <h2 id="selected-work-title">Explore Portfolio Highlights</h2>
+      <div class="selected-work-grid">
+        <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#work" class="selected-work-link">Featured Projects<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#twinchat-paper" class="selected-work-link">Prompt Engineering<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
+        <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -4462,21 +4444,6 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   </section>
 
 
-  <!-- Selected Work Gateway -->
-  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
-    <div class="selected-work-gateway-inner">
-      <span class="eyebrow">Selected Work</span>
-      <h2 id="selected-work-title">Explore Portfolio Highlights</h2>
-      <div class="selected-work-grid">
-        <a href="selected-work.html#impact" class="selected-work-link">Impact & Exits<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#work" class="selected-work-link">Featured Projects<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#twinchat-paper" class="selected-work-link">TwinChat Paper<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#research" class="selected-work-link">Innovations<span aria-hidden="true">→</span></a>
-        <a href="selected-work.html#filmography" class="selected-work-link">Filmography & VFX<span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
   <!-- EB1A Recognition -->
   <section class="bio-section" id="eb1a">
     <div class="bio-content">
@@ -4625,6 +4592,9 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   const legacyHashes = new Set(['impact', 'work', 'waken', 'twinchat-paper', 'research', 'filmography']);
   if (!document.getElementById('selected-work') && legacyHashes.has(location.hash.slice(1))) {
     location.replace('selected-work.html' + location.hash);
+  }
+  if (!document.getElementById('professional-profile') && location.hash === '#professional-profile') {
+    location.replace('profile.html');
   }
 
   // Each editorial row owns a motion identity; nested cards inherit its palette
@@ -4978,126 +4948,4 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     document.querySelectorAll('main > section[id]').forEach(section => navObserver.observe(section));
   }
 })();
-</script><script type="module">
-
-    const viewer = document.querySelector('.professional-profile-viewer');
-    if ('IntersectionObserver' in window) {
-      await new Promise(resolve => {
-        const observer = new IntersectionObserver(entries => {
-          if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); resolve(); }
-        }, { rootMargin: '250px' });
-        observer.observe(viewer);
-      });
-    }
-    let pdfjsLib;
-
-    const resumeUrl = document.querySelector('.professional-profile-download').getAttribute('href');
-    const resumeCanvas = document.getElementById('resumeCanvas');
-    const resumePreview = document.getElementById('resumePreview');
-    const resumeCanvasWrap = document.getElementById('resumeCanvasWrap');
-    const resumeStatus = document.getElementById('resumeStatus');
-    const resumePageIndicator = document.getElementById('resumePageIndicator');
-    const resumePrevious = document.getElementById('resumePrevious');
-    const resumeNext = document.getElementById('resumeNext');
-    const resumeZoomOut = document.getElementById('resumeZoomOut');
-    const resumeZoomIn = document.getElementById('resumeZoomIn');
-
-    let resumePdf = null;
-    let resumePage = 1;
-    let resumeZoom = 1;
-    let resumeRenderTask = null;
-
-
-
-    function updateResumeControls() {
-      const ready = Boolean(resumePdf);
-      resumePrevious.disabled = !ready || resumePage <= 1;
-      resumeNext.disabled = !ready || resumePage >= resumePdf.numPages;
-      resumeZoomOut.disabled = !ready || resumeZoom <= 0.75;
-      resumeZoomIn.disabled = !ready || resumeZoom >= 1.75;
-      if (ready) {
-        resumePageIndicator.textContent = `${resumePage} / ${resumePdf.numPages}`;
-      }
-    }
-
-    async function renderResumePage() {
-      if (!resumePdf) return;
-      if (resumeRenderTask) {
-        resumeRenderTask.cancel();
-      }
-      resumeStatus.textContent = `Rendering page ${resumePage}…`;
-      const page = await resumePdf.getPage(resumePage);
-      const baseViewport = page.getViewport({ scale: 1 });
-      const viewerPadding = window.matchMedia('(max-width: 768px)').matches ? 16 : 32;
-      const availableWidth = Math.max(1, resumeCanvasWrap.clientWidth - viewerPadding);
-      const fitScale = Math.min(1, availableWidth / baseViewport.width);
-      const viewport = page.getViewport({ scale: fitScale * resumeZoom });
-      const outputScale = window.devicePixelRatio || 1;
-      const context = resumeCanvas.getContext('2d', { alpha: false });
-      resumeCanvas.width = Math.floor(viewport.width * outputScale);
-      resumeCanvas.height = Math.floor(viewport.height * outputScale);
-      resumeCanvas.style.width = `${Math.floor(viewport.width)}px`;
-      resumeCanvas.style.height = `${Math.floor(viewport.height)}px`;
-      resumeRenderTask = page.render({
-        canvasContext: context,
-        viewport,
-        transform: outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null,
-      });
-      try {
-        await resumeRenderTask.promise;
-        resumeStatus.textContent = `Resume page ${resumePage} of ${resumePdf.numPages}`;
-      } catch (error) {
-        if (error?.name !== 'RenderingCancelledException') {
-          throw error;
-        }
-      } finally {
-        resumeRenderTask = null;
-      }
-      updateResumeControls();
-    }
-
-    try {
-      pdfjsLib = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.mjs');
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.3.31/build/pdf.worker.mjs';
-      const loadingTask = pdfjsLib.getDocument(resumeUrl);
-      resumePdf = await loadingTask.promise;
-      resumeCanvas.hidden = false;
-      await renderResumePage();
-      resumePreview.hidden = true;
-      updateResumeControls();
-    } catch (error) {
-      console.error('Unable to load embedded resume:', error);
-      resumeCanvas.hidden = true;
-      resumePreview.hidden = false;
-      resumeStatus.textContent = 'Preview available — use the PDF link for the full resume.';
-    }
-
-    resumePrevious.addEventListener('click', async () => {
-      if (resumePage > 1) {
-        resumePage -= 1;
-        await renderResumePage();
-      }
-    });
-    resumeNext.addEventListener('click', async () => {
-      if (resumePdf && resumePage < resumePdf.numPages) {
-        resumePage += 1;
-        await renderResumePage();
-      }
-    });
-    resumeZoomOut.addEventListener('click', async () => {
-      resumeZoom = Math.max(0.75, resumeZoom - 0.25);
-      await renderResumePage();
-    });
-    resumeZoomIn.addEventListener('click', async () => {
-      resumeZoom = Math.min(1.75, resumeZoom + 0.25);
-      await renderResumePage();
-    });
-
-    let resumeResizeTimer;
-    window.addEventListener('resize', () => {
-      if (!resumePdf) return;
-      window.clearTimeout(resumeResizeTimer);
-      resumeResizeTimer = window.setTimeout(() => renderResumePage(), 150);
-    });
-
 </script></body></html>

@@ -1920,7 +1920,7 @@ nav a:hover {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
-.professional-profile-copy h2 {
+.professional-profile-copy :is(h1, h2) {
   margin: 0.7rem 0 1.2rem;
   color: #fff;
   font-family: 'Playfair Display', serif;
@@ -3670,7 +3670,7 @@ img { max-width: 100%; }
 .section, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { padding: 80px 48px; }
 .section-header { max-width: 1224px; margin: 0 auto 44px; text-align: left; position: relative; padding: 0; }
 .section-header::before { content: ''; display: block; width: 48px; height: 2px; background: var(--cyan); margin-bottom: 26px; transform-origin: left; }
-.section-header h2, .wwdc14-copy h2, .citations-intro h2, .professional-profile-copy h2, .bio-headline { font-size: clamp(2rem,3.5vw,3.3rem); font-weight: 400; line-height: 1.2; }
+.section-header h2, .wwdc14-copy h2, .citations-intro h2, .professional-profile-copy :is(h1, h2), .bio-headline { font-size: clamp(2rem,3.5vw,3.3rem); font-weight: 400; line-height: 1.2; }
 .section-header .lead { font-size: 1.1rem; color: var(--muted); max-width: 620px; }
 .eyebrow { color: var(--cyan); font-size: .75rem; }
 .impact-card, .project-card {  background: #0c1117; border-radius: 5px; box-shadow: none; margin: 0 auto 40px; max-width: 1224px; overflow: visible; position: relative; }
