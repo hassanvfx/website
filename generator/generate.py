@@ -24,13 +24,15 @@ SELECTED_WORK_PAGE = "selected-work.html"
 PROFILE_PAGE = "profile.html"
 SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, author, and creator of ClineFlow, building agentic systems, consumer products, and AI platforms."
-SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "waken", "twinchat-paper", "research", "filmography"}
+SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 SELECTED_WORK_ITEMS = [
     ("Impact & Exits", "impact"),
     ("Featured Projects", "work"),
     ("Prompt Engineering", "twinchat-paper"),
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
+    ("Writing About Trends", "casual-books"),
+    ("AI Context & Memory", "clineflow"),
 ]
 IMAGE_MANIFEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_manifest.json")
 
@@ -244,13 +246,12 @@ def generate_footer_bio_html():
     )
 
 
-def generate_selected_work_grid():
+def generate_selected_work_grid(page="home"):
     """Generate the small home-page gateway to the Selected Work page."""
     links = "\n        ".join(
-        f'<a href="{SELECTED_WORK_PAGE}#{section_id}" class="selected-work-link">{label}<span aria-hidden="true">→</span></a>'
+        f'<a href="{resolve_navigation_href(f"#{section_id}", page)}" class="selected-work-link">{label}<span aria-hidden="true">→</span></a>'
         for label, section_id in SELECTED_WORK_ITEMS
     )
-    links += f'''\n        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="selected-work-link selected-work-link--external">AI Context &amp; Memory<span aria-hidden="true">↗</span></a>'''
     return f'''
   <!-- Selected Work Gateway -->
   <section class="selected-work-gateway" aria-labelledby="selected-work-title">
@@ -1011,7 +1012,10 @@ def generate_proof():
 
 
 def generate_work_intro():
-    links = ''.join(f'<a href="#{section}">{label}<span aria-hidden="true">↓</span></a>' for label, section in SELECTED_WORK_ITEMS)
+    links = ''.join(
+        f'<a href="{resolve_navigation_href(f"#{section}", "selected-work")}">{label}<span aria-hidden="true">↓</span></a>'
+        for label, section in SELECTED_WORK_ITEMS
+    )
     return f'''
     <section class="work-intro" id="selected-work" aria-labelledby="work-title">
       <div class="work-intro-inner">
