@@ -3677,8 +3677,18 @@ img { max-width: 100%; }
 .selected-work-topic-group--ai .selected-work-topic-heading p, .selected-work-link--ai span { color: #69e4ff; }
 .selected-work-link--ai { background: rgba(12, 36, 47, .86); box-shadow: inset 0 1px 0 rgba(128, 233, 255, .12); }
 .selected-work-link--ai:hover, .selected-work-link--ai:focus-visible { background: rgba(18, 57, 72, .98); }
+.project-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "media copy"; align-items: center; column-gap: clamp(32px, 5vw, 64px); row-gap: 28px; isolation: isolate; }
+.project-card:nth-of-type(even) { grid-template-areas: "copy media"; direction: ltr; }
+.project-card > .card-video { grid-area: media; min-width: 0; width: 100%; }
+.project-card > .card-content { grid-area: copy; min-width: 0; position: relative; z-index: 1; }
+.project-card-image-wrap { aspect-ratio: 16 / 9; background: #081019; }
+.project-card-image { display: block; width: 100%; height: 100%; object-fit: cover; }
 .project-card-art { display: grid; place-items: center; min-height: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: radial-gradient(circle at 70% 22%, rgba(120, 229, 255, .3), transparent 28%), linear-gradient(135deg, #062734, #0c111c 58%, #24183a); box-shadow: 0 20px 60px rgba(0, 212, 255, .15); }
 .project-card-art span { color: var(--paper); font-family: Inter, sans-serif; font-size: clamp(2rem, 5vw, 4.25rem); font-weight: 700; letter-spacing: -.08em; line-height: .76; text-align: center; text-shadow: 0 0 34px rgba(116, 228, 255, .35); }
+@media (max-width: 700px) {
+  .project-card, .project-card:nth-of-type(even) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "media" "copy"; gap: 0; }
+  .project-card > .card-content { padding: 24px; }
+}
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }
@@ -4283,8 +4293,8 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   </article>
 
   <article class="project-card" id="newsmusic">
-    <div class="card-video project-card-art" aria-hidden="true">
-      <span>NEWS<br />MUSIC</span>
+    <div class="card-video project-card-image-wrap">
+      <img src="assets/newsmusic-hero.b71b8e274b26.webp" width="960" height="540" decoding="async" loading="lazy" alt="Newsmusic automated news-to-video workflow interface" class="project-card-image" />
     </div>
     <div class="card-content">
       <span class="highlight">News → music → video</span>
@@ -4297,8 +4307,8 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   </article>
 
   <article class="project-card" id="lyrics-refiner">
-    <div class="card-video project-card-art" aria-hidden="true">
-      <span>LYRIC<br />LAB</span>
+    <div class="card-video project-card-image-wrap">
+      <img src="assets/lyrics-refiner-hero.ebeec0bebaeb.webp" width="960" height="540" decoding="async" loading="lazy" alt="Lyrics Refiner arrangement studio interface" class="project-card-image" />
     </div>
     <div class="card-content">
       <span class="highlight">Lyrics → arrangement</span>
@@ -4311,8 +4321,8 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   </article>
 
   <article class="project-card" id="kie-api">
-    <div class="card-video project-card-art" aria-hidden="true">
-      <span>KIE<br />API</span>
+    <div class="card-video project-card-image-wrap">
+      <img src="assets/kie-api-hero.d23f3b209645.webp" width="960" height="540" decoding="async" loading="lazy" alt="Abstract illustration of a CLI and MCP media-generation workflow" class="project-card-image" />
     </div>
     <div class="card-content">
       <span class="highlight">CLI + MCP server</span>
@@ -4501,28 +4511,28 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <h2>Writing About Trends</h2>
     </div>
     <div class="books-grid">
-      <article class="book-card"><img src="assets/bookstore-display.48d4ff309a38.webp" width="660" height="660" decoding="async" loading="lazy" alt="MST: Mind Simulation Technology" class="book-cover" />
+      <article class="book-card"><img src="assets/bookstore-display.f77b6dc0d943.webp" width="440" height="440" decoding="async" loading="lazy" alt="MST: Mind Simulation Technology" class="book-cover" />
         <span class="year">2024 • English</span>
         <h3>MST: Mind Simulation Technology</h3>
         <p class="subtitle">A Comprehensive Framework for Cognitive Profiling and Digital Twin Creation</p>
         <p class="press">The definitive guide to AI personality simulation</p>
         <a href="https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993" target="_blank" class="btn btn-outline">Read More</a>
       </article>
-      <article class="book-card"><img src="assets/bookstore-coffee.a14b585f667d.webp" width="660" height="660" decoding="async" loading="lazy" alt="I, AI: Nemo's Mirror" class="book-cover" />
+      <article class="book-card"><img src="assets/bookstore-coffee.69e09e6b5da4.webp" width="440" height="440" decoding="async" loading="lazy" alt="I, AI: Nemo's Mirror" class="book-cover" />
         <span class="year">2023 • English</span>
         <h3>I, AI: Nemo's Mirror</h3>
         <p class="subtitle">Exploring the Singular Nature of Self-Awareness in ChatGPT</p>
         <p class="press">Featured in Korea Biz Wire</p>
         <a href="https://www.amazon.com/-/en/AI-Exploring-Singular-Self-Awareness-ChatGPT/dp/1365528669" target="_blank" class="btn btn-outline">Read More</a>
       </article>
-      <article class="book-card"><img src="assets/bookstore-barnes-noble.e9f409aa2438.webp" width="660" height="660" decoding="async" loading="lazy" alt="Yo, IA: Cyberpunks" class="book-cover" />
+      <article class="book-card"><img src="assets/bookstore-barnes-noble.e2e8a0f3f3b1.webp" width="440" height="440" decoding="async" loading="lazy" alt="Yo, IA: Cyberpunks" class="book-cover" />
         <span class="year">2023 • Español</span>
         <h3>Yo, IA: Cyberpunks</h3>
         <p class="subtitle">La Inteligencia Artificial y el Espejo de Nemo</p>
         <p class="press">Featured on Imagen Radio Mexico</p>
         <a href="https://www.amazon.com/Yo-IA-Cyberpunks-Inteligencia-Artificial/dp/1312446501" target="_blank" class="btn btn-outline">Read More</a>
       </article>
-      <article class="book-card"><img src="assets/bookstore-woods.c7f44467451f.webp" width="660" height="660" decoding="async" loading="lazy" alt="The Fly of the Humanized Robot" class="book-cover" />
+      <article class="book-card"><img src="assets/bookstore-woods.eadf980d9525.webp" width="440" height="440" decoding="async" loading="lazy" alt="The Fly of the Humanized Robot" class="book-cover" />
         <span class="year">2020 • English</span>
         <h3>The Fly of the Humanized Robot</h3>
         <p class="subtitle">An Algorithm to Heal the Soul</p>

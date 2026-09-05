@@ -3677,8 +3677,18 @@ img { max-width: 100%; }
 .selected-work-topic-group--ai .selected-work-topic-heading p, .selected-work-link--ai span { color: #69e4ff; }
 .selected-work-link--ai { background: rgba(12, 36, 47, .86); box-shadow: inset 0 1px 0 rgba(128, 233, 255, .12); }
 .selected-work-link--ai:hover, .selected-work-link--ai:focus-visible { background: rgba(18, 57, 72, .98); }
+.project-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "media copy"; align-items: center; column-gap: clamp(32px, 5vw, 64px); row-gap: 28px; isolation: isolate; }
+.project-card:nth-of-type(even) { grid-template-areas: "copy media"; direction: ltr; }
+.project-card > .card-video { grid-area: media; min-width: 0; width: 100%; }
+.project-card > .card-content { grid-area: copy; min-width: 0; position: relative; z-index: 1; }
+.project-card-image-wrap { aspect-ratio: 16 / 9; background: #081019; }
+.project-card-image { display: block; width: 100%; height: 100%; object-fit: cover; }
 .project-card-art { display: grid; place-items: center; min-height: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: radial-gradient(circle at 70% 22%, rgba(120, 229, 255, .3), transparent 28%), linear-gradient(135deg, #062734, #0c111c 58%, #24183a); box-shadow: 0 20px 60px rgba(0, 212, 255, .15); }
 .project-card-art span { color: var(--paper); font-family: Inter, sans-serif; font-size: clamp(2rem, 5vw, 4.25rem); font-weight: 700; letter-spacing: -.08em; line-height: .76; text-align: center; text-shadow: 0 0 34px rgba(116, 228, 255, .35); }
+@media (max-width: 700px) {
+  .project-card, .project-card:nth-of-type(even) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "media" "copy"; gap: 0; }
+  .project-card > .card-content { padding: 24px; }
+}
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }

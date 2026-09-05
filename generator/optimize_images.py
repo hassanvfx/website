@@ -108,7 +108,7 @@ def convert(name: str, entry: dict) -> dict:
     }
 
 
-def update_entry(manifest: dict[str, dict], name: str, source: str, preset: str | None, max_width: int | None) -> None:
+def update_entry(manifest: dict[str, dict], name: str, source: str, preset: str | None, max_width: int | None, record_source: str | None) -> None:
     if not NAME_RE.fullmatch(name):
         raise ValueError("--name must be a kebab-case semantic name")
     existing = manifest.get(name, {})
@@ -119,6 +119,8 @@ def update_entry(manifest: dict[str, dict], name: str, source: str, preset: str 
     }
     if entry["max_width"] is None:
         raise ValueError("a new image requires --max-width")
+    if record_source:
+        entry["record_source"] = record_source
     manifest[name] = convert(name, entry)
     write_manifest(manifest)
     print(manifest[name]["url"])
@@ -130,11 +132,12 @@ def main() -> int:
     parser.add_argument("--name", required=True, help="kebab-case manifest key and output filename stem")
     parser.add_argument("--preset", choices=sorted(PRESETS), help="encoding preset")
     parser.add_argument("--max-width", type=int, help="maximum intrinsic output width")
+    parser.add_argument("--record-source", help="provenance to retain when optimizing from a local derivative")
     args = parser.parse_args()
 
     manifest = load_manifest()
     try:
-        update_entry(manifest, args.name, args.source, args.preset, args.max_width)
+        update_entry(manifest, args.name, args.source, args.preset, args.max_width, args.record_source)
     except (OSError, subprocess.CalledProcessError, ValueError, KeyError, json.JSONDecodeError) as error:
         print(f"Image optimization failed: {error}", file=sys.stderr)
         return 1

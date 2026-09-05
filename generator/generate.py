@@ -544,6 +544,10 @@ def generate_current_project_card(project):
         media = f'''<div class="card-video">
       {generate_video_frame(video_url, project["name"])}
     </div>'''
+    elif project.get("image"):
+        media = f'''<div class="card-video project-card-image-wrap">
+      <img {image_attributes(project["image"], loading="lazy")} alt="{escape(project["image_alt"], quote=True)}" class="project-card-image" />
+    </div>'''
     else:
         art_label = escape(project.get("art_label", project["name"])).replace("\n", "<br />")
         media = f'''<div class="card-video project-card-art" aria-hidden="true">

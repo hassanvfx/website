@@ -116,6 +116,8 @@ class SiteTests(unittest.TestCase):
         self.assertIn('href="https://github.com/hassanvfx/newsmusic"',work)
         self.assertIn('href="https://github.com/hassanvfx/lyrics-refiner"',work)
         self.assertIn('href="https://github.com/hassanvfx/kie-api-python"',work)
+        for image_key in ('newsmusic-hero','lyrics-refiner-hero','kie-api-hero'):
+            self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],work)
         self.assertIn('View on GitHub',work)
         self.assertIn('An early exploration of cognitive profiling and conversational AI companions.',work)
         self.assertNotIn('The predecessor to modern AI mind simulation.',work)

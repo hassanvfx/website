@@ -246,7 +246,8 @@ CURRENT_PROJECTS = [
         "stats": "News → music → video",
         "website": "https://github.com/hassanvfx/newsmusic",
         "link_label": "View on GitHub",
-        "art_label": "NEWS\nMUSIC",
+        "image": "newsmusic-hero",
+        "image_alt": "Newsmusic automated news-to-video workflow interface",
         "quote": "Headlines in. Original YouTube-ready music videos out."
     },
     {
@@ -257,7 +258,8 @@ CURRENT_PROJECTS = [
         "stats": "Lyrics → arrangement",
         "website": "https://github.com/hassanvfx/lyrics-refiner",
         "link_label": "View on GitHub",
-        "art_label": "LYRIC\nLAB",
+        "image": "lyrics-refiner-hero",
+        "image_alt": "Lyrics Refiner arrangement studio interface",
         "quote": "Structure, flow, and performance for Spanish lyrics."
     },
     {
@@ -268,7 +270,8 @@ CURRENT_PROJECTS = [
         "stats": "CLI + MCP server",
         "website": "https://github.com/hassanvfx/kie-api-python",
         "link_label": "View on GitHub",
-        "art_label": "KIE\nAPI",
+        "image": "kie-api-hero",
+        "image_alt": "Abstract illustration of a CLI and MCP media-generation workflow",
         "quote": "A focused interface for KIE media-generation workflows."
     },
     {
