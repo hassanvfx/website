@@ -95,3 +95,7 @@ No physical iPhone/Android testing, touch-hardware scrolling, full assistive-tec
 ## Follow-up: clipped glow edges
 
 Hassan’s footer screenshot revealed rectangular edges where the off-center decorative gradients were clipped before reaching transparency. The shared depth layer now has an elliptical alpha mask that fades to fully transparent at every boundary. This applies to both pages and preserves scroll movement, controls, and layout. Verified the desktop footer at 1440 × 900 and phone layout at 390 × 844, with no horizontal overflow; generation, seven output regressions, and image verification pass. [Corrected footer](captures/footer-glow-fix-desktop.jpg). The original comparison tags, captures, and render hashes above remain tied to the initial redesign commit; this is a subsequent correction.
+
+## Follow-up: border-free visual direction
+
+At Hassan’s request, authored borders and section rules were removed throughout both current pages. Former outline buttons now use tonal backgrounds, the hero retains translucent depth surfaces, and hard offset/ring shadows around media were softened. Keyboard-only focus outlines remain available. Scroll transitions and masked lighting are preserved. Browser inspection found no visible CSS borders or horizontal overflow across desktop and mobile layouts; generation, seven output regressions, and image verification pass. [Border-free footer](captures/borderless-footer-desktop.jpg).
