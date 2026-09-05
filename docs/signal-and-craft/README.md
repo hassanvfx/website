@@ -129,3 +129,5 @@ The cinematic treatment now uses a three-stage portrait approach, smoother headi
 Verified 13 controller regressions plus seven generated-output regressions and image verification. New checks cover duplicate initialization, a completed reveal surviving scroll/toggle/cache return, interrupted page-cache restoration, and an offscreen reveal settling without replay. Browser checks confirmed the hero remains complete with no active light animation after scrolling away and back; mobile showed one animation iteration, 360 ms duration, fully opaque containers, no moving depth layers, and no horizontal overflow.
 
 Border exception requested by Hassan: the homepage impact metrics retain subtle vertical dividers. Desktop separates the four metrics; mobile separates each two-column pair, with no outer right edge. This rule is scoped to the proof section.
+
+ClineFlow alignment refinement: the agent-logo figure, support caption, and website link share the centerline of the content column on desktop and mobile. The installer heading and prompt retain their existing alignment.

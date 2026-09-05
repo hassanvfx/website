@@ -3659,9 +3659,9 @@ img { max-width: 100%; }
 .clineflow-prompt-wrap code { flex-basis: 100%; min-width: 0; overflow-wrap: anywhere; white-space: normal; font-size: .875rem; }
 .clineflow-copy-button { position: static; min-height: 44px; transform: none; }
 .copy-status { color: var(--cyan); font-size: .875rem; align-self: center; }
-.clineflow-agent-compatibility { margin: 24px 0; max-width: 420px; }
+.clineflow-agent-compatibility { width: 100%; max-width: 420px; margin: 24px auto; text-align: center; }
 .clineflow-agent-compatibility figcaption { font-size: .75rem; }
-.clineflow-masterclass { margin-top: 20px; padding: 0; }
+.clineflow-masterclass { margin: 20px auto 0; padding: 0; text-align: center; }
 .clineflow-masterclass p, .clineflow-masterclass-divider { display: none; }
 .clineflow-masterclass-cta { font-size: 1rem; padding: 12px 0; background: transparent; box-shadow: none;  color: var(--cyan); }
 .section, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { padding: 80px 48px; }
