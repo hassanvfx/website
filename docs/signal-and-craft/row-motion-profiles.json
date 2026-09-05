@@ -1,0 +1,174 @@
+[
+  {
+    "overflow": 0,
+    "page": "/selected-work.html",
+    "profiles": [
+      {
+        "duration": "960ms",
+        "effect": "scene-prism",
+        "row": "selected-work",
+        "scene": "spatial-open"
+      },
+      {
+        "duration": "620ms",
+        "effect": "scene-sweep",
+        "row": "work-index scene-row motion-frame has-scroll-depth",
+        "scene": "chapter-path"
+      },
+      {
+        "duration": "720ms",
+        "effect": "scene-stack",
+        "row": "impact",
+        "scene": "momentum"
+      },
+      {
+        "duration": "1020ms",
+        "effect": "scene-bloom",
+        "row": "waken",
+        "scene": "awakening"
+      },
+      {
+        "duration": "820ms",
+        "effect": "scene-page",
+        "row": "work",
+        "scene": "product-unfold"
+      },
+      {
+        "duration": "900ms",
+        "effect": "scene-scan",
+        "row": "twinchat-paper",
+        "scene": "abstract-reveal"
+      },
+      {
+        "duration": "1040ms",
+        "effect": "scene-orbit",
+        "row": "research",
+        "scene": "discovery-orbit"
+      },
+      {
+        "duration": "1100ms",
+        "effect": "scene-curtain",
+        "row": "filmography",
+        "scene": "cinema-curtain"
+      },
+      {
+        "duration": "920ms",
+        "effect": "scene-sweep",
+        "row": "casual-books",
+        "scene": "reading-flow"
+      },
+      {
+        "duration": "900ms",
+        "effect": "scene-spotlight",
+        "row": "contact",
+        "scene": "invitation"
+      }
+    ],
+    "unassigned": [],
+    "width": 1440
+  },
+  {
+    "overflow": 0,
+    "page": "/",
+    "profiles": [
+      {
+        "duration": "900ms",
+        "effect": "scene-bloom",
+        "row": "home",
+        "scene": "portrait-open"
+      },
+      {
+        "duration": "650ms",
+        "effect": "scene-rise",
+        "row": "proof",
+        "scene": "data-cascade"
+      },
+      {
+        "duration": "780ms",
+        "effect": "scene-curtain",
+        "row": "professional-profile",
+        "scene": "document-settle"
+      },
+      {
+        "duration": "700ms",
+        "effect": "scene-sweep",
+        "row": "path-crossing",
+        "scene": "path-crossing"
+      },
+      {
+        "duration": "860ms",
+        "effect": "scene-scan",
+        "row": "clineflow",
+        "scene": "memory-flow"
+      },
+      {
+        "duration": "740ms",
+        "effect": "scene-prism",
+        "row": "memearcade",
+        "scene": "arcade-pop"
+      },
+      {
+        "duration": "980ms",
+        "effect": "scene-spotlight",
+        "row": "wwdc14",
+        "scene": "apple-spotlight"
+      },
+      {
+        "duration": "820ms",
+        "effect": "scene-stack",
+        "row": "citations",
+        "scene": "reference-stack"
+      },
+      {
+        "duration": "920ms",
+        "effect": "scene-page",
+        "row": "books",
+        "scene": "page-turn"
+      },
+      {
+        "duration": "880ms",
+        "effect": "scene-sweep",
+        "row": "reading-light",
+        "scene": "reading-light"
+      },
+      {
+        "duration": "760ms",
+        "effect": "scene-curtain",
+        "row": "interviews",
+        "scene": "screen-widen"
+      },
+      {
+        "duration": "680ms",
+        "effect": "scene-scan",
+        "row": "press",
+        "scene": "masthead"
+      },
+      {
+        "duration": "960ms",
+        "effect": "scene-bloom",
+        "row": "about",
+        "scene": "portrait-drift"
+      },
+      {
+        "duration": "1020ms",
+        "effect": "scene-spotlight",
+        "row": "eb1a",
+        "scene": "recognition"
+      },
+      {
+        "duration": "1100ms",
+        "effect": "scene-page",
+        "row": "quiet-resolve",
+        "scene": "quiet-resolve"
+      },
+      {
+        "duration": "900ms",
+        "effect": "scene-spotlight",
+        "row": "contact",
+        "scene": "invitation"
+      }
+    ],
+    "unassigned": [],
+    "width": 390
+  }
+]

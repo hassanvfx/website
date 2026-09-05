@@ -3737,14 +3737,9 @@ img { max-width: 100%; }
 .signal-footer .copyright { max-width: 1224px; margin: auto; font-size: .75rem; }
 /* Decoration responds independently of interactive content. */
 .motion-frame { position: relative; isolation: isolate; }
-.motion-frame::after { content: ''; position: absolute; inset: 0;  border-radius: inherit; pointer-events: none; z-index: 2; }
-.motion-frame.is-arriving::after { animation: frame-light 900ms var(--ease) both; }
-.section-header.is-arriving::before { animation: chapter-line 650ms var(--ease) both; }
 html[data-motion-state="paused"] .is-arriving::after,
 html[data-motion-state="paused"] .is-arriving::before,
 .motion-offscreen::before, .motion-offscreen::after { animation-play-state: paused; }
-@keyframes frame-light { 0% {  box-shadow: inset 20px 0 35px #75e1f400; } 35% {  box-shadow: inset 20px 0 35px #75e1f40f; } 100% {  box-shadow: inset -20px 0 35px #75e1f400; } }
-@keyframes chapter-line { from { transform: scaleX(.1); } to { transform: scaleX(1); } }
 html[data-reduced-motion="true"] *, html[data-reduced-motion="true"] *::before, html[data-reduced-motion="true"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 html[data-reduced-motion="true"] { scroll-behavior: auto; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
@@ -3950,6 +3945,100 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 .portrait-stage figcaption { padding-left: 0; }
 .plane-front { background: linear-gradient(145deg,#75e1f407,transparent 65%); }
 .work-orbit span { background: linear-gradient(130deg,#75e1f41c,#9e89ff0a); }
+
+/* Row-specific light choreography. Only decorative paint moves around media. */
+.scene-row { position: relative; isolation: isolate; }
+.scene-row::after, .motion-frame::after {
+  content: ''; position: absolute; inset: 6% 8%; z-index: -1;
+  pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at 65% 45%,rgba(var(--scene-color,117,225,244),.19),transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse closest-side,#000 25%,transparent 100%);
+  mask-image: radial-gradient(ellipse closest-side,#000 25%,transparent 100%);
+  transform-origin: center;
+}
+.scene-row.is-arriving::after, .motion-frame.is-arriving::after {
+  animation: var(--scene-animation,scene-bloom) var(--scene-duration,800ms) cubic-bezier(.2,.75,.2,1) both;
+}
+.scene-row[data-scene="memory-flow"]::after,
+.scene-row[data-scene="masthead"]::after,
+.scene-row[data-scene="abstract-reveal"]::after {
+  background: linear-gradient(110deg,transparent 20%,rgba(var(--scene-color),.17) 48%,transparent 73%);
+}
+.scene-row[data-scene="arcade-pop"]::after,
+.scene-row[data-scene="spatial-open"]::after {
+  background: conic-gradient(from 225deg at 70% 50%,transparent,rgba(var(--scene-color),.18),transparent 50%,rgba(var(--scene-color),.09),transparent);
+}
+.scene-row[data-scene="reference-stack"]::after,
+.scene-row[data-scene="momentum"]::after {
+  background: linear-gradient(0deg,transparent 5%,rgba(var(--scene-color),.09) 28%,transparent 32%,rgba(var(--scene-color),.14) 52%,transparent 58%,rgba(var(--scene-color),.07) 78%,transparent);
+}
+.scene-row[data-scene="page-turn"]::after,
+.scene-row[data-scene="reading-light"]::after,
+.scene-row[data-scene="reading-flow"]::after,
+.scene-row[data-scene="product-unfold"]::after {
+  background: linear-gradient(105deg,transparent 25%,rgba(var(--scene-color),.12) 47%,rgba(var(--scene-color),.03) 58%,transparent 80%);
+}
+@keyframes scene-bloom {
+  0% { opacity:0; transform:scale(.72); }
+  45% { opacity:1; }
+  100% { opacity:0; transform:scale(1.04); }
+}
+@keyframes scene-rise {
+  0% { opacity:0; transform:translateY(28px) scaleY(.6); }
+  45% { opacity:.9; }
+  100% { opacity:0; transform:translateY(-8px) scaleY(1); }
+}
+@keyframes scene-sweep {
+  0% { opacity:0; transform:translateX(calc(var(--scene-direction,1) * -28px)) scaleX(.7); }
+  45% { opacity:1; }
+  100% { opacity:0; transform:translateX(calc(var(--scene-direction,1) * 20px)) scaleX(1); }
+}
+@keyframes scene-scan {
+  0% { opacity:0; transform:translateX(-24px) skewX(-8deg) scaleX(.45); }
+  35% { opacity:1; }
+  100% { opacity:0; transform:translateX(24px) skewX(0) scaleX(1.1); }
+}
+@keyframes scene-prism {
+  0% { opacity:0; transform:rotate(-4deg) scale(.78); }
+  40% { opacity:1; }
+  100% { opacity:0; transform:rotate(3deg) scale(1.03); }
+}
+@keyframes scene-spotlight {
+  0% { opacity:0; transform:translateY(-20px) scale(.86); }
+  55% { opacity:1; transform:translateY(0) scale(1); }
+  100% { opacity:0; transform:translateY(8px) scale(1.05); }
+}
+@keyframes scene-stack {
+  0% { opacity:0; transform:translate(calc(var(--scene-direction,1) * 10px),20px) scaleY(.45); }
+  40% { opacity:.95; transform:translateY(5px) scaleY(.8); }
+  100% { opacity:0; transform:translateY(-12px) scaleY(1.05); }
+}
+@keyframes scene-page {
+  0% { opacity:0; transform:perspective(1000px) rotateY(calc(var(--scene-direction,1) * -18deg)) translateX(calc(var(--scene-direction,1) * -16px)); }
+  45% { opacity:1; }
+  100% { opacity:0; transform:perspective(1000px) rotateY(calc(var(--scene-direction,1) * 8deg)) translateX(calc(var(--scene-direction,1) * 16px)); }
+}
+@keyframes scene-curtain {
+  0% { opacity:0; transform:scaleX(.3); }
+  45% { opacity:1; }
+  100% { opacity:0; transform:scaleX(1.05); }
+}
+@keyframes scene-orbit {
+  0% { opacity:0; transform:rotate(-9deg) translate(16px,16px) scale(.8); }
+  50% { opacity:1; }
+  100% { opacity:0; transform:rotate(9deg) translate(-12px,-8px) scale(1); }
+}
+.scroll-depth-layer {
+  background: radial-gradient(ellipse at 80% var(--scroll-depth-light,38%),rgba(var(--scene-color,117,225,244),.09),transparent 65%),radial-gradient(ellipse at 18% 75%,rgba(var(--scene-color,158,137,255),.04),transparent 65%);
+  transform:translate3d(var(--scroll-depth-x,0px),var(--scroll-depth-y,0px),0);
+}
+@keyframes scene-mobile { 0%,100% { opacity:0; } 45% { opacity:.6; } }
+.scene-row.is-arriving.motion-offscreen::after,
+.motion-frame.is-arriving.motion-offscreen::after { animation-play-state:paused; }
+@media (max-width:800px), (hover:none), (pointer:coarse) {
+  .scene-row.is-arriving::after, .motion-frame.is-arriving::after { animation-name:scene-mobile; animation-duration:360ms; transform:none; }
+  .scroll-depth-layer { transform:none; }
+}
 
 
   </style>
@@ -4491,21 +4580,68 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     location.replace('selected-work.html' + location.hash);
   }
 
+  // Each editorial row owns a motion identity; nested cards inherit its palette
+  // and alternate their entrance direction rather than repeating one global fade.
+  const sceneDefinitions = [
+    ['#home', 'portrait-open', 'bloom', 'rise', '117,225,244', 900, 24],
+    ['#proof', 'data-cascade', 'rise', 'rise', '117,225,244', 650, 12],
+    ['#professional-profile', 'document-settle', 'curtain', 'settle', '151,195,226', 780, 10],
+    ['.selected-work-gateway', 'path-crossing', 'sweep', 'slide', '117,225,244', 700, 16],
+    ['#clineflow', 'memory-flow', 'scan', 'slide', '96,222,242', 860, 18],
+    ['#memearcade', 'arcade-pop', 'prism', 'scale', '197,145,255', 740, 20],
+    ['#wwdc14', 'apple-spotlight', 'spotlight', 'scale', '218,235,245', 980, 12],
+    ['#citations', 'reference-stack', 'stack', 'settle', '166,173,234', 820, 14],
+    ['#books', 'page-turn', 'page', 'slide', '215,207,189', 920, 16],
+    ['.featured-book-section', 'reading-light', 'sweep', 'slide', '213,201,184', 880, 10],
+    ['#interviews', 'screen-widen', 'curtain', 'scale', '137,201,220', 760, 12],
+    ['#press', 'masthead', 'scan', 'slide', '205,224,235', 680, 10],
+    ['#about', 'portrait-drift', 'bloom', 'slide', '171,164,219', 960, 22],
+    ['#eb1a', 'recognition', 'spotlight', 'rise', '222,225,208', 1020, 14],
+    ['.quote-section', 'quiet-resolve', 'page', 'settle', '205,221,229', 1100, 8],
+    ['#selected-work', 'spatial-open', 'prism', 'scale', '117,225,244', 960, 24],
+    ['.work-index', 'chapter-path', 'sweep', 'slide', '146,202,220', 620, 8],
+    ['#impact', 'momentum', 'stack', 'rise', '112,216,238', 720, 18],
+    ['#waken', 'awakening', 'bloom', 'scale', '162,155,238', 1020, 20],
+    ['#work', 'product-unfold', 'page', 'slide', '131,194,232', 820, 18],
+    ['#twinchat-paper', 'abstract-reveal', 'scan', 'settle', '173,164,231', 900, 10],
+    ['#research', 'discovery-orbit', 'orbit', 'rise', '113,213,212', 1040, 22],
+    ['#filmography', 'cinema-curtain', 'curtain', 'slide', '182,179,230', 1100, 16],
+    ['#casual-books', 'reading-flow', 'sweep', 'rise', '215,207,189', 920, 12],
+    ['.signal-footer', 'invitation', 'spotlight', 'scale', '117,225,244', 900, 12]
+  ];
+  const sceneRoots = new Map();
+  const defaultScene = {name:'editorial', effect:'bloom', entrance:'rise', duration:650, travel:24};
+  sceneDefinitions.forEach(([selector,name,effect,entrance,color,duration,travel]) => {
+    document.querySelectorAll(selector).forEach(element => {
+      element.dataset.sceneRoot = 'true'; element.dataset.scene = name;
+      element.classList.add('scene-row');
+      element.style.setProperty('--scene-color', color);
+      element.style.setProperty('--scene-animation', `scene-${effect}`);
+      element.style.setProperty('--scene-duration', `${duration}ms`);
+      sceneRoots.set(element, {name,effect,entrance,duration,travel});
+    });
+  });
+
   // Every chapter has an entrance; nested blocks use a restrained stagger.
   // Nothing is hidden in CSS: unsupported APIs and script failures leave content readable.
   const selectors = [
     ['.signal-copy > *, .work-intro-inner > *', 'type'],
     ['.portrait-stage, .work-orbit', 'depth'],
     ['main > section', 'chapter'],
+    ['.featured-book-section, .signal-footer', 'chapter'],
     ['.section-header, .selected-work-gateway-inner > h2', 'type'],
     ['.stat-item, .selected-work-link, .book-card, .press-card, .citation-card, .citation-house-card, .interview-card, .innovation-card', 'block'],
-    ['.impact-card, .project-card, .clineflow-installer-shell, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
+    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
   ];
   const seen = new WeakSet();
   const targets = new Map();
   selectors.forEach(([selector, kind]) => {
     document.querySelectorAll(selector).forEach((element, index) => {
-      targets.set(element, { kind, delay: (index % 3) * 65 });
+      const scene = sceneRoots.get(element.closest('[data-scene-root]')) || defaultScene;
+      const direction = index % 2 ? -1 : 1;
+      targets.set(element, { kind, scene, direction, delay: (index % 3) * 65 });
+      element.dataset.transition = scene.name;
+      element.style.setProperty('--scene-direction', String(direction));
       element.dataset.motion = kind;
       if (kind === 'frame' || kind === 'block') element.classList.add('motion-frame');
     });
@@ -4526,17 +4662,23 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       if (!entry.isIntersecting || seen.has(element)) continue;
       seen.add(element);
       if (reduced || element.contains(document.activeElement)) { entranceObserver.unobserve(element); continue; }
-      const { kind, delay } = targets.get(element);
+      const { kind, delay, scene, direction } = targets.get(element);
       const mobile = compactQuery.matches || !fineQuery.matches;
-      const duration = mobile ? 360 : (kind === 'depth' ? 850 : 650);
+      const duration = mobile ? 360 : scene.duration;
       let frames;
       if (kind === 'chapter' || kind === 'frame') {
         // Interactive media and their hit areas do not translate or rotate.
         frames = [{ opacity: .65 }, { opacity: 1 }];
       } else if (kind === 'depth' && !mobile) {
-        frames = [{ opacity: .2, transform: 'perspective(1000px) translateY(22px) rotateY(-7deg)' }, { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0)' }];
+        frames = [{ opacity: .2, transform: 'perspective(1000px) translateY(22px) rotateY(-4deg)' }, { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0)' }];
       } else {
-        frames = [{ opacity: .25, transform: `translateY(${mobile ? 8 : 18}px)` }, { opacity: 1, transform: 'translateY(0)' }];
+        const entrances = {
+          rise: 'translateY(24px)',
+          settle: 'translateY(-14px)',
+          slide: `translateX(${direction * 22}px)`,
+          scale: 'translateY(8px) scale(.975)'
+        };
+        frames = [{ opacity: .3, transform: mobile ? 'translateY(8px)' : entrances[scene.entrance] }, { opacity: 1, transform: 'translate(0,0) scale(1)' }];
       }
       const animation = element.animate(frames, { duration, delay: mobile ? 0 : delay, easing: 'cubic-bezier(.2,.75,.2,1)', fill: 'backwards' });
       animations.set(element, { animation, visible: true });
@@ -4546,6 +4688,11 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     syncPlayback();
   }, { threshold: .06 }) : null;
   if (entranceObserver) targets.forEach((_, element) => entranceObserver.observe(element));
+  const settleEntrances = () => {
+    for (const element of animations.keys()) finishEntrance(element);
+  };
+  compactQuery.addEventListener('change', settleEntrances);
+  fineQuery.addEventListener('change', settleEntrances);
   document.addEventListener('focusin', event => {
     for (const element of animations.keys()) if (element.contains(event.target)) finishEntrance(element);
   });
@@ -4582,6 +4729,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       const entry = depthEntries.get(element);
       const progress = Math.max(-1, Math.min(1, ((scrollTop + viewportHeight / 2) - (entry.top + entry.height / 2)) / ((viewportHeight + entry.height) / 2)));
       element.style.setProperty('--scroll-depth-y', `${(progress * entry.range * depthQuality).toFixed(2)}px`);
+      element.style.setProperty('--scroll-depth-x', `${(progress * entry.horizontal * depthQuality).toFixed(2)}px`);
       element.style.setProperty('--scroll-depth-light', `${(38 + progress * 24).toFixed(1)}%`);
     });
     if (rig && stageVisible && depthQuality === 1) {
@@ -4594,12 +4742,12 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       frameQueuedAt = performance.now(); pointerFrame = requestAnimationFrame(renderDepth);
     }
   }
-  targets.forEach(({kind}, element) => {
+  targets.forEach(({kind,scene,direction}, element) => {
     if (!['chapter','frame','block'].includes(kind)) return;
     const layer = document.createElement('span'); layer.className = 'scroll-depth-layer'; layer.setAttribute('aria-hidden', 'true');
     element.appendChild(layer); element.classList.add('has-scroll-depth');
     const rect = element.getBoundingClientRect();
-    depthEntries.set(element, {top:rect.top+window.scrollY,height:rect.height,range:kind==='chapter'?24:12});
+    depthEntries.set(element, {top:rect.top+window.scrollY,height:rect.height,range:kind==='chapter'?scene.travel:Math.min(12,scene.travel),horizontal:direction*Math.min(8,scene.travel/3)});
   });
   const depthObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -4612,7 +4760,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     else {
       frameSamples = [];
       resetDepth();
-      depthEntries.forEach((_,element)=>{element.style.removeProperty('--scroll-depth-y');element.style.removeProperty('--scroll-depth-light');});
+      depthEntries.forEach((_,element)=>{element.style.removeProperty('--scroll-depth-y');element.style.removeProperty('--scroll-depth-x');element.style.removeProperty('--scroll-depth-light');});
     }
   }
   playbackSubscribers.push(updateDepthPolicy);

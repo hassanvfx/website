@@ -15,10 +15,11 @@ class Node {
   querySelectorAll(q) { return this.lists[q]??[]; }
   setAttribute(k,v) { this.attrs[k]=v; }
   getAttribute(k) { return this.attrs[k]; }
+  closest() { return this.sceneRoot??null; }
   contains(n) { return n===this; }
   animate(frames,options) { const a={frames,options,state:'running',pause(){this.state='paused'},play(){this.state='running'},cancel(){this.state='cancelled'}}; this.lastAnimation=a; return a; }
 }
-function setup({systemReduced=false,storageFails=false}={}) {
+function setup({systemReduced=false,storageFails=false,scene=null}={}) {
   const doc=new Node('document');doc.createElement=()=>new Node();doc.documentElement=new Node('root');doc.body=new Node('body');doc.hidden=false;doc.activeElement=null;
   const toggle=new Node('motion');const chapter=new Node('chapter');const carousel=new Node('carousel');const pause=new Node('pause');const prev=new Node('prev');const next=new Node('next');const position=new Node('position');const status=new Node('status');const gallery=new Node('gallery');
   const slides=Array.from({length:3},(_,i)=>{const n=new Node('slide'+i);n.queries.figcaption=new Node();n.queries.figcaption.textContent='Screen '+(i+1);return n});
@@ -27,6 +28,7 @@ function setup({systemReduced=false,storageFails=false}={}) {
   carousel.lists={'.meme-arcade-screen-card':slides,'.carousel-dot':dots};
   doc.queries['.meme-carousel']=carousel;
   doc.lists['main > section']=[chapter];
+  if(scene){chapter.sceneRoot=chapter;doc.lists[scene]=[chapter]}
   doc.getElementById=id=>id==='motion-toggle'?toggle:null;
   const queries=new Map();function matchMedia(q){if(!queries.has(q)){const m=new Node(q);m.matches=q.includes('prefers-reduced')?systemReduced:q.includes('hover: hover');queries.set(q,m)}return queries.get(q)}
   const observers=[];class IO{constructor(callback){this.callback=callback;this.targets=new Set();observers.push(this)}observe(el){this.targets.add(el)}unobserve(el){this.targets.delete(el)}disconnect(){this.targets.clear()}}
@@ -70,7 +72,7 @@ test('Keyboard pagination announces a stable selected slide and stops autoplay',
 test('Desktop scroll parallax is bounded, coalesced, and disabled on mobile',()=>{
  const t=setup();t.visible(t.chapter,true);t.flush();assert.equal(t.chapter.style['--scroll-depth-y'],'19.20px');
  t.win.scrollY=1000;t.win.fire('scroll');t.win.fire('scroll');assert.equal(t.frames.size,1);t.flush();assert.equal(t.chapter.style['--scroll-depth-y'],'24.00px');assert.equal(t.frames.size,0);
- const compact=t.queries.get('(max-width: 800px)');compact.matches=true;compact.fire('change');assert.equal(t.chapter.style['--scroll-depth-y'],undefined);t.win.fire('scroll');assert.equal(t.frames.size,0);
+ const compact=t.queries.get('(max-width: 800px)');compact.matches=true;compact.fire('change');assert.equal(t.chapter.lastAnimation.state,'cancelled');assert.equal(t.chapter.style['--scroll-depth-y'],undefined);t.win.fire('scroll');assert.equal(t.frames.size,0);
 });
 test('Sustained slow requested frames simplify depth, then retain a static visit',()=>{
  const t=setup();t.visible(t.chapter,true);t.visible(t.carousel,true);
@@ -79,5 +81,12 @@ test('Sustained slow requested frames simplify depth, then retain a static visit
  for(let i=0;i<20;i++){t.win.fire('scroll');t.advance(60);t.flush()}
  assert.equal(t.doc.documentElement.dataset.motionQuality,'static');assert.equal(t.doc.documentElement.dataset.reducedMotion,'true');assert.equal(t.timers.size,0);assert.equal(t.frames.size,0);
  t.win.fire('scroll');assert.equal(t.frames.size,0);t.next.fire('click');assert.equal(t.position.textContent,'2 / 3');
+});
+test('Rows receive distinct identities while interactive chapter geometry stays fixed',()=>{
+ const memory=setup({scene:'#clineflow'}), arcade=setup({scene:'#memearcade'}), film=setup({scene:'#filmography'});
+ for(const t of [memory,arcade,film]){t.visible(t.chapter,true);assert.ok(t.chapter.lastAnimation.frames.every(frame=>!('transform' in frame)));assert.equal(t.chapter.children[0].attrs['aria-hidden'],'true')}
+ assert.equal(memory.chapter.dataset.transition,'memory-flow');assert.equal(arcade.chapter.dataset.transition,'arcade-pop');assert.equal(film.chapter.dataset.transition,'cinema-curtain');
+ assert.equal(memory.chapter.style['--scene-animation'],'scene-scan');assert.equal(arcade.chapter.style['--scene-animation'],'scene-prism');assert.equal(film.chapter.style['--scene-animation'],'scene-curtain');
+ memory.doc.hidden=true;memory.doc.fire('visibilitychange');assert.equal(memory.chapter.lastAnimation.state,'paused');memory.toggle.fire('click');assert.equal(memory.chapter.lastAnimation.state,'cancelled');
 });
 console.log(`${tests.length} controller tests passed.`);

@@ -99,3 +99,23 @@ Hassan’s footer screenshot revealed rectangular edges where the off-center dec
 ## Follow-up: border-free visual direction
 
 At Hassan’s request, authored borders and section rules were removed throughout both current pages. Former outline buttons now use tonal backgrounds, the hero retains translucent depth surfaces, and hard offset/ring shadows around media were softened. Keyboard-only focus outlines remain available. Scroll transitions and masked lighting are preserved. Browser inspection found no visible CSS borders or horizontal overflow across desktop and mobile layouts; generation, seven output regressions, and image verification pass. [Border-free footer](captures/borderless-footer-desktop.jpg).
+
+## Follow-up: individual row transitions
+
+Each row now has a named motion profile rather than the same generic entrance. The 25 profiles combine ten decorative light animations with distinct palettes, durations, heading entrances, and bounded scroll travel. Nested cards inherit their section’s style and alternate direction. Profiles cover every section, the Selected Work index, the nested featured book, and the shared contact area: [observed profile coverage](row-motion-profiles.json).
+
+| Content | Motion treatment |
+| --- | --- |
+| Hero / Selected Work introduction | Portrait light bloom / spatial prism opening |
+| Impact metrics / startup exits | Rising cascade / stacked momentum |
+| Resume / research citations | Document settle / layered reference reveal |
+| ClineFlow / Meme Arcade | Cyan signal scan / violet prism lift |
+| Apple recognition | Soft, neutral spotlight |
+| Books / featured book | Page-like light turn / reading-light sweep |
+| Interviews / filmography | Screen widening / cinematic curtain |
+| Press / biography | Editorial scan / portrait drift |
+| Research / quote / contact | Discovery orbit / quiet resolve / invitation spotlight |
+
+Only decorative light uses rotation, sweeps, and opening effects. Media and chapter containers animate opacity without moving their interactive geometry; headings and smaller editorial blocks use restrained directional entrances. Desktop scroll travel stays within 24 px vertically and 8 px horizontally. The transitions play once as content enters, while the individual depth treatments continue responding to scrolling. Breakpoint and pointer-mode changes settle active entrances immediately.
+
+Mobile uses 360 ms light fades and at most 8 px vertical text entrances, with no parallax. System/manual reduced motion disables all row animation. Browser inspection confirmed complete section coverage, paused offscreen decoration, fixed video transforms, the mobile fallback, and zero animated rows or transformed depth layers in reduced mode. Ten controller tests now include distinct profile selection and fixed chapter geometry, alongside the existing seven generated-output checks and image verification. No borders or animation dependencies were added.

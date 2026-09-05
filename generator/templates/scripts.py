@@ -248,21 +248,68 @@ INTERACTION_SCRIPT = r'''
     location.replace('selected-work.html' + location.hash);
   }
 
+  // Each editorial row owns a motion identity; nested cards inherit its palette
+  // and alternate their entrance direction rather than repeating one global fade.
+  const sceneDefinitions = [
+    ['#home', 'portrait-open', 'bloom', 'rise', '117,225,244', 900, 24],
+    ['#proof', 'data-cascade', 'rise', 'rise', '117,225,244', 650, 12],
+    ['#professional-profile', 'document-settle', 'curtain', 'settle', '151,195,226', 780, 10],
+    ['.selected-work-gateway', 'path-crossing', 'sweep', 'slide', '117,225,244', 700, 16],
+    ['#clineflow', 'memory-flow', 'scan', 'slide', '96,222,242', 860, 18],
+    ['#memearcade', 'arcade-pop', 'prism', 'scale', '197,145,255', 740, 20],
+    ['#wwdc14', 'apple-spotlight', 'spotlight', 'scale', '218,235,245', 980, 12],
+    ['#citations', 'reference-stack', 'stack', 'settle', '166,173,234', 820, 14],
+    ['#books', 'page-turn', 'page', 'slide', '215,207,189', 920, 16],
+    ['.featured-book-section', 'reading-light', 'sweep', 'slide', '213,201,184', 880, 10],
+    ['#interviews', 'screen-widen', 'curtain', 'scale', '137,201,220', 760, 12],
+    ['#press', 'masthead', 'scan', 'slide', '205,224,235', 680, 10],
+    ['#about', 'portrait-drift', 'bloom', 'slide', '171,164,219', 960, 22],
+    ['#eb1a', 'recognition', 'spotlight', 'rise', '222,225,208', 1020, 14],
+    ['.quote-section', 'quiet-resolve', 'page', 'settle', '205,221,229', 1100, 8],
+    ['#selected-work', 'spatial-open', 'prism', 'scale', '117,225,244', 960, 24],
+    ['.work-index', 'chapter-path', 'sweep', 'slide', '146,202,220', 620, 8],
+    ['#impact', 'momentum', 'stack', 'rise', '112,216,238', 720, 18],
+    ['#waken', 'awakening', 'bloom', 'scale', '162,155,238', 1020, 20],
+    ['#work', 'product-unfold', 'page', 'slide', '131,194,232', 820, 18],
+    ['#twinchat-paper', 'abstract-reveal', 'scan', 'settle', '173,164,231', 900, 10],
+    ['#research', 'discovery-orbit', 'orbit', 'rise', '113,213,212', 1040, 22],
+    ['#filmography', 'cinema-curtain', 'curtain', 'slide', '182,179,230', 1100, 16],
+    ['#casual-books', 'reading-flow', 'sweep', 'rise', '215,207,189', 920, 12],
+    ['.signal-footer', 'invitation', 'spotlight', 'scale', '117,225,244', 900, 12]
+  ];
+  const sceneRoots = new Map();
+  const defaultScene = {name:'editorial', effect:'bloom', entrance:'rise', duration:650, travel:24};
+  sceneDefinitions.forEach(([selector,name,effect,entrance,color,duration,travel]) => {
+    document.querySelectorAll(selector).forEach(element => {
+      element.dataset.sceneRoot = 'true'; element.dataset.scene = name;
+      element.classList.add('scene-row');
+      element.style.setProperty('--scene-color', color);
+      element.style.setProperty('--scene-animation', `scene-${effect}`);
+      element.style.setProperty('--scene-duration', `${duration}ms`);
+      sceneRoots.set(element, {name,effect,entrance,duration,travel});
+    });
+  });
+
   // Every chapter has an entrance; nested blocks use a restrained stagger.
   // Nothing is hidden in CSS: unsupported APIs and script failures leave content readable.
   const selectors = [
     ['.signal-copy > *, .work-intro-inner > *', 'type'],
     ['.portrait-stage, .work-orbit', 'depth'],
     ['main > section', 'chapter'],
+    ['.featured-book-section, .signal-footer', 'chapter'],
     ['.section-header, .selected-work-gateway-inner > h2', 'type'],
     ['.stat-item, .selected-work-link, .book-card, .press-card, .citation-card, .citation-house-card, .interview-card, .innovation-card', 'block'],
-    ['.impact-card, .project-card, .clineflow-installer-shell, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
+    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
   ];
   const seen = new WeakSet();
   const targets = new Map();
   selectors.forEach(([selector, kind]) => {
     document.querySelectorAll(selector).forEach((element, index) => {
-      targets.set(element, { kind, delay: (index % 3) * 65 });
+      const scene = sceneRoots.get(element.closest('[data-scene-root]')) || defaultScene;
+      const direction = index % 2 ? -1 : 1;
+      targets.set(element, { kind, scene, direction, delay: (index % 3) * 65 });
+      element.dataset.transition = scene.name;
+      element.style.setProperty('--scene-direction', String(direction));
       element.dataset.motion = kind;
       if (kind === 'frame' || kind === 'block') element.classList.add('motion-frame');
     });
@@ -283,17 +330,23 @@ INTERACTION_SCRIPT = r'''
       if (!entry.isIntersecting || seen.has(element)) continue;
       seen.add(element);
       if (reduced || element.contains(document.activeElement)) { entranceObserver.unobserve(element); continue; }
-      const { kind, delay } = targets.get(element);
+      const { kind, delay, scene, direction } = targets.get(element);
       const mobile = compactQuery.matches || !fineQuery.matches;
-      const duration = mobile ? 360 : (kind === 'depth' ? 850 : 650);
+      const duration = mobile ? 360 : scene.duration;
       let frames;
       if (kind === 'chapter' || kind === 'frame') {
         // Interactive media and their hit areas do not translate or rotate.
         frames = [{ opacity: .65 }, { opacity: 1 }];
       } else if (kind === 'depth' && !mobile) {
-        frames = [{ opacity: .2, transform: 'perspective(1000px) translateY(22px) rotateY(-7deg)' }, { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0)' }];
+        frames = [{ opacity: .2, transform: 'perspective(1000px) translateY(22px) rotateY(-4deg)' }, { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateY(0)' }];
       } else {
-        frames = [{ opacity: .25, transform: `translateY(${mobile ? 8 : 18}px)` }, { opacity: 1, transform: 'translateY(0)' }];
+        const entrances = {
+          rise: 'translateY(24px)',
+          settle: 'translateY(-14px)',
+          slide: `translateX(${direction * 22}px)`,
+          scale: 'translateY(8px) scale(.975)'
+        };
+        frames = [{ opacity: .3, transform: mobile ? 'translateY(8px)' : entrances[scene.entrance] }, { opacity: 1, transform: 'translate(0,0) scale(1)' }];
       }
       const animation = element.animate(frames, { duration, delay: mobile ? 0 : delay, easing: 'cubic-bezier(.2,.75,.2,1)', fill: 'backwards' });
       animations.set(element, { animation, visible: true });
@@ -303,6 +356,11 @@ INTERACTION_SCRIPT = r'''
     syncPlayback();
   }, { threshold: .06 }) : null;
   if (entranceObserver) targets.forEach((_, element) => entranceObserver.observe(element));
+  const settleEntrances = () => {
+    for (const element of animations.keys()) finishEntrance(element);
+  };
+  compactQuery.addEventListener('change', settleEntrances);
+  fineQuery.addEventListener('change', settleEntrances);
   document.addEventListener('focusin', event => {
     for (const element of animations.keys()) if (element.contains(event.target)) finishEntrance(element);
   });
@@ -339,6 +397,7 @@ INTERACTION_SCRIPT = r'''
       const entry = depthEntries.get(element);
       const progress = Math.max(-1, Math.min(1, ((scrollTop + viewportHeight / 2) - (entry.top + entry.height / 2)) / ((viewportHeight + entry.height) / 2)));
       element.style.setProperty('--scroll-depth-y', `${(progress * entry.range * depthQuality).toFixed(2)}px`);
+      element.style.setProperty('--scroll-depth-x', `${(progress * entry.horizontal * depthQuality).toFixed(2)}px`);
       element.style.setProperty('--scroll-depth-light', `${(38 + progress * 24).toFixed(1)}%`);
     });
     if (rig && stageVisible && depthQuality === 1) {
@@ -351,12 +410,12 @@ INTERACTION_SCRIPT = r'''
       frameQueuedAt = performance.now(); pointerFrame = requestAnimationFrame(renderDepth);
     }
   }
-  targets.forEach(({kind}, element) => {
+  targets.forEach(({kind,scene,direction}, element) => {
     if (!['chapter','frame','block'].includes(kind)) return;
     const layer = document.createElement('span'); layer.className = 'scroll-depth-layer'; layer.setAttribute('aria-hidden', 'true');
     element.appendChild(layer); element.classList.add('has-scroll-depth');
     const rect = element.getBoundingClientRect();
-    depthEntries.set(element, {top:rect.top+window.scrollY,height:rect.height,range:kind==='chapter'?24:12});
+    depthEntries.set(element, {top:rect.top+window.scrollY,height:rect.height,range:kind==='chapter'?scene.travel:Math.min(12,scene.travel),horizontal:direction*Math.min(8,scene.travel/3)});
   });
   const depthObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -369,7 +428,7 @@ INTERACTION_SCRIPT = r'''
     else {
       frameSamples = [];
       resetDepth();
-      depthEntries.forEach((_,element)=>{element.style.removeProperty('--scroll-depth-y');element.style.removeProperty('--scroll-depth-light');});
+      depthEntries.forEach((_,element)=>{element.style.removeProperty('--scroll-depth-y');element.style.removeProperty('--scroll-depth-x');element.style.removeProperty('--scroll-depth-light');});
     }
   }
   playbackSubscribers.push(updateDepthPolicy);
