@@ -922,7 +922,7 @@ def generate_header(page):
         ('Profile', '#professional-profile'),
         ('AI coding', '#clineflow'),
         ('Apps', '#memearcade'),
-        ('Citations', '#white-house'),
+        ('Citations', '#citations'),
         ('Books', '#books'),
         ('Press', '#press'),
         ('Sparks', '#selected-work'),
