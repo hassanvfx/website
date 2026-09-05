@@ -3648,9 +3648,10 @@ img { max-width: 100%; }
 .hero-baseline a { color: var(--cyan); }
 .proof-section { max-width: 1224px; margin: auto; padding: 52px 0 0; }
 .proof-section .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin: 0; padding: 0; }
-.stat-item { text-align: left; padding: 4px 32px;  }
+.stat-item { text-align: left; padding: 4px 32px; }
+.proof-section .stat-item { border-right: 1px solid var(--line); }
 .stat-item:first-child { padding-left: 0; }
-.stat-item:last-child {  }
+.proof-section .stat-item:last-child { border-right: 0; }
 .stat-item .value { font-size: clamp(2rem,4vw,3.5rem); color: var(--paper); font-weight: 400; letter-spacing: -.04em; line-height: 1.15; }
 .stat-item .label { font-size: .75rem; color: var(--muted); letter-spacing: .13em; margin-top: 10px; }
 .proof-press { display: flex; gap: 40px; align-items: center; padding: 38px 0; margin-top: 38px;   }
@@ -3774,7 +3775,7 @@ html[data-reduced-motion="true"] { scroll-behavior: auto; }
   .proof-section .stats-row { grid-template-columns: repeat(2,1fr); row-gap: 24px; }
   .stat-item, .stat-item:first-child { padding: 4px 16px; }
   .stat-item:nth-child(odd) { padding-left: 0; }
-  .stat-item:nth-child(even) {  }
+  .proof-section .stat-item:nth-child(even) { border-right: 0; }
   .stat-item .value { font-size: 2.3rem; }
   .stat-item .label { font-size: .75rem; }
   .proof-press { display: block; padding: 28px 0; margin-top: 30px; }
