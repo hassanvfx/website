@@ -1179,6 +1179,7 @@ nav a:hover {{
   transition: all 0.3s ease;
 }}
 .book-cover--portrait {{
+  height: auto;
   aspect-ratio: 2 / 3;
   object-fit: contain;
   background: #050505;
@@ -1275,6 +1276,7 @@ nav a:hover {{
 .bio-profile-image img {{
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }}
@@ -2004,6 +2006,7 @@ nav a:hover {{
 .meme-arcade-icon {{
   display: block;
   width: min(100%, 210px);
+  height: auto;
   margin: -1rem auto 0.25rem;
   filter: drop-shadow(0 0 30px rgba(234, 56, 255, 0.55));
 }}
@@ -2067,6 +2070,7 @@ nav a:hover {{
 .meme-arcade-screen-card img {{
   display: block;
   width: min(100%, 255px);
+  height: auto;
   margin: 0 auto;
   border: 1px solid rgba(234, 56, 255, 0.42);
   border-radius: 22px;
@@ -2337,6 +2341,7 @@ nav a:hover {{
 .wwdc14-slide {{
   display: block;
   width: 100%;
+  height: auto;
   border: 1px solid rgba(0, 212, 255, 0.35);
   border-radius: 8px;
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
@@ -2512,6 +2517,7 @@ nav a:hover {{
 .featured-book-cover {{
   display: block;
   width: min(100%, 330px);
+  height: auto;
   border: 1px solid rgba(0,212,255,0.35);
   box-shadow: 0 24px 55px rgba(0,0,0,0.45), 0 0 35px rgba(0,212,255,0.12);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -2635,6 +2641,7 @@ nav a:hover {{
 .citations-cover {{
   display: block;
   width: min(100%, 360px);
+  height: auto;
   margin: 0 auto 1rem;
   border: 1px solid rgba(0,212,255,0.35);
   box-shadow: 0 24px 55px rgba(0,0,0,0.45), 0 0 35px rgba(0,212,255,0.12);
@@ -3042,6 +3049,20 @@ body {{
   font-weight: 600;
   line-height: 1.3;
 }}
+.booking-call-charity {{
+  display: block;
+  margin-top: 0.12rem;
+  color: #00d4ff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+}}
+.booking-call-charity:hover,
+.booking-call-charity:focus-visible {{
+  color: #fff;
+  text-decoration: underline;
+}}
 .booking-call-cta {{
   flex: 0 0 auto;
   display: inline-flex;
@@ -3362,7 +3383,8 @@ body {{
   <!-- Persistent Booking CTA -->
   <aside class="booking-call-bar" aria-label="Book a consultation with Hassan Uriostegui">
     <div class="booking-call-copy">
-      <strong class="booking-call-title">Have a project or idea worth exploring?</strong>
+      <strong class="booking-call-title">Book a 1:1 Consultation</strong>
+      <a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer" class="booking-call-charity">50% Goes to UnidosUS</a>
     </div>
     <a href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer" class="booking-call-cta"><i class="fa-solid fa-video" aria-hidden="true"></i><span>Book a call with Hassan</span><span class="booking-call-arrow" aria-hidden="true">→</span></a>
   </aside>

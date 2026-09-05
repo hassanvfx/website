@@ -154,15 +154,15 @@
     "width": 160
   },
   "infinite-ai-context-cover": {
-    "fingerprint": "6ddae00da3e0",
-    "height": 976,
-    "max_width": 660,
+    "fingerprint": "a4ed207e5ec9",
+    "height": 900,
+    "max_width": 608,
     "original_height": 1800,
     "original_width": 1216,
     "preset": "graphic",
-    "source": "assets/infinite-ai-context-cover.jpg",
-    "url": "assets/infinite-ai-context-cover.6ddae00da3e0.webp",
-    "width": 660
+    "source": "https://hassanvfx.github.io/website/assets/infinite-ai-context-cover.jpg",
+    "url": "assets/infinite-ai-context-cover.a4ed207e5ec9.webp",
+    "width": 608
   },
   "meme-arcade-discover": {
     "fingerprint": "d34d1c001b38",

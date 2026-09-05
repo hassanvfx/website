@@ -13,7 +13,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = Path(__file__).with_name("image_manifest.json")
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-IMAGE_RE = re.compile(r'<img\b[^>]*\bsrc="([^"]+)"')
+IMAGE_TAG_RE = re.compile(r"<img\b[^>]*>")
+ATTRIBUTE_RE = re.compile(r'\b([a-zA-Z-]+)="([^"]*)"')
+PROPORTIONAL_IMAGE_SELECTORS = (
+    ".book-cover--portrait",
+    ".bio-profile-image img",
+    ".meme-arcade-icon",
+    ".meme-arcade-screen-card img",
+    ".wwdc14-slide",
+    ".featured-book-cover",
+    ".citations-cover",
+)
 
 
 def dimensions(path: Path) -> tuple[int, int]:
@@ -34,6 +44,7 @@ def fail(message: str) -> None:
 def main() -> int:
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     urls = set()
+    entries_by_url = {}
     for name, entry in manifest.items():
         if not NAME_RE.fullmatch(name):
             fail(f"invalid manifest name: {name}")
@@ -51,16 +62,31 @@ def main() -> int:
         if dimensions(path) != (entry["width"], entry["height"]):
             fail(f"dimension mismatch for {name}")
         urls.add(entry["url"])
+        entries_by_url[entry["url"]] = entry
 
     for page in ("index.html", "selected-work.html"):
-        references = IMAGE_RE.findall((ROOT / page).read_text(encoding="utf-8"))
-        if not references:
+        page_html = (ROOT / page).read_text(encoding="utf-8")
+        image_tags = IMAGE_TAG_RE.findall(page_html)
+        if not image_tags:
             fail(f"no image references found in {page}")
-        for url in references:
+        for tag in image_tags:
+            attributes = dict(ATTRIBUTE_RE.findall(tag))
+            url = attributes.get("src")
+            if not url:
+                fail(f"image without a src in {page}: {tag}")
             if url not in urls:
                 fail(f"unmanifested image in {page}: {url}")
             if not url.endswith(".webp"):
                 fail(f"non-WebP image in {page}: {url}")
+            entry = entries_by_url[url]
+            if attributes.get("width") != str(entry["width"]) or attributes.get("height") != str(entry["height"]):
+                fail(f"missing or incorrect intrinsic dimensions in {page}: {url}")
+            if attributes.get("decoding") != "async":
+                fail(f"missing async decoding in {page}: {url}")
+        for selector in PROPORTIONAL_IMAGE_SELECTORS:
+            rule = re.search(rf"{re.escape(selector)}\s*\{{([^}}]*)\}}", page_html)
+            if not rule or "height: auto" not in rule.group(1):
+                fail(f"missing proportional height rule in {page}: {selector}")
     print(f"Verified {len(manifest)} fingerprinted WebP assets and generated image references.")
     return 0
 
