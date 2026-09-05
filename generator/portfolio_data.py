@@ -123,12 +123,15 @@ HISTORIC_COMPANIES = [
     {
         "id": "spreeai",
         "name": "SpreeAI",
-        "year": "2024-Present",
+        "year": "2024-2026",
         "role": "Principal iOS Architect",
-        "highlight": "Naomi Campbell Board Member | AI Fashion",
-        "description": "Building AI-powered virtual try-on technology for fashion e-commerce. SpreeAI transforms how customers shop online with real-time garment visualization. Partners include CFDA, MIT, Carnegie Mellon, and major fashion brands.",
+        "highlight": "$1.5B Valuation | 2026",
+        "description": "Building photorealistic AI try-ons and 99%-accurate sizing for in-store and online retail. The platform helps shoppers visualize clothing in a lifelike way while helping retailers reduce returns and improve conversion.",
         "video": "https://player.vimeo.com/video/1143600495",
         "stats": "AI Fashion Revolution",
+        "article_links": [
+            {"label": "PR Newswire: $1.5B valuation", "url": "https://www.prnewswire.com/news-releases/spreeai-is-redefining-retail-with-virtual-ai-powered-try-ons-curated-by-the-top-in-tech-and-fashion-302447115.html"}
+        ],
         "press_quote": {
             "quote": "SpreeAI is pushing the forefront of e-commerce personalization, by leveraging collaborations with academia and assembling a team that understands both the deep technical challenges and their product impact.",
             "source": "Professor Deva Ramanan",

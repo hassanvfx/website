@@ -76,6 +76,11 @@ class SiteTests(unittest.TestCase):
         self.assertIn('style="--video-ratio: 200 / 150"',work)
         self.assertIn('Apple’s WWDC14 feature on Medium',work)
         self.assertEqual({company['name'] for company in generate.HISTORIC_COMPANIES if company.get('exit')},{'Viddy','Ultrakam','FlyrTV'})
+    def test_spreeai_valuation_and_coverage(self):
+        work=self.pages['selected-work.html']
+        self.assertIn('$1.5B Valuation | 2026',work)
+        self.assertIn('PR Newswire: $1.5B valuation',work)
+        self.assertNotIn('Naomi Campbell Board Member | AI Fashion',work)
     def test_press_precedes_interviews_on_home(self):
         home=self.pages['index.html']
         self.assertLess(home.index('id="press"'),home.index('id="interviews"'))
