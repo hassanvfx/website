@@ -39,10 +39,13 @@ class SiteTests(unittest.TestCase):
                 elif '.html#' in href and not href.startswith('http'):
                     route,anchor=href.split('#'); self.assertIn(anchor,self.docs[route].ids,href)
     def test_existing_content_destinations_preserved(self):
+        approved_removed_ids={'sendkarma'}
+        approved_removed_destinations={'https://www.sendkarma.app/','https://player.vimeo.com/video/1138631992'}
         for name,doc in self.docs.items():
             baseline=Document(subprocess.check_output(['git','show',f'7e34a70:{name}'],cwd=ROOT,text=True))
-            self.assertTrue(set(baseline.ids).issubset(set(doc.ids)),name)
-            baseline_destinations={h for h in baseline.links if not h.startswith('#')}
+            baseline_ids=set(baseline.ids)-approved_removed_ids
+            self.assertTrue(baseline_ids.issubset(set(doc.ids)),name)
+            baseline_destinations={h for h in baseline.links if not h.startswith('#')}-approved_removed_destinations
             self.assertTrue(baseline_destinations.issubset(set(doc.links)),baseline_destinations-set(doc.links))
     def test_resume_priority_and_media_contract(self):
         home=self.pages['index.html']
@@ -81,6 +84,10 @@ class SiteTests(unittest.TestCase):
         self.assertIn('$1.5B Valuation | 2026',work)
         self.assertIn('PR Newswire: $1.5B valuation',work)
         self.assertNotIn('Naomi Campbell Board Member | AI Fashion',work)
+    def test_sendkarma_is_not_rendered(self):
+        for page in self.pages.values():
+            self.assertNotIn('SendKarma',page)
+            self.assertNotIn('sendkarma',page)
     def test_press_precedes_interviews_on_home(self):
         home=self.pages['index.html']
         self.assertLess(home.index('id="press"'),home.index('id="interviews"'))

@@ -265,17 +265,6 @@ CURRENT_PROJECTS = [
         ],
         "quote": "The predecessor to modern AI mind simulation."
     },
-    {
-        "id": "sendkarma",
-        "name": "SendKarma",
-        "year": "2025",
-        "description": "Sadhguru-inspired AI wellness companion delivering wisdom and guidance through accessible channels.",
-        "stats": "AI Wellness",
-        "website": "https://www.sendkarma.app/",
-        "videos": [
-            {"url": "https://player.vimeo.com/video/1138631992", "title": "SendKarma"},
-        ]
-    },
 ]
 
 # INTERVIEWS SECTION
