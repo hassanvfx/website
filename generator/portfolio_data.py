@@ -228,21 +228,6 @@ WWDC14_FEATURE = {
 # CURRENT AI WORK (2022-2025)
 CURRENT_PROJECTS = [
     {
-        "id": "twinchat",
-        "name": "TwinChat",
-        "year": "2023-Present",
-        "description": "AI-Podcast platform that disrupts social media with 10,000 famous personalities' Mind-Deepfakes. Revolutionary AI that creates compelling conversational experiences with celebrity digital twins.",
-        "stats": "10,000+ AI Personalities",
-        "website": "https://btwinai.com/",
-        "vimeo_channel": "https://vimeo.com/twinchat",
-        "videos": [
-            {"url": "https://player.vimeo.com/video/839937602", "title": "TwinChat Demo"},
-            {"url": "https://player.vimeo.com/video/825294756", "title": "TwinChat AI Conversations"},
-            {"url": "https://player.vimeo.com/video/824932537", "title": "TwinChat Features"},
-        ],
-        "quote": "Unlocking VIP Celebrity conversations through AI."
-    },
-    {
         "id": "btwinfriends",
         "name": "BTwin Friends",
         "year": "2024-Present",
@@ -263,7 +248,22 @@ CURRENT_PROJECTS = [
         "videos": [
             {"url": "https://player.vimeo.com/video/913284078?h=82df73027a", "title": "BRB2Me Demo"},
         ],
-        "quote": "The predecessor to modern AI mind simulation."
+        "quote": "An early exploration of cognitive profiling and conversational AI companions."
+    },
+    {
+        "id": "twinchat",
+        "name": "TwinChat",
+        "year": "2023-Present",
+        "description": "AI-Podcast platform that disrupts social media with 10,000 famous personalities' Mind-Deepfakes. Revolutionary AI that creates compelling conversational experiences with celebrity digital twins.",
+        "stats": "10,000+ AI Personalities",
+        "website": "https://btwinai.com/",
+        "vimeo_channel": "https://vimeo.com/twinchat",
+        "videos": [
+            {"url": "https://player.vimeo.com/video/839937602", "title": "TwinChat Demo"},
+            {"url": "https://player.vimeo.com/video/825294756", "title": "TwinChat AI Conversations"},
+            {"url": "https://player.vimeo.com/video/824932537", "title": "TwinChat Features"},
+        ],
+        "quote": "Unlocking VIP Celebrity conversations through AI."
     },
 ]
 
