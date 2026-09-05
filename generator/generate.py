@@ -250,6 +250,7 @@ def generate_selected_work_grid():
         f'<a href="{SELECTED_WORK_PAGE}#{section_id}" class="selected-work-link">{label}<span aria-hidden="true">→</span></a>'
         for label, section_id in SELECTED_WORK_ITEMS
     )
+    links += f'''\n        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="selected-work-link selected-work-link--external">AI Context &amp; Memory<span aria-hidden="true">↗</span></a>'''
     return f'''
   <!-- Selected Work Gateway -->
   <section class="selected-work-gateway" aria-labelledby="selected-work-title">
