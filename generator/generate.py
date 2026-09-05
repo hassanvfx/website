@@ -255,7 +255,7 @@ def generate_selected_work_grid():
   <section class="selected-work-gateway" aria-labelledby="selected-work-title">
     <div class="selected-work-gateway-inner">
       <span class="eyebrow">Selected Work</span>
-      <h2 id="selected-work-title">Explore Portfolio Highlights</h2>
+      <h2 id="selected-work-title">Explore Sparks</h2>
       <div class="selected-work-grid">
         {links}
       </div>

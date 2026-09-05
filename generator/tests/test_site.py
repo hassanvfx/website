@@ -90,6 +90,7 @@ class SiteTests(unittest.TestCase):
         self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">SPARKS</a>',home)
         self.assertIn('Prompt Engineering',home)
         self.assertNotIn('TwinChat Paper',home)
+        self.assertIn('<h2 id="selected-work-title">Explore Sparks</h2>',home)
     def test_ultrakam_exit_card_and_coverage(self):
         work=self.pages['selected-work.html']
         self.assertLess(work.index('id="viddy"'),work.index('id="ultrakam"'))
