@@ -23,7 +23,7 @@ from templates.scripts import INTERACTION_SCRIPT, RESUME_SCRIPT
 SELECTED_WORK_PAGE = "selected-work.html"
 SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, author, and creator of ClineFlow, building agentic systems, consumer products, and AI platforms."
-SELECTED_WORK_SECTION_IDS = {"impact", "work", "waken", "twinchat-paper", "research", "filmography"}
+SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "waken", "twinchat-paper", "research", "filmography"}
 SELECTED_WORK_ITEMS = [
     ("Impact & Exits", "impact"),
     ("Featured Projects", "work"),
@@ -416,7 +416,7 @@ def generate_citations_section():
         <span>Read the original article on Medium →</span>
       </a>
 
-      <a href="{house["url"]}" target="_blank" rel="noopener noreferrer" class="citation-house-card">
+      <a href="{house["url"]}" target="_blank" rel="noopener noreferrer" class="citation-house-card" id="white-house">
         <span class="citation-source">Featured government citation</span>
         <h3>{house["title"]}</h3>
         <p>{house["detail"]}</p>
@@ -915,9 +915,10 @@ def generate_header(page):
         ('Profile', '#professional-profile'),
         ('AI coding', '#clineflow'),
         ('Apps', '#memearcade'),
-        ('Citations', '#citations'),
+        ('Citations', '#white-house'),
         ('Books', '#books'),
         ('Press', '#press'),
+        ('Sparks', '#selected-work'),
     ]
     links = ''.join(
         f'<a href="{resolve_navigation_href(href, page)}">{label}</a>'
