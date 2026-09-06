@@ -156,6 +156,23 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(sitemap.count(f'<lastmod>{generate.SITE_LAST_MODIFIED}</lastmod>'), 3)
         self.assertIn('<changefreq>weekly</changefreq>', sitemap)
 
+    def test_technical_writing_navigation_and_articles(self):
+        from html import escape
+        work = self.pages['selected-work.html']
+        self.assertIn('selected-work.html#technical-writing', self.docs['index.html'].links)
+        self.assertIn('#technical-writing', self.docs['selected-work.html'].links)
+        self.assertLess(work.index('id="ios-open-source"'), work.index('id="technical-writing"'))
+        self.assertEqual(len(generate.TECHNICAL_WRITING), 5)
+        for article in generate.TECHNICAL_WRITING:
+            self.assertIn(article['url'], self.docs['selected-work.html'].links)
+            self.assertIn(escape(article['title']), work)
+            self.assertIn(article['id'], self.docs['selected-work.html'].ids)
+            image = next(image for image in self.docs['selected-work.html'].images
+                         if image['src'] == generate.IMAGE_MANIFEST[article['id']]['url'])
+            self.assertEqual(image.get('loading'), 'lazy')
+            self.assertIn('width', image)
+            self.assertIn('height', image)
+
     def test_sendkarma_is_not_rendered(self):
         for page in self.pages.values():
             self.assertNotIn('SendKarma',page)

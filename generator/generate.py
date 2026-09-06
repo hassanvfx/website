@@ -20,13 +20,14 @@ from portfolio_data import (
 from templates.css import CSS_STYLES, COMPONENT_STYLES, SIGNAL_STYLES
 from templates.scripts import INTERACTION_SCRIPT, RESUME_SCRIPT
 from templates.icons import sparks_icon
+from technical_writing import TECHNICAL_WRITING
 
 SELECTED_WORK_PAGE = "selected-work.html"
 PROFILE_PAGE = "profile.html"
 SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, Swift open-source tools, and AI platforms."
-SITE_LAST_MODIFIED = "2026-09-05"
-SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
+SITE_LAST_MODIFIED = "2026-09-06"
+SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "technical-writing", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 AI_SPARK_ITEMS = [
     ("AI Context Engineering", "clineflow"),
     ("Prompt Engineering", "twinchat-paper"),
@@ -35,6 +36,7 @@ AI_SPARK_ITEMS = [
 OTHER_SPARK_ITEMS = [
     ("iOS & Open Source", "ios-open-source"),
     ("Impact & Exits", "impact"),
+    ("Technical Writing", "technical-writing"),
 ]
 HOBBY_SPARK_ITEMS = [
     ("Films & VFX", "filmography"),
@@ -103,7 +105,7 @@ def get_page_metadata(page):
     if page == "selected-work":
         return {
             "title": "Selected Work | Hassan Uriostegui",
-            "description": "Selected work by Hassan Uriostegui across AI innovation, iOS open source, products, startup impact, research, and visual effects.",
+            "description": "Selected work by Hassan Uriostegui across AI innovation, iOS open source, products, startup impact, technical writing, research, and visual effects.",
             "path": SELECTED_WORK_PAGE,
         }
     if page == "profile":
@@ -136,6 +138,18 @@ def generate_structured_data(metadata):
             "isAccessibleForFree": True,
         }
         for project in SWIFT_FOUNDATIONS
+    ] if metadata["path"] == SELECTED_WORK_PAGE else []
+    article_nodes = [
+        {
+            "@type": "Article",
+            "@id": article["url"],
+            "url": article["url"],
+            "headline": article["title"],
+            "description": article["description"],
+            "datePublished": article["date"],
+            "author": {"@id": author_id},
+        }
+        for article in TECHNICAL_WRITING
     ] if metadata["path"] == SELECTED_WORK_PAGE else []
     about = [{"@id": author_id}, {"@id": clineflow_id}]
     about.extend({"@id": node["@id"]} for node in foundation_nodes)
@@ -179,7 +193,7 @@ def generate_structured_data(metadata):
                 "about": about,
                 "isPartOf": {"@id": f"{SITE_URL}/#website"},
             },
-        ] + foundation_nodes,
+        ] + foundation_nodes + article_nodes,
     }
     return json.dumps(structured_data, ensure_ascii=False, separators=(",", ":"))
 
@@ -302,9 +316,9 @@ def generate_selected_work_grid(page="home"):
       <section class="selected-work-topic-group" aria-labelledby="more-sparks-title">
         <div class="selected-work-topic-heading">
           <p id="more-sparks-title">MORE SPARKS</p>
-          <span>Open source and product impact</span>
+          <span>Open source, product impact, and shared learning</span>
         </div>
-        <div class="selected-work-grid selected-work-grid--pair">
+        <div class="selected-work-grid">
           {other_links}
         </div>
       </section>
@@ -502,6 +516,37 @@ def generate_swift_foundations():
         <p>Three practical Swift tools for turning an iOS idea into a maintainable package, browser surface, and durable product state.</p>
       </div>
       {"".join(projects)}
+    </div>
+  </section>
+'''
+
+
+def generate_technical_writing():
+    """Render readable article rows using the existing alternating showcase layout."""
+    rows = []
+    for index, article in enumerate(TECHNICAL_WRITING):
+        reverse = " home-tooling-project--reverse" if index % 2 else ""
+        title = escape(article["title"])
+        rows.append(f'''<article class="home-tooling-project writing-article{reverse}" id="{article['id']}">
+        <div class="home-tooling-copy">
+          <span class="home-tooling-eyebrow">{escape(article['topic'])} · <time datetime="{article['date']}">{article['date'][:4]}</time></span>
+          <h3 id="{article['id']}-title"><a href="{article['url']}" target="_blank" rel="noopener noreferrer">{title}</a></h3>
+          <p class="home-tooling-description">{escape(article['description'])}</p>
+          <a class="home-tooling-link" href="{article['url']}" target="_blank" rel="noopener noreferrer" aria-label="{escape('Read on Medium: ' + article['title'], quote=True)}">Read on Medium <span aria-hidden="true">↗</span></a>
+        </div>
+        <a class="home-tooling-visual" href="{article['url']}" target="_blank" rel="noopener noreferrer" aria-labelledby="{article['id']}-title">
+          <img {image_attributes(article['id'], loading="lazy")} alt="" />
+        </a>
+      </article>''')
+    return f'''
+  <section class="technical-writing" id="technical-writing" aria-labelledby="technical-writing-title">
+    <div class="home-tooling-inner">
+      <div class="home-tooling-heading">
+        <span class="eyebrow">Notes from building</span>
+        <h2 id="technical-writing-title">Technical <em>Writing</em></h2>
+        <p>I write to share knowledge and lessons learned from building real software. These articles turn experiments in iOS architecture, AI collaboration, and creative tools into practical workflows others can learn from and build on.</p>
+      </div>
+      {''.join(rows)}
     </div>
   </section>
 '''
@@ -931,6 +976,8 @@ def generate_selected_content():
 
   <!-- iOS Open Source -->
   {generate_swift_foundations()}
+
+  {generate_technical_writing()}
 
   <!-- Research & Innovations -->
   <section class="section" id="research">

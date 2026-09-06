@@ -276,6 +276,7 @@ INTERACTION_SCRIPT = r'''
     ['#waken', 'awakening', 'bloom', 'scale', '162,155,238', 1020, 20],
     ['#work', 'product-unfold', 'page', 'slide', '131,194,232', 820, 18],
     ['#twinchat-paper', 'abstract-reveal', 'scan', 'settle', '173,164,231', 900, 10],
+    ['#technical-writing', 'reading-flow', 'page', 'settle', '149,202,221', 880, 10],
     ['#research', 'discovery-orbit', 'orbit', 'rise', '113,213,212', 1040, 22],
     ['#filmography', 'cinema-curtain', 'curtain', 'slide', '182,179,230', 1100, 16],
     ['#casual-books', 'reading-flow', 'sweep', 'rise', '215,207,189', 920, 12],

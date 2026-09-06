@@ -3711,6 +3711,15 @@ img { max-width: 100%; }
 .ios-sparks-callout .home-tooling-link { max-width: 100%; }
 @media (max-width: 700px) { .ios-sparks-callout { padding: 0 24px 40px; } }
 .home-tooling-showcase { padding: 80px 48px; background: #080e14; }
+.technical-writing { padding: 80px 48px; background: #080d12; }
+.technical-writing .home-tooling-heading { max-width: 760px; }
+.writing-article .home-tooling-copy h3 { font-size: clamp(1.35rem, 2vw, 1.85rem); line-height: 1.3; letter-spacing: -.025em; margin-bottom: 18px; }
+.writing-article h3 a { color: inherit; }
+.writing-article h3 a:hover { color: var(--cyan); }
+.writing-article .home-tooling-link { margin-top: 18px; }
+.writing-article .home-tooling-visual { display: block; width: 100%; max-width: 560px; justify-self: center; }
+.writing-article .home-tooling-visual img { object-fit: contain; }
+
 .home-tooling-inner { max-width: 1224px; margin: 0 auto; }
 .home-tooling-heading { max-width: 650px; margin: 0 0 48px; }
 .home-tooling-heading .eyebrow { display: block; margin-bottom: 16px; }
@@ -3731,8 +3740,10 @@ img { max-width: 100%; }
 .home-tooling-link span { font-size: 1.05rem; }
 .home-tooling-visual { grid-area: visual; overflow: hidden; background: #09131d; border-radius: 4px; box-shadow: 14px 20px 42px #0005; }
 .home-tooling-visual img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.writing-article { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); }
+
 @media (max-width: 700px) {
-  .home-tooling-showcase { padding: 56px 24px; }
+  .home-tooling-showcase, .technical-writing { padding: 56px 24px; }
   .home-tooling-heading { margin-bottom: 28px; }
   .home-tooling-project, .home-tooling-project--reverse { grid-template-columns: minmax(0, 1fr); grid-template-areas: "visual" "copy"; gap: 24px; padding: 32px 0; }
 }
