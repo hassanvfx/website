@@ -112,6 +112,13 @@ class SiteTests(unittest.TestCase):
         self.assertIn('style="--video-ratio: 200 / 150"',work)
         self.assertIn('Apple’s WWDC14 feature on Medium',work)
         self.assertEqual({company['name'] for company in generate.HISTORIC_COMPANIES if company.get('exit')},{'Viddy','Ultrakam','FlyrTV'})
+
+    def test_third_interview_uses_the_ultrakam_video(self):
+        home = self.pages['index.html']
+        third_card = home.split('class="interview-card"')[3]
+        self.assertIn('https://www.youtube.com/embed/jqs6dXF9wDU', third_card)
+        self.assertIn('style="--video-ratio: 200 / 150"', third_card)
+
     def test_current_projects_follow_the_requested_sequence(self):
         work=self.pages['selected-work.html']
         self.assertLess(work.index('id="brb2me"'),work.index('id="newsmusic"'))

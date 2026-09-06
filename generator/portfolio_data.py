@@ -352,7 +352,7 @@ INTERVIEWS = [
         "context": "Career retrospective"
     },
     {
-        "url": "https://player.vimeo.com/video/843495231",
+        "url": "https://www.youtube.com/embed/jqs6dXF9wDU",
         "title": "Entrepreneurship & Innovation",
         "context": "Startup insights"
     },
