@@ -121,6 +121,13 @@ class SiteTests(unittest.TestCase):
         self.assertIn('style="--video-ratio: 200 / 150"', center_card)
         self.assertIn('https://player.vimeo.com/video/843499496', third_card)
 
+    def test_ai_native_style_variant_uses_modern_type_and_warm_indigo_tokens(self):
+        home = self.pages['index.html']
+        self.assertIn('family=DM+Sans', home)
+        self.assertIn('family=Space+Grotesk', home)
+        self.assertIn('--ink: #0a091b;', home)
+        self.assertIn('--sunset: #ffd09c;', home)
+
     def test_current_projects_follow_the_requested_sequence(self):
         work=self.pages['selected-work.html']
         self.assertLess(work.index('id="brb2me"'),work.index('id="newsmusic"'))

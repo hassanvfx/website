@@ -22,7 +22,7 @@
   <meta name="twitter:image" content="https://hassanvfx.github.io/website/assets/portrait.3f70ee5e394b.webp">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://hassanvfx.github.io/website/#website","url":"https://hassanvfx.github.io/website/","name":"Hassan Uriostegui","description":"Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, Swift open-source tools, and AI platforms.","inLanguage":"en-US"},{"@type":"Person","@id":"https://hassanvfx.github.io/website/#hassan-uriostegui","name":"Hassan Uriostegui","url":"https://hassanvfx.github.io/website/","image":"assets/portrait.3f70ee5e394b.webp","jobTitle":"AI-Native Principal Engineer, Founder, and Author","sameAs":["https://www.linkedin.com/in/bensabbah","https://github.com/hassanvfx","https://www.imdb.com/name/nm2843359/","https://uriostegui.medium.com"],"knowsAbout":["Artificial Intelligence","Context Engineering","Mobile Product Development","ClineFlow"]},{"@type":"SoftwareApplication","@id":"https://clineflow.com/#software","name":"ClineFlow","url":"https://clineflow.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Any"},{"@type":"WebPage","@id":"https://hassanvfx.github.io/website/profile.html","url":"https://hassanvfx.github.io/website/profile.html","name":"Resume | Hassan Uriostegui","description":"Professional resume and profile for Hassan Uriostegui, AI-native principal and founding engineer.","inLanguage":"en-US","author":{"@id":"https://hassanvfx.github.io/website/#hassan-uriostegui"},"about":[{"@id":"https://hassanvfx.github.io/website/#hassan-uriostegui"},{"@id":"https://clineflow.com/#software"}],"isPartOf":{"@id":"https://hassanvfx.github.io/website/#website"}}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
 
@@ -4196,6 +4196,135 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 @media (max-width: 600px) {
   .section-wayfinding { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 18px; }
   .section-wayfinding .sparks-return { order: -1; margin-left: 0; }
+}
+
+/* AI Native Code-inspired variant: indigo depth, warm light, and a clean sans hierarchy. */
+:root {
+  --ink: #0a091b;
+  --surface: #13132a;
+  --line: rgba(210, 208, 245, .16);
+  --paper: #f8f7fc;
+  --muted: #aaa9c2;
+  --cyan: #c8a7ff;
+  --blue: #c8a7ff;
+  --purple: #f2a1d4;
+  --sunset: #ffd09c;
+  --font-sans: 'DM Sans', Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
+}
+body, button, input, textarea, select { font-family: var(--font-sans); }
+h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
+.site-nav { background: rgba(10, 9, 27, .88); border-color: var(--line); }
+.site-nav .header-book, .btn-outline { background: rgba(255, 255, 255, .045); }
+.site-nav .header-book:hover, .btn-outline:hover { background: rgba(200, 167, 255, .13); }
+.signal-hero {
+  background:
+    radial-gradient(ellipse at 83% 86%, rgba(255, 171, 112, .44), transparent 38%),
+    radial-gradient(ellipse at 82% 25%, rgba(176, 91, 213, .38), transparent 42%),
+    radial-gradient(ellipse at 35% 28%, rgba(75, 48, 150, .26), transparent 46%),
+    var(--ink);
+}
+.signal-eyebrow, .signal-position span, .signal-copy h1 em, .work-intro h1 em, .contact-callout h2 em { color: var(--cyan); }
+.signal-button, .booking-call-cta, .featured-book-cta {
+  background: linear-gradient(110deg, #f3b8e7, var(--sunset));
+  color: #211227;
+  box-shadow: 0 12px 30px rgba(241, 132, 191, .18);
+}
+.signal-button:hover, .booking-call-cta:hover, .featured-book-cta:hover {
+  background: linear-gradient(110deg, #f7c7ed, #ffdbb0);
+  box-shadow: 0 16px 38px rgba(255, 166, 111, .24);
+}
+.selected-work-link { background: rgba(255, 255, 255, .045); }
+.selected-work-link:hover { background: rgba(200, 167, 255, .12); }
+.selected-work-link--ai { background: linear-gradient(135deg, rgba(113, 86, 191, .25), rgba(240, 134, 190, .12)); }
+.ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner {
+  background: linear-gradient(115deg, #1a1937, #151226 74%, #2d1936);
+}
+.sparks-callout-icon { color: #f4b4dd; background: rgba(242, 161, 212, .12); }
+.scroll-depth-layer { background: radial-gradient(ellipse at 80% var(--scroll-depth-light, 38%), rgba(242, 161, 212, .10), transparent 65%), radial-gradient(ellipse at 18% 75%, rgba(255, 208, 156, .06), transparent 65%); }
+
+/* Carry the warm palette through legacy chapter surfaces and decorative light. */
+:root {
+  --neon-gradient: linear-gradient(115deg, #c8a7ff, #f2a1d4, #ffd09c);
+  --neon-glow: 0 0 20px rgba(242, 161, 212, .24);
+  --neon-glow-strong: 0 0 32px rgba(242, 161, 212, .34), 0 0 64px rgba(255, 208, 156, .16);
+}
+.site-header { background: rgba(10, 9, 27, .96); }
+.signal-menu, .signal-menu::backdrop { background: #0a091b; }
+.signal-summary, .hero-footnote, .hero-baseline, .site-nav a, .signal-menu nav a { color: var(--muted); }
+.portrait-window { background: #1a1730; }
+.plane-back { background: linear-gradient(150deg, rgba(200, 167, 255, .08), rgba(242, 161, 212, .16)); }
+.plane-middle { background: linear-gradient(120deg, rgba(242, 161, 212, .14), transparent 60%); }
+.plane-front { background: linear-gradient(145deg, rgba(255, 208, 156, .08), transparent 65%); }
+.stage-index { color: #c5bbd9; }
+.selected-work-link .sparks-icon { color: #c5b6dc; }
+.selected-work-link--ai .sparks-icon, .selected-work-topic-group--ai .selected-work-topic-heading p, .selected-work-link--ai span { color: #edafd8; }
+.selected-work-topic-group--ai { background: linear-gradient(115deg, rgba(132, 97, 200, .20), rgba(242, 161, 212, .08) 58%, transparent); }
+.selected-work-link--ai { background: rgba(46, 30, 70, .76); box-shadow: inset 0 1px 0 rgba(242, 161, 212, .16); }
+.selected-work-link--ai:hover, .selected-work-link--ai:focus-visible { background: rgba(69, 42, 93, .88); }
+.project-card, .impact-card { background: #121126; }
+.project-card-image-wrap, .video-frame { background: #0f0e20; }
+.project-card-art {
+  background: radial-gradient(circle at 70% 22%, rgba(242, 161, 212, .28), transparent 28%), linear-gradient(135deg, #1a1536, #111126 58%, #39213a);
+  box-shadow: 0 20px 60px rgba(242, 161, 212, .14);
+}
+.project-card-art span { text-shadow: 0 0 34px rgba(242, 161, 212, .3); }
+.paper-topics, .clineflow-installer-panel { background: linear-gradient(135deg, #1a1936, #121126); }
+.paper-subtitle, .paper-topics li, .paper-perspective blockquote, .home-tooling-subtitle { color: #d5cee3; }
+.home-tooling-showcase, .technical-writing { background: #0d0c1d; }
+.home-tooling-visual { background: #15132b; box-shadow: 14px 20px 42px rgba(0, 0, 0, .36); }
+.card-content .highlight { background: rgba(242, 161, 212, .12); color: #efb3db; }
+.impact-coverage a { color: #d7c2ec; }
+.book-card, .press-card, .citation-card, .citation-house-card, .interview-card { background: #15142a; }
+.quote-section { background: #101022; }
+.work-intro {
+  background: radial-gradient(ellipse at 90% 60%, rgba(160, 95, 210, .30), transparent 60%), #0a091b;
+}
+.work-orbit span { background: linear-gradient(130deg, rgba(200, 167, 255, .08), rgba(242, 161, 212, .11)); box-shadow: 0 0 50px rgba(242, 161, 212, .10); }
+.work-index a { color: #d2cde0; }
+.signal-footer { background: #101022; }
+.section-wayfinding .sparks-return { background: rgba(200, 167, 255, .08); color: #cec5dd; font-family: var(--font-sans); }
+.section-wayfinding .sparks-return:hover { background: rgba(242, 161, 212, .14); color: #f2b3db; }
+
+/* Complete the variant in controls, selections, and the ClineFlow installer. */
+::selection { background: rgba(242, 161, 212, .42); color: #fff9fd; }
+
+.clineflow-callout.clineflow-installer { background: #0a091b; }
+.clineflow-installer-panel {
+  background: linear-gradient(135deg, #262047 0%, #18152f 70%, #321d3d 100%);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .24);
+}
+.clineflow-installer-panel > p,
+.clineflow-installer h2 span,
+.copy-status { color: #eeb0d8; }
+.clineflow-prompt-wrap {
+  background: #111025;
+  box-shadow: inset 0 1px 0 rgba(219, 190, 255, .08);
+}
+.clineflow-prompt-wrap code { color: #ebe5f4; }
+.clineflow-copy-button {
+  background: linear-gradient(110deg, #e7abd5, #ffc995);
+  color: #2a1630;
+  box-shadow: 0 10px 24px rgba(242, 161, 212, .15);
+}
+.clineflow-copy-button:hover,
+.clineflow-copy-button:focus-visible {
+  background: linear-gradient(110deg, #f5c0e4, #ffdbb2);
+  outline-color: #f0acd6;
+  box-shadow: 0 14px 30px rgba(255, 190, 144, .22);
+}
+.clineflow-masterclass-divider {
+  background: linear-gradient(90deg, #f2a1d4 0%, rgba(255, 208, 156, .12) 100%);
+}
+.clineflow-masterclass-cta {
+  color: #2a1630;
+  background: linear-gradient(110deg, #e7abd5, #ffc995);
+  box-shadow: 0 0 28px rgba(242, 161, 212, .20);
+}
+.clineflow-masterclass-cta:hover,
+.clineflow-masterclass-cta:focus-visible {
+  background: linear-gradient(110deg, #f5c0e4, #ffdbb2);
+  box-shadow: 0 0 36px rgba(255, 190, 144, .28);
 }
 
 
