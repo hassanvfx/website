@@ -1195,7 +1195,7 @@ def generate_hero():
         <div class="signal-copy">
           <p class="signal-eyebrow"><span aria-hidden="true"></span>EB-1A · EXTRAORDINARY ABILITY</p>
           <h1 id="hero-title">Hassan<br /><em>Uriostegui.</em></h1>
-          <p class="signal-position">Principal Engineer.<br />Founder. <span>Author.</span></p>
+          <p class="signal-position">Principal Engineer.<br />Founder. <span>AI-Native.</span></p>
           <p class="signal-summary">I build AI-native products from prototype to production—agentic systems, consumer platforms, and high-performance mobile applications.</p>
           <div class="signal-actions">
             <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a>
