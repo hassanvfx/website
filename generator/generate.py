@@ -1036,7 +1036,7 @@ def generate_selected_content():
   <section class="section" id="casual-books">
     <div class="section-header white">
       {generate_section_nav("Published Works")}
-      <h2>Books &amp; Technical Writing</h2>
+      <h2>Writing Fiction &amp; Journaling</h2>
     </div>
     <div class="books-grid">
       {generate_books_html(BOOKS[2:])}
