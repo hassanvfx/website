@@ -1155,8 +1155,8 @@ def generate_quote():
 def generate_header(page):
     desktop_links = [
         ('Resume', PROFILE_PAGE),
-        ('AI coding', '#clineflow'),
-        ('Apps', '#memearcade'),
+        ('Agentic AI', '#clineflow'),
+        ('Mobile Apps', '#memearcade'),
         ('Citations', '#citations'),
         ('Books', '#books'),
         ('Press', '#press'),
