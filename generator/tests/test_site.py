@@ -97,8 +97,9 @@ class SiteTests(unittest.TestCase):
         self.assertIn('Prompt Engineering',home)
         self.assertNotIn('TwinChat Paper',home)
         self.assertIn('<h2 id="selected-work-title">Explore Sparks</h2>',home)
-        self.assertLess(home.index('Agentic &amp; Open Source'),home.index('AI Context Engineering'))
-        self.assertLess(home.index('AI Context Engineering'),home.index('Prompt Engineering'))
+        sparks = home[home.index('id="explore-sparks"'):home.index('id="clineflow"')]
+        self.assertLess(sparks.index('Agentic &amp; Open Source'),sparks.index('AI Context Engineering'))
+        self.assertLess(sparks.index('AI Context Engineering'),sparks.index('Prompt Engineering'))
         self.assertNotIn('Agentic Products &amp; Tools', home)
         self.assertIn('AI SYSTEMS',home)
         self.assertRegex(home, 'href="selected-work.html#ios-open-source" class="selected-work-link">.*?<span class="sparks-label">iOS &amp; Open Source</span>')
@@ -208,6 +209,27 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(sitemap.count('<url>'), 3)
         self.assertEqual(sitemap.count(f'<lastmod>{generate.SITE_LAST_MODIFIED}</lastmod>'), 3)
         self.assertIn('<changefreq>weekly</changefreq>', sitemap)
+
+    def test_crawl_and_share_metadata_describes_current_pages(self):
+        self.assertEqual((ROOT / 'robots.txt').read_text(),
+                         f'User-agent: *\nAllow: /\n\nSitemap: {generate.SITE_URL}/sitemap.xml\n')
+        expected = {
+            'index.html': ('Hassan Uriostegui | Agentic AI, Mobile Products &amp; ClineFlow', 'ProfilePage'),
+            'selected-work.html': ('AI Projects, iOS Open Source &amp; Technical Writing | Hassan Uriostegui', 'CollectionPage'),
+            'profile.html': ('Resume, Press &amp; Interviews | Hassan Uriostegui', 'ProfilePage'),
+        }
+        portrait = f'{generate.SITE_URL}/{generate.IMAGE_MANIFEST[generate.IDENTITY["portrait"]]["url"]}'
+        for name, (title, schema_type) in expected.items():
+            page = self.pages[name]
+            self.assertIn(f'<title>{title}</title>', page)
+            self.assertIn(f'<meta property="og:image" content="{portrait}">', page)
+            self.assertIn('<meta name="twitter:image:alt" content="Portrait of Hassan Uriostegui">', page)
+            graph = json.loads(page.split('<script type="application/ld+json">', 1)[1].split('</script>', 1)[0])
+            webpage = next(node for node in graph['@graph'] if node['@type'] == schema_type)
+            self.assertEqual(webpage['dateModified'], generate.SITE_LAST_MODIFIED)
+            self.assertEqual(webpage['primaryImageOfPage']['url'], portrait)
+            person = next(node for node in graph['@graph'] if node['@type'] == 'Person')
+            self.assertEqual(person['image'], portrait)
 
     def test_chapter_returns_target_the_current_page_menu(self):
         for name in ('index.html', 'selected-work.html'):
