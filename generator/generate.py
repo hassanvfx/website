@@ -23,7 +23,8 @@ from templates.scripts import INTERACTION_SCRIPT, RESUME_SCRIPT
 SELECTED_WORK_PAGE = "selected-work.html"
 PROFILE_PAGE = "profile.html"
 SITE_URL = "https://hassanvfx.github.io/website"
-SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, author, and creator of ClineFlow, building agentic systems, consumer products, and AI platforms."
+SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, Swift open-source tools, and AI platforms."
+SITE_LAST_MODIFIED = "2026-09-05"
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 AI_SPARK_ITEMS = [
     ("AI Context Engineering", "clineflow"),
@@ -35,6 +36,7 @@ OTHER_SPARK_ITEMS = [
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
     ("Writing About Trends", "casual-books"),
+    ("iOS & Open Source", "memearcade"),
 ]
 SELECTED_WORK_ITEMS = AI_SPARK_ITEMS + OTHER_SPARK_ITEMS
 IMAGE_MANIFEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_manifest.json")
@@ -120,6 +122,21 @@ def generate_structured_data(metadata):
     canonical_url = f'{SITE_URL}/{metadata["path"]}'
     author_id = f"{SITE_URL}/#hassan-uriostegui"
     clineflow_id = "https://clineflow.com/#software"
+    foundation_nodes = [
+        {
+            "@type": "SoftwareSourceCode",
+            "@id": f'{project["website"]}#source',
+            "name": project["title"],
+            "description": project["description"],
+            "codeRepository": project["website"],
+            "programmingLanguage": "Swift",
+            "author": {"@id": author_id},
+            "isAccessibleForFree": True,
+        }
+        for project in SWIFT_FOUNDATIONS
+    ] if metadata["path"] == "" else []
+    about = [{"@id": author_id}, {"@id": clineflow_id}]
+    about.extend({"@id": node["@id"]} for node in foundation_nodes)
     structured_data = {
         "@context": "https://schema.org",
         "@graph": [
@@ -157,10 +174,10 @@ def generate_structured_data(metadata):
                 "description": metadata["description"],
                 "inLanguage": "en-US",
                 "author": {"@id": author_id},
-                "about": [{"@id": author_id}, {"@id": clineflow_id}],
+                "about": about,
                 "isPartOf": {"@id": f"{SITE_URL}/#website"},
             },
-        ],
+        ] + foundation_nodes,
     }
     return json.dumps(structured_data, ensure_ascii=False, separators=(",", ":"))
 
@@ -174,10 +191,15 @@ Sitemap: {SITE_URL}/sitemap.xml
 
 
 def generate_sitemap_xml():
-    pages = ("", SELECTED_WORK_PAGE, PROFILE_PAGE)
+    """Expose every canonical generated page with current publishing metadata."""
+    pages = (
+        ("", "1.0", "weekly"),
+        (SELECTED_WORK_PAGE, "0.8", "monthly"),
+        (PROFILE_PAGE, "0.8", "monthly"),
+    )
     urls = "\n".join(
-        f"  <url><loc>{SITE_URL}/{page}</loc><priority>{'1.0' if not page else '0.8'}</priority></url>"
-        for page in pages
+        f"  <url><loc>{SITE_URL}/{path}</loc><lastmod>{SITE_LAST_MODIFIED}</lastmod><changefreq>{frequency}</changefreq><priority>{priority}</priority></url>"
+        for path, priority, frequency in pages
     )
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -452,7 +474,7 @@ def generate_swift_foundations():
       <div class="home-tooling-heading">
         <span class="eyebrow">Open Source Foundations</span>
         <h2 id="swift-foundations-title">Swift systems, built to <em>last.</em></h2>
-        <p>Two practical tools for turning an iOS idea into a maintainable package and durable product state.</p>
+        <p>Three practical tools for turning an iOS idea into a maintainable package, browser surface, and durable product state.</p>
       </div>
       {"".join(projects)}
     </div>

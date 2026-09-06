@@ -249,6 +249,17 @@ SWIFT_FOUNDATIONS = [
         "image": "datastore-hero",
         "image_alt": "Abstract illustration of secure encrypted data moving between a SwiftUI state model and storage"
     },
+    {
+        "id": "webview-swiftui",
+        "eyebrow": "SwiftUI Web Content",
+        "title": "WebViewSwiftUI",
+        "subtitle": "A browser surface native to your app",
+        "description": "An open-source SwiftUI wrapper for WKWebView that brings navigation controls, load progress, conditional reloads, and custom link handling into a clean SwiftUI integration.",
+        "highlights": ["Navigation and load progress", "Custom link handling"],
+        "website": "https://github.com/hassanvfx/ios-webViewSwiftUI",
+        "image": "webview-swiftui-hero",
+        "image_alt": "Abstract illustration of a SwiftUI web browser with connected navigation controls"
+    },
 ]
 
 # CURRENT AI WORK (2022-2025)

@@ -95,6 +95,8 @@ class SiteTests(unittest.TestCase):
         self.assertLess(home.index('Prompt Engineering'),home.index('Agentic Products'))
         self.assertIn('AI SYSTEMS',home)
         self.assertIn('href="selected-work.html#casual-books" class="selected-work-link">Writing About Trends',home)
+        self.assertIn('href="#memearcade" class="selected-work-link">iOS & Open Source',home)
+        self.assertIn('href="index.html#memearcade">iOS & Open Source',self.pages['selected-work.html'])
         self.assertIn('href="#clineflow" class="selected-work-link selected-work-link--ai">AI Context Engineering',home)
         self.assertIn('href="index.html#clineflow">AI Context Engineering',self.pages['selected-work.html'])
         self.assertNotIn('selected-work-link--external',home)
@@ -131,10 +133,22 @@ class SiteTests(unittest.TestCase):
         self.assertLess(home.index('id="wwdc14"'),home.index('class="home-tooling-showcase"'))
         self.assertLess(home.index('class="home-tooling-showcase"'),home.index('id="citations"'))
         self.assertLess(home.index('id="swift-spm"'),home.index('id="datastore"'))
+        self.assertLess(home.index('id="datastore"'),home.index('id="webview-swiftui"'))
         self.assertIn('href="https://github.com/hassanvfx/ios-framework"',home)
         self.assertIn('href="https://github.com/hassanvfx/ios-storage"',home)
-        for image_key in ('swift-spm-hero','datastore-hero'):
+        self.assertIn('href="https://github.com/hassanvfx/ios-webViewSwiftUI"',home)
+        self.assertIn('"@type":"SoftwareSourceCode"',home)
+        self.assertIn('"codeRepository":"https://github.com/hassanvfx/ios-webViewSwiftUI"',home)
+        for image_key in ('swift-spm-hero','datastore-hero','webview-swiftui-hero'):
             self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],home)
+    def test_sitemap_contains_every_canonical_page_and_publishing_metadata(self):
+        sitemap = (ROOT / 'sitemap.xml').read_text()
+        for page in ('', generate.SELECTED_WORK_PAGE, generate.PROFILE_PAGE):
+            self.assertIn(f'<loc>{generate.SITE_URL}/{page}</loc>', sitemap)
+        self.assertEqual(sitemap.count('<url>'), 3)
+        self.assertEqual(sitemap.count(f'<lastmod>{generate.SITE_LAST_MODIFIED}</lastmod>'), 3)
+        self.assertIn('<changefreq>weekly</changefreq>', sitemap)
+
     def test_sendkarma_is_not_rendered(self):
         for page in self.pages.values():
             self.assertNotIn('SendKarma',page)
