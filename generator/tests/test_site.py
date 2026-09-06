@@ -165,7 +165,11 @@ class SiteTests(unittest.TestCase):
             self.assertIn('id="explore-sparks" tabindex="-1"', self.pages[name])
             self.assertNotIn('index.html#explore-sparks', doc.links)
             self.assertNotIn('selected-work.html#explore-sparks', doc.links)
-        self.assertNotIn('#explore-sparks', self.docs['profile.html'].links)
+        profile = self.pages['profile.html']
+        self.assertEqual(self.docs['profile.html'].ids.count('explore-sparks'), 1)
+        self.assertLess(profile.index('id="professional-profile"'), profile.index('id="explore-sparks"'))
+        self.assertIn('href="index.html#clineflow" class="selected-work-link selected-work-link--ai"', profile)
+        self.assertIn('href="selected-work.html#technical-writing" class="selected-work-link"', profile)
 
     def test_technical_writing_navigation_and_articles(self):
         from html import escape

@@ -908,7 +908,8 @@ def generate_home_content():
 
 def generate_profile_content():
     """Generate the focused professional resume page."""
-    return generate_professional_profile(heading_tag="h1")
+    return (generate_professional_profile(heading_tag="h1")
+            + generate_selected_work_grid(page="profile"))
 
 
 def generate_selected_content():
