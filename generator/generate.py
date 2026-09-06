@@ -25,7 +25,7 @@ PROFILE_PAGE = "profile.html"
 SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, Swift open-source tools, and AI platforms."
 SITE_LAST_MODIFIED = "2026-09-05"
-SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
+SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 AI_SPARK_ITEMS = [
     ("AI Context Engineering", "clineflow"),
     ("Prompt Engineering", "twinchat-paper"),
@@ -35,8 +35,8 @@ OTHER_SPARK_ITEMS = [
     ("Impact & Exits", "impact"),
     ("Innovations", "research"),
     ("Filmography & VFX", "filmography"),
+    ("iOS & Open Source", "ios-open-source"),
     ("Writing About Trends", "casual-books"),
-    ("iOS & Open Source", "memearcade"),
 ]
 SELECTED_WORK_ITEMS = AI_SPARK_ITEMS + OTHER_SPARK_ITEMS
 IMAGE_MANIFEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_manifest.json")
@@ -101,7 +101,7 @@ def get_page_metadata(page):
     if page == "selected-work":
         return {
             "title": "Selected Work | Hassan Uriostegui",
-            "description": "Selected work by Hassan Uriostegui across AI innovation, research, products, startup impact, and visual effects.",
+            "description": "Selected work by Hassan Uriostegui across AI innovation, iOS open source, products, startup impact, research, and visual effects.",
             "path": SELECTED_WORK_PAGE,
         }
     if page == "profile":
@@ -134,7 +134,7 @@ def generate_structured_data(metadata):
             "isAccessibleForFree": True,
         }
         for project in SWIFT_FOUNDATIONS
-    ] if metadata["path"] == "" else []
+    ] if metadata["path"] == SELECTED_WORK_PAGE else []
     about = [{"@id": author_id}, {"@id": clineflow_id}]
     about.extend({"@id": node["@id"]} for node in foundation_nodes)
     structured_data = {
@@ -449,7 +449,7 @@ def generate_wwdc14_feature():
 
 
 def generate_swift_foundations():
-    """Generate the paired open-source Swift foundations on the home page."""
+    """Generate the dedicated iOS open-source chapter for Selected Work."""
     projects = []
     for index, project in enumerate(SWIFT_FOUNDATIONS):
         highlights = "".join(f'<li>{highlight}</li>' for highlight in project["highlights"])
@@ -469,12 +469,12 @@ def generate_swift_foundations():
         </div>
       </article>''')
     return f'''
-  <section class="home-tooling-showcase" aria-labelledby="swift-foundations-title">
+  <section class="home-tooling-showcase" id="ios-open-source" aria-labelledby="ios-open-source-title">
     <div class="home-tooling-inner">
       <div class="home-tooling-heading">
-        <span class="eyebrow">Open Source Foundations</span>
-        <h2 id="swift-foundations-title">Swift systems, built to <em>last.</em></h2>
-        <p>Three practical tools for turning an iOS idea into a maintainable package, browser surface, and durable product state.</p>
+        <span class="eyebrow">Selected Work</span>
+        <h2 id="ios-open-source-title">iOS <em>Open Source</em></h2>
+        <p>Three practical Swift tools for turning an iOS idea into a maintainable package, browser surface, and durable product state.</p>
       </div>
       {"".join(projects)}
     </div>
@@ -820,7 +820,7 @@ def render_portfolio(page="home"):
 def generate_home_content():
     return (generate_hero() + generate_proof() + generate_selected_work_grid()
             + generate_clineflow_section() + generate_meme_arcade_callout()
-            + generate_wwdc14_feature() + generate_swift_foundations() + generate_citations_section()
+            + generate_wwdc14_feature() + generate_citations_section()
             + generate_books_media()
             + generate_about() + generate_quote() + generate_recognition())
 
@@ -879,6 +879,9 @@ def generate_selected_content():
 
     {"".join(generate_current_project_card(p) for p in CURRENT_PROJECTS)}
   </section>
+
+  <!-- iOS Open Source -->
+  {generate_swift_foundations()}
 
   <!-- TwinChat Paper Callout -->
   <section class="clineflow-callout" id="twinchat-paper">

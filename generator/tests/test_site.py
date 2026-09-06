@@ -94,9 +94,9 @@ class SiteTests(unittest.TestCase):
         self.assertLess(home.index('AI Context Engineering'),home.index('Prompt Engineering'))
         self.assertLess(home.index('Prompt Engineering'),home.index('Agentic Products'))
         self.assertIn('AI SYSTEMS',home)
+        self.assertIn('href="selected-work.html#ios-open-source" class="selected-work-link">iOS & Open Source',home)
         self.assertIn('href="selected-work.html#casual-books" class="selected-work-link">Writing About Trends',home)
-        self.assertIn('href="#memearcade" class="selected-work-link">iOS & Open Source',home)
-        self.assertIn('href="index.html#memearcade">iOS & Open Source',self.pages['selected-work.html'])
+        self.assertIn('href="#ios-open-source">iOS & Open Source',self.pages['selected-work.html'])
         self.assertIn('href="#clineflow" class="selected-work-link selected-work-link--ai">AI Context Engineering',home)
         self.assertIn('href="index.html#clineflow">AI Context Engineering',self.pages['selected-work.html'])
         self.assertNotIn('selected-work-link--external',home)
@@ -128,19 +128,22 @@ class SiteTests(unittest.TestCase):
         self.assertIn('$1.5B Valuation | 2026',work)
         self.assertIn('PR Newswire: $1.5B valuation',work)
         self.assertNotIn('Naomi Campbell Board Member | AI Fashion',work)
-    def test_swift_foundations_follow_wwdc_on_home(self):
+    def test_swift_foundations_are_an_ios_open_source_chapter_on_sparks(self):
         home=self.pages['index.html']
-        self.assertLess(home.index('id="wwdc14"'),home.index('class="home-tooling-showcase"'))
-        self.assertLess(home.index('class="home-tooling-showcase"'),home.index('id="citations"'))
-        self.assertLess(home.index('id="swift-spm"'),home.index('id="datastore"'))
-        self.assertLess(home.index('id="datastore"'),home.index('id="webview-swiftui"'))
-        self.assertIn('href="https://github.com/hassanvfx/ios-framework"',home)
-        self.assertIn('href="https://github.com/hassanvfx/ios-storage"',home)
-        self.assertIn('href="https://github.com/hassanvfx/ios-webViewSwiftUI"',home)
-        self.assertIn('"@type":"SoftwareSourceCode"',home)
-        self.assertIn('"codeRepository":"https://github.com/hassanvfx/ios-webViewSwiftUI"',home)
+        work=self.pages['selected-work.html']
+        self.assertNotIn('<section class="home-tooling-showcase"', home)
+        self.assertIn('id="ios-open-source"', work)
+        self.assertLess(work.index('id="work"'), work.index('id="ios-open-source"'))
+        self.assertLess(work.index('id="ios-open-source"'), work.index('id="twinchat-paper"'))
+        self.assertLess(work.index('id="swift-spm"'), work.index('id="datastore"'))
+        self.assertLess(work.index('id="datastore"'), work.index('id="webview-swiftui"'))
+        self.assertIn('href="https://github.com/hassanvfx/ios-framework"',work)
+        self.assertIn('href="https://github.com/hassanvfx/ios-storage"',work)
+        self.assertIn('href="https://github.com/hassanvfx/ios-webViewSwiftUI"',work)
+        self.assertIn('"@type":"SoftwareSourceCode"',work)
+        self.assertIn('"codeRepository":"https://github.com/hassanvfx/ios-webViewSwiftUI"',work)
         for image_key in ('swift-spm-hero','datastore-hero','webview-swiftui-hero'):
-            self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],home)
+            self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],work)
     def test_sitemap_contains_every_canonical_page_and_publishing_metadata(self):
         sitemap = (ROOT / 'sitemap.xml').read_text()
         for page in ('', generate.SELECTED_WORK_PAGE, generate.PROFILE_PAGE):
