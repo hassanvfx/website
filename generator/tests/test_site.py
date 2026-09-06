@@ -129,9 +129,19 @@ class SiteTests(unittest.TestCase):
         self.assertNotIn('The predecessor to modern AI mind simulation.',work)
     def test_spreeai_valuation_and_coverage(self):
         work=self.pages['selected-work.html']
-        self.assertIn('$1.5B Valuation | 2026',work)
+        self.assertIn('$1.5B Valuation · 2026',work)
         self.assertIn('PR Newswire: $1.5B valuation',work)
         self.assertNotIn('Naomi Campbell Board Member | AI Fashion',work)
+
+    def test_positioning_prefers_supported_evidence(self):
+        home = self.pages['index.html']
+        self.assertIn('EB-1A · EXTRAORDINARY ABILITY', home)
+        self.assertIn('40M+', home)
+        self.assertIn('Users Reached', home)
+        self.assertIn('$6M+', home)
+        self.assertIn('Raised as Co-Founder', home)
+        self.assertNotIn('0.1% of visa applicants', home)
+        self.assertNotIn('granted U.S. Citizenship through the EB1A category', home)
     def test_swift_foundations_are_an_ios_open_source_chapter_on_sparks(self):
         home=self.pages['index.html']
         work=self.pages['selected-work.html']

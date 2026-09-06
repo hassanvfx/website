@@ -359,6 +359,10 @@ def generate_clineflow_section():
         {generate_section_nav()}
         <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">Creator of {CLINEFLOW["name"]}</a>
         <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
+        <div class="clineflow-explainer">
+          <p>ClineFlow gives AI coding agents durable project memory using open files instead of vendor-locked databases.</p>
+          <p>A filesystem-native knowledge layer that travels with the repository, evolves through version control, and stays usable across agents and collaborators.</p>
+        </div>
         <div class="clineflow-installer-panel">
           <p>Try the agentic installer</p>
           <div class="clineflow-prompt-wrap">
@@ -370,12 +374,12 @@ def generate_clineflow_section():
       <div class="clineflow-support">
         <figure class="clineflow-agent-compatibility">
           <img {image_attributes("clineflow-agent-compatibility", loading="lazy")} alt="ClineFlow compatibility with major AI coding agents" />
-          <figcaption>ClineFlow is supported by all major Agents</figcaption>
+          <figcaption>Works across major AI coding agents.</figcaption>
         </figure>
         <div class="clineflow-masterclass">
-          <p>Learn More about ClineFlow:</p>
+          <p>Explore ClineFlow:</p>
           <div class="clineflow-masterclass-divider" aria-hidden="true"></div>
-          <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">www.ClineFlow.com <span aria-hidden="true">→</span></a>
+          <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">View project <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
@@ -465,9 +469,9 @@ def generate_wwdc14_feature():
         <h2>{WWDC14_FEATURE["title"]}</h2>
         <p class="wwdc14-subtitle">{WWDC14_FEATURE["subtitle"]}</p>
         <p class="wwdc14-description">{WWDC14_FEATURE["description"]}</p>
-        <blockquote>{WWDC14_FEATURE["quote"]}</blockquote>
         <div class="wwdc14-actions">
-          <a href="{WWDC14_FEATURE["medium_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">Read the Story on Medium →</a>
+          <a href="{WWDC14_FEATURE["pdf_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">View WWDC14 slide <span aria-hidden="true">↗</span></a>
+          <a href="{WWDC14_FEATURE["medium_url"]}" target="_blank" rel="noopener noreferrer" class="wwdc14-text-link">Read the story <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="wwdc14-visuals">
@@ -656,6 +660,7 @@ def generate_meme_arcade_callout():
       {generate_section_nav("IPHONE GAME ARCADE", "meme-arcade-badge")}
       <h2>{MEME_ARCADE["title"]}</h2>
       <p class="meme-arcade-description">{MEME_ARCADE["description"]}</p>
+      <p class="meme-arcade-technology">{MEME_ARCADE["technology"]}</p>
       <a href="{MEME_ARCADE["url"]}" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">{MEME_ARCADE["cta"]} <span aria-hidden="true">→</span></a>
       </div>
       <div class="meme-carousel" role="region" aria-roledescription="carousel" aria-label="Meme Arcade app screens">
@@ -998,7 +1003,7 @@ def generate_selected_content():
     <div class="section-header white">
       {generate_section_nav("Research & Development")}
       <h2>Innovations</h2>
-      <p class="lead">Building tomorrow's technology, years before the industry catches up.</p>
+      <p class="lead">Selected products and technical work spanning mobile video, AR, generative systems, and AI.</p>
     </div>
     
     <div class="innovation-grid">
@@ -1013,7 +1018,7 @@ def generate_selected_content():
   <section class="section" id="casual-books">
     <div class="section-header white">
       {generate_section_nav("Published Works")}
-      <h2>Writing About Trends</h2>
+      <h2>Books &amp; Technical Writing</h2>
     </div>
     <div class="books-grid">
       {generate_books_html(BOOKS[2:])}
@@ -1029,7 +1034,7 @@ def generate_books_media():
   <section class="section" id="books">
     <div class="section-header white">
       {generate_section_nav("Published Works")}
-      <h2>Books</h2>
+      <h2>Books &amp; Technical Writing</h2>
     </div>
     {generate_featured_book(FEATURED_BOOKS[0]).strip()}
     <div class="books-grid">
@@ -1155,15 +1160,14 @@ def generate_hero():
     <section class="signal-hero" id="home" aria-labelledby="hero-title">
       <div class="signal-hero-inner">
         <div class="signal-copy">
-          <p class="signal-eyebrow"><span aria-hidden="true"></span>ENGINEER · FOUNDER · AUTHOR</p>
+          <p class="signal-eyebrow"><span aria-hidden="true"></span>EB-1A · EXTRAORDINARY ABILITY</p>
           <h1 id="hero-title">Hassan<br /><em>Uriostegui.</em></h1>
-          <p class="signal-position">Ambitious ideas.<br />Engineered for <span>real impact.</span></p>
-          <p class="signal-summary">AI systems, mobile products, and the engineering decisions that move them forward. Work directly with a principal engineer who has built for millions.</p>
+          <p class="signal-position">Principal Engineer.<br />Founder. <span>Author.</span></p>
+          <p class="signal-summary">I build AI-native products from prototype to production—agentic systems, consumer platforms, and high-performance mobile applications.</p>
           <div class="signal-actions">
             <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a>
             <a class="signal-text-link" href="{SELECTED_WORK_PAGE}">Explore selected work <span aria-hidden="true">→</span></a>
           </div>
-          <p class="hero-footnote">Silicon Valley experience. Independent perspective.</p>
         </div>
         <figure class="portrait-stage">
           <div class="depth-rig" aria-hidden="true"><span class="depth-plane plane-back"></span><span class="depth-plane plane-middle"></span><span class="depth-plane plane-front"></span></div>
@@ -1209,8 +1213,8 @@ def generate_contact():
     return f'''
     <footer id="contact" class="signal-footer">
       <div class="contact-callout">
-        <div><p class="signal-eyebrow">LET’S BUILD WHAT’S NEXT</p><h2>A clearer path<br /><em>from idea to product.</em></h2><p>Bring your AI, mobile, or product engineering challenge. Let’s work through it together.</p></div>
-        <div class="contact-actions"><a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a><a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer">50% goes to UnidosUS ↗</a></div>
+        <div><p class="signal-eyebrow">LET’S BUILD WHAT’S NEXT</p><h2>Building an<br /><em>AI-native product?</em></h2><p>Bring your AI, mobile, or product engineering challenge. Let’s work through it together.</p></div>
+        <div class="contact-actions"><a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a><a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer">50% goes to UnidosUS <span aria-hidden="true">↗</span></a></div>
       </div>
       <div class="footer-details"><div><strong>{IDENTITY['name']}</strong><p>{IDENTITY['status']}</p>{generate_footer_bio_html()}</div><div class="footer-links">{generate_social_links()}<a href="mailto:{IDENTITY['email']}">Email ↗</a><button type="button" id="motion-toggle" aria-pressed="false" hidden>Reduce motion</button></div></div>
       <p class="copyright">© 2026 Hassan Uriostegui. All rights reserved.</p>

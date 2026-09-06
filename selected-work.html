@@ -1912,7 +1912,7 @@ nav a:hover {
   width: 620px;
   height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.13), transparent 68%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.07), transparent 68%);
   pointer-events: none;
 }
 .professional-profile::after {
@@ -1923,7 +1923,7 @@ nav a:hover {
   width: 620px;
   height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 68%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.07), transparent 68%);
   pointer-events: none;
 }
 .professional-profile-inner {
@@ -2313,7 +2313,7 @@ nav a:hover {
 }
 .clineflow-installer h2 {
   max-width: 1120px;
-  margin: clamp(4rem, 8vw, 8rem) 0 clamp(3rem, 6vw, 5.5rem);
+  margin: clamp(4rem, 8vw, 8rem) 0 clamp(1.5rem, 3vw, 2.5rem);
   color: #eaf6ff;
   font-family: Inter, sans-serif;
   font-size: clamp(2rem, 3.2vw, 3.25rem);
@@ -2324,6 +2324,14 @@ nav a:hover {
 .clineflow-installer h2 span {
   color: #00bfff;
 }
+.clineflow-explainer {
+  max-width: 780px;
+  margin: 0 0 clamp(3rem, 6vw, 5.5rem);
+  color: rgba(234, 246, 255, 0.74);
+  font: 400 clamp(1rem, 1.35vw, 1.15rem)/1.7 Inter, sans-serif;
+}
+.clineflow-explainer p { margin: 0; }
+.clineflow-explainer p + p { margin-top: .8rem; color: #a8c2d0; }
 .clineflow-installer-panel {
   padding: clamp(1.75rem, 3.25vw, 4rem);
   background: linear-gradient(115deg, #0b2d45 0%, #0b2538 100%);
@@ -2491,6 +2499,14 @@ nav a:hover {
   color: rgba(255,255,255,0.8);
   font-size: 1.14rem;
   line-height: 1.75;
+}
+.meme-arcade-technology {
+  max-width: 760px;
+  margin: -0.5rem auto 2rem;
+  color: #c9b6db;
+  font: 600 .78rem/1.6 Inter, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 .meme-arcade-cta {
   display: inline-flex;
@@ -3624,6 +3640,7 @@ img { max-width: 100%; }
 .signal-hero { isolation: isolate; position: relative; overflow: clip; background: radial-gradient(ellipse at 82% 35%, #123044 0%, transparent 49%), var(--ink); }
 .signal-hero-inner { max-width: 1320px; margin: auto; padding: 88px 48px 76px; display: grid; grid-template-columns: 1.22fr 1fr; gap: 72px; align-items: center; }
 .signal-eyebrow { font-size: .75rem; letter-spacing: .16em; color: var(--cyan); font-weight: 600; margin: 0 0 28px; display: flex; align-items: center; gap: 12px; }
+.signal-copy .signal-eyebrow { max-width: 560px; line-height: 1.45; }
 .signal-eyebrow > span { width: 6px; height: 6px; background: var(--cyan); display: inline-block; }
 .signal-copy h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(3.4rem, 6.5vw, 6rem); line-height: 1.05; letter-spacing: -.055em; margin: 0 0 32px; }
 .signal-copy h1 em, .work-intro h1 em, .contact-callout h2 em { font-weight: 400; color: var(--cyan); }
@@ -4287,10 +4304,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 426 / 240"><iframe src="https://player.vimeo.com/video/1143600495" title="SpreeAI" width="426" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <div class="impact-labels"><span class="highlight">$1.5B Valuation | 2026</span></div>
+      <div class="impact-labels"><span class="highlight">$1.5B Valuation · 2026</span></div>
       <h3>SpreeAI</h3>
       <p class="role">Principal iOS Architect • 2024-2026</p>
-      <p class="description">Building photorealistic AI try-ons and 99%-accurate sizing for in-store and online retail. The platform helps shoppers visualize clothing in a lifelike way while helping retailers reduce returns and improve conversion.</p>
+      <p class="description">Led iOS architecture for immersive mobile commerce experiences combining ARKit, LiDAR, 3D assets, and real-time interaction.</p>
 
       <div class="company-press-quote">
         <p class="quote-text">"SpreeAI is pushing the forefront of e-commerce personalization, by leveraging collaborations with academia and assembling a team that understands both the deep technical challenges and their product impact."</p>
@@ -4307,10 +4324,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 200 / 150"><iframe src="https://www.youtube.com/embed/avccq32KfOE" title="Viddy" width="200" height="150" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <div class="impact-labels"><span class="highlight">$370M Valuation | 40M Users</span><span class="impact-exit">Exit</span></div>
+      <div class="impact-labels"><span class="highlight">40M Users · $370M Peak Valuation</span><span class="impact-exit">Exit</span></div>
       <h3>Viddy</h3>
       <p class="role">Director of Video Engineering • 2012-2013</p>
-      <p class="description">Built iOS + Android VFX rendering engine. Created the most advanced video editor when Instagram was photos-only. At peak engagement, served 40M+ users.</p>
+      <p class="description">Built the mobile VFX rendering architecture and core video-creation pipeline across iOS and Android during the first wave of social video.</p>
 
       <div class="company-press-quote">
         <p class="quote-text">"Viddy, the video-sharing app that has been called 'Instagram for video,' raised $30 million in funding at a valuation of $370 million."</p>
@@ -4325,10 +4342,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 200 / 150"><iframe src="https://www.youtube.com/embed/jqs6dXF9wDU" title="Ultrakam" width="200" height="150" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <div class="impact-labels"><span class="highlight">First iOS app for 2K film-quality capture</span><span class="impact-exit">Exit</span></div>
+      <div class="impact-labels"><span class="highlight">2K Mobile Capture · WWDC14 Feature</span><span class="impact-exit">Exit</span></div>
       <h3>Ultrakam</h3>
       <p class="role">Founder • 2014</p>
-      <p class="description">Built a mobile filmmaking suite that brought 2K capture, time-lapse, slow motion, and a companion remote-control app to iPhone and iPad. Apple later featured Ultrakam Remote Control at WWDC14.</p>
+      <p class="description">Built a mobile filmmaking suite with 2K capture, time-lapse, slow motion, and a companion remote-control app for iPhone and iPad.</p>
 
       <div class="company-press-quote">
         <p class="quote-text">"Tools for the next generation of content creators."</p>
@@ -4345,10 +4362,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 200 / 113"><iframe src="https://www.youtube.com/embed/7GQm8h70PRg" title="FlyrTV" width="200" height="113" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <div class="impact-labels"><span class="highlight">$6M Raised | Acquired 2018</span><span class="impact-exit">Exit</span></div>
+      <div class="impact-labels"><span class="highlight">$6M+ Raised · Acquired by Pond5</span><span class="impact-exit">Exit</span></div>
       <h3>FlyrTV</h3>
       <p class="role">CTO & Co-founder • 2014-2018</p>
-      <p class="description">Raised $6M+, built team of 30 professionals, launched 10,000+ HD video templates. First company to access Snapchat's content API. Acquired by POND5.</p>
+      <p class="description">Co-founded Flyr and led engineering from 0→1, building the product and technical organization behind a template-driven video platform with 10,000+ creative assets.</p>
 
       <div class="company-press-quote">
         <p class="quote-text">"Flyr was the first third-party company granted access to Snapchat's content API, a testament to their groundbreaking work in mobile video storytelling."</p>
@@ -4363,10 +4380,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 200 / 113"><iframe src="https://www.youtube.com/embed/ZOWuy-HhQxE" title="Community" width="200" height="113" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <div class="impact-labels"><span class="highlight">Backed by Madonna & Ashton Kutcher</span></div>
+      <div class="impact-labels"><span class="highlight">10M+ Users</span></div>
       <h3>Community</h3>
       <p class="role">Principal iOS Architect • 2019-2020</p>
-      <p class="description">Architected reactive iOS Swift app. Built and led iOS team of 5 engineers in 6 months. Served 10M+ users.</p>
+      <p class="description">Architected reactive iOS product systems and led a five-person iOS team for a high-volume messaging platform connecting public figures and audiences.</p>
 
       <div class="company-press-quote">
         <p class="quote-text">"Community has raised $35 million in new funding to bring celebrities closer to their fans through direct messaging."</p>
@@ -4386,7 +4403,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <img src="assets/waken-ai-logo.caee9fda4efa.webp" width="560" height="140" decoding="async" loading="lazy" alt="Waken AI" class="waken-logo" />
         <h2 class="waken-tagline">A New Lux — Elevating The Human Mind</h2>
         <p class="waken-subtitle">Mind Simulation Technology for Emotional Wellness</p>
-        <p class="waken-description">Waken AI Labs represents Hassan's ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, this work pioneers the intersection of AI and human emotional wellness through advanced conversational companions.</p>
+        <p class="waken-description">Waken AI Labs is Hassan’s ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, the work explores AI, emotional wellness, and conversational companions.</p>
       </div>
 
       <div class="waken-video-container">
@@ -4394,7 +4411,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       </div>
 
       <p class="waken-quote">"Our AI delves into the human essence, giving voice to silent thoughts."</p>
-      <p class="waken-positioning">Pioneering Mind Simulation Technology for emotional wellness and personal growth since 2020.</p>
+      <p class="waken-positioning">Mind Simulation Technology research for emotional wellness and personal growth since 2020.</p>
 
       <div class="waken-footer">
         <a href="https://www.wakenai.com/" target="_blank" class="waken-cta">
@@ -4418,10 +4435,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="video-frame" style="--video-ratio: 426 / 240"><iframe src="https://player.vimeo.com/video/913284078?h=82df73027a" title="BRB2Me" width="426" height="240" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     <div class="card-content">
-      <span class="highlight">Mind Simulation Pioneer</span>
+      <span class="highlight">AI Persona & Memory Systems</span>
       <h3>BRB2Me</h3>
       <p class="year">2020-2022</p>
-      <p class="description">Pioneering mind simulation platform that laid the foundation for BTwin Friends. Early research into cognitive profiling and conversational AI companions with therapeutic applications.</p>
+      <p class="description">An early exploration of cognitive profiling, durable memory, and conversational AI companions that informed later BTwin Friends work.</p>
       <p class="quote">"An early exploration of cognitive profiling and conversational AI companions."</p>
 
     </div>
@@ -4491,7 +4508,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <span class="highlight">10,000+ AI Personalities</span>
       <h3>TwinChat</h3>
       <p class="year">2023-Present</p>
-      <p class="description">AI-Podcast platform that disrupts social media with 10,000 famous personalities' Mind-Deepfakes. Revolutionary AI that creates compelling conversational experiences with celebrity digital twins.</p>
+      <p class="description">A conversational AI platform exploring digital personas, structured profiles, and long-form AI interactions across a catalog of public-figure simulations.</p>
       <p class="quote">"Unlocking VIP Celebrity conversations through AI."</p>
       <a href="https://btwinai.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Visit Website</a>
     </div>
@@ -4645,7 +4662,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="section-header white">
       <div class="section-wayfinding"><span class="eyebrow">Research &amp; Development</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Innovations</h2>
-      <p class="lead">Building tomorrow's technology, years before the industry catches up.</p>
+      <p class="lead">Selected products and technical work spanning mobile video, AR, generative systems, and AI.</p>
     </div>
 
     <div class="innovation-grid">
@@ -4669,8 +4686,8 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="card-content">
       <span class="year-badge">2013</span>
       <h3>Onelapse</h3>
-      <p class="tagline">Live Photos 2 Years Before Apple</p>
-      <p class="description">Envisioned a new media type blending high-res video with photos. 'Taking photos from videos' - Apple released similar feature in 2015.</p>
+      <p class="tagline">Photo and Video Capture · 2013</p>
+      <p class="description">Explored a media format blending high-resolution video with still photography, including extraction of photo moments from video.</p>
     </div>
   </article>
 
@@ -4681,7 +4698,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="card-content">
       <span class="year-badge">2014</span>
       <h3>Cinekolor</h3>
-      <p class="tagline">Pro Color Grading Before Adobe</p>
+      <p class="tagline">Professional Mobile Color Grading · 2014</p>
       <p class="description">Professional 3-stage color correction with 3D LUT export for film production. Featured by Apple worldwide.</p>
     </div>
   </article>
@@ -4693,8 +4710,8 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="card-content">
       <span class="year-badge">2011</span>
       <h3>Krommy</h3>
-      <p class="tagline">Face Filters 10 Years Before Snapchat</p>
-      <p class="description">After releasing Kromath (first real-time Green Screen for iOS), developed early face filter concept almost a decade before Snapchat.</p>
+      <p class="tagline">Early Real-Time Mobile Face Effects · 2011</p>
+      <p class="description">Developed an early real-time mobile face-effects concept following Kromath, a green-screen app for iOS.</p>
     </div>
   </article>
 
@@ -4705,8 +4722,8 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="card-content">
       <span class="year-badge">2010</span>
       <h3>Tron Legacy AR Engine</h3>
-      <p class="tagline">AR Before ARKit</p>
-      <p class="description">High-performance Augmented Reality Engine for Disney's Tron Legacy marketing. Built before modern AR frameworks existed.</p>
+      <p class="tagline">Production AR Engine · 2010</p>
+      <p class="description">Built a high-performance augmented-reality engine for Disney’s Tron Legacy marketing before modern mobile AR frameworks were available.</p>
     </div>
   </article>
 
@@ -4718,7 +4735,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <span class="year-badge">2018</span>
       <h3>Renderfarm X</h3>
       <p class="tagline">Patent: Intelligent Graphical Feature Generation</p>
-      <p class="description">Revolutionary backend rendering using iOS engine. Reused mobile rendering for scalable server-side video processing.</p>
+      <p class="description">Applied a mobile rendering engine to scalable server-side video processing for graphical content generation.</p>
     </div>
   </article>
 
@@ -4757,7 +4774,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="section" id="casual-books">
     <div class="section-header white">
       <div class="section-wayfinding"><span class="eyebrow">Published Works</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
-      <h2>Writing About Trends</h2>
+      <h2>Books &amp; Technical Writing</h2>
     </div>
     <div class="books-grid">
       <article class="book-card"><img src="assets/bookstore-display.ed1cf7fde7cc.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-display-small.41dc378c7bb0.webp 440w, assets/bookstore-display.ed1cf7fde7cc.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="MST: Mind Simulation Technology" class="book-cover" />
@@ -4794,10 +4811,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 </main>
     <footer id="contact" class="signal-footer">
       <div class="contact-callout">
-        <div><p class="signal-eyebrow">LET’S BUILD WHAT’S NEXT</p><h2>A clearer path<br /><em>from idea to product.</em></h2><p>Bring your AI, mobile, or product engineering challenge. Let’s work through it together.</p></div>
-        <div class="contact-actions"><a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a><a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer">50% goes to UnidosUS ↗</a></div>
+        <div><p class="signal-eyebrow">LET’S BUILD WHAT’S NEXT</p><h2>Building an<br /><em>AI-native product?</em></h2><p>Bring your AI, mobile, or product engineering challenge. Let’s work through it together.</p></div>
+        <div class="contact-actions"><a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a><a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer">50% goes to UnidosUS <span aria-hidden="true">↗</span></a></div>
       </div>
-      <div class="footer-details"><div><strong>Hassan Uriostegui</strong><p>EB1A Systems Engineer</p><p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.</p>
+      <div class="footer-details"><div><strong>Hassan Uriostegui</strong><p>AI-Native Principal Engineer · EB-1A Extraordinary Ability</p><p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.</p>
     <p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions.</p></div><div class="footer-links"><a href="https://www.linkedin.com/in/bensabbah" target="_blank" class="btn btn-outline">LinkedIn</a>
       <a href="https://github.com/hassanvfx" target="_blank" class="btn btn-outline">GitHub</a>
       <a href="https://www.imdb.com/name/nm2843359/" target="_blank" class="btn btn-outline">IMDB</a>

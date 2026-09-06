@@ -1889,7 +1889,7 @@ nav a:hover {
   width: 620px;
   height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.13), transparent 68%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.07), transparent 68%);
   pointer-events: none;
 }
 .professional-profile::after {
@@ -1900,7 +1900,7 @@ nav a:hover {
   width: 620px;
   height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 68%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.07), transparent 68%);
   pointer-events: none;
 }
 .professional-profile-inner {
@@ -2290,7 +2290,7 @@ nav a:hover {
 }
 .clineflow-installer h2 {
   max-width: 1120px;
-  margin: clamp(4rem, 8vw, 8rem) 0 clamp(3rem, 6vw, 5.5rem);
+  margin: clamp(4rem, 8vw, 8rem) 0 clamp(1.5rem, 3vw, 2.5rem);
   color: #eaf6ff;
   font-family: Inter, sans-serif;
   font-size: clamp(2rem, 3.2vw, 3.25rem);
@@ -2301,6 +2301,14 @@ nav a:hover {
 .clineflow-installer h2 span {
   color: #00bfff;
 }
+.clineflow-explainer {
+  max-width: 780px;
+  margin: 0 0 clamp(3rem, 6vw, 5.5rem);
+  color: rgba(234, 246, 255, 0.74);
+  font: 400 clamp(1rem, 1.35vw, 1.15rem)/1.7 Inter, sans-serif;
+}
+.clineflow-explainer p { margin: 0; }
+.clineflow-explainer p + p { margin-top: .8rem; color: #a8c2d0; }
 .clineflow-installer-panel {
   padding: clamp(1.75rem, 3.25vw, 4rem);
   background: linear-gradient(115deg, #0b2d45 0%, #0b2538 100%);
@@ -2468,6 +2476,14 @@ nav a:hover {
   color: rgba(255,255,255,0.8);
   font-size: 1.14rem;
   line-height: 1.75;
+}
+.meme-arcade-technology {
+  max-width: 760px;
+  margin: -0.5rem auto 2rem;
+  color: #c9b6db;
+  font: 600 .78rem/1.6 Inter, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 .meme-arcade-cta {
   display: inline-flex;
@@ -3602,6 +3618,7 @@ img { max-width: 100%; }
 .signal-hero { isolation: isolate; position: relative; overflow: clip; background: radial-gradient(ellipse at 82% 35%, #123044 0%, transparent 49%), var(--ink); }
 .signal-hero-inner { max-width: 1320px; margin: auto; padding: 88px 48px 76px; display: grid; grid-template-columns: 1.22fr 1fr; gap: 72px; align-items: center; }
 .signal-eyebrow { font-size: .75rem; letter-spacing: .16em; color: var(--cyan); font-weight: 600; margin: 0 0 28px; display: flex; align-items: center; gap: 12px; }
+.signal-copy .signal-eyebrow { max-width: 560px; line-height: 1.45; }
 .signal-eyebrow > span { width: 6px; height: 6px; background: var(--cyan); display: inline-block; }
 .signal-copy h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(3.4rem, 6.5vw, 6rem); line-height: 1.05; letter-spacing: -.055em; margin: 0 0 32px; }
 .signal-copy h1 em, .work-intro h1 em, .contact-callout h2 em { font-weight: 400; color: var(--cyan); }

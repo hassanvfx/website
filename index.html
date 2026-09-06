@@ -1912,7 +1912,7 @@ nav a:hover {
   width: 620px;
   height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.13), transparent 68%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.07), transparent 68%);
   pointer-events: none;
 }
 .professional-profile::after {
@@ -1923,7 +1923,7 @@ nav a:hover {
   width: 620px;
   height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 68%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.07), transparent 68%);
   pointer-events: none;
 }
 .professional-profile-inner {
@@ -2313,7 +2313,7 @@ nav a:hover {
 }
 .clineflow-installer h2 {
   max-width: 1120px;
-  margin: clamp(4rem, 8vw, 8rem) 0 clamp(3rem, 6vw, 5.5rem);
+  margin: clamp(4rem, 8vw, 8rem) 0 clamp(1.5rem, 3vw, 2.5rem);
   color: #eaf6ff;
   font-family: Inter, sans-serif;
   font-size: clamp(2rem, 3.2vw, 3.25rem);
@@ -2324,6 +2324,14 @@ nav a:hover {
 .clineflow-installer h2 span {
   color: #00bfff;
 }
+.clineflow-explainer {
+  max-width: 780px;
+  margin: 0 0 clamp(3rem, 6vw, 5.5rem);
+  color: rgba(234, 246, 255, 0.74);
+  font: 400 clamp(1rem, 1.35vw, 1.15rem)/1.7 Inter, sans-serif;
+}
+.clineflow-explainer p { margin: 0; }
+.clineflow-explainer p + p { margin-top: .8rem; color: #a8c2d0; }
 .clineflow-installer-panel {
   padding: clamp(1.75rem, 3.25vw, 4rem);
   background: linear-gradient(115deg, #0b2d45 0%, #0b2538 100%);
@@ -2491,6 +2499,14 @@ nav a:hover {
   color: rgba(255,255,255,0.8);
   font-size: 1.14rem;
   line-height: 1.75;
+}
+.meme-arcade-technology {
+  max-width: 760px;
+  margin: -0.5rem auto 2rem;
+  color: #c9b6db;
+  font: 600 .78rem/1.6 Inter, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 .meme-arcade-cta {
   display: inline-flex;
@@ -3624,6 +3640,7 @@ img { max-width: 100%; }
 .signal-hero { isolation: isolate; position: relative; overflow: clip; background: radial-gradient(ellipse at 82% 35%, #123044 0%, transparent 49%), var(--ink); }
 .signal-hero-inner { max-width: 1320px; margin: auto; padding: 88px 48px 76px; display: grid; grid-template-columns: 1.22fr 1fr; gap: 72px; align-items: center; }
 .signal-eyebrow { font-size: .75rem; letter-spacing: .16em; color: var(--cyan); font-weight: 600; margin: 0 0 28px; display: flex; align-items: center; gap: 12px; }
+.signal-copy .signal-eyebrow { max-width: 560px; line-height: 1.45; }
 .signal-eyebrow > span { width: 6px; height: 6px; background: var(--cyan); display: inline-block; }
 .signal-copy h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(3.4rem, 6.5vw, 6rem); line-height: 1.05; letter-spacing: -.055em; margin: 0 0 32px; }
 .signal-copy h1 em, .work-intro h1 em, .contact-callout h2 em { font-weight: 400; color: var(--cyan); }
@@ -4224,15 +4241,14 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <section class="signal-hero" id="home" aria-labelledby="hero-title">
       <div class="signal-hero-inner">
         <div class="signal-copy">
-          <p class="signal-eyebrow"><span aria-hidden="true"></span>ENGINEER · FOUNDER · AUTHOR</p>
+          <p class="signal-eyebrow"><span aria-hidden="true"></span>EB-1A · EXTRAORDINARY ABILITY</p>
           <h1 id="hero-title">Hassan<br /><em>Uriostegui.</em></h1>
-          <p class="signal-position">Ambitious ideas.<br />Engineered for <span>real impact.</span></p>
-          <p class="signal-summary">AI systems, mobile products, and the engineering decisions that move them forward. Work directly with a principal engineer who has built for millions.</p>
+          <p class="signal-position">Principal Engineer.<br />Founder. <span>Author.</span></p>
+          <p class="signal-summary">I build AI-native products from prototype to production—agentic systems, consumer platforms, and high-performance mobile applications.</p>
           <div class="signal-actions">
             <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a>
             <a class="signal-text-link" href="selected-work.html">Explore selected work <span aria-hidden="true">→</span></a>
           </div>
-          <p class="hero-footnote">Silicon Valley experience. Independent perspective.</p>
         </div>
         <figure class="portrait-stage">
           <div class="depth-rig" aria-hidden="true"><span class="depth-plane plane-back"></span><span class="depth-plane plane-middle"></span><span class="depth-plane plane-front"></span></div>
@@ -4247,11 +4263,11 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <section id="proof" class="proof-section" aria-label="Experience and recognition">
       <div class="stats-row"><div class="stat-item">
           <div class="value">40M+</div>
-          <div class="label">Users Impacted</div>
+          <div class="label">Users Reached</div>
         </div>
         <div class="stat-item">
           <div class="value">$6M+</div>
-          <div class="label">Funding Raised</div>
+          <div class="label">Raised as Co-Founder</div>
         </div>
         <div class="stat-item">
           <div class="value">3</div>
@@ -4316,6 +4332,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">Creator of ClineFlow</a>
         <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
+        <div class="clineflow-explainer">
+          <p>ClineFlow gives AI coding agents durable project memory using open files instead of vendor-locked databases.</p>
+          <p>A filesystem-native knowledge layer that travels with the repository, evolves through version control, and stays usable across agents and collaborators.</p>
+        </div>
         <div class="clineflow-installer-panel">
           <p>Try the agentic installer</p>
           <div class="clineflow-prompt-wrap">
@@ -4327,12 +4347,12 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="clineflow-support">
         <figure class="clineflow-agent-compatibility">
           <img src="assets/clineflow-agent-compatibility.61a4fb684e63.webp" width="1600" height="334" decoding="async" loading="lazy" alt="ClineFlow compatibility with major AI coding agents" />
-          <figcaption>ClineFlow is supported by all major Agents</figcaption>
+          <figcaption>Works across major AI coding agents.</figcaption>
         </figure>
         <div class="clineflow-masterclass">
-          <p>Learn More about ClineFlow:</p>
+          <p>Explore ClineFlow:</p>
           <div class="clineflow-masterclass-divider" aria-hidden="true"></div>
-          <a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">www.ClineFlow.com <span aria-hidden="true">→</span></a>
+          <a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">View project <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
@@ -4343,9 +4363,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="meme-arcade-copy">
       <div class="meme-app-icon"><img src="assets/meme-arcade-icon.63064fd55bcd.webp" width="420" height="420" decoding="async" loading="lazy" alt="Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble" class="meme-arcade-icon" /></div>
       <div class="section-wayfinding"><span class="meme-arcade-badge">IPHONE GAME ARCADE</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
-      <h2>Your next favorite game is one scroll away.</h2>
-      <p class="meme-arcade-description">Discover bite-size games, jump straight into the action, and build your personal arcade. Meme Arcade brings quick games and the culture around them into one lively, scrollable place.</p>
-      <a href="https://hassanvfx.github.io/meme-arcade-book/" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">Explore Meme Arcade <span aria-hidden="true">→</span></a>
+      <h2>Building a scroll-native arcade for iPhone.</h2>
+      <p class="meme-arcade-description">A hybrid SwiftUI gaming platform combining native discovery, instant web gameplay, community-created games, and reusable modular architecture.</p>
+      <p class="meme-arcade-technology">SwiftUI · Async/Await · Swift Package Manager · WKWebView · Hybrid Runtime</p>
+      <a href="https://hassanvfx.github.io/meme-arcade-book/" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">View project <span aria-hidden="true">→</span></a>
       </div>
       <div class="meme-carousel" role="region" aria-roledescription="carousel" aria-label="Meme Arcade app screens">
         <div class="carousel-controls" hidden>
@@ -4377,11 +4398,11 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <div class="wwdc14-copy">
         <div class="section-wayfinding"><span class="wwdc14-eyebrow">Apple WWDC14 Recognition</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <h2>Featured by Apple at WWDC14</h2>
-        <p class="wwdc14-subtitle">Ultrakam Remote Control selected for Apple's "Cross Platform Nearby Networking" session</p>
-        <p class="wwdc14-description">In 2014, Apple requested permission to include assets from Ultrakam Remote Control in a Worldwide Developers Conference presentation. The app was subsequently featured in the official WWDC14 Session 709 presentation.</p>
-        <blockquote>Selected by Apple as an example of good design.</blockquote>
+        <p class="wwdc14-subtitle">Ultrakam Remote Control appeared in Apple’s WWDC14 Session 709</p>
+        <p class="wwdc14-description">Apple requested permission to include Ultrakam Remote Control assets in its presentation on cross-platform nearby networking. The app appeared in the official Session 709 deck.</p>
         <div class="wwdc14-actions">
-          <a href="https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb?postPublishedType=initial" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">Read the Story on Medium →</a>
+          <a href="assets/wwdc14-session-709-cross-platform-nearby-networking.pdf" target="_blank" rel="noopener noreferrer" class="wwdc14-btn wwdc14-btn-primary">View WWDC14 slide <span aria-hidden="true">↗</span></a>
+          <a href="https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb?postPublishedType=initial" target="_blank" rel="noopener noreferrer" class="wwdc14-text-link">Read the story <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="wwdc14-visuals">
@@ -4456,7 +4477,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="section" id="books">
     <div class="section-header white">
       <div class="section-wayfinding"><span class="eyebrow">Published Works</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
-      <h2>Books</h2>
+      <h2>Books &amp; Technical Writing</h2>
     </div>
     <section class="featured-book-section featured-book-section--cover-first">
     <div class="featured-book-inner">
@@ -4574,7 +4595,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="bio-section" id="about">
     <div class="bio-content">
       <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
-      <h2 class="bio-headline">A Silicon Valley Visionary Shaping the Future of AI</h2>
+      <h2 class="bio-headline">Engineering AI-Native Products and Mobile Systems</h2>
       <figure class="bio-profile-image">
         <img src="assets/bio-profile.5e6732670a8f.webp" width="1672" height="942" decoding="async" srcset="assets/bio-profile-small.a4efa4e19685.webp 640w, assets/bio-profile.5e6732670a8f.webp 1672w" sizes="(max-width: 800px) calc(100vw - 48px), 900px" loading="lazy" alt="Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him." />
       </figure>
@@ -4600,8 +4621,8 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="bio-content">
       <div class="eb1a-card">
         <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
-        <h3>EB1A Extraordinary Ability Recognition</h3>
-        <p class="eb1a-description">In 2018, Hassan was granted U.S. Citizenship through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
+        <h3>EB-1A Extraordinary Ability</h3>
+        <p class="eb1a-description">In 2018, Hassan qualified under the EB-1A Extraordinary Ability category, providing a direct path to U.S. permanent residency and eventual citizenship. His petition recognized technology leadership, original technical contributions, published work, industry recognition, and critical roles at distinguished organizations.</p>
         <ul class="eb1a-criteria">
           <li>Published works of major significance (4 books on AI for general audiences)</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
         </ul>
@@ -4613,10 +4634,10 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 </main>
     <footer id="contact" class="signal-footer">
       <div class="contact-callout">
-        <div><p class="signal-eyebrow">LET’S BUILD WHAT’S NEXT</p><h2>A clearer path<br /><em>from idea to product.</em></h2><p>Bring your AI, mobile, or product engineering challenge. Let’s work through it together.</p></div>
-        <div class="contact-actions"><a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a><a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer">50% goes to UnidosUS ↗</a></div>
+        <div><p class="signal-eyebrow">LET’S BUILD WHAT’S NEXT</p><h2>Building an<br /><em>AI-native product?</em></h2><p>Bring your AI, mobile, or product engineering challenge. Let’s work through it together.</p></div>
+        <div class="contact-actions"><a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a><a href="https://unidosus.org/" target="_blank" rel="noopener noreferrer">50% goes to UnidosUS <span aria-hidden="true">↗</span></a></div>
       </div>
-      <div class="footer-details"><div><strong>Hassan Uriostegui</strong><p>EB1A Systems Engineer</p><p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.</p>
+      <div class="footer-details"><div><strong>Hassan Uriostegui</strong><p>AI-Native Principal Engineer · EB-1A Extraordinary Ability</p><p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, and mobile platforms. He created ClineFlow to give AI agents durable, auditable project memory across chats, tools, and collaborators.</p>
     <p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7);">His work spans context engineering, iOS, real-time systems, and generative workflows—from 0-to-1 products to platforms used by millions.</p></div><div class="footer-links"><a href="https://www.linkedin.com/in/bensabbah" target="_blank" class="btn btn-outline">LinkedIn</a>
       <a href="https://github.com/hassanvfx" target="_blank" class="btn btn-outline">GitHub</a>
       <a href="https://www.imdb.com/name/nm2843359/" target="_blank" class="btn btn-outline">IMDB</a>

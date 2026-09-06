@@ -5,8 +5,8 @@ Portfolio Data - Impact First Structure
 # Core Identity
 IDENTITY = {
     "name": "Hassan Uriostegui",
-    "status": "EB1A Systems Engineer",
-    "title": "Silicon Valley Innovator | AI Pioneer | Author",
+    "status": "AI-Native Principal Engineer · EB-1A Extraordinary Ability",
+    "title": "Principal Engineer · Founder · Author",
     "email": "hassan.uriostegui@gmail.com",
     "portrait": "portrait",
     "footer_bio": [
@@ -20,7 +20,7 @@ IDENTITY = {
 PROFESSIONAL_PROFILE = {
     "eyebrow": "Professional Profile",
     "title": "AI-Native Principal / Founding Engineer",
-    "summary": "Building agentic systems, mobile products, and consumer platforms that turn ambitious ideas into resilient, high-impact experiences.",
+    "summary": "Principal Engineer building AI-native systems, consumer platforms, and high-performance mobile products from architecture through production.",
     "pdf": "assets/hassan-uriostegui-resume-2026-12.pdf",
     "preview": "resume-preview",
     "preview_alt": "First page of Hassan Uriostegui's professional profile and resume.",
@@ -30,13 +30,13 @@ PROFESSIONAL_PROFILE = {
 
 # Bio/EB1A Overview - Like a famous artist portfolio intro
 BIO = {
-    "headline": "A Silicon Valley Visionary Shaping the Future of AI",
+    "headline": "Engineering AI-Native Products and Mobile Systems",
     "headline_link": "https://medium.com/authority-magazine/hassan-uriostegui-on-the-future-of-artificial-intelligence-a013ebee514e",
     "image": "bio-profile",
     "image_alt": "Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him.",
     "eb1a_overview": {
-        "title": "EB1A Extraordinary Ability Recognition",
-        "description": "In 2018, Hassan was granted U.S. Citizenship through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.",
+        "title": "EB-1A Extraordinary Ability",
+        "description": "In 2018, Hassan qualified under the EB-1A Extraordinary Ability category, providing a direct path to U.S. permanent residency and eventual citizenship. His petition recognized technology leadership, original technical contributions, published work, industry recognition, and critical roles at distinguished organizations.",
         "wikipedia_url": "https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)",
         "criteria_met": [
             "Published works of major significance (4 books on AI for general audiences)",
@@ -84,8 +84,8 @@ SECTION_QUOTES = [
 
 # Key Stats (impressive numbers first)
 STATS = [
-    {"value": "40M+", "label": "Users Impacted"},
-    {"value": "$6M+", "label": "Funding Raised"},
+    {"value": "40M+", "label": "Users Reached"},
+    {"value": "$6M+", "label": "Raised as Co-Founder"},
     {"value": "3", "label": "Startup Exits"},
     {"value": "3", "label": "Books Published"},
 ]
@@ -125,8 +125,8 @@ HISTORIC_COMPANIES = [
         "name": "SpreeAI",
         "year": "2024-2026",
         "role": "Principal iOS Architect",
-        "highlight": "$1.5B Valuation | 2026",
-        "description": "Building photorealistic AI try-ons and 99%-accurate sizing for in-store and online retail. The platform helps shoppers visualize clothing in a lifelike way while helping retailers reduce returns and improve conversion.",
+        "highlight": "$1.5B Valuation · 2026",
+        "description": "Led iOS architecture for immersive mobile commerce experiences combining ARKit, LiDAR, 3D assets, and real-time interaction.",
         "video": "https://player.vimeo.com/video/1143600495",
         "stats": "AI Fashion Revolution",
         "article_links": [
@@ -144,8 +144,8 @@ HISTORIC_COMPANIES = [
         "year": "2012-2013",
         "exit": True,
         "role": "Director of Video Engineering",
-        "highlight": "$370M Valuation | 40M Users",
-        "description": "Built iOS + Android VFX rendering engine. Created the most advanced video editor when Instagram was photos-only. At peak engagement, served 40M+ users.",
+        "highlight": "40M Users · $370M Peak Valuation",
+        "description": "Built the mobile VFX rendering architecture and core video-creation pipeline across iOS and Android during the first wave of social video.",
         "video": "https://www.youtube.com/embed/avccq32KfOE",
         "stats": "$370M peak valuation",
         "press_quote": {
@@ -160,8 +160,8 @@ HISTORIC_COMPANIES = [
         "year": "2014",
         "exit": True,
         "role": "Founder",
-        "highlight": "First iOS app for 2K film-quality capture",
-        "description": "Built a mobile filmmaking suite that brought 2K capture, time-lapse, slow motion, and a companion remote-control app to iPhone and iPad. Apple later featured Ultrakam Remote Control at WWDC14.",
+        "highlight": "2K Mobile Capture · WWDC14 Feature",
+        "description": "Built a mobile filmmaking suite with 2K capture, time-lapse, slow motion, and a companion remote-control app for iPhone and iPad.",
         "video": "https://www.youtube.com/embed/jqs6dXF9wDU",
         "stats": "Featured by Apple at WWDC14",
         "press_quote": {
@@ -181,8 +181,8 @@ HISTORIC_COMPANIES = [
         "year": "2014-2018",
         "exit": True,
         "role": "CTO & Co-founder",
-        "highlight": "$6M Raised | Acquired 2018",
-        "description": "Raised $6M+, built team of 30 professionals, launched 10,000+ HD video templates. First company to access Snapchat's content API. Acquired by POND5.",
+        "highlight": "$6M+ Raised · Acquired by Pond5",
+        "description": "Co-founded Flyr and led engineering from 0→1, building the product and technical organization behind a template-driven video platform with 10,000+ creative assets.",
         "video": "https://www.youtube.com/embed/7GQm8h70PRg",
         "stats": "$6M raised",
         "press_quote": {
@@ -196,8 +196,8 @@ HISTORIC_COMPANIES = [
         "name": "Community",
         "year": "2019-2020",
         "role": "Principal iOS Architect",
-        "highlight": "Backed by Madonna & Ashton Kutcher",
-        "description": "Architected reactive iOS Swift app. Built and led iOS team of 5 engineers in 6 months. Served 10M+ users.",
+        "highlight": "10M+ Users",
+        "description": "Architected reactive iOS product systems and led a five-person iOS team for a high-volume messaging platform connecting public figures and audiences.",
         "video": "https://www.youtube.com/embed/ZOWuy-HhQxE",
         "stats": "Millions of users",
         "press_quote": {
@@ -212,9 +212,8 @@ HISTORIC_COMPANIES = [
 WWDC14_FEATURE = {
     "eyebrow": "Apple WWDC14 Recognition",
     "title": "Featured by Apple at WWDC14",
-    "subtitle": "Ultrakam Remote Control selected for Apple's \"Cross Platform Nearby Networking\" session",
-    "description": "In 2014, Apple requested permission to include assets from Ultrakam Remote Control in a Worldwide Developers Conference presentation. The app was subsequently featured in the official WWDC14 Session 709 presentation.",
-    "quote": "Selected by Apple as an example of good design.",
+    "subtitle": "Ultrakam Remote Control appeared in Apple’s WWDC14 Session 709",
+    "description": "Apple requested permission to include Ultrakam Remote Control assets in its presentation on cross-platform nearby networking. The app appeared in the official Session 709 deck.",
     "slide_image": "wwdc14-slide",
     "slide_alt": "Slide 6 of Apple's WWDC14 Session 709 presentation, showing Ultrakam Remote Control's blue clapperboard and remote-control icon among selected apps.",
     "icon_image": "ultrakam-icon",
@@ -268,8 +267,8 @@ CURRENT_PROJECTS = [
         "id": "brb2me",
         "name": "BRB2Me",
         "year": "2020-2022",
-        "description": "Pioneering mind simulation platform that laid the foundation for BTwin Friends. Early research into cognitive profiling and conversational AI companions with therapeutic applications.",
-        "stats": "Mind Simulation Pioneer",
+        "description": "An early exploration of cognitive profiling, durable memory, and conversational AI companions that informed later BTwin Friends work.",
+        "stats": "AI Persona & Memory Systems",
         "videos": [
             {"url": "https://player.vimeo.com/video/913284078?h=82df73027a", "title": "BRB2Me Demo"},
         ],
@@ -327,7 +326,7 @@ CURRENT_PROJECTS = [
         "id": "twinchat",
         "name": "TwinChat",
         "year": "2023-Present",
-        "description": "AI-Podcast platform that disrupts social media with 10,000 famous personalities' Mind-Deepfakes. Revolutionary AI that creates compelling conversational experiences with celebrity digital twins.",
+        "description": "A conversational AI platform exploring digital personas, structured profiles, and long-form AI interactions across a catalog of public-figure simulations.",
         "stats": "10,000+ AI Personalities",
         "website": "https://btwinai.com/",
         "vimeo_channel": "https://vimeo.com/twinchat",
@@ -391,12 +390,12 @@ WAKEN_AI = {
     "name": "Waken AI",
     "tagline": "A New Lux — Elevating The Human Mind",
     "subtitle": "Mind Simulation Technology for Emotional Wellness",
-    "description": "Waken AI Labs represents Hassan's ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, this work pioneers the intersection of AI and human emotional wellness through advanced conversational companions.",
+    "description": "Waken AI Labs is Hassan’s ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, the work explores AI, emotional wellness, and conversational companions.",
     "logo": "waken-ai-logo",
     "video": "https://player.vimeo.com/video/960460813",
     "website": "https://www.wakenai.com/",
     "quote": "Our AI delves into the human essence, giving voice to silent thoughts.",
-    "positioning": "Pioneering Mind Simulation Technology for emotional wellness and personal growth since 2020."
+    "positioning": "Mind Simulation Technology research for emotional wellness and personal growth since 2020."
 }
 
 # AI COPYRIGHT WEIGHTS - CITATIONS
@@ -505,10 +504,11 @@ CLINEFLOW = {
 # MEME ARCADE - Featured iPhone App
 MEME_ARCADE = {
     "eyebrow": "Meme Arcade for iPhone",
-    "title": "Your next favorite game is one scroll away.",
-    "description": "Discover bite-size games, jump straight into the action, and build your personal arcade. Meme Arcade brings quick games and the culture around them into one lively, scrollable place.",
+    "title": "Building a scroll-native arcade for iPhone.",
+    "description": "A hybrid SwiftUI gaming platform combining native discovery, instant web gameplay, community-created games, and reusable modular architecture.",
+    "technology": "SwiftUI · Async/Await · Swift Package Manager · WKWebView · Hybrid Runtime",
     "url": "https://hassanvfx.github.io/meme-arcade-book/",
-    "cta": "Explore Meme Arcade",
+    "cta": "View project",
     "icon": "meme-arcade-icon",
     "icon_alt": "Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble",
     "screens": [
@@ -532,15 +532,15 @@ INNOVATIONS = [
         "id": "onelapse",
         "name": "Onelapse",
         "year": "2013",
-        "tagline": "Live Photos 2 Years Before Apple",
-        "description": "Envisioned a new media type blending high-res video with photos. 'Taking photos from videos' - Apple released similar feature in 2015.",
+        "tagline": "Photo and Video Capture · 2013",
+        "description": "Explored a media format blending high-resolution video with still photography, including extraction of photo moments from video.",
         "video": "https://player.vimeo.com/video/66624830"
     },
     {
         "id": "cinekolor",
         "name": "Cinekolor",
         "year": "2014",
-        "tagline": "Pro Color Grading Before Adobe",
+        "tagline": "Professional Mobile Color Grading · 2014",
         "description": "Professional 3-stage color correction with 3D LUT export for film production. Featured by Apple worldwide.",
         "video": "https://www.youtube.com/embed/g722kzRyzPo"
     },
@@ -548,16 +548,16 @@ INNOVATIONS = [
         "id": "krommy",
         "name": "Krommy",
         "year": "2011",
-        "tagline": "Face Filters 10 Years Before Snapchat",
-        "description": "After releasing Kromath (first real-time Green Screen for iOS), developed early face filter concept almost a decade before Snapchat.",
+        "tagline": "Early Real-Time Mobile Face Effects · 2011",
+        "description": "Developed an early real-time mobile face-effects concept following Kromath, a green-screen app for iOS.",
         "video": "https://www.youtube.com/embed/d3hvzV9KgcE"
     },
     {
         "id": "tron",
         "name": "Tron Legacy AR Engine",
         "year": "2010",
-        "tagline": "AR Before ARKit",
-        "description": "High-performance Augmented Reality Engine for Disney's Tron Legacy marketing. Built before modern AR frameworks existed.",
+        "tagline": "Production AR Engine · 2010",
+        "description": "Built a high-performance augmented-reality engine for Disney’s Tron Legacy marketing before modern mobile AR frameworks were available.",
         "video": "https://www.youtube.com/embed/YXglHq-JJYI"
     },
     {
@@ -565,7 +565,7 @@ INNOVATIONS = [
         "name": "Renderfarm X",
         "year": "2018",
         "tagline": "Patent: Intelligent Graphical Feature Generation",
-        "description": "Revolutionary backend rendering using iOS engine. Reused mobile rendering for scalable server-side video processing.",
+        "description": "Applied a mobile rendering engine to scalable server-side video processing for graphical content generation.",
         "video": "https://www.youtube.com/embed/GET8ncM2C84"
     },
 ]
@@ -617,7 +617,7 @@ BOOKS = [
         "press": "The definitive guide to AI personality simulation",
         "featured": True,
         "image": "bookstore-display",
-        "description": "This groundbreaking work introduces the theoretical and practical foundations of Mind Simulation Technology—the science behind BTwin Friends and TwinChat. Drawing from years of research in cognitive profiling, conversational AI, and therapeutic applications, this book provides a comprehensive framework for understanding how AI can simulate human cognition, personality, and emotional intelligence."
+        "description": "A practical framework for cognitive profiling, conversational AI, and digital-twin research that informed BTwin Friends and TwinChat."
     },
     {
         "title": "I, AI: Nemo's Mirror",
