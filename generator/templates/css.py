@@ -4329,4 +4329,19 @@ SIGNAL_STYLES += r'''
   background: linear-gradient(110deg, #f5c0e4, #ffdbb2);
   box-shadow: 0 0 36px rgba(255, 190, 144, .28);
 }
+.clineflow-masterclass-cta {
+  min-height: 48px;
+  padding: .72rem 1rem;
+  gap: .5rem;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.clineflow-masterclass-cta span {
+  display: inline-block;
+  font-size: 1.05em;
+  transform: translateY(-.03em);
+}
 '''
