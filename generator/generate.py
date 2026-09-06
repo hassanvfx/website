@@ -30,7 +30,7 @@ SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source
 AI_SPARK_ITEMS = [
     ("AI Context Engineering", "clineflow"),
     ("Prompt Engineering", "twinchat-paper"),
-    ("Agentic Products", "work"),
+    ("Agentic Products & Tools", "work"),
 ]
 OTHER_SPARK_ITEMS = [
     ("iOS & Open Source", "ios-open-source"),
