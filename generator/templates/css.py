@@ -3667,6 +3667,27 @@ img { max-width: 100%; }
   .project-card, .project-card:nth-of-type(even) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "media" "copy"; gap: 0; }
   .project-card > .card-content { padding: 24px; }
 }
+/* Research chapter shares the Sparks column rhythm and quiet editorial surfaces. */
+.paper-chapter { padding: 80px 48px; background: var(--ink); }
+.paper-inner { max-width: 1224px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: 48px clamp(32px, 6vw, 80px); align-items: center; }
+.paper-copy, .paper-topics { min-width: 0; }
+.paper-copy .eyebrow, .paper-topics .eyebrow { display: block; margin-bottom: 16px; }
+.paper-copy h2 { margin: 0 0 24px; font-size: clamp(2rem, 3.5vw, 3.3rem); font-weight: 400; line-height: 1.15; }
+.paper-subtitle { color: #c9d8e2; font-size: 1.08rem; margin-bottom: 18px; }
+.paper-description { color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+.paper-topics { padding: clamp(24px, 3vw, 40px); background: linear-gradient(135deg, #141c2a, #0d151d); border-radius: 4px; }
+.paper-topics .eyebrow { color: #b7a9e5; font-size: .7rem; }
+.paper-topics h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 24px; }
+.paper-topics ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+.paper-topics li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 16px; color: #c9d8e2; font-size: .9rem; line-height: 1.6; }
+.paper-topics li span { color: var(--cyan); font-size: .72rem; padding-top: 3px; font-variant-numeric: tabular-nums; }
+.paper-perspective { grid-column: 1 / -1; max-width: 880px; padding-top: 8px; }
+.paper-perspective blockquote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.25rem, 2vw, 1.65rem); color: #c9d8e2; line-height: 1.55; }
+.paper-perspective p { margin-top: 16px; color: var(--muted); font-size: .85rem; }
+@media (max-width: 700px) {
+  .paper-chapter { padding: 56px 24px; }
+  .paper-inner { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
 .home-tooling-showcase { padding: 80px 48px; background: #080e14; }
 .home-tooling-inner { max-width: 1224px; margin: 0 auto; }
 .home-tooling-heading { max-width: 650px; margin: 0 0 48px; }

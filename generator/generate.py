@@ -880,35 +880,32 @@ def generate_selected_content():
     {"".join(generate_current_project_card(p) for p in CURRENT_PROJECTS)}
   </section>
 
-  <!-- iOS Open Source -->
-  {generate_swift_foundations()}
-
-  <!-- TwinChat Paper Callout -->
-  <section class="clineflow-callout" id="twinchat-paper">
-    <div class="clineflow-inner">
-      <img {image_attributes(TWINCHAT_PAPER["logo"], loading="lazy")} alt="GitHub" class="clineflow-logo" />
-      <span class="clineflow-badge">📄 RESEARCH PUBLICATION</span>
-      <h2 class="clineflow-title">{TWINCHAT_PAPER["name"]}</h2>
-      <p class="clineflow-tagline">{TWINCHAT_PAPER["tagline"]}</p>
-      <p class="clineflow-subtitle">{TWINCHAT_PAPER["subtitle"]}</p>
-      
-      <p class="clineflow-description">{TWINCHAT_PAPER["description"]}</p>
-      
-      <div class="clineflow-features">
-        {"".join(f'<div class="clineflow-feature"><span>{f}</span></div>' for f in TWINCHAT_PAPER["features"])}
+  <!-- TwinChat Paper -->
+  <section class="paper-chapter" id="twinchat-paper" aria-labelledby="paper-title">
+    <div class="paper-inner">
+      <div class="paper-copy">
+        <span class="eyebrow">Research Publication</span>
+        <h2 id="paper-title">{TWINCHAT_PAPER["name"]}</h2>
+        <p class="paper-subtitle">{TWINCHAT_PAPER["subtitle"]}</p>
+        <p class="paper-description">{TWINCHAT_PAPER["description"]}</p>
+        <a href="{TWINCHAT_PAPER["github"]}" target="_blank" rel="noopener noreferrer" class="home-tooling-link">Read TwinChat Paper <span aria-hidden="true">↗</span></a>
       </div>
-      
-      <p class="clineflow-quote">"{TWINCHAT_PAPER["quote"]}"</p>
-      
-      <p class="clineflow-positioning">{TWINCHAT_PAPER["positioning"]}</p>
-      
-      <a href="{TWINCHAT_PAPER["github"]}" target="_blank" class="clineflow-cta">
-        Read TwinChat Paper →
-      </a>
-      
-      <span class="clineflow-stars">{TWINCHAT_PAPER["stars"]}</span>
+      <div class="paper-topics">
+        <span class="eyebrow">{TWINCHAT_PAPER["tagline"]}</span>
+        <h3>Inside the paper</h3>
+        <ol>
+          {"".join(f'<li><span aria-hidden="true">{i:02d}</span>{escape(topic)}</li>' for i, topic in enumerate(TWINCHAT_PAPER["features"], 1))}
+        </ol>
+      </div>
+      <div class="paper-perspective">
+        <blockquote>{TWINCHAT_PAPER["quote"]}</blockquote>
+        <p>{TWINCHAT_PAPER["positioning"]}</p>
+      </div>
     </div>
   </section>
+
+  <!-- iOS Open Source -->
+  {generate_swift_foundations()}
 
   <!-- Research & Innovations -->
   <section class="section" id="research">
