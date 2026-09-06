@@ -14,7 +14,7 @@ All five linked Medium articles were read in full in the browser. Article titles
 
 ## Composition and assets
 
-Technical Writing follows iOS Open Source. Five alternating rows reuse the Swift showcase layout, collapse to one column on phones, and inherit the existing once-only motion controller. Covers, headings, and explicit Read on Medium actions link to their respective articles. HTML retains all important text; decorative cover images have empty alt text inside links labelled by the adjacent article heading.
+Technical Writing leads into iOS Open Source. Five alternating rows reuse the Swift showcase layout, collapse to one column on phones, and inherit the existing once-only motion controller. Covers, headings, and explicit Read on Medium actions link to their respective articles. HTML retains all important text; decorative cover images have empty alt text inside links labelled by the adjacent article heading.
 
 The shared Explore Sparks renderer now includes Technical Writing as the third More Sparks option, using the official MUI 7.3.4 ArticleOutlined paths and existing icon licensing. The menu is identical on home and Sparks with page-aware anchors. Search metadata includes the topic, five Article nodes, and updated sitemap modification dates; section fragments are not separate sitemap pages.
 

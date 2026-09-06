@@ -986,10 +986,11 @@ def generate_selected_content():
     </div>
   </section>
 
+  <!-- Technical Writing -->
+  {generate_technical_writing()}
+
   <!-- iOS Open Source -->
   {generate_swift_foundations()}
-
-  {generate_technical_writing()}
 
   <!-- Research & Innovations -->
   <section class="section" id="research">

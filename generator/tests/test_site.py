@@ -171,7 +171,7 @@ class SiteTests(unittest.TestCase):
         work = self.pages['selected-work.html']
         self.assertIn('selected-work.html#technical-writing', self.docs['index.html'].links)
         self.assertIn('#technical-writing', self.docs['selected-work.html'].links)
-        self.assertLess(work.index('id="ios-open-source"'), work.index('id="technical-writing"'))
+        self.assertLess(work.index('id="technical-writing"'), work.index('id="ios-open-source"'))
         self.assertEqual(len(generate.TECHNICAL_WRITING), 5)
         for article in generate.TECHNICAL_WRITING:
             self.assertIn(article['url'], self.docs['selected-work.html'].links)
