@@ -29,9 +29,9 @@ SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founde
 SITE_LAST_MODIFIED = "2026-09-06"
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "technical-writing", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 AI_SPARK_ITEMS = [
+    ("Agentic & Open Source", "work"),
     ("AI Context Engineering", "clineflow"),
     ("Prompt Engineering", "twinchat-paper"),
-    ("Agentic Products & Tools", "work"),
 ]
 OTHER_SPARK_ITEMS = [
     ("iOS & Open Source", "ios-open-source"),
