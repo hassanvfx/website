@@ -25,7 +25,7 @@ from technical_writing import TECHNICAL_WRITING
 SELECTED_WORK_PAGE = "selected-work.html"
 PROFILE_PAGE = "profile.html"
 SITE_URL = "https://hassanvfx.github.io/website"
-SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, Swift open-source tools, and AI platforms."
+SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer and founder building agentic AI, durable context systems, mobile products, and ClineFlow."
 SITE_LAST_MODIFIED = "2026-09-06"
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "technical-writing", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 PROFILE_SECTION_IDS = {"press", "interviews"}
@@ -107,20 +107,23 @@ def get_page_metadata(page):
     """Return SEO metadata for a generated page."""
     if page == "selected-work":
         return {
-            "title": "Selected Work | Hassan Uriostegui",
-            "description": "Selected work by Hassan Uriostegui across AI innovation, iOS open source, products, startup impact, technical writing, research, and visual effects.",
+            "title": "AI Projects, iOS Open Source & Technical Writing | Hassan Uriostegui",
+            "description": "Agentic AI, context engineering, prompt systems, iOS open-source tools, startup impact, technical writing, and visual effects by Hassan Uriostegui.",
             "path": SELECTED_WORK_PAGE,
+            "schema_type": "CollectionPage",
         }
     if page == "profile":
         return {
-            "title": "Resume | Hassan Uriostegui",
-            "description": "Professional resume and profile for Hassan Uriostegui, AI-native principal and founding engineer.",
+            "title": "Resume, Press & Interviews | Hassan Uriostegui",
+            "description": "Resume, press coverage, and interviews for Hassan Uriostegui, AI-native principal engineer and founder building agentic AI and mobile products.",
             "path": PROFILE_PAGE,
+            "schema_type": "ProfilePage",
         }
     return {
-        "title": "Hassan Uriostegui | AI-Native Principal Engineer & ClineFlow Creator",
+        "title": "Hassan Uriostegui | Agentic AI, Mobile Products & ClineFlow",
         "description": SITE_DESCRIPTION,
         "path": "",
+        "schema_type": "ProfilePage",
     }
 
 
@@ -172,10 +175,10 @@ def generate_structured_data(metadata):
                 "@id": author_id,
                 "name": IDENTITY["name"],
                 "url": f"{SITE_URL}/",
-                "image": IMAGE_MANIFEST[IDENTITY["portrait"]]["url"],
-                "jobTitle": "AI-Native Principal Engineer, Founder, and Author",
+                "image": f'{SITE_URL}/{IMAGE_MANIFEST[IDENTITY["portrait"]]["url"]}',
+                "jobTitle": "AI-Native Principal Engineer and Founder",
                 "sameAs": [link["url"] for link in SOCIAL_LINKS],
-                "knowsAbout": ["Artificial Intelligence", "Context Engineering", "Mobile Product Development", "ClineFlow"],
+                "knowsAbout": ["Agentic AI", "Context Engineering", "Prompt Engineering", "Mobile Product Development", "ClineFlow"],
             },
             {
                 "@type": "SoftwareApplication",
@@ -186,14 +189,22 @@ def generate_structured_data(metadata):
                 "operatingSystem": "Any",
             },
             {
-                "@type": "WebPage",
+                "@type": metadata["schema_type"],
                 "@id": canonical_url,
                 "url": canonical_url,
                 "name": metadata["title"],
                 "description": metadata["description"],
                 "inLanguage": "en-US",
+                "dateModified": SITE_LAST_MODIFIED,
                 "author": {"@id": author_id},
+                "mainEntity": {"@id": author_id},
                 "about": about,
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": f'{SITE_URL}/{IMAGE_MANIFEST[IDENTITY["portrait"]]["url"]}',
+                    "width": IMAGE_MANIFEST[IDENTITY["portrait"]]["width"],
+                    "height": IMAGE_MANIFEST[IDENTITY["portrait"]]["height"],
+                },
                 "isPartOf": {"@id": f"{SITE_URL}/#website"},
             },
         ] + foundation_nodes + article_nodes,
@@ -888,29 +899,34 @@ def render_portfolio(page="home"):
     metadata = get_page_metadata(page)
     canonical_url = f'{SITE_URL}/{metadata["path"]}'
     structured_data = generate_structured_data(metadata)
+    metadata_title = escape(metadata["title"])
+    metadata_description = escape(metadata["description"])
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{metadata["title"]}</title>
-  <meta name="description" content="{metadata["description"]}">
+  <title>{metadata_title}</title>
+  <meta name="description" content="{metadata_description}">
   <meta name="author" content="{IDENTITY["name"]}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="{canonical_url}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{IDENTITY["name"]}">
-  <meta property="og:title" content="{metadata["title"]}">
-  <meta property="og:description" content="{metadata["description"]}">
+  <meta property="og:title" content="{metadata_title}">
+  <meta property="og:description" content="{metadata_description}">
   <meta property="og:url" content="{canonical_url}">
   <meta property="og:image" content="{SITE_URL}/{IMAGE_MANIFEST[IDENTITY["portrait"]]["url"]}">
   <meta property="og:image:alt" content="Portrait of {IDENTITY["name"]}">
+  <meta property="og:image:width" content="{IMAGE_MANIFEST[IDENTITY["portrait"]]["width"]}">
+  <meta property="og:image:height" content="{IMAGE_MANIFEST[IDENTITY["portrait"]]["height"]}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{metadata["title"]}">
-  <meta name="twitter:description" content="{metadata["description"]}">
+  <meta name="twitter:title" content="{metadata_title}">
+  <meta name="twitter:description" content="{metadata_description}">
   <meta name="twitter:image" content="{SITE_URL}/{IMAGE_MANIFEST[IDENTITY["portrait"]]["url"]}">
+  <meta name="twitter:image:alt" content="Portrait of {IDENTITY["name"]}">
   <script type="application/ld+json">{structured_data}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
