@@ -332,7 +332,7 @@ def generate_clineflow_section():
         <img {image_attributes("clineflow-hero", loading="lazy")} alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
       </figure>
       <div class="clineflow-installer-inner">
-        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">{CLINEFLOW["name"]}</a>
+        <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">Creator of {CLINEFLOW["name"]}</a>
         <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
         <div class="clineflow-installer-panel">
           <p>Try the agentic installer</p>
