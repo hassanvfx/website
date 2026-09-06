@@ -149,6 +149,13 @@ class SiteTests(unittest.TestCase):
         self.assertLess(home.index('class="writing-sparks-callout"'), home.index('id="press"'))
         self.assertIn('href="selected-work.html#technical-writing">More Technical Writing', home)
 
+    def test_home_clineflow_is_followed_by_the_ai_sparks_bridge(self):
+        home = self.pages['index.html']
+        self.assertLess(home.index('id="clineflow"'), home.index('class="ai-sparks-callout"'))
+        self.assertLess(home.index('class="ai-sparks-callout"'), home.index('id="memearcade"'))
+        self.assertIn('href="selected-work.html#work">More AI Sparks', home)
+        self.assertIn('href="selected-work.html#ios-open-source">More iOS Sparks', home)
+
     def test_book_covers_link_to_their_product_pages(self):
         home = self.pages['index.html']
         self.assertIn('href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4" target="_blank" rel="noopener noreferrer" class="book-cover-link"', home)

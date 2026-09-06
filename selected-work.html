@@ -3745,20 +3745,13 @@ img { max-width: 100%; }
   .paper-chapter { padding: 56px 24px; }
   .paper-inner { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
-/* A compact bridge from Apple recognition to the open-source chapter. */
-.ios-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
-.ios-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
-.ios-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
-.ios-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
-.ios-sparks-callout .home-tooling-link { max-width: 100%; }
-@media (max-width: 700px) { .ios-sparks-callout { padding: 0 24px 40px; } }
-/* A matching bridge from books to the technical-writing chapter. */
-.writing-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
-.writing-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
-.writing-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
-.writing-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
-.writing-sparks-callout .home-tooling-link { max-width: 100%; }
-@media (max-width: 700px) { .writing-sparks-callout { padding: 0 24px 40px; } }
+/* Reusable bridges between homepage chapters and their Sparks counterparts. */
+.ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
+.ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
+.ai-sparks-callout h2, .ios-sparks-callout h2, .writing-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
+.ai-sparks-callout p, .ios-sparks-callout p, .writing-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
+.ai-sparks-callout .home-tooling-link, .ios-sparks-callout .home-tooling-link, .writing-sparks-callout .home-tooling-link { max-width: 100%; }
+@media (max-width: 700px) { .ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 24px 40px; } }
 .home-tooling-showcase { padding: 80px 48px; background: #080e14; }
 .technical-writing { padding: 80px 48px; background: #080d12; }
 .technical-writing .home-tooling-heading { max-width: 760px; }

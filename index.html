@@ -3745,20 +3745,13 @@ img { max-width: 100%; }
   .paper-chapter { padding: 56px 24px; }
   .paper-inner { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
-/* A compact bridge from Apple recognition to the open-source chapter. */
-.ios-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
-.ios-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
-.ios-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
-.ios-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
-.ios-sparks-callout .home-tooling-link { max-width: 100%; }
-@media (max-width: 700px) { .ios-sparks-callout { padding: 0 24px 40px; } }
-/* A matching bridge from books to the technical-writing chapter. */
-.writing-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
-.writing-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
-.writing-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
-.writing-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
-.writing-sparks-callout .home-tooling-link { max-width: 100%; }
-@media (max-width: 700px) { .writing-sparks-callout { padding: 0 24px 40px; } }
+/* Reusable bridges between homepage chapters and their Sparks counterparts. */
+.ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
+.ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
+.ai-sparks-callout h2, .ios-sparks-callout h2, .writing-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
+.ai-sparks-callout p, .ios-sparks-callout p, .writing-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
+.ai-sparks-callout .home-tooling-link, .ios-sparks-callout .home-tooling-link, .writing-sparks-callout .home-tooling-link { max-width: 100%; }
+@media (max-width: 700px) { .ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 24px 40px; } }
 .home-tooling-showcase { padding: 80px 48px; background: #080e14; }
 .technical-writing { padding: 80px 48px; background: #080d12; }
 .technical-writing .home-tooling-heading { max-width: 760px; }
@@ -4367,6 +4360,14 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     </div>
   </section>
 
+  <section class="ai-sparks-callout" aria-labelledby="ai-sparks-heading">
+    <div class="ai-sparks-callout-inner">
+      <h2 id="ai-sparks-heading">More Sparks</h2>
+      <p>Explore agentic products, AI context systems, and prompt engineering experiments across the Sparks portfolio.</p>
+      <a class="home-tooling-link" href="selected-work.html#work">More AI Sparks <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <section class="meme-arcade-callout" id="memearcade">
     <div class="meme-arcade-inner">
       <div class="meme-arcade-copy">
@@ -4431,7 +4432,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="ios-sparks-callout-inner">
       <h2 id="ios-sparks-heading">More Sparks</h2>
       <p>Build on three open-source Swift tools: SwiftSPM for package scaffolding, DataStore for encrypted persistence, and WebViewSwiftUI for bringing web content into native apps.</p>
-      <a class="home-tooling-link" href="selected-work.html#ios-open-source">iOS &amp; Open Source Projects <span aria-hidden="true">→</span></a>
+      <a class="home-tooling-link" href="selected-work.html#ios-open-source">More iOS Sparks <span aria-hidden="true">→</span></a>
     </div>
   </section>
 

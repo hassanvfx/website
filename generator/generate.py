@@ -496,7 +496,20 @@ def generate_ios_open_source_callout():
     <div class="ios-sparks-callout-inner">
       <h2 id="ios-sparks-heading">More Sparks</h2>
       <p>Build on three open-source Swift tools: SwiftSPM for package scaffolding, DataStore for encrypted persistence, and WebViewSwiftUI for bringing web content into native apps.</p>
-      <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#ios-open-source">iOS &amp; Open Source Projects <span aria-hidden="true">→</span></a>
+      <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#ios-open-source">More iOS Sparks <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+'''
+
+
+def generate_ai_sparks_callout():
+    """Bridge ClineFlow to the wider AI work on the Sparks page."""
+    return f'''
+  <section class="ai-sparks-callout" aria-labelledby="ai-sparks-heading">
+    <div class="ai-sparks-callout-inner">
+      <h2 id="ai-sparks-heading">More Sparks</h2>
+      <p>Explore agentic products, AI context systems, and prompt engineering experiments across the Sparks portfolio.</p>
+      <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#work">More AI Sparks <span aria-hidden="true">→</span></a>
     </div>
   </section>
 '''
@@ -923,7 +936,7 @@ def render_portfolio(page="home"):
 
 def generate_home_content():
     return (generate_hero() + generate_proof() + generate_selected_work_grid()
-            + generate_clineflow_section() + generate_meme_arcade_callout()
+            + generate_clineflow_section() + generate_ai_sparks_callout() + generate_meme_arcade_callout()
             + generate_wwdc14_feature() + generate_ios_open_source_callout() + generate_citations_section()
             + generate_books_media()
             + generate_about() + generate_quote() + generate_recognition())
