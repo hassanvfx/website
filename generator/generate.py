@@ -28,6 +28,7 @@ SITE_URL = "https://hassanvfx.github.io/website"
 SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer, founder, and author building agentic systems, consumer products, Swift open-source tools, and AI platforms."
 SITE_LAST_MODIFIED = "2026-09-06"
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "technical-writing", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
+PROFILE_SECTION_IDS = {"press", "interviews"}
 AI_SPARK_ITEMS = [
     ("Agentic & Open Source", "work"),
     ("AI Context Engineering", "clineflow"),
@@ -234,6 +235,8 @@ def resolve_navigation_href(href, page):
     section_id = href[1:]
     if section_id in SELECTED_WORK_SECTION_IDS:
         return href if page == "selected-work" else f"{SELECTED_WORK_PAGE}{href}"
+    if section_id in PROFILE_SECTION_IDS:
+        return href if page == "profile" else f"{PROFILE_PAGE}{href}"
     if section_id == "contact":
         return href
     return href if page == "home" else f"index.html{href}"
@@ -945,7 +948,8 @@ def generate_home_content():
 def generate_profile_content():
     """Generate the focused professional resume page."""
     return (generate_professional_profile(heading_tag="h1")
-            + generate_selected_work_grid(page="profile"))
+            + generate_selected_work_grid(page="profile")
+            + generate_press_and_interviews())
 
 
 def generate_selected_content():
@@ -1074,6 +1078,13 @@ def generate_books_media():
   </section>
 
   {generate_technical_writing_callout().strip()}
+
+'''
+
+
+def generate_press_and_interviews():
+    """Render media coverage beside the resume, after the shared Sparks gateway."""
+    return f'''
 
   <!-- Press -->
   <section class="section" id="press" style="padding-top: 0;">
@@ -1221,7 +1232,7 @@ def generate_proof():
     <section id="proof" class="proof-section" aria-label="Experience and recognition">
       <div class="stats-row">{generate_stats_html()}</div>
       <div class="proof-press">
-        <div class="press-strip-heading"><a href="#press">IN THE PRESS ↗</a><button type="button" class="press-pause" hidden>Pause logos</button></div>
+        <div class="press-strip-heading"><a href="{resolve_navigation_href('#press', 'home')}">IN THE PRESS ↗</a><button type="button" class="press-pause" hidden>Pause logos</button></div>
         <div class="proof-marquee"><div class="proof-track"><div class="proof-logo-group">{logos}</div><div class="proof-logo-group logo-repeat" aria-hidden="true">{repeats}</div></div></div>
       </div>
     </section>'''

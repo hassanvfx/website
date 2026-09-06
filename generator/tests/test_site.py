@@ -40,6 +40,7 @@ class SiteTests(unittest.TestCase):
                     route,anchor=href.split('#'); self.assertIn(anchor,self.docs[route].ids,href)
     def test_existing_content_destinations_preserved(self):
         approved_removed_ids={'sendkarma','professional-profile'}
+        relocated_media_ids={'press','interviews'}
         approved_removed_destinations={'https://www.sendkarma.app/','https://player.vimeo.com/video/1138631992'}
         relocated_profile_ids={'resumeCanvas','resumeCanvasWrap','resumeNext','resumePageIndicator','resumePreview','resumePrevious','resumeStatus','resumeZoomIn','resumeZoomOut'}
         resume_pdf='assets/hassan-uriostegui-resume-2026-12.pdf'
@@ -53,10 +54,13 @@ class SiteTests(unittest.TestCase):
             baseline_ids=set(baseline.ids)-approved_removed_ids
             if name == 'index.html':
                 baseline_ids-=relocated_profile_ids
+                baseline_ids-=relocated_media_ids
             self.assertTrue(baseline_ids.issubset(set(doc.ids)),name)
             baseline_destinations={h for h in baseline.links if not h.startswith('#')}-approved_removed_destinations
+            baseline_destinations.discard('index.html#press')
             if name == 'index.html':
                 baseline_destinations.discard(resume_pdf)
+                baseline_destinations -= {item['url'] for item in generate.PRESS}
                 # Innovations was removed from the home highlights by request.
                 baseline_destinations.discard('selected-work.html#research')
             baseline_destinations.discard('index.html#professional-profile')
@@ -82,7 +86,7 @@ class SiteTests(unittest.TestCase):
         expected=[
             ('Resume',generate.PROFILE_PAGE), ('Agentic AI','#clineflow'),
             ('Mobile Apps','#memearcade'), ('Citations','#citations'), ('Books','#books'),
-            ('Press','#press'), ('Sparks',f'{generate.SELECTED_WORK_PAGE}#selected-work'),
+            ('Press',f'{generate.PROFILE_PAGE}#press'), ('Sparks',f'{generate.SELECTED_WORK_PAGE}#selected-work'),
         ]
         positions=[header.index(f'href="{href}">{label}') for label,href in expected]
         self.assertEqual(positions,sorted(positions))
@@ -114,9 +118,9 @@ class SiteTests(unittest.TestCase):
         self.assertEqual({company['name'] for company in generate.HISTORIC_COMPANIES if company.get('exit')},{'Viddy','Ultrakam','FlyrTV'})
 
     def test_center_interview_uses_the_ultrakam_video(self):
-        home = self.pages['index.html']
-        center_card = home.split('class="interview-card"')[2]
-        third_card = home.split('class="interview-card"')[3]
+        profile = self.pages['profile.html']
+        center_card = profile.split('class="interview-card"')[2]
+        third_card = profile.split('class="interview-card"')[3]
         self.assertIn('https://www.youtube.com/embed/jqs6dXF9wDU', center_card)
         self.assertIn('style="--video-ratio: 200 / 150"', center_card)
         self.assertIn('https://player.vimeo.com/video/843499496', third_card)
@@ -162,7 +166,7 @@ class SiteTests(unittest.TestCase):
     def test_home_books_are_followed_by_the_technical_writing_bridge(self):
         home = self.pages['index.html']
         self.assertLess(home.index('id="books"'), home.index('class="writing-sparks-callout"'))
-        self.assertLess(home.index('class="writing-sparks-callout"'), home.index('id="press"'))
+        self.assertLess(home.index('class="writing-sparks-callout"'), home.index('id="about"'))
         self.assertIn('href="selected-work.html#technical-writing">More Technical Writing', home)
 
     def test_home_clineflow_is_followed_by_the_ai_sparks_bridge(self):
@@ -240,9 +244,14 @@ class SiteTests(unittest.TestCase):
         for page in self.pages.values():
             self.assertNotIn('SendKarma',page)
             self.assertNotIn('sendkarma',page)
-    def test_press_precedes_interviews_on_home(self):
+    def test_press_and_interviews_follow_explore_sparks_on_resume(self):
         home=self.pages['index.html']
-        self.assertLess(home.index('id="press"'),home.index('id="interviews"'))
+        profile=self.pages['profile.html']
+        self.assertNotIn('id="press"',home)
+        self.assertNotIn('id="interviews"',home)
+        self.assertLess(profile.index('id="explore-sparks"'),profile.index('id="press"'))
+        self.assertLess(profile.index('id="press"'),profile.index('id="interviews"'))
+        self.assertIn('profile.html#press', home)
     def test_image_budgets_and_responsive_assets(self):
         # Editorial photography has its own allowance: new article covers must
         # not force existing book imagery below its display resolution.
