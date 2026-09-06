@@ -57,6 +57,8 @@ class SiteTests(unittest.TestCase):
             baseline_destinations={h for h in baseline.links if not h.startswith('#')}-approved_removed_destinations
             if name == 'index.html':
                 baseline_destinations.discard(resume_pdf)
+                # Innovations was removed from the home highlights by request.
+                baseline_destinations.discard('selected-work.html#research')
             baseline_destinations.discard('index.html#professional-profile')
             self.assertTrue(baseline_destinations.issubset(set(doc.links)),baseline_destinations-set(doc.links))
     def test_resume_page_and_media_contract(self):

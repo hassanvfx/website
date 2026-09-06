@@ -3647,6 +3647,8 @@ img { max-width: 100%; }
 .selected-work-link { background: var(--surface);  border-radius: 4px; padding: 24px; min-height: 88px; font-size: 1rem; color: var(--paper); }
 .selected-work-link:hover { transform: none; background: #14232e;  }
 .selected-work-topic-group + .selected-work-topic-group { margin-top: 32px; }
+.selected-work-grid--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 700px) { .selected-work-grid--pair { grid-template-columns: minmax(0, 1fr); } }
 .selected-work-topic-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin: 0 0 12px; text-align: left; }
 .selected-work-topic-heading p { margin: 0; color: var(--paper); font-size: .7rem; font-weight: 700; letter-spacing: .18em; }
 .selected-work-topic-heading span { color: var(--muted); font-size: .78rem; }

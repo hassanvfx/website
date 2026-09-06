@@ -32,13 +32,14 @@ AI_SPARK_ITEMS = [
     ("Agentic Products", "work"),
 ]
 OTHER_SPARK_ITEMS = [
-    ("Impact & Exits", "impact"),
-    ("Innovations", "research"),
-    ("Filmography & VFX", "filmography"),
     ("iOS & Open Source", "ios-open-source"),
+    ("Impact & Exits", "impact"),
+]
+HOBBY_SPARK_ITEMS = [
+    ("Films & VFX", "filmography"),
     ("Writing About Trends", "casual-books"),
 ]
-SELECTED_WORK_ITEMS = AI_SPARK_ITEMS + OTHER_SPARK_ITEMS
+SELECTED_WORK_ITEMS = AI_SPARK_ITEMS + OTHER_SPARK_ITEMS + [("Innovations", "research")] + HOBBY_SPARK_ITEMS
 IMAGE_MANIFEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_manifest.json")
 
 
@@ -281,6 +282,7 @@ def generate_selected_work_grid(page="home"):
 
     ai_links = links(AI_SPARK_ITEMS, " selected-work-link--ai")
     other_links = links(OTHER_SPARK_ITEMS)
+    hobby_links = links(HOBBY_SPARK_ITEMS)
     return f'''
   <!-- Selected Work Gateway -->
   <section class="selected-work-gateway" aria-labelledby="selected-work-title">
@@ -299,10 +301,19 @@ def generate_selected_work_grid(page="home"):
       <section class="selected-work-topic-group" aria-labelledby="more-sparks-title">
         <div class="selected-work-topic-heading">
           <p id="more-sparks-title">MORE SPARKS</p>
-          <span>Venture, research, and creative work</span>
+          <span>Open source and product impact</span>
         </div>
-        <div class="selected-work-grid">
+        <div class="selected-work-grid selected-work-grid--pair">
           {other_links}
+        </div>
+      </section>
+      <section class="selected-work-topic-group" aria-labelledby="hobbies-sparks-title">
+        <div class="selected-work-topic-heading">
+          <p id="hobbies-sparks-title">HOBBIES</p>
+          <span>Film, visual effects, and writing</span>
+        </div>
+        <div class="selected-work-grid selected-work-grid--pair">
+          {hobby_links}
         </div>
       </section>
     </div>
