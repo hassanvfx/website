@@ -1114,10 +1114,6 @@ def generate_proof():
 
 
 def generate_work_intro():
-    links = ''.join(
-        f'<a href="{resolve_navigation_href(f"#{section}", "selected-work")}">{label}<span aria-hidden="true">↓</span></a>'
-        for label, section in SELECTED_WORK_ITEMS
-    )
     return f'''
     <section class="work-intro" id="selected-work" aria-labelledby="work-title">
       <div class="work-intro-inner">
@@ -1128,7 +1124,7 @@ def generate_work_intro():
       </div>
       <div class="work-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
     </section>
-    <nav class="work-index" aria-label="Selected Work sections">{links}</nav>
+    {generate_selected_work_grid("selected-work")}
     '''
 
 
