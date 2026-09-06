@@ -51,3 +51,10 @@ Use case: ads-marketing. Create a sophisticated 16:9 editorial article cover for
 
 Use case: ads-marketing. Create a sophisticated 16:9 editorial article cover for a technical portfolio, matching a dark near-black cyan and muted purple visual system. A lyric sheet becoming a musical arrangement with flowing lines and small musical annotations, original words preserved. Minimal spacious composition, flat dark backgrounds, restrained dimensional illustration on the right occupying one third. Main priority: large immaculate readable white sans-serif typography on the left, with the EXACT full article title, broken into well-spaced lines: "Turn Raw Lyrics Into Performance-Ready Songs". Keep all text in safe margins. No other text, no borders, no logos, no tiny code, no busy textures. Consistent art direction suitable for a collection of article cards.
 
+
+
+## Correction: preserve Writing About Trends image quality
+
+Hassan rejected the 320px reduction. Restored the best archived sources (660×660 from c5fdff95) through the optimizer; the original Cloudinary host returned 404. Added 440px responsive variants with accurate `sizes` and retained lazy loading. Square book photos now explicitly use `height: auto` and `aspect-ratio: 1 / 1`, correcting distortion caused by a fixed HTML height alongside a fluid CSS width. Portrait book covers keep their existing separate 2:3 rule.
+
+The old combined 360 KB limit is superseded: other Sparks images retain a 360 KB allowance and the four trend photos have a separate 600 KB allowance. This prevents new articles from consuming the quality allowance of established book imagery. Regression checks require square source images at least 660px wide, both responsive candidates, reserved dimensions, and lazy loading. Browser emulation confirmed 520×520 desktop photos and square mobile photos without overflow. No upscaling or new artwork was used.

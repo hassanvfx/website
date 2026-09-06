@@ -16,6 +16,7 @@ NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 IMAGE_TAG_RE = re.compile(r"<img\b[^>]*>")
 ATTRIBUTE_RE = re.compile(r'\b([a-zA-Z-]+)="([^"]*)"')
 PROPORTIONAL_IMAGE_SELECTORS = (
+    ".book-cover",
     ".book-cover--portrait",
     ".bio-profile-image img",
     ".meme-arcade-icon",

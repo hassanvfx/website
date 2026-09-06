@@ -69,7 +69,7 @@ def generate_video_frame(url, title):
             'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>')
 
 
-def image_attributes(key, loading=None, fetchpriority=None):
+def image_attributes(key, loading=None, fetchpriority=None, sizes=None):
     """Return safe intrinsic image attributes for a manifest-backed asset."""
     try:
         asset = IMAGE_MANIFEST[key]
@@ -83,12 +83,14 @@ def image_attributes(key, loading=None, fetchpriority=None):
     ]
     small = IMAGE_MANIFEST.get(f"{key}-small")
     if small:
-        sizes = {
+        sizes = sizes or {
             "portrait": "(max-width: 800px) 250px, 360px",
             "clineflow-hero": "(max-width: 800px) calc(100vw - 56px), 580px",
             "bio-profile": "(max-width: 800px) calc(100vw - 48px), 900px",
             "resume-preview": "(max-width: 800px) calc(100vw - 80px), 620px",
-        }[key]
+        }.get(key)
+        if not sizes:
+            raise ValueError(f"Responsive image requires sizes: {key}")
         attributes.extend([
             f'srcset="{small["url"]} {small["width"]}w, {asset["url"]} {asset["width"]}w"',
             f'sizes="{sizes}"',
@@ -626,7 +628,7 @@ def generate_featured_book(book):
         {actions_html}
       </div>
       <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
-        <img {image_attributes(book["image"], loading="lazy")} alt="{book["image_alt"]}" class="featured-book-cover" />
+        <img {image_attributes(book["image"], loading="lazy", sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px")} alt="{book["image_alt"]}" class="featured-book-cover" />
       </a>
     </div>
   </section>
@@ -780,7 +782,7 @@ def generate_books_html(books=None):
         press_html = f'<p class="press">{book["press"]}</p>' if book.get("press") else ""
         target = "" if book.get("local") else ' target="_blank"'
         cover_class = "book-cover book-cover--portrait" if book.get("portrait_cover") else "book-cover"
-        image_html = f'<img {image_attributes(book["image"], loading="lazy")} alt="{book["title"]}" class="{cover_class}" />' if book.get("image") else ""
+        image_html = f'<img {image_attributes(book["image"], loading="lazy", sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px")} alt="{book["title"]}" class="{cover_class}" />' if book.get("image") else ""
         
         ebook_html = (
             f'<a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Free Ebook ↗</a>'

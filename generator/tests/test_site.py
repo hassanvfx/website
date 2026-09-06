@@ -191,12 +191,30 @@ class SiteTests(unittest.TestCase):
         home=self.pages['index.html']
         self.assertLess(home.index('id="press"'),home.index('id="interviews"'))
     def test_image_budgets_and_responsive_assets(self):
+        # Editorial photography has its own allowance: new article covers must
+        # not force existing book imagery below its display resolution.
+        trend_urls = {generate.IMAGE_MANIFEST[book['image']]['url'] for book in generate.BOOKS[2:]}
         for name,budget in [('index.html',1450000),('selected-work.html',360000)]:
-            total=sum((ROOT/url).stat().st_size for url in {im['src'] for im in self.docs[name].images})
+            urls = {im['src'] for im in self.docs[name].images}
+            if name == 'selected-work.html':
+                urls -= trend_urls
+            total=sum((ROOT/url).stat().st_size for url in urls)
             self.assertLessEqual(total,budget)
+        self.assertLessEqual(sum((ROOT/url).stat().st_size for url in trend_urls), 600000)
         portrait=next(im for im in self.docs['index.html'].images if im.get('fetchpriority')=='high')
         self.assertIn('srcset',portrait)
         self.assertLessEqual((ROOT/portrait['src']).stat().st_size,150000)
+    def test_trend_images_keep_square_high_resolution_sources(self):
+        for book in generate.BOOKS[2:]:
+            asset = generate.IMAGE_MANIFEST[book['image']]
+            self.assertGreaterEqual(asset['width'], 660)
+            self.assertEqual(asset['width'], asset['height'])
+            image = next(im for im in self.docs['selected-work.html'].images if im['src'] == asset['url'])
+            self.assertIn('660w', image['srcset'])
+            self.assertIn('440w', image['srcset'])
+            self.assertIn('520px', image['sizes'])
+            self.assertEqual(image['loading'], 'lazy')
+
     def test_provider_video_dimensions(self):
         for doc in self.docs.values():
             for iframe in doc.iframes:
