@@ -162,6 +162,9 @@ class SiteTests(unittest.TestCase):
         self.assertLess(home.index('class="ai-sparks-callout"'), home.index('id="memearcade"'))
         self.assertIn('href="selected-work.html#work">More AI Sparks', home)
         self.assertIn('href="selected-work.html#ios-open-source">More iOS Sparks', home)
+        self.assertIn('id="ai-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">', home)
+        self.assertIn('id="ios-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">', home)
+        self.assertIn('id="writing-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">', home)
 
     def test_book_covers_link_to_their_product_pages(self):
         home = self.pages['index.html']

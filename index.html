@@ -3749,6 +3749,9 @@ img { max-width: 100%; }
 .ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
 .ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
 .ai-sparks-callout h2, .ios-sparks-callout h2, .writing-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
+.sparks-callout-title { display: flex; align-items: center; gap: .55em; }
+.sparks-callout-icon { display: inline-grid; place-items: center; width: 1.35em; height: 1.35em; flex: 0 0 auto; color: var(--cyan); background: rgba(0, 212, 255, .09); border-radius: .18em; }
+.sparks-callout-icon .sparks-icon { display: block; width: .8em; height: .8em; fill: currentColor; }
 .ai-sparks-callout p, .ios-sparks-callout p, .writing-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
 .ai-sparks-callout .home-tooling-link, .ios-sparks-callout .home-tooling-link, .writing-sparks-callout .home-tooling-link { max-width: 100%; }
 @media (max-width: 700px) { .ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 24px 40px; } }
@@ -4362,7 +4365,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 
   <section class="ai-sparks-callout" aria-labelledby="ai-sparks-heading">
     <div class="ai-sparks-callout-inner">
-      <h2 id="ai-sparks-heading">More Sparks</h2>
+      <h2 id="ai-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon"><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3m-2 10H6V7h12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13m7.5-1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5M8 15h8v2H8z" /></svg></span>More AI Sparks</h2>
       <p>Explore agentic products, AI context systems, and prompt engineering experiments across the Sparks portfolio.</p>
       <a class="home-tooling-link" href="selected-work.html#work">More AI Sparks <span aria-hidden="true">→</span></a>
     </div>
@@ -4430,7 +4433,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 
   <section class="ios-sparks-callout" aria-labelledby="ios-sparks-heading">
     <div class="ios-sparks-callout-inner">
-      <h2 id="ios-sparks-heading">More Sparks</h2>
+      <h2 id="ios-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon"><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1m-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5m4.5-4H7V4h9z" /></svg></span>More iOS Sparks</h2>
       <p>Build on three open-source Swift tools: SwiftSPM for package scaffolding, DataStore for encrypted persistence, and WebViewSwiftUI for bringing web content into native apps.</p>
       <a class="home-tooling-link" href="selected-work.html#ios-open-source">More iOS Sparks <span aria-hidden="true">→</span></a>
     </div>
@@ -4525,7 +4528,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 
   <section class="writing-sparks-callout" aria-labelledby="writing-sparks-heading">
     <div class="writing-sparks-callout-inner">
-      <h2 id="writing-sparks-heading">More Sparks</h2>
+      <h2 id="writing-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon"><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 5v14H5V5zm0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2 M14 17H7v-2h7zm3-4H7v-2h10zm0-4H7V7h10z" /></svg></span>More Technical Writing</h2>
       <p>Read practical notes from building AI systems, Swift tools, and creative workflows—shared to make the decisions, trade-offs, and lessons reusable.</p>
       <a class="home-tooling-link" href="selected-work.html#technical-writing">More Technical Writing <span aria-hidden="true">→</span></a>
     </div>
