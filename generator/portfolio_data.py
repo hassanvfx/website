@@ -347,12 +347,12 @@ INTERVIEWS = [
         "context": "Interview on AI ethics and innovation"
     },
     {
-        "url": "https://player.vimeo.com/video/843499496",
+        "url": "https://www.youtube.com/embed/jqs6dXF9wDU",
         "title": "Silicon Valley Journey",
         "context": "Career retrospective"
     },
     {
-        "url": "https://www.youtube.com/embed/jqs6dXF9wDU",
+        "url": "https://player.vimeo.com/video/843495231",
         "title": "Entrepreneurship & Innovation",
         "context": "Startup insights"
     },
