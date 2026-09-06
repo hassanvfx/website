@@ -910,7 +910,7 @@ def render_portfolio(page="home"):
   <meta name="twitter:image" content="{SITE_URL}/{IMAGE_MANIFEST[IDENTITY["portrait"]]["url"]}">
   <script type="application/ld+json">{structured_data}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
 {CSS_STYLES}
