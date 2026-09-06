@@ -992,7 +992,7 @@ def generate_selected_content():
   <section class="section" id="work">
     <div class="section-header white">
       {generate_section_nav("Current Focus")}
-      <h2>Featured Projects</h2>
+      <h2>AI Projects</h2>
       <p class="lead">Building the future of AI-human interaction through ethical, ergonomic technology.</p>
     </div>
 
