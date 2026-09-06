@@ -156,6 +156,16 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(sitemap.count(f'<lastmod>{generate.SITE_LAST_MODIFIED}</lastmod>'), 3)
         self.assertIn('<changefreq>weekly</changefreq>', sitemap)
 
+    def test_chapter_returns_target_the_current_page_menu(self):
+        for name in ('index.html', 'selected-work.html'):
+            doc = self.docs[name]
+            self.assertEqual(doc.ids.count('explore-sparks'), 1)
+            self.assertGreater(doc.links.count('#explore-sparks'), 0)
+            self.assertIn('id="explore-sparks" tabindex="-1"', self.pages[name])
+            self.assertNotIn('index.html#explore-sparks', doc.links)
+            self.assertNotIn('selected-work.html#explore-sparks', doc.links)
+        self.assertNotIn('#explore-sparks', self.docs['profile.html'].links)
+
     def test_technical_writing_navigation_and_articles(self):
         from html import escape
         work = self.pages['selected-work.html']

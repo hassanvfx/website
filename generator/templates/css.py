@@ -4156,3 +4156,19 @@ SIGNAL_STYLES += r'''
   .scroll-depth-layer { transform:none; }
 }
 '''
+
+
+SIGNAL_STYLES += """
+/* Shared chapter wayfinding; native anchors also work without JavaScript. */
+.section-wayfinding { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; width: 100%; min-width: 0; margin: 0 0 16px; grid-column: 1 / -1; }
+.section-wayfinding > :first-child { margin: 0; }
+.section-wayfinding .sparks-return { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; gap: 10px; margin-left: auto; min-height: 44px; padding: 0 14px; border: 0; border-radius: 6px; background: #72dff30b; color: #a8c8d2; font-family: Inter, sans-serif; font-size: .78rem; font-weight: 500; line-height: 1.4; letter-spacing: .01em; text-transform: none; text-decoration: none; }
+.section-wayfinding .sparks-return:hover { color: var(--cyan); background: #72dff318; }
+.section-wayfinding .sparks-return:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.sparks-return-arrow { font-size: 1.1rem; line-height: 1; }
+#explore-sparks:focus { outline: none; }
+@media (max-width: 600px) {
+  .section-wayfinding { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 18px; }
+  .section-wayfinding .sparks-return { order: -1; margin-left: 0; }
+}
+"""

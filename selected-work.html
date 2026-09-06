@@ -4162,6 +4162,19 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   .scroll-depth-layer { transform:none; }
 }
 
+/* Shared chapter wayfinding; native anchors also work without JavaScript. */
+.section-wayfinding { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; width: 100%; min-width: 0; margin: 0 0 16px; grid-column: 1 / -1; }
+.section-wayfinding > :first-child { margin: 0; }
+.section-wayfinding .sparks-return { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; gap: 10px; margin-left: auto; min-height: 44px; padding: 0 14px; border: 0; border-radius: 6px; background: #72dff30b; color: #a8c8d2; font-family: Inter, sans-serif; font-size: .78rem; font-weight: 500; line-height: 1.4; letter-spacing: .01em; text-transform: none; text-decoration: none; }
+.section-wayfinding .sparks-return:hover { color: var(--cyan); background: #72dff318; }
+.section-wayfinding .sparks-return:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.sparks-return-arrow { font-size: 1.1rem; line-height: 1; }
+#explore-sparks:focus { outline: none; }
+@media (max-width: 600px) {
+  .section-wayfinding { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 18px; }
+  .section-wayfinding .sparks-return { order: -1; margin-left: 0; }
+}
+
 
   </style>
 </head>
@@ -4218,7 +4231,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     </section>
 
   <!-- Selected Work Gateway -->
-  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
+  <section class="selected-work-gateway" id="explore-sparks" tabindex="-1" aria-labelledby="selected-work-title">
     <div class="selected-work-gateway-inner">
       <span class="eyebrow">Selected Work</span>
       <h2 id="selected-work-title">Explore Sparks</h2>
@@ -4262,7 +4275,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Impact Section -->
   <section class="section" id="impact">
     <div class="section-header white">
-      <span class="eyebrow">Proven Success</span>
+      <div class="section-wayfinding"><span class="eyebrow">Proven Success</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Impact & Exits</h2>
       <p class="lead">A decade of building products that reached millions and raised millions.</p>
     </div>
@@ -4368,6 +4381,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="waken-callout" id="waken">
     <div class="waken-inner">
       <div class="waken-header">
+        <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <img src="assets/waken-ai-logo.caee9fda4efa.webp" width="560" height="140" decoding="async" loading="lazy" alt="Waken AI" class="waken-logo" />
         <h2 class="waken-tagline">A New Lux — Elevating The Human Mind</h2>
         <p class="waken-subtitle">Mind Simulation Technology for Emotional Wellness</p>
@@ -4392,7 +4406,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Current Work -->
   <section class="section" id="work">
     <div class="section-header white">
-      <span class="eyebrow">Current Focus</span>
+      <div class="section-wayfinding"><span class="eyebrow">Current Focus</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Featured Projects</h2>
       <p class="lead">Building the future of AI-human interaction through ethical, ergonomic technology.</p>
     </div>
@@ -4488,7 +4502,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="paper-chapter" id="twinchat-paper" aria-labelledby="paper-title">
     <div class="paper-inner">
       <div class="paper-copy">
-        <span class="eyebrow">Research Publication</span>
+        <div class="section-wayfinding"><span class="eyebrow">Research Publication</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <h2 id="paper-title">TwinChat Paper</h2>
         <p class="paper-subtitle">Open Source Research on Cognitive Profiling & Digital Twins</p>
         <p class="paper-description">The TwinChat Paper documents the theoretical foundations and technical implementation of Mind Simulation Technology (MST). This research explores how AI can create accurate cognitive profiles for conversational simulations, enabling emotionally responsive digital companions.</p>
@@ -4513,7 +4527,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="home-tooling-showcase" id="ios-open-source" aria-labelledby="ios-open-source-title">
     <div class="home-tooling-inner">
       <div class="home-tooling-heading">
-        <span class="eyebrow">Selected Work</span>
+        <div class="section-wayfinding"><span class="eyebrow">Selected Work</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <h2 id="ios-open-source-title">iOS <em>Open Source</em></h2>
         <p>Three practical Swift tools for turning an iOS idea into a maintainable package, browser surface, and durable product state.</p>
       </div>
@@ -4565,7 +4579,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="technical-writing" id="technical-writing" aria-labelledby="technical-writing-title">
     <div class="home-tooling-inner">
       <div class="home-tooling-heading">
-        <span class="eyebrow">Notes from building</span>
+        <div class="section-wayfinding"><span class="eyebrow">Notes from building</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <h2 id="technical-writing-title">Technical <em>Writing</em></h2>
         <p>I write to share knowledge and lessons learned from building real software. These articles turn experiments in iOS architecture, AI collaboration, and creative tools into practical workflows others can learn from and build on.</p>
       </div>
@@ -4627,7 +4641,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Research & Innovations -->
   <section class="section" id="research">
     <div class="section-header white">
-      <span class="eyebrow">Research & Development</span>
+      <div class="section-wayfinding"><span class="eyebrow">Research &amp; Development</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Innovations</h2>
       <p class="lead">Building tomorrow's technology, years before the industry catches up.</p>
     </div>
@@ -4713,7 +4727,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
 
   <section class="section filmography" id="filmography">
     <div class="section-header">
-      <span class="eyebrow">2006-2010</span>
+      <div class="section-wayfinding"><span class="eyebrow">2006-2010</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Filmography & VFX</h2>
       <p class="lead">Collaborated on 10+ feature films. Winner of Ariel Awards for visual effects. Active member of Hollywood Visual Effects Society (VES).</p>
     </div>
@@ -4740,7 +4754,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Writing About Trends -->
   <section class="section" id="casual-books">
     <div class="section-header white">
-      <span class="eyebrow">Published Works</span>
+      <div class="section-wayfinding"><span class="eyebrow">Published Works</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Writing About Trends</h2>
     </div>
     <div class="books-grid">

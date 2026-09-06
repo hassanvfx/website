@@ -4162,6 +4162,19 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   .scroll-depth-layer { transform:none; }
 }
 
+/* Shared chapter wayfinding; native anchors also work without JavaScript. */
+.section-wayfinding { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; width: 100%; min-width: 0; margin: 0 0 16px; grid-column: 1 / -1; }
+.section-wayfinding > :first-child { margin: 0; }
+.section-wayfinding .sparks-return { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; gap: 10px; margin-left: auto; min-height: 44px; padding: 0 14px; border: 0; border-radius: 6px; background: #72dff30b; color: #a8c8d2; font-family: Inter, sans-serif; font-size: .78rem; font-weight: 500; line-height: 1.4; letter-spacing: .01em; text-transform: none; text-decoration: none; }
+.section-wayfinding .sparks-return:hover { color: var(--cyan); background: #72dff318; }
+.section-wayfinding .sparks-return:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.sparks-return-arrow { font-size: 1.1rem; line-height: 1; }
+#explore-sparks:focus { outline: none; }
+@media (max-width: 600px) {
+  .section-wayfinding { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 18px; }
+  .section-wayfinding .sparks-return { order: -1; margin-left: 0; }
+}
+
 
   </style>
 </head>
@@ -4253,7 +4266,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       </div>
     </section>
   <!-- Selected Work Gateway -->
-  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
+  <section class="selected-work-gateway" id="explore-sparks" tabindex="-1" aria-labelledby="selected-work-title">
     <div class="selected-work-gateway-inner">
       <span class="eyebrow">Selected Work</span>
       <h2 id="selected-work-title">Explore Sparks</h2>
@@ -4299,6 +4312,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
         <img src="assets/clineflow-hero.89cfa689bf7d.webp" width="1600" height="900" decoding="async" srcset="assets/clineflow-hero-small.8fbbb7a8b97d.webp 640w, assets/clineflow-hero.89cfa689bf7d.webp 1600w" sizes="(max-width: 800px) calc(100vw - 56px), 580px" loading="lazy" alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
       </figure>
       <div class="clineflow-installer-inner">
+        <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <a href="https://clineflow.com/" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">Creator of ClineFlow</a>
         <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
         <div class="clineflow-installer-panel">
@@ -4327,7 +4341,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     <div class="meme-arcade-inner">
       <div class="meme-arcade-copy">
       <div class="meme-app-icon"><img src="assets/meme-arcade-icon.63064fd55bcd.webp" width="420" height="420" decoding="async" loading="lazy" alt="Neon purple Meme Arcade cabinet with pixel sunglasses and a heart speech bubble" class="meme-arcade-icon" /></div>
-      <span class="meme-arcade-badge">IPHONE GAME ARCADE</span>
+      <div class="section-wayfinding"><span class="meme-arcade-badge">IPHONE GAME ARCADE</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Your next favorite game is one scroll away.</h2>
       <p class="meme-arcade-description">Discover bite-size games, jump straight into the action, and build your personal arcade. Meme Arcade brings quick games and the culture around them into one lively, scrollable place.</p>
       <a href="https://hassanvfx.github.io/meme-arcade-book/" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">Explore Meme Arcade <span aria-hidden="true">→</span></a>
@@ -4360,7 +4374,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="wwdc14-feature" id="wwdc14">
     <div class="wwdc14-inner">
       <div class="wwdc14-copy">
-        <span class="wwdc14-eyebrow">Apple WWDC14 Recognition</span>
+        <div class="section-wayfinding"><span class="wwdc14-eyebrow">Apple WWDC14 Recognition</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <h2>Featured by Apple at WWDC14</h2>
         <p class="wwdc14-subtitle">Ultrakam Remote Control selected for Apple's "Cross Platform Nearby Networking" session</p>
         <p class="wwdc14-description">In 2014, Apple requested permission to include assets from Ultrakam Remote Control in a Worldwide Developers Conference presentation. The app was subsequently featured in the official WWDC14 Session 709 presentation.</p>
@@ -4393,7 +4407,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="citations-section" id="citations">
     <div class="citations-inner">
       <div class="citations-intro">
-        <span class="citations-eyebrow">Research Recognition</span>
+        <div class="section-wayfinding"><span class="citations-eyebrow">Research Recognition</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <h2>AI-Copyright Weights</h2>
         <p>A 2023 article examining whether AI model weights may raise derivative-work and compensation questions in copyright law.</p>
         <p class="citations-context">The article has been cited in government, legal, and academic discussions of AI, copyright, and model weights.</p>
@@ -4440,7 +4454,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Books -->
   <section class="section" id="books">
     <div class="section-header white">
-      <span class="eyebrow">Published Works</span>
+      <div class="section-wayfinding"><span class="eyebrow">Published Works</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Books</h2>
     </div>
     <section class="featured-book-section featured-book-section--cover-first">
@@ -4480,6 +4494,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Press -->
   <section class="section" id="press" style="padding-top: 0;">
     <div class="section-header" style="margin-bottom: 40px; margin-top: 24px;">
+      <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Press</h2>
     </div>
     <div class="press-grid">
@@ -4525,7 +4540,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Interviews -->
   <section class="section" id="interviews">
     <div class="section-header">
-      <span class="eyebrow">Media & Speaking</span>
+      <div class="section-wayfinding"><span class="eyebrow">Media &amp; Speaking</span><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2>Interviews</h2>
     </div>
     <div class="interviews-grid">
@@ -4557,6 +4572,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <!-- Bio / Artist Introduction -->
   <section class="bio-section" id="about">
     <div class="bio-content">
+      <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
       <h2 class="bio-headline">A Silicon Valley Visionary Shaping the Future of AI</h2>
       <figure class="bio-profile-image">
         <img src="assets/bio-profile.5e6732670a8f.webp" width="1672" height="942" decoding="async" srcset="assets/bio-profile-small.a4efa4e19685.webp 640w, assets/bio-profile.5e6732670a8f.webp 1672w" sizes="(max-width: 800px) calc(100vw - 48px), 900px" loading="lazy" alt="Hassan Uriostegui standing on a rooftop terrace with a city skyline behind him." />
@@ -4582,6 +4598,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
   <section class="bio-section" id="eb1a">
     <div class="bio-content">
       <div class="eb1a-card">
+        <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
         <h3>EB1A Extraordinary Ability Recognition</h3>
         <p class="eb1a-description">In 2018, Hassan was granted U.S. Citizenship through the EB1A category—reserved for individuals who demonstrate extraordinary ability in sciences, arts, education, business, or athletics. This recognition is awarded to only 0.1% of visa applicants.</p>
         <ul class="eb1a-criteria">

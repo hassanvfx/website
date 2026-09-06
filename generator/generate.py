@@ -287,6 +287,14 @@ def generate_footer_bio_html():
     )
 
 
+def generate_section_nav(label="", label_class="eyebrow"):
+    """A local return path, paired with the chapter's existing eyebrow."""
+    eyebrow = f'<span class="{label_class}">{escape(label)}</span>' if label else ''
+    return (f'<div class="section-wayfinding">{eyebrow}'
+            '<a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page">'
+            '<span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>')
+
+
 def generate_selected_work_grid(page="home"):
     """Generate the small home-page gateway to the Selected Work page."""
     def links(items, modifier=""):
@@ -300,7 +308,7 @@ def generate_selected_work_grid(page="home"):
     hobby_links = links(HOBBY_SPARK_ITEMS)
     return f'''
   <!-- Selected Work Gateway -->
-  <section class="selected-work-gateway" aria-labelledby="selected-work-title">
+  <section class="selected-work-gateway" id="explore-sparks" tabindex="-1" aria-labelledby="selected-work-title">
     <div class="selected-work-gateway-inner">
       <span class="eyebrow">Selected Work</span>
       <h2 id="selected-work-title">Explore Sparks</h2>
@@ -346,6 +354,7 @@ def generate_clineflow_section():
         <img {image_attributes("clineflow-hero", loading="lazy")} alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
       </figure>
       <div class="clineflow-installer-inner">
+        {generate_section_nav()}
         <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">Creator of {CLINEFLOW["name"]}</a>
         <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
         <div class="clineflow-installer-panel">
@@ -450,7 +459,7 @@ def generate_wwdc14_feature():
   <section class="wwdc14-feature" id="wwdc14">
     <div class="wwdc14-inner">
       <div class="wwdc14-copy">
-        <span class="wwdc14-eyebrow">{WWDC14_FEATURE["eyebrow"]}</span>
+        {generate_section_nav(WWDC14_FEATURE["eyebrow"], "wwdc14-eyebrow")}
         <h2>{WWDC14_FEATURE["title"]}</h2>
         <p class="wwdc14-subtitle">{WWDC14_FEATURE["subtitle"]}</p>
         <p class="wwdc14-description">{WWDC14_FEATURE["description"]}</p>
@@ -511,7 +520,7 @@ def generate_swift_foundations():
   <section class="home-tooling-showcase" id="ios-open-source" aria-labelledby="ios-open-source-title">
     <div class="home-tooling-inner">
       <div class="home-tooling-heading">
-        <span class="eyebrow">Selected Work</span>
+        {generate_section_nav("Selected Work")}
         <h2 id="ios-open-source-title">iOS <em>Open Source</em></h2>
         <p>Three practical Swift tools for turning an iOS idea into a maintainable package, browser surface, and durable product state.</p>
       </div>
@@ -542,7 +551,7 @@ def generate_technical_writing():
   <section class="technical-writing" id="technical-writing" aria-labelledby="technical-writing-title">
     <div class="home-tooling-inner">
       <div class="home-tooling-heading">
-        <span class="eyebrow">Notes from building</span>
+        {generate_section_nav("Notes from building")}
         <h2 id="technical-writing-title">Technical <em>Writing</em></h2>
         <p>I write to share knowledge and lessons learned from building real software. These articles turn experiments in iOS architecture, AI collaboration, and creative tools into practical workflows others can learn from and build on.</p>
       </div>
@@ -568,7 +577,7 @@ def generate_citations_section():
   <section class="citations-section" id="citations">
     <div class="citations-inner">
       <div class="citations-intro">
-        <span class="citations-eyebrow">{CITATIONS["eyebrow"]}</span>
+        {generate_section_nav(CITATIONS["eyebrow"], "citations-eyebrow")}
         <h2>{CITATIONS["title"]}</h2>
         <p>{CITATIONS["description"]}</p>
         <p class="citations-context">The article has been cited in government, legal, and academic discussions of AI, copyright, and model weights.</p>
@@ -642,7 +651,7 @@ def generate_meme_arcade_callout():
     <div class="meme-arcade-inner">
       <div class="meme-arcade-copy">
       <div class="meme-app-icon"><img {image_attributes(MEME_ARCADE["icon"], loading="lazy")} alt="{MEME_ARCADE["icon_alt"]}" class="meme-arcade-icon" /></div>
-      <span class="meme-arcade-badge">IPHONE GAME ARCADE</span>
+      {generate_section_nav("IPHONE GAME ARCADE", "meme-arcade-badge")}
       <h2>{MEME_ARCADE["title"]}</h2>
       <p class="meme-arcade-description">{MEME_ARCADE["description"]}</p>
       <a href="{MEME_ARCADE["url"]}" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">{MEME_ARCADE["cta"]} <span aria-hidden="true">→</span></a>
@@ -746,7 +755,7 @@ def generate_filmography_section():
     return f'''
   <section class="section filmography" id="filmography">
     <div class="section-header">
-      <span class="eyebrow">{FILMOGRAPHY["years"]}</span>
+      {generate_section_nav(FILMOGRAPHY["years"])}
       <h2>Filmography & VFX</h2>
       <p class="lead">{FILMOGRAPHY["description"]}</p>
     </div>
@@ -906,7 +915,7 @@ def generate_selected_content():
   <!-- Impact Section -->
   <section class="section" id="impact">
     <div class="section-header white">
-      <span class="eyebrow">Proven Success</span>
+      {generate_section_nav("Proven Success")}
       <h2>Impact & Exits</h2>
       <p class="lead">A decade of building products that reached millions and raised millions.</p>
     </div>
@@ -918,6 +927,7 @@ def generate_selected_content():
   <section class="waken-callout" id="waken">
     <div class="waken-inner">
       <div class="waken-header">
+        {generate_section_nav()}
         <img {image_attributes(WAKEN_AI["logo"], loading="lazy")} alt="{WAKEN_AI["name"]}" class="waken-logo" />
         <h2 class="waken-tagline">{WAKEN_AI["tagline"]}</h2>
         <p class="waken-subtitle">{WAKEN_AI["subtitle"]}</p>
@@ -942,7 +952,7 @@ def generate_selected_content():
   <!-- Current Work -->
   <section class="section" id="work">
     <div class="section-header white">
-      <span class="eyebrow">Current Focus</span>
+      {generate_section_nav("Current Focus")}
       <h2>Featured Projects</h2>
       <p class="lead">Building the future of AI-human interaction through ethical, ergonomic technology.</p>
     </div>
@@ -954,7 +964,7 @@ def generate_selected_content():
   <section class="paper-chapter" id="twinchat-paper" aria-labelledby="paper-title">
     <div class="paper-inner">
       <div class="paper-copy">
-        <span class="eyebrow">Research Publication</span>
+        {generate_section_nav("Research Publication")}
         <h2 id="paper-title">{TWINCHAT_PAPER["name"]}</h2>
         <p class="paper-subtitle">{TWINCHAT_PAPER["subtitle"]}</p>
         <p class="paper-description">{TWINCHAT_PAPER["description"]}</p>
@@ -982,7 +992,7 @@ def generate_selected_content():
   <!-- Research & Innovations -->
   <section class="section" id="research">
     <div class="section-header white">
-      <span class="eyebrow">Research & Development</span>
+      {generate_section_nav("Research & Development")}
       <h2>Innovations</h2>
       <p class="lead">Building tomorrow's technology, years before the industry catches up.</p>
     </div>
@@ -998,7 +1008,7 @@ def generate_selected_content():
   <!-- Writing About Trends -->
   <section class="section" id="casual-books">
     <div class="section-header white">
-      <span class="eyebrow">Published Works</span>
+      {generate_section_nav("Published Works")}
       <h2>Writing About Trends</h2>
     </div>
     <div class="books-grid">
@@ -1014,7 +1024,7 @@ def generate_books_media():
   <!-- Books -->
   <section class="section" id="books">
     <div class="section-header white">
-      <span class="eyebrow">Published Works</span>
+      {generate_section_nav("Published Works")}
       <h2>Books</h2>
     </div>
     {generate_featured_book(FEATURED_BOOKS[0]).strip()}
@@ -1026,6 +1036,7 @@ def generate_books_media():
   <!-- Press -->
   <section class="section" id="press" style="padding-top: 0;">
     <div class="section-header" style="margin-bottom: 40px; margin-top: 24px;">
+      {generate_section_nav()}
       <h2>Press</h2>
     </div>
     <div class="press-grid">
@@ -1036,7 +1047,7 @@ def generate_books_media():
   <!-- Interviews -->
   <section class="section" id="interviews">
     <div class="section-header">
-      <span class="eyebrow">Media & Speaking</span>
+      {generate_section_nav("Media & Speaking")}
       <h2>Interviews</h2>
     </div>
     <div class="interviews-grid">
@@ -1052,6 +1063,7 @@ def generate_about():
   <!-- Bio / Artist Introduction -->
   <section class="bio-section" id="about">
     <div class="bio-content">
+      {generate_section_nav()}
       <h2 class="bio-headline">{BIO["headline"]}</h2>
       <figure class="bio-profile-image">
         <img {image_attributes(BIO["image"], loading="lazy")} alt="{BIO["image_alt"]}" />
@@ -1074,6 +1086,7 @@ def generate_recognition():
   <section class="bio-section" id="eb1a">
     <div class="bio-content">
       <div class="eb1a-card">
+        {generate_section_nav()}
         <h3>{BIO["eb1a_overview"]["title"]}</h3>
         <p class="eb1a-description">{BIO["eb1a_overview"]["description"]}</p>
         <ul class="eb1a-criteria">
