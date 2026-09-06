@@ -80,6 +80,16 @@ class SiteTests(unittest.TestCase):
             for iframe in doc.iframes:
                 self.assertTrue(iframe.get('title'))
                 self.assertEqual(iframe.get('loading'),'lazy')
+
+    def test_home_navigation_labels_match_destination_headings(self):
+        home = self.pages['index.html']
+        for section_id, (label, _, _) in generate.HOME_CHAPTERS.items():
+            section = home.split(f'id="{section_id}"', 1)[1].split('</section>', 1)[0]
+            self.assertIn(f'aria-labelledby="{section_id}-chapter-title"', section)
+            self.assertIn(f'<h2 id="{section_id}-chapter-title">{label}</h2>', section)
+            self.assertIn(f'href="#{section_id}">{label}</a>', generate.generate_header('home'))
+            self.assertIn(f'>{label.upper()}</a>', generate.generate_mobile_nav_html('home'))
+            self.assertEqual(section.count('class="sparks-return"'), 1)
     def test_desktop_navigation_and_home_portfolio_placement(self):
         home=self.pages['index.html']
         header=home[home.index('<header'):home.index('</header>')]

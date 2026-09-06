@@ -29,6 +29,12 @@ SITE_DESCRIPTION = "Hassan Uriostegui is an AI-native principal engineer and fou
 SITE_LAST_MODIFIED = "2026-09-06"
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "technical-writing", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 PROFILE_SECTION_IDS = {"press", "interviews"}
+HOME_CHAPTERS = {
+    "clineflow": ("Agentic AI", "work", "Durable context and tools for building with AI agents."),
+    "memearcade": ("Mobile Apps", "ios-open-source", "Native experiences, playful products, and the engineering behind them."),
+    "citations": ("Citations", "technical-writing", "Research recognized in government, legal, and academic discussions."),
+    "books": ("Books", "casual-books", "Practical guides to AI systems, persistent context, and mobile architecture."),
+}
 AI_SPARK_ITEMS = [
     ("Agentic & Open Source", "work"),
     ("AI Context Engineering", "clineflow"),
@@ -280,7 +286,9 @@ def generate_mobile_nav_html(page):
         featured_class = ' class="featured"' if nav.get("featured") else ''
         target = ' target="_blank"' if nav.get("external") else ''
         href = resolve_navigation_href(nav["href"], page)
-        items.append(f'<a href="{href}"{featured_class}{target}>{nav["label"]}</a>')
+        chapter = HOME_CHAPTERS.get(nav["href"].removeprefix('#'))
+        label = chapter[0].upper() if chapter else nav['label']
+        items.append(f'<a href="{href}"{featured_class}{target}>{escape(label)}</a>')
     return "\n    ".join(items)
 
 
@@ -309,6 +317,19 @@ def generate_section_nav(label="", label_class="eyebrow"):
     return (f'<div class="section-wayfinding">{eyebrow}'
             '<a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page">'
             '<span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>')
+
+
+def generate_home_chapter_heading(section_id):
+    """Keep homepage chapter headings and their menu labels in sync."""
+    title, icon, description = HOME_CHAPTERS[section_id]
+    return f'''<header class="home-chapter-heading">
+      <div class="home-chapter-title">
+        <span class="home-chapter-icon">{sparks_icon(icon)}</span>
+        <h2 id="{section_id}-chapter-title">{escape(title)}</h2>
+      </div>
+      <p>{escape(description)}</p>
+      {generate_section_nav()}
+    </header>'''
 
 
 def generate_selected_work_grid(page="home"):
@@ -364,15 +385,15 @@ def generate_clineflow_section():
     """Generate the focused ClineFlow installer callout."""
     return f'''
   <!-- ClineFlow Agentic Installer -->
-  <section class="clineflow-callout clineflow-installer" id="clineflow">
+  <section class="clineflow-callout clineflow-installer" id="clineflow" aria-labelledby="clineflow-chapter-title">
+    {generate_home_chapter_heading('clineflow')}
     <div class="clineflow-installer-shell">
       <figure class="clineflow-hero clineflow-installer-hero">
         <img {image_attributes("clineflow-hero", loading="lazy")} alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
       </figure>
       <div class="clineflow-installer-inner">
-        {generate_section_nav()}
         <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">Creator of {CLINEFLOW["name"]}</a>
-        <h2><span>Infinite AI Memory</span> across chats, agents and collaborators.</h2>
+        <h3><span>Infinite AI Memory</span> across chats, agents and collaborators.</h3>
         <div class="clineflow-explainer">
           <p>ClineFlow gives AI coding agents durable project memory using open files instead of vendor-locked databases.</p>
           <p>A filesystem-native knowledge layer that travels with the repository, evolves through version control, and stays usable across agents and collaborators.</p>
@@ -620,11 +641,12 @@ def generate_citations_section():
 
     house = CITATIONS["house"]
     return f'''
-  <section class="citations-section" id="citations">
+  <section class="citations-section" id="citations" aria-labelledby="citations-chapter-title">
+    {generate_home_chapter_heading('citations')}
     <div class="citations-inner">
       <div class="citations-intro">
-        {generate_section_nav(CITATIONS["eyebrow"], "citations-eyebrow")}
-        <h2>{CITATIONS["title"]}</h2>
+        <span class="citations-eyebrow">{CITATIONS["eyebrow"]}</span>
+        <h3>{CITATIONS["title"]}</h3>
         <p>{CITATIONS["description"]}</p>
         <p class="citations-context">The article has been cited in government, legal, and academic discussions of AI, copyright, and model weights.</p>
         <a href="{CITATIONS["article_url"]}" target="_blank" rel="noopener noreferrer" class="citations-cta">Read the original article →</a>
@@ -693,12 +715,13 @@ def generate_meme_arcade_callout():
         for index, screen in enumerate(MEME_ARCADE["screens"])
     )
     return f'''
-  <section class="meme-arcade-callout" id="memearcade">
+  <section class="meme-arcade-callout" id="memearcade" aria-labelledby="memearcade-chapter-title">
+    {generate_home_chapter_heading('memearcade')}
     <div class="meme-arcade-inner">
       <div class="meme-arcade-copy">
       <div class="meme-app-icon"><img {image_attributes(MEME_ARCADE["icon"], loading="lazy")} alt="{MEME_ARCADE["icon_alt"]}" class="meme-arcade-icon" /></div>
-      {generate_section_nav("IPHONE GAME ARCADE", "meme-arcade-badge")}
-      <h2>{MEME_ARCADE["title"]}</h2>
+      <span class="meme-arcade-badge">IPHONE GAME ARCADE</span>
+      <h3>{MEME_ARCADE["title"]}</h3>
       <p class="meme-arcade-description">{MEME_ARCADE["description"]}</p>
       <p class="meme-arcade-technology">{MEME_ARCADE["technology"]}</p>
       <a href="{MEME_ARCADE["url"]}" target="_blank" rel="noopener noreferrer" class="meme-arcade-cta">{MEME_ARCADE["cta"]} <span aria-hidden="true">→</span></a>
@@ -1082,11 +1105,8 @@ def generate_selected_content():
 def generate_books_media():
     return f'''
   <!-- Books -->
-  <section class="section" id="books">
-    <div class="section-header white">
-      {generate_section_nav("Published Works")}
-      <h2>Books &amp; Technical Writing</h2>
-    </div>
+  <section class="section" id="books" aria-labelledby="books-chapter-title">
+    {generate_home_chapter_heading('books')}
     {generate_featured_book(FEATURED_BOOKS[0]).strip()}
     <div class="books-grid">
       {generate_books_html(BOOKS[:2])}
@@ -1182,10 +1202,7 @@ def generate_quote():
 def generate_header(page):
     desktop_links = [
         ('Resume', PROFILE_PAGE),
-        ('Agentic AI', '#clineflow'),
-        ('Mobile Apps', '#memearcade'),
-        ('Citations', '#citations'),
-        ('Books', '#books'),
+        *((chapter[0], f'#{section_id}') for section_id, chapter in HOME_CHAPTERS.items()),
         ('Press', '#press'),
         ('Sparks', '#selected-work'),
     ]

@@ -39,7 +39,7 @@ BIO = {
         "description": "In 2018, Hassan qualified under the EB-1A Extraordinary Ability category, providing a direct path to U.S. permanent residency and eventual citizenship. His petition recognized technology leadership, original technical contributions, published work, industry recognition, and critical roles at distinguished organizations.",
         "wikipedia_url": "https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)",
         "criteria_met": [
-            "Published works of major significance (4 books on AI for general audiences)",
+            "Published works of major international significance",
             "Original contributions to the field (Patents, first-of-kind mobile technologies)",
             "Judging the work of others (Industry expert, VES Member)",
             "High remuneration for services (Silicon Valley executive roles)",

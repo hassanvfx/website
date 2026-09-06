@@ -1,14 +1,14 @@
 {
   "ai-from-tensors-to-agents-cover": {
-    "fingerprint": "5bd1959da1ae",
-    "height": 900,
-    "max_width": 608,
-    "original_height": 900,
-    "original_width": 608,
+    "fingerprint": "584cb0eafacc",
+    "height": 1200,
+    "max_width": 800,
+    "original_height": 1536,
+    "original_width": 1024,
     "preset": "graphic",
-    "source": "assets/ai-from-tensors-to-agents-cover.jpg",
-    "url": "assets/ai-from-tensors-to-agents-cover.5bd1959da1ae.webp",
-    "width": 608
+    "source": "assets/book-cover-sources/ai-from-tensors-to-agents.png",
+    "url": "assets/ai-from-tensors-to-agents-cover.584cb0eafacc.webp",
+    "width": 800
   },
   "athletechnews-logo": {
     "fingerprint": "448963dfd2a6",
@@ -308,15 +308,15 @@
     "width": 414
   },
   "modern-ios-architecture-cover": {
-    "fingerprint": "72d8946121d6",
-    "height": 900,
-    "max_width": 608,
-    "original_height": 900,
-    "original_width": 608,
+    "fingerprint": "99964a724421",
+    "height": 1200,
+    "max_width": 800,
+    "original_height": 1536,
+    "original_width": 1024,
     "preset": "graphic",
-    "source": "assets/modern-ios-architecture-memearcade-cover.jpg",
-    "url": "assets/modern-ios-architecture-cover.72d8946121d6.webp",
-    "width": 608
+    "source": "assets/book-cover-sources/modern-ios-architecture.png",
+    "url": "assets/modern-ios-architecture-cover.99964a724421.webp",
+    "width": 800
   },
   "newsmusic-hero": {
     "fingerprint": "70ef2ec5c404",
