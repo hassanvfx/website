@@ -379,7 +379,7 @@ def generate_clineflow_section():
         <div class="clineflow-masterclass">
           <p>Explore ClineFlow:</p>
           <div class="clineflow-masterclass-divider" aria-hidden="true"></div>
-          <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">View project <span aria-hidden="true">↗</span></a>
+          <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-masterclass-cta">Explore ClineFlow <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
