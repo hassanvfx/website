@@ -19,6 +19,7 @@ from portfolio_data import (
 )
 from templates.css import CSS_STYLES, COMPONENT_STYLES, SIGNAL_STYLES
 from templates.scripts import INTERACTION_SCRIPT, RESUME_SCRIPT
+from templates.icons import sparks_icon
 
 SELECTED_WORK_PAGE = "selected-work.html"
 PROFILE_PAGE = "profile.html"
@@ -276,7 +277,7 @@ def generate_selected_work_grid(page="home"):
     """Generate the small home-page gateway to the Selected Work page."""
     def links(items, modifier=""):
         return "\n          ".join(
-            f'<a href="{resolve_navigation_href(f"#{section_id}", page)}" class="selected-work-link{modifier}">{label}<span aria-hidden="true">→</span></a>'
+            f'<a href="{resolve_navigation_href(f"#{section_id}", page)}" class="selected-work-link{modifier}">{sparks_icon(section_id)}<span class="sparks-label">{escape(label)}</span><span class="sparks-arrow" aria-hidden="true">→</span></a>'
             for label, section_id in items
         )
 

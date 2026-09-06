@@ -96,10 +96,10 @@ class SiteTests(unittest.TestCase):
         self.assertLess(home.index('AI Context Engineering'),home.index('Prompt Engineering'))
         self.assertLess(home.index('Prompt Engineering'),home.index('Agentic Products'))
         self.assertIn('AI SYSTEMS',home)
-        self.assertIn('href="selected-work.html#ios-open-source" class="selected-work-link">iOS & Open Source',home)
-        self.assertIn('href="selected-work.html#casual-books" class="selected-work-link">Writing About Trends',home)
+        self.assertRegex(home, 'href="selected-work.html#ios-open-source" class="selected-work-link">.*?<span class="sparks-label">iOS &amp; Open Source</span>')
+        self.assertRegex(home, 'href="selected-work.html#casual-books" class="selected-work-link">.*?<span class="sparks-label">Writing About Trends</span>')
         self.assertIn('href="#ios-open-source">iOS & Open Source',self.pages['selected-work.html'])
-        self.assertIn('href="#clineflow" class="selected-work-link selected-work-link--ai">AI Context Engineering',home)
+        self.assertRegex(home, 'href="#clineflow" class="selected-work-link selected-work-link--ai">.*?<span class="sparks-label">AI Context Engineering</span>')
         self.assertIn('href="index.html#clineflow">AI Context Engineering',self.pages['selected-work.html'])
         self.assertNotIn('selected-work-link--external',home)
     def test_ultrakam_exit_card_and_coverage(self):
