@@ -1619,6 +1619,8 @@ nav a:hover {
   background: #111;
   transform: translateY(-4px);
 }
+.book-cover-link { display: block; }
+.book-cover-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 .book-cover {
   width: 100%;
   height: auto;
@@ -3750,6 +3752,13 @@ img { max-width: 100%; }
 .ios-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
 .ios-sparks-callout .home-tooling-link { max-width: 100%; }
 @media (max-width: 700px) { .ios-sparks-callout { padding: 0 24px 40px; } }
+/* A matching bridge from books to the technical-writing chapter. */
+.writing-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
+.writing-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
+.writing-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
+.writing-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
+.writing-sparks-callout .home-tooling-link { max-width: 100%; }
+@media (max-width: 700px) { .writing-sparks-callout { padding: 0 24px 40px; } }
 .home-tooling-showcase { padding: 80px 48px; background: #080e14; }
 .technical-writing { padding: 80px 48px; background: #080d12; }
 .technical-writing .home-tooling-heading { max-width: 760px; }
@@ -4777,28 +4786,28 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
       <h2>Books &amp; Technical Writing</h2>
     </div>
     <div class="books-grid">
-      <article class="book-card"><img src="assets/bookstore-display.ed1cf7fde7cc.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-display-small.41dc378c7bb0.webp 440w, assets/bookstore-display.ed1cf7fde7cc.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="MST: Mind Simulation Technology" class="book-cover" />
+      <article class="book-card"><a href="https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993" target="_blank" rel="noopener noreferrer" class="book-cover-link" aria-label="View MST: Mind Simulation Technology"><img src="assets/bookstore-display.ed1cf7fde7cc.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-display-small.41dc378c7bb0.webp 440w, assets/bookstore-display.ed1cf7fde7cc.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="MST: Mind Simulation Technology" class="book-cover" /></a>
         <span class="year">2024 • English</span>
         <h3>MST: Mind Simulation Technology</h3>
         <p class="subtitle">A Comprehensive Framework for Cognitive Profiling and Digital Twin Creation</p>
         <p class="press">The definitive guide to AI personality simulation</p>
         <a href="https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993" target="_blank" class="btn btn-outline">Read More</a>
       </article>
-      <article class="book-card"><img src="assets/bookstore-coffee.436e25bd27fa.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-coffee-small.25654abf4a40.webp 440w, assets/bookstore-coffee.436e25bd27fa.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="I, AI: Nemo's Mirror" class="book-cover" />
+      <article class="book-card"><a href="https://www.amazon.com/-/en/AI-Exploring-Singular-Self-Awareness-ChatGPT/dp/1365528669" target="_blank" rel="noopener noreferrer" class="book-cover-link" aria-label="View I, AI: Nemo's Mirror"><img src="assets/bookstore-coffee.436e25bd27fa.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-coffee-small.25654abf4a40.webp 440w, assets/bookstore-coffee.436e25bd27fa.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="I, AI: Nemo's Mirror" class="book-cover" /></a>
         <span class="year">2023 • English</span>
         <h3>I, AI: Nemo's Mirror</h3>
         <p class="subtitle">Exploring the Singular Nature of Self-Awareness in ChatGPT</p>
         <p class="press">Featured in Korea Biz Wire</p>
         <a href="https://www.amazon.com/-/en/AI-Exploring-Singular-Self-Awareness-ChatGPT/dp/1365528669" target="_blank" class="btn btn-outline">Read More</a>
       </article>
-      <article class="book-card"><img src="assets/bookstore-barnes-noble.255e45aab012.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-barnes-noble-small.201ed5aefbca.webp 440w, assets/bookstore-barnes-noble.255e45aab012.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="Yo, IA: Cyberpunks" class="book-cover" />
+      <article class="book-card"><a href="https://www.amazon.com/Yo-IA-Cyberpunks-Inteligencia-Artificial/dp/1312446501" target="_blank" rel="noopener noreferrer" class="book-cover-link" aria-label="View Yo, IA: Cyberpunks"><img src="assets/bookstore-barnes-noble.255e45aab012.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-barnes-noble-small.201ed5aefbca.webp 440w, assets/bookstore-barnes-noble.255e45aab012.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="Yo, IA: Cyberpunks" class="book-cover" /></a>
         <span class="year">2023 • Español</span>
         <h3>Yo, IA: Cyberpunks</h3>
         <p class="subtitle">La Inteligencia Artificial y el Espejo de Nemo</p>
         <p class="press">Featured on Imagen Radio Mexico</p>
         <a href="https://www.amazon.com/Yo-IA-Cyberpunks-Inteligencia-Artificial/dp/1312446501" target="_blank" class="btn btn-outline">Read More</a>
       </article>
-      <article class="book-card"><img src="assets/bookstore-woods.a8258f3c64bb.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-woods-small.0b894c373786.webp 440w, assets/bookstore-woods.a8258f3c64bb.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="The Fly of the Humanized Robot" class="book-cover" />
+      <article class="book-card"><a href="book/eng.pdf" rel="noopener noreferrer" class="book-cover-link" aria-label="View The Fly of the Humanized Robot"><img src="assets/bookstore-woods.a8258f3c64bb.webp" width="660" height="660" decoding="async" srcset="assets/bookstore-woods-small.0b894c373786.webp 440w, assets/bookstore-woods.a8258f3c64bb.webp 660w" sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px" loading="lazy" alt="The Fly of the Humanized Robot" class="book-cover" /></a>
         <span class="year">2020 • English</span>
         <h3>The Fly of the Humanized Robot</h3>
         <p class="subtitle">An Algorithm to Heal the Soul</p>

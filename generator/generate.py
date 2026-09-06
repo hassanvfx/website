@@ -502,6 +502,19 @@ def generate_ios_open_source_callout():
 '''
 
 
+def generate_technical_writing_callout():
+    """Bridge published books to the longer technical articles on Sparks."""
+    return f'''
+  <section class="writing-sparks-callout" aria-labelledby="writing-sparks-heading">
+    <div class="writing-sparks-callout-inner">
+      <h2 id="writing-sparks-heading">More Sparks</h2>
+      <p>Read practical notes from building AI systems, Swift tools, and creative workflows—shared to make the decisions, trade-offs, and lessons reusable.</p>
+      <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#technical-writing">More Technical Writing <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+'''
+
+
 def generate_swift_foundations():
     """Generate the dedicated iOS open-source chapter for Selected Work."""
     projects = []
@@ -787,7 +800,12 @@ def generate_books_html(books=None):
         press_html = f'<p class="press">{book["press"]}</p>' if book.get("press") else ""
         target = "" if book.get("local") else ' target="_blank"'
         cover_class = "book-cover book-cover--portrait" if book.get("portrait_cover") else "book-cover"
-        image_html = f'<img {image_attributes(book["image"], loading="lazy", sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px")} alt="{book["title"]}" class="{cover_class}" />' if book.get("image") else ""
+        image_html = (
+            f'<a href="{book["url"]}"{target} rel="noopener noreferrer" class="book-cover-link" aria-label="View {book["title"]}">'
+            f'<img {image_attributes(book["image"], loading="lazy", sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px")} alt="{book["title"]}" class="{cover_class}" />'
+            '</a>'
+            if book.get("image") else ""
+        )
         
         ebook_html = (
             f'<a href="{book["ebook_url"]}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Free Ebook ↗</a>'
@@ -1041,6 +1059,8 @@ def generate_books_media():
       {generate_books_html(BOOKS[:2])}
     </div>
   </section>
+
+  {generate_technical_writing_callout().strip()}
 
   <!-- Press -->
   <section class="section" id="press" style="padding-top: 0;">

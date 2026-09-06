@@ -142,6 +142,18 @@ class SiteTests(unittest.TestCase):
         self.assertIn('Raised as Co-Founder', home)
         self.assertNotIn('0.1% of visa applicants', home)
         self.assertNotIn('granted U.S. Citizenship through the EB1A category', home)
+
+    def test_home_books_are_followed_by_the_technical_writing_bridge(self):
+        home = self.pages['index.html']
+        self.assertLess(home.index('id="books"'), home.index('class="writing-sparks-callout"'))
+        self.assertLess(home.index('class="writing-sparks-callout"'), home.index('id="press"'))
+        self.assertIn('href="selected-work.html#technical-writing">More Technical Writing', home)
+
+    def test_book_covers_link_to_their_product_pages(self):
+        home = self.pages['index.html']
+        self.assertIn('href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4" target="_blank" rel="noopener noreferrer" class="book-cover-link"', home)
+        self.assertIn('href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html?page=1&pageSize=4" target="_blank" rel="noopener noreferrer" class="book-cover-link"', home)
+
     def test_swift_foundations_are_an_ios_open_source_chapter_on_sparks(self):
         home=self.pages['index.html']
         work=self.pages['selected-work.html']
