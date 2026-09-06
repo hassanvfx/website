@@ -460,6 +460,19 @@ def generate_wwdc14_feature():
 '''
 
 
+def generate_ios_open_source_callout():
+    """Connect the homepage Apple feature to the Swift projects on Sparks."""
+    return f'''
+  <section class="ios-sparks-callout" aria-labelledby="ios-sparks-heading">
+    <div class="ios-sparks-callout-inner">
+      <h2 id="ios-sparks-heading">More Sparks</h2>
+      <p>Build on three open-source Swift tools: SwiftSPM for package scaffolding, DataStore for encrypted persistence, and WebViewSwiftUI for bringing web content into native apps.</p>
+      <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#ios-open-source">iOS &amp; Open Source Projects <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+'''
+
+
 def generate_swift_foundations():
     """Generate the dedicated iOS open-source chapter for Selected Work."""
     projects = []
@@ -832,7 +845,7 @@ def render_portfolio(page="home"):
 def generate_home_content():
     return (generate_hero() + generate_proof() + generate_selected_work_grid()
             + generate_clineflow_section() + generate_meme_arcade_callout()
-            + generate_wwdc14_feature() + generate_citations_section()
+            + generate_wwdc14_feature() + generate_ios_open_source_callout() + generate_citations_section()
             + generate_books_media()
             + generate_about() + generate_quote() + generate_recognition())
 

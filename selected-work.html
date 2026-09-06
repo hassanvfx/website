@@ -3725,6 +3725,13 @@ img { max-width: 100%; }
   .paper-chapter { padding: 56px 24px; }
   .paper-inner { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
+/* A compact bridge from Apple recognition to the open-source chapter. */
+.ios-sparks-callout { padding: 0 48px 64px; background: var(--ink); }
+.ios-sparks-callout-inner { max-width: 1224px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); background: linear-gradient(115deg, #10232c, #0d151d 75%); border-radius: 4px; }
+.ios-sparks-callout h2 { margin: 0 0 16px; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.2; }
+.ios-sparks-callout p { max-width: 760px; margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
+.ios-sparks-callout .home-tooling-link { max-width: 100%; }
+@media (max-width: 700px) { .ios-sparks-callout { padding: 0 24px 40px; } }
 .home-tooling-showcase { padding: 80px 48px; background: #080e14; }
 .home-tooling-inner { max-width: 1224px; margin: 0 auto; }
 .home-tooling-heading { max-width: 650px; margin: 0 0 48px; }
