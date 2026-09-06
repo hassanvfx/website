@@ -119,7 +119,7 @@ class SiteTests(unittest.TestCase):
         third_card = home.split('class="interview-card"')[3]
         self.assertIn('https://www.youtube.com/embed/jqs6dXF9wDU', center_card)
         self.assertIn('style="--video-ratio: 200 / 150"', center_card)
-        self.assertIn('https://player.vimeo.com/video/843495231', third_card)
+        self.assertIn('https://player.vimeo.com/video/843499496', third_card)
 
     def test_current_projects_follow_the_requested_sequence(self):
         work=self.pages['selected-work.html']
