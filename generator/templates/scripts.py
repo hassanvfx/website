@@ -261,6 +261,7 @@ INTERACTION_SCRIPT = r'''
     ['#clineflow', 'memory-flow', 'scan', 'slide', '96,222,242', 860, 18],
     ['#memearcade', 'arcade-pop', 'prism', 'scale', '197,145,255', 740, 20],
     ['#wwdc14', 'apple-spotlight', 'spotlight', 'scale', '218,235,245', 980, 12],
+    ['.home-tooling-showcase', 'swift-foundations', 'orbit', 'slide', '111,218,244', 940, 16],
     ['#citations', 'reference-stack', 'stack', 'settle', '166,173,234', 820, 14],
     ['#books', 'page-turn', 'page', 'slide', '215,207,189', 920, 16],
     ['.featured-book-section', 'reading-light', 'sweep', 'slide', '213,201,184', 880, 10],
@@ -302,7 +303,7 @@ INTERACTION_SCRIPT = r'''
     ['.featured-book-section, .signal-footer', 'chapter'],
     ['.section-header, .selected-work-gateway-inner > h2', 'type'],
     ['.stat-item, .selected-work-link, .book-card, .press-card, .citation-card, .citation-house-card, .interview-card, .innovation-card', 'block'],
-    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .clineflow-support, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
+    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .clineflow-support, .meme-arcade-inner, .wwdc14-inner, .home-tooling-project, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
   ];
   const seen = new WeakSet();
   const targets = new Map();

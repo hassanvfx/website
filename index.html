@@ -3689,6 +3689,32 @@ img { max-width: 100%; }
   .project-card, .project-card:nth-of-type(even) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "media" "copy"; gap: 0; }
   .project-card > .card-content { padding: 24px; }
 }
+.home-tooling-showcase { padding: 80px 48px; background: #080e14; }
+.home-tooling-inner { max-width: 1224px; margin: 0 auto; }
+.home-tooling-heading { max-width: 650px; margin: 0 0 48px; }
+.home-tooling-heading .eyebrow { display: block; margin-bottom: 16px; }
+.home-tooling-heading h2 { margin: 0 0 18px; color: var(--paper); font-size: clamp(2rem, 3.5vw, 3.3rem); font-weight: 400; line-height: 1.15; }
+.home-tooling-heading h2 em { color: var(--cyan); font-weight: 400; }
+.home-tooling-heading > p { margin: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+.home-tooling-project { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); grid-template-areas: "copy visual"; align-items: center; gap: clamp(32px, 6vw, 80px); padding: 40px 0; }
+.home-tooling-project + .home-tooling-project { margin-top: 16px; }
+.home-tooling-project--reverse { grid-template-areas: "visual copy"; }
+.home-tooling-copy { grid-area: copy; min-width: 0; }
+.home-tooling-eyebrow { display: block; margin-bottom: 16px; color: var(--cyan); font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.home-tooling-copy h3 { margin: 0 0 8px; color: var(--paper); font-family: Inter, sans-serif; font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 500; letter-spacing: -.04em; }
+.home-tooling-subtitle { margin: 0 0 18px; color: #c9d8e2; font-size: 1.08rem; }
+.home-tooling-description { margin: 0; color: var(--muted); line-height: 1.75; }
+.home-tooling-highlights { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 24px 0; padding: 0; list-style: none; color: #b9cbd8; font-size: .82rem; }
+.home-tooling-highlights li::before { content: '•'; margin-right: 8px; color: var(--cyan); }
+.home-tooling-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--cyan); font-size: .9rem; font-weight: 600; }
+.home-tooling-link span { font-size: 1.05rem; }
+.home-tooling-visual { grid-area: visual; overflow: hidden; background: #09131d; border-radius: 4px; box-shadow: 14px 20px 42px #0005; }
+.home-tooling-visual img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+@media (max-width: 700px) {
+  .home-tooling-showcase { padding: 56px 24px; }
+  .home-tooling-heading { margin-bottom: 28px; }
+  .home-tooling-project, .home-tooling-project--reverse { grid-template-columns: minmax(0, 1fr); grid-template-areas: "visual" "copy"; gap: 24px; padding: 32px 0; }
+}
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }
@@ -4293,6 +4319,43 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     </div>
   </section>
 
+  <section class="home-tooling-showcase" aria-labelledby="swift-foundations-title">
+    <div class="home-tooling-inner">
+      <div class="home-tooling-heading">
+        <span class="eyebrow">Open Source Foundations</span>
+        <h2 id="swift-foundations-title">Swift systems, built to <em>last.</em></h2>
+        <p>Two practical tools for turning an iOS idea into a maintainable package and durable product state.</p>
+      </div>
+
+      <article class="home-tooling-project" id="swift-spm">
+        <div class="home-tooling-copy">
+          <span class="home-tooling-eyebrow">Swift Package Manager</span>
+          <h3>SwiftSPM</h3>
+          <p class="home-tooling-subtitle">A custom SDK foundation in seconds</p>
+          <p class="home-tooling-description">An open-source configuration tool that clones and renames a Swift package, then pairs it with a linked demo app so framework changes are reflected immediately during development.</p>
+          <ul class="home-tooling-highlights"><li>Custom SDK scaffolding</li><li>Linked tandem demo app</li></ul>
+          <a href="https://github.com/hassanvfx/ios-framework" target="_blank" rel="noopener noreferrer" class="home-tooling-link">View on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="home-tooling-visual">
+          <img src="assets/swift-spm-hero.3b453a4053e2.webp" width="960" height="540" decoding="async" loading="lazy" alt="Abstract illustration of a modular Swift package connected to app windows" />
+        </div>
+      </article>
+      <article class="home-tooling-project home-tooling-project--reverse" id="datastore">
+        <div class="home-tooling-copy">
+          <span class="home-tooling-eyebrow">SwiftUI Persistence</span>
+          <h3>DataStore</h3>
+          <p class="home-tooling-subtitle">Encrypted state that stays out of the way</p>
+          <p class="home-tooling-description">An open-source Swift library that gives ObservableObject models persistence with configurable encryption, automatic background saving, and direct SwiftUI integration.</p>
+          <ul class="home-tooling-highlights"><li>Configurable encryption</li><li>Background persistence</li></ul>
+          <a href="https://github.com/hassanvfx/ios-storage" target="_blank" rel="noopener noreferrer" class="home-tooling-link">View on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="home-tooling-visual">
+          <img src="assets/datastore-hero.16d88c76700e.webp" width="960" height="540" decoding="async" loading="lazy" alt="Abstract illustration of secure encrypted data moving between a SwiftUI state model and storage" />
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section class="citations-section" id="citations">
     <div class="citations-inner">
       <div class="citations-intro">
@@ -4644,6 +4707,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     ['#clineflow', 'memory-flow', 'scan', 'slide', '96,222,242', 860, 18],
     ['#memearcade', 'arcade-pop', 'prism', 'scale', '197,145,255', 740, 20],
     ['#wwdc14', 'apple-spotlight', 'spotlight', 'scale', '218,235,245', 980, 12],
+    ['.home-tooling-showcase', 'swift-foundations', 'orbit', 'slide', '111,218,244', 940, 16],
     ['#citations', 'reference-stack', 'stack', 'settle', '166,173,234', 820, 14],
     ['#books', 'page-turn', 'page', 'slide', '215,207,189', 920, 16],
     ['.featured-book-section', 'reading-light', 'sweep', 'slide', '213,201,184', 880, 10],
@@ -4685,7 +4749,7 @@ html[data-reduced-motion="true"] :is(.section-header,.depth-rig,.work-orbit) { t
     ['.featured-book-section, .signal-footer', 'chapter'],
     ['.section-header, .selected-work-gateway-inner > h2', 'type'],
     ['.stat-item, .selected-work-link, .book-card, .press-card, .citation-card, .citation-house-card, .interview-card, .innovation-card', 'block'],
-    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .clineflow-support, .meme-arcade-inner, .wwdc14-inner, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
+    ['.work-index, .waken-inner, .impact-card, .project-card, .clineflow-installer-shell, .clineflow-support, .meme-arcade-inner, .wwdc14-inner, .home-tooling-project, .citations-intro, .professional-profile-inner, .featured-book-inner, .bio-content, .contact-callout, .footer-details', 'frame']
   ];
   const seen = new WeakSet();
   const targets = new Map();

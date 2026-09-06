@@ -15,7 +15,7 @@ from portfolio_data import (
     HISTORIC_COMPANIES, BOOKS, PRESS, PRESS_LOGOS, RECOGNITION, FILMOGRAPHY,
     INNOVATIONS,
     BIO, SECTION_QUOTES, CLINEFLOW, MEME_ARCADE, INTERVIEWS, WAKEN_AI, TWINCHAT_PAPER,
-    CITATIONS, FEATURED_BOOKS, WWDC14_FEATURE
+    CITATIONS, FEATURED_BOOKS, WWDC14_FEATURE, SWIFT_FOUNDATIONS
 )
 from templates.css import CSS_STYLES, COMPONENT_STYLES, SIGNAL_STYLES
 from templates.scripts import INTERACTION_SCRIPT, RESUME_SCRIPT
@@ -426,6 +426,40 @@ def generate_wwdc14_feature():
 '''
 
 
+def generate_swift_foundations():
+    """Generate the paired open-source Swift foundations on the home page."""
+    projects = []
+    for index, project in enumerate(SWIFT_FOUNDATIONS):
+        highlights = "".join(f'<li>{highlight}</li>' for highlight in project["highlights"])
+        reverse = " home-tooling-project--reverse" if index % 2 else ""
+        projects.append(f'''
+      <article class="home-tooling-project{reverse}" id="{project["id"]}">
+        <div class="home-tooling-copy">
+          <span class="home-tooling-eyebrow">{project["eyebrow"]}</span>
+          <h3>{project["title"]}</h3>
+          <p class="home-tooling-subtitle">{project["subtitle"]}</p>
+          <p class="home-tooling-description">{project["description"]}</p>
+          <ul class="home-tooling-highlights">{highlights}</ul>
+          <a href="{project["website"]}" target="_blank" rel="noopener noreferrer" class="home-tooling-link">View on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="home-tooling-visual">
+          <img {image_attributes(project["image"], loading="lazy")} alt="{escape(project["image_alt"], quote=True)}" />
+        </div>
+      </article>''')
+    return f'''
+  <section class="home-tooling-showcase" aria-labelledby="swift-foundations-title">
+    <div class="home-tooling-inner">
+      <div class="home-tooling-heading">
+        <span class="eyebrow">Open Source Foundations</span>
+        <h2 id="swift-foundations-title">Swift systems, built to <em>last.</em></h2>
+        <p>Two practical tools for turning an iOS idea into a maintainable package and durable product state.</p>
+      </div>
+      {"".join(projects)}
+    </div>
+  </section>
+'''
+
+
 def generate_citations_section():
     """Generate the AI Copyright Weights citations section."""
     additional_citations = "\n        ".join(
@@ -764,7 +798,7 @@ def render_portfolio(page="home"):
 def generate_home_content():
     return (generate_hero() + generate_proof() + generate_selected_work_grid()
             + generate_clineflow_section() + generate_meme_arcade_callout()
-            + generate_wwdc14_feature() + generate_citations_section()
+            + generate_wwdc14_feature() + generate_swift_foundations() + generate_citations_section()
             + generate_books_media()
             + generate_about() + generate_quote() + generate_recognition())
 

@@ -126,6 +126,15 @@ class SiteTests(unittest.TestCase):
         self.assertIn('$1.5B Valuation | 2026',work)
         self.assertIn('PR Newswire: $1.5B valuation',work)
         self.assertNotIn('Naomi Campbell Board Member | AI Fashion',work)
+    def test_swift_foundations_follow_wwdc_on_home(self):
+        home=self.pages['index.html']
+        self.assertLess(home.index('id="wwdc14"'),home.index('class="home-tooling-showcase"'))
+        self.assertLess(home.index('class="home-tooling-showcase"'),home.index('id="citations"'))
+        self.assertLess(home.index('id="swift-spm"'),home.index('id="datastore"'))
+        self.assertIn('href="https://github.com/hassanvfx/ios-framework"',home)
+        self.assertIn('href="https://github.com/hassanvfx/ios-storage"',home)
+        for image_key in ('swift-spm-hero','datastore-hero'):
+            self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],home)
     def test_sendkarma_is_not_rendered(self):
         for page in self.pages.values():
             self.assertNotIn('SendKarma',page)

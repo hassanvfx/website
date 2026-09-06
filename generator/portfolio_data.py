@@ -225,6 +225,32 @@ WWDC14_FEATURE = {
     "medium_url": "https://uriostegui.medium.com/the-time-apple-featured-my-app-at-wwdc14-a42dc4cd19bb?postPublishedType=initial"
 }
 
+# SWIFT OPEN-SOURCE FOUNDATIONS
+SWIFT_FOUNDATIONS = [
+    {
+        "id": "swift-spm",
+        "eyebrow": "Swift Package Manager",
+        "title": "SwiftSPM",
+        "subtitle": "A custom SDK foundation in seconds",
+        "description": "An open-source configuration tool that clones and renames a Swift package, then pairs it with a linked demo app so framework changes are reflected immediately during development.",
+        "highlights": ["Custom SDK scaffolding", "Linked tandem demo app"],
+        "website": "https://github.com/hassanvfx/ios-framework",
+        "image": "swift-spm-hero",
+        "image_alt": "Abstract illustration of a modular Swift package connected to app windows"
+    },
+    {
+        "id": "datastore",
+        "eyebrow": "SwiftUI Persistence",
+        "title": "DataStore",
+        "subtitle": "Encrypted state that stays out of the way",
+        "description": "An open-source Swift library that gives ObservableObject models persistence with configurable encryption, automatic background saving, and direct SwiftUI integration.",
+        "highlights": ["Configurable encryption", "Background persistence"],
+        "website": "https://github.com/hassanvfx/ios-storage",
+        "image": "datastore-hero",
+        "image_alt": "Abstract illustration of secure encrypted data moving between a SwiftUI state model and storage"
+    },
+]
+
 # CURRENT AI WORK (2022-2025)
 CURRENT_PROJECTS = [
     {
