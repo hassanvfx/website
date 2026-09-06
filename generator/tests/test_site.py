@@ -80,8 +80,8 @@ class SiteTests(unittest.TestCase):
         home=self.pages['index.html']
         header=home[home.index('<header'):home.index('</header>')]
         expected=[
-            ('Resume',generate.PROFILE_PAGE), ('AI coding','#clineflow'),
-            ('Apps','#memearcade'), ('Citations','#citations'), ('Books','#books'),
+            ('Resume',generate.PROFILE_PAGE), ('Agentic AI','#clineflow'),
+            ('Mobile Apps','#memearcade'), ('Citations','#citations'), ('Books','#books'),
             ('Press','#press'), ('Sparks',f'{generate.SELECTED_WORK_PAGE}#selected-work'),
         ]
         positions=[header.index(f'href="{href}">{label}') for label,href in expected]
