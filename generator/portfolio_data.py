@@ -5,7 +5,7 @@ Portfolio Data - Impact First Structure
 # Core Identity
 IDENTITY = {
     "name": "Hassan Uriostegui",
-    "status": "AI-Native Principal Engineer · EB-1A Extraordinary Ability",
+    "status": "AI-Native Principal Engineer · Founder · EB-1A Extraordinary Ability",
     "title": "Principal Engineer · Founder · Author",
     "email": "hassan.uriostegui@gmail.com",
     "portrait": "portrait",
@@ -269,6 +269,7 @@ CURRENT_PROJECTS = [
         "year": "2020-2022",
         "description": "An early exploration of cognitive profiling, durable memory, and conversational AI companions that informed later BTwin Friends work.",
         "stats": "AI Persona & Memory Systems",
+        "press_release": "https://www.newswire.com/news/brb2mes-ai-friends-pioneer-the-future-of-the-1b-emotional-wellness-22318265",
         "videos": [
             {"url": "https://player.vimeo.com/video/913284078?h=82df73027a", "title": "BRB2Me Demo"},
         ],
@@ -335,7 +336,7 @@ CURRENT_PROJECTS = [
             {"url": "https://player.vimeo.com/video/825294756", "title": "TwinChat AI Conversations"},
             {"url": "https://player.vimeo.com/video/824932537", "title": "TwinChat Features"},
         ],
-        "quote": "Unlocking VIP Celebrity conversations through AI."
+        "quote": "An exploration of profile-guided conversational interfaces."
     },
 ]
 
@@ -388,14 +389,14 @@ AI_PRODUCT_SHOTS = {
 # WAKEN AI LABS - Featured Callout
 WAKEN_AI = {
     "name": "Waken AI",
-    "tagline": "A New Lux — Elevating The Human Mind",
-    "subtitle": "Mind Simulation Technology for Emotional Wellness",
-    "description": "Waken AI Labs is Hassan’s ongoing research into artificial consciousness and mind simulation. From BTwin Friends to TwinChat and MST, the work explores AI, emotional wellness, and conversational companions.",
+    "tagline": "Researching Reflective AI Systems",
+    "subtitle": "Context, Profiles, and Conversation for Emotional-Wellness Research",
+    "description": "Waken AI Labs explores how structured personal context, memory, and conversational interfaces can support reflective experiences. The work connects BTwin Friends, TwinChat, and Mind Simulation Technology research.",
     "logo": "waken-ai-logo",
     "video": "https://player.vimeo.com/video/960460813",
     "website": "https://www.wakenai.com/",
-    "quote": "Our AI delves into the human essence, giving voice to silent thoughts.",
-    "positioning": "Mind Simulation Technology research for emotional wellness and personal growth since 2020."
+    "quote": "A research program for conversational systems that represent personal context with care.",
+    "positioning": "Research into conversational context, profile representation, and emotional-wellness interfaces since 2020."
 }
 
 # AI COPYRIGHT WEIGHTS - CITATIONS
@@ -477,21 +478,21 @@ CITATIONS = {
 # TWINCHAT PAPER - Research Publication
 TWINCHAT_PAPER = {
     "name": "TwinChat Paper",
-    "tagline": "AI Mind Simulation Research",
-    "subtitle": "Open Source Research on Cognitive Profiling & Digital Twins",
+    "tagline": "Research on Contextual Conversational Systems",
+    "subtitle": "Technical Notes on Profiles, Memory, and Digital-Twin Interfaces",
     "logo": "github-logo",
-    "description": "The TwinChat Paper documents the theoretical foundations and technical implementation of Mind Simulation Technology (MST). This research explores how AI can create accurate cognitive profiles for conversational simulations, enabling emotionally responsive digital companions.",
+    "description": "The TwinChat Paper documents concepts and prototype implementations for structured cognitive profiles, conversation state, and digital-twin interfaces. It examines system boundaries, design trade-offs, and responsible use in conversational AI.",
     "features": [
-        "Cognitive profiling methodology",
-        "Digital twin creation framework",
-        "Conversational AI architecture",
-        "Personality simulation techniques",
-        "Ethical guidelines for AI companions"
+        "Structured profile design",
+        "Conversation-state modeling",
+        "Agent and interface architecture",
+        "Persona representation techniques",
+        "Responsible companion design"
     ],
     "github": "https://hassanvfx.github.io/twinchat-paper/",
     "stars": "📄 Research Publication",
-    "quote": "Understanding human cognition through the lens of artificial intelligence opens new frontiers in emotional wellness and therapeutic applications.",
-    "positioning": "The scientific foundation behind BTwin Friends, TwinChat, and Waken AI Labs."
+    "quote": "Digital personas are a systems-design problem: context, representation, interaction, and clear boundaries all matter.",
+    "positioning": "A research foundation for experiments that later informed BTwin Friends, TwinChat, and Waken AI Labs."
 }
 
 # CLINEFLOW - Featured Hero Project
@@ -525,7 +526,7 @@ INNOVATIONS = [
         "name": "Maxwell Lux",
         "year": "2020",
         "tagline": "Bootstrap for SwiftUI",
-        "description": "First Universal Design System for iOS and macOS. Presented at WWDC20 Labs. Approved for Apple Silicon early access program.",
+        "description": "A SwiftUI design-system prototype for iOS and macOS, shared through WWDC20 Labs and Apple Silicon early-access work.",
         "video": "https://player.vimeo.com/video/435053200"
     },
     {
@@ -541,7 +542,7 @@ INNOVATIONS = [
         "name": "Cinekolor",
         "year": "2014",
         "tagline": "Professional Mobile Color Grading · 2014",
-        "description": "Professional 3-stage color correction with 3D LUT export for film production. Featured by Apple worldwide.",
+        "description": "A mobile color-grading workflow with three-stage correction and 3D LUT export for film production. Featured by Apple.",
         "video": "https://www.youtube.com/embed/g722kzRyzPo"
     },
     {
@@ -557,7 +558,7 @@ INNOVATIONS = [
         "name": "Tron Legacy AR Engine",
         "year": "2010",
         "tagline": "Production AR Engine · 2010",
-        "description": "Built a high-performance augmented-reality engine for Disney’s Tron Legacy marketing before modern mobile AR frameworks were available.",
+        "description": "Built an augmented-reality engine for Disney’s Tron Legacy marketing before modern mobile AR frameworks were available.",
         "video": "https://www.youtube.com/embed/YXglHq-JJYI"
     },
     {
