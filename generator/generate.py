@@ -399,7 +399,7 @@ def generate_clineflow_section():
           <p>A filesystem-native knowledge layer that travels with the repository, evolves through version control, and stays usable across agents and collaborators.</p>
         </div>
         <div class="clineflow-installer-panel">
-          <p>Try the agentic installer</p>
+          <p>Run this in your project folder with your favorite AI coding agent</p>
           <div class="clineflow-prompt-wrap">
             <code id="clineflow-installer-prompt">{CLINEFLOW["installer_prompt"]}</code>
             <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span>
