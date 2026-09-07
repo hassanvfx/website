@@ -250,6 +250,8 @@ INTERACTION_SCRIPT = r'''
   if (!document.getElementById('professional-profile') && location.hash === '#professional-profile') {
     location.replace('profile.html');
   }
+  const earlyInnovations = document.getElementById('research');
+  if (earlyInnovations && location.hash === '#research') earlyInnovations.open = true;
 
   if (!document.getElementById('eb1a') && location.hash === '#eb1a') {
     location.replace('profile.html#eb1a');
