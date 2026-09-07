@@ -4447,7 +4447,7 @@ SIGNAL_STYLES += r'''
   #books .featured-book-actions { justify-content: flex-start; }
 }
 @media (max-width: 700px) {
-  #books .featured-book-cover-link { max-width: 280px; }
+  #books .featured-book-cover-link { max-width: none; }
   #books .featured-book-copy h2 { font-size: clamp(1.65rem, 6.5vw, 2rem); }
   #books .featured-book-cta { justify-content: center; width: 100%; }
   #books .featured-book-section { padding-bottom: 40px; }
