@@ -316,6 +316,8 @@ INTERACTION_SCRIPT = r'''
   const targets = new Map();
   selectors.forEach(([selector, kind]) => {
     document.querySelectorAll(selector).forEach((element, index) => {
+      // These three bridges have reversible scroll-driven motion of their own.
+      if (element.querySelector('[data-sparks-bridge]')) return;
       const scene = sceneRoots.get(element.closest('[data-scene-root]')) || defaultScene;
       const direction = index % 2 ? -1 : 1;
       targets.set(element, { kind, scene, direction, delay: (index % 3) * 65 });
@@ -489,6 +491,102 @@ INTERACTION_SCRIPT = r'''
     }, { passive: true });
     stage.addEventListener('pointerleave', resetDepth, { passive: true });
     fineQuery.addEventListener('change', resetDepth);
+  }
+
+  // Motion 12.23.24 is vendored locally and loaded once, only near a Sparks bridge.
+  // Keep native scrolling/link hit areas fixed; animate only copy and artwork.
+  const bridges = [...document.querySelectorAll('[data-sparks-bridge]')].map(element => ({
+    element, visible: false, cancel: null,
+    copy: [...element.querySelectorAll('.sparks-bridge-kicker, .sparks-callout-title, p')],
+    layers: [...element.querySelectorAll('.sparks-bridge-art > span')]
+  }));
+  let motionLoading = false;
+  let motionFailed = false;
+  function clearBridge(record) {
+    if (record.cancel) record.cancel();
+    record.cancel = null;
+    [...record.copy, ...record.layers].forEach(el => {
+      el.style.removeProperty('transform'); el.style.removeProperty('opacity');
+    });
+    record.element.dataset.bridgeMotion = 'static';
+  }
+  function renderBridge(record, progress) {
+    const mobile = compactQuery.matches || !fineQuery.matches;
+    const p = Math.max(0, Math.min(1, progress));
+    // Short reveals at the viewport edges; a long readable plateau in between.
+    const edge = mobile ? .12 : .2;
+    const reveal = Math.min(1, p / edge, (1 - p) / edge);
+    const direction = p < .5 ? 1 : -1;
+    record.copy.forEach((el, i) => {
+      el.style.opacity = String(.35 + .65 * reveal);
+      el.style.transform = `translateY(${direction * (1 - reveal) * (mobile ? 8 : 20 + i * 6)}px)`;
+    });
+    const t = (p - .5) * 2;
+    const travel = mobile ? .55 : 1;
+    const kind = record.element.dataset.sparksBridge;
+    let transforms;
+    if (kind === 'ai') {
+      transforms = [
+        `rotate(${t * 70 - 35}deg) scale(1.4, .8)`,
+        `rotate(${-t * 70 - 35}deg) scale(.8, 1.4)`,
+        `translateY(${-t * 22 * travel}px) rotateY(${t * 22}deg) scale(${.9 + reveal * .1})`
+      ];
+    } else if (kind === 'ios') {
+      transforms = [
+        `translate(${-22 - t * 28 * travel}px, ${12 + t * 18 * travel}px) rotate(${-14 - t * 18}deg)`,
+        `translate(${18 + t * 28 * travel}px, ${-14 - t * 18 * travel}px) rotate(${12 + t * 18}deg)`,
+        `translateY(${-t * 16 * travel}px) rotateY(${t * 26}deg)`
+      ];
+    } else {
+      transforms = [
+        `translate(${18 + t * 24 * travel}px, ${-12 - t * 16 * travel}px) rotate(${12 + t * 25}deg)`,
+        `translate(${-16 - t * 24 * travel}px, ${10 + t * 16 * travel}px) rotate(${-12 - t * 25}deg)`,
+        `rotate(${-4 + t * 12}deg) rotateY(${t * 20}deg)`
+      ];
+    }
+    record.layers.forEach((el, i) => {
+      el.style.transform = transforms[i];
+      el.style.opacity = String((i === 2 ? 1 : .12) * (.25 + .75 * reveal));
+    });
+  }
+  function syncBridges() {
+    bridges.forEach(record => {
+      const active = record.visible && !stopped() && !record.element.contains(document.activeElement);
+      if (!active) { clearBridge(record); return; }
+      if (record.cancel || motionFailed) return;
+      if (!window.Motion?.scroll) {
+        if (motionLoading) return;
+        motionLoading = true;
+        const script = document.createElement('script');
+        script.src = 'assets/vendor/motion-12.23.24.js'; script.async = true;
+        script.onload = () => { motionFailed = !window.Motion?.scroll; syncBridges(); };
+        script.onerror = () => { motionFailed = true; bridges.forEach(clearBridge); };
+        document.head.appendChild(script);
+        return;
+      }
+      try {
+        record.cancel = window.Motion.scroll(progress => renderBridge(record, progress), {
+          target: record.element, offset: ['start end', 'end start']
+        });
+        record.element.dataset.bridgeMotion = 'scroll';
+      } catch (_) { motionFailed = true; bridges.forEach(clearBridge); }
+    });
+  }
+  if (bridges.length && 'IntersectionObserver' in window) {
+    const bridgeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const record = bridges.find(item => item.element === entry.target);
+        record.visible = entry.isIntersecting;
+      });
+      syncBridges();
+    }, { rootMargin: '120px 0px' });
+    bridges.forEach(record => bridgeObserver.observe(record.element));
+    playbackSubscribers.push(syncBridges);
+    document.addEventListener('focusin', syncBridges);
+    document.addEventListener('focusout', () => queueMicrotask(syncBridges));
+    compactQuery.addEventListener('change', () => { bridges.forEach(clearBridge); syncBridges(); });
+    fineQuery.addEventListener('change', () => { bridges.forEach(clearBridge); syncBridges(); });
+    window.addEventListener('pagehide', () => bridges.forEach(clearBridge));
   }
 
   // The press strip shares the same visibility and motion policy as entrances.

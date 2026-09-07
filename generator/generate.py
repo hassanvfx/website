@@ -528,7 +528,7 @@ def generate_ios_open_source_callout():
     """Connect the homepage Apple feature to the Swift projects on Sparks."""
     return f'''
   <section class="ios-sparks-callout" aria-labelledby="ios-sparks-heading">
-    <div class="ios-sparks-callout-inner">
+    <div class="ios-sparks-callout-inner" data-sparks-bridge="ios">
       <span class="sparks-bridge-kicker">Build native</span>
       <h2 id="ios-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">{sparks_icon("ios-open-source")}</span>More iOS Sparks</h2>
       <p>Build on three open-source Swift tools: SwiftSPM for package scaffolding, DataStore for encrypted persistence, and WebViewSwiftUI for bringing web content into native apps.</p>
@@ -543,7 +543,7 @@ def generate_ai_sparks_callout():
     """Bridge ClineFlow to the wider AI work on the Sparks page."""
     return f'''
   <section class="ai-sparks-callout" aria-labelledby="ai-sparks-heading">
-    <div class="ai-sparks-callout-inner">
+    <div class="ai-sparks-callout-inner" data-sparks-bridge="ai">
       <span class="sparks-bridge-kicker">Explore intelligent systems</span>
       <h2 id="ai-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">{sparks_icon("work")}</span>More AI Sparks</h2>
       <p>Explore agentic products, AI context systems, and prompt engineering experiments across the Sparks portfolio.</p>
@@ -558,7 +558,7 @@ def generate_technical_writing_callout():
     """Bridge published books to the longer technical articles on Sparks."""
     return f'''
   <section class="writing-sparks-callout" aria-labelledby="writing-sparks-heading">
-    <div class="writing-sparks-callout-inner">
+    <div class="writing-sparks-callout-inner" data-sparks-bridge="writing">
       <span class="sparks-bridge-kicker">Read the field notes</span>
       <h2 id="writing-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">{sparks_icon("technical-writing")}</span>More Technical Writing</h2>
       <p>Read practical notes from building AI systems, Swift tools, and creative workflows—shared to make the decisions, trade-offs, and lessons reusable.</p>
@@ -693,14 +693,18 @@ def generate_featured_book(book):
   <section class="featured-book-section featured-book-section--{book["layout"]}">
     <div class="featured-book-inner">
       <div class="featured-book-copy">
+        <div class="featured-book-heading">
         <span class="featured-book-eyebrow">{book["eyebrow"]}</span>
         <h2>{book["title"]}</h2>
+        </div>
+        <div class="featured-book-details">
         <p class="featured-book-subtitle">{book["subtitle"]}</p>
         <p class="featured-book-description">{book["description"]}</p>
         {actions_html}
+        </div>
       </div>
       <a href="{book["url"]}" target="_blank" rel="noopener noreferrer" class="featured-book-cover-link">
-        <img {image_attributes(book["image"], loading="lazy", sizes="(max-width: 800px) calc(100vw - 128px), (max-width: 1320px) calc((100vw - 280px) / 2), 520px")} alt="{book["image_alt"]}" class="featured-book-cover" />
+        <img {image_attributes(book["image"], loading="lazy", sizes="(max-width: 700px) min(280px, calc(100vw - 48px)), (max-width: 900px) 320px, (max-width: 1200px) 36vw, 440px")} alt="{book["image_alt"]}" class="featured-book-cover" />
       </a>
     </div>
   </section>
