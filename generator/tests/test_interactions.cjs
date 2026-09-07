@@ -19,7 +19,7 @@ class Node {
   contains(n) { return n===this; }
   animate(frames,options) { this.animationCount=(this.animationCount??0)+1; const a={frames,options,state:'running',pause(){this.state='paused'},play(){this.state='running'},cancel(){this.state='cancelled'}}; this.lastAnimation=a; return a; }
 }
-function setup({systemReduced=false,storageFails=false,scene=null}={}) {
+function setup({systemReduced=false,storageFails=false,scene=null,bridgeKind=null,libraryReady=true}={}) {
   const doc=new Node('document');doc.createElement=()=>new Node();doc.documentElement=new Node('root');doc.body=new Node('body');doc.hidden=false;doc.activeElement=null;
   const toggle=new Node('motion');const chapter=new Node('chapter');const carousel=new Node('carousel');const pause=new Node('pause');const prev=new Node('prev');const next=new Node('next');const position=new Node('position');const status=new Node('status');const gallery=new Node('gallery');
   const slides=Array.from({length:3},(_,i)=>{const n=new Node('slide'+i);n.queries.figcaption=new Node();n.queries.figcaption.textContent='Screen '+(i+1);return n});
@@ -28,19 +28,56 @@ function setup({systemReduced=false,storageFails=false,scene=null}={}) {
   carousel.lists={'.meme-arcade-screen-card':slides,'.carousel-dot':dots};
   doc.queries['.meme-carousel']=carousel;
   doc.lists['main > section']=[chapter];
+  const bridge = new Node('bridge'); bridge.dataset.sparksBridge=bridgeKind;
+  const bridgeCopy = [new Node('kicker'),new Node('heading'),new Node('blurb')];
+  const bridgeLayers = [new Node('back'),new Node('middle'),new Node('front')];
+  bridge.lists['.sparks-bridge-kicker, .sparks-callout-title, p']=bridgeCopy;
+  bridge.lists['.sparks-bridge-art > span']=bridgeLayers;
+  if(bridgeKind){doc.lists['[data-sparks-bridge]']=[bridge];chapter.queries['[data-sparks-bridge]']=bridge}
+  doc.head=new Node('head');
   if(scene){chapter.sceneRoot=chapter;doc.lists[scene]=[chapter]}
   doc.getElementById=id=>id==='motion-toggle'?toggle:null;
   const queries=new Map();function matchMedia(q){if(!queries.has(q)){const m=new Node(q);m.matches=q.includes('prefers-reduced')?systemReduced:q.includes('hover: hover');queries.set(q,m)}return queries.get(q)}
   const observers=[];class IO{constructor(callback){this.callback=callback;this.targets=new Set();observers.push(this)}observe(el){this.targets.add(el)}unobserve(el){this.targets.delete(el)}disconnect(){this.targets.clear()}}
   const timers=new Map();let timerID=0;
   const win=new Node('window');win.IntersectionObserver=IO;win.scrollY=0;win.innerHeight=900;const frames=new Map();let frameID=0;
+  const scrollCallbacks=new Set();
+  if(libraryReady) win.Motion={scroll(callback,options){assert.deepEqual(Array.from(options.offset),['start end','end start']);scrollCallbacks.add(callback);return ()=>scrollCallbacks.delete(callback)}};
   let time=0;
   const context={performance:{now:()=>time},document:doc,window:win,Element:Node,IntersectionObserver:IO,matchMedia,localStorage:{getItem(){if(storageFails)throw Error('blocked');return null},setItem(){if(storageFails)throw Error('blocked')}},location:{hash:'',pathname:'/',replace(){}},URL,navigator:{},requestAnimationFrame:fn=>{frames.set(++frameID,fn);return frameID},cancelAnimationFrame:id=>frames.delete(id),setTimeout:(fn,ms)=>{timers.set(++timerID,{fn,ms});return timerID},clearTimeout:id=>timers.delete(id),console};
   vm.runInNewContext(source,context);
   function visible(el,state){for(const o of observers)if(o.targets.has(el))o.callback([{target:el,isIntersecting:state}])}
-  return {observers,reinitialize(){vm.runInNewContext(source,context)},doc,toggle,chapter,carousel,pause,prev,next,position,status,slides,dots,timers,queries,visible,win,frames,advance(ms){time+=ms},flush(){const pending=[...frames.values()];frames.clear();pending.forEach(fn=>fn())}};
+  return {bridge,bridgeCopy,bridgeLayers,scrollCallbacks,observers,reinitialize(){vm.runInNewContext(source,context)},doc,toggle,chapter,carousel,pause,prev,next,position,status,slides,dots,timers,queries,visible,win,frames,advance(ms){time+=ms},flush(){const pending=[...frames.values()];frames.clear();pending.forEach(fn=>fn())}};
 }
 const tests=[];function test(name,fn){fn();tests.push(name);console.log('PASS',name)}
+test('Sparks reveals reverse with scroll and keep a fully readable middle',()=>{
+ for(const kind of ['ai','ios','writing']) {
+  const t=setup({bridgeKind:kind});t.visible(t.bridge,true);
+  assert.equal(t.scrollCallbacks.size,1);const render=[...t.scrollCallbacks][0];
+  render(.05);const entrance=t.bridgeLayers[0].style.transform;assert.ok(+t.bridgeCopy[0].style.opacity<1);
+  render(.5);assert.equal(t.bridgeCopy[0].style.opacity,'1');
+  render(.95);assert.ok(+t.bridgeCopy[0].style.opacity<1);assert.notEqual(t.bridgeLayers[0].style.transform,entrance);
+  render(.05);assert.equal(t.bridgeLayers[0].style.transform,entrance);
+  t.visible(t.chapter,true);assert.equal(t.chapter.lastAnimation,undefined);
+ }
+});
+test('Sparks cleanup covers offscreen, hidden tab, keyboard focus, and reduced motion',()=>{
+ const t=setup({bridgeKind:'ai'});t.visible(t.bridge,true);[...t.scrollCallbacks][0](.1);
+ t.doc.hidden=true;t.doc.fire('visibilitychange');assert.equal(t.scrollCallbacks.size,0);assert.equal(t.bridgeCopy[0].style.opacity,undefined);
+ t.doc.hidden=false;t.doc.fire('visibilitychange');assert.equal(t.scrollCallbacks.size,1);
+ t.doc.activeElement=t.bridge;t.doc.fire('focusin',{target:t.bridge});assert.equal(t.scrollCallbacks.size,0);
+ t.doc.activeElement=null;t.doc.fire('focusin',{target:t.chapter});assert.equal(t.scrollCallbacks.size,1);
+ t.visible(t.bridge,false);assert.equal(t.scrollCallbacks.size,0);t.visible(t.bridge,true);
+ t.toggle.fire('click');assert.equal(t.scrollCallbacks.size,0);assert.equal(t.bridgeLayers[0].style.transform,undefined);
+ t.toggle.fire('click');assert.equal(t.scrollCallbacks.size,1);t.reinitialize();assert.equal(t.scrollCallbacks.size,1);
+});
+test('Sparks library loads once near content and fails to readable native links',()=>{
+ const t=setup({bridgeKind:'writing',libraryReady:false});assert.equal(t.doc.head.children,undefined);
+ t.visible(t.bridge,true);t.visible(t.bridge,true);assert.equal(t.doc.head.children.length,1);
+ t.doc.head.children[0].onerror();t.visible(t.bridge,false);t.visible(t.bridge,true);
+ assert.equal(t.doc.head.children.length,1);assert.equal(t.bridge.dataset.bridgeMotion,'static');
+ const reduced=setup({bridgeKind:'ios',libraryReady:false,systemReduced:true});reduced.visible(reduced.bridge,true);assert.equal(reduced.doc.head.children,undefined);
+});
 test('Autoplay waits for visibility, advances every 3000ms, and stops on interaction',()=>{
  const t=setup();assert.equal(t.timers.size,0);t.visible(t.carousel,true);assert.equal(t.carousel.dataset.autoplay,'playing');assert.equal([...t.timers.values()][0].ms,3000);
  [...t.timers.values()][0].fn();assert.equal(t.position.textContent,'2 / 3');assert.equal(t.slides.filter(s=>!s.hidden).length,1);
