@@ -529,9 +529,11 @@ def generate_ios_open_source_callout():
     return f'''
   <section class="ios-sparks-callout" aria-labelledby="ios-sparks-heading">
     <div class="ios-sparks-callout-inner">
+      <span class="sparks-bridge-kicker">Build native</span>
       <h2 id="ios-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">{sparks_icon("ios-open-source")}</span>More iOS Sparks</h2>
       <p>Build on three open-source Swift tools: SwiftSPM for package scaffolding, DataStore for encrypted persistence, and WebViewSwiftUI for bringing web content into native apps.</p>
       <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#ios-open-source">More iOS Sparks <span aria-hidden="true">→</span></a>
+      <div class="sparks-bridge-art sparks-bridge-art--ios" aria-hidden="true"><span></span><span></span><span>{sparks_icon('ios-open-source')}</span></div>
     </div>
   </section>
 '''
@@ -542,9 +544,11 @@ def generate_ai_sparks_callout():
     return f'''
   <section class="ai-sparks-callout" aria-labelledby="ai-sparks-heading">
     <div class="ai-sparks-callout-inner">
+      <span class="sparks-bridge-kicker">Explore intelligent systems</span>
       <h2 id="ai-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">{sparks_icon("work")}</span>More AI Sparks</h2>
       <p>Explore agentic products, AI context systems, and prompt engineering experiments across the Sparks portfolio.</p>
       <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#work">More AI Sparks <span aria-hidden="true">→</span></a>
+      <div class="sparks-bridge-art sparks-bridge-art--ai" aria-hidden="true"><span></span><span></span><span>{sparks_icon('work')}</span></div>
     </div>
   </section>
 '''
@@ -555,9 +559,11 @@ def generate_technical_writing_callout():
     return f'''
   <section class="writing-sparks-callout" aria-labelledby="writing-sparks-heading">
     <div class="writing-sparks-callout-inner">
+      <span class="sparks-bridge-kicker">Read the field notes</span>
       <h2 id="writing-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">{sparks_icon("technical-writing")}</span>More Technical Writing</h2>
       <p>Read practical notes from building AI systems, Swift tools, and creative workflows—shared to make the decisions, trade-offs, and lessons reusable.</p>
       <a class="home-tooling-link" href="{SELECTED_WORK_PAGE}#technical-writing">More Technical Writing <span aria-hidden="true">→</span></a>
+      <div class="sparks-bridge-art sparks-bridge-art--writing" aria-hidden="true"><span></span><span></span><span>{sparks_icon('technical-writing')}</span></div>
     </div>
   </section>
 '''
