@@ -3773,10 +3773,10 @@ img { max-width: 100%; }
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }
-.clineflow-installer-shell { max-width: 1224px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; overflow: visible;  background: transparent; box-shadow: none; }
-.clineflow-installer-hero { order: 2; position: relative;  border-radius: 4px; box-shadow: 12px 18px 38px #0006; }
+.clineflow-installer-shell { max-width: 1224px; margin: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: center; overflow: visible;  background: transparent; box-shadow: none; }
+.clineflow-installer-hero { order: 0; margin: 0; position: relative;  border-radius: 4px; box-shadow: 12px 18px 38px #0006; }
 .clineflow-installer-hero img { width: 100%; height: auto; display: block; }
-.clineflow-installer-inner { padding: 0; text-align: left; min-width: 0; }
+.clineflow-installer-inner { order: 1; padding: 0; text-align: left; min-width: 0; max-width: 900px; margin-inline: auto; }
 .clineflow-installer-inner h3 { font-size: clamp(2rem,3.1vw,3rem); line-height: 1.2; letter-spacing: -.025em; margin: 20px 0 28px; }
 .clineflow-installer-inner h3 span { color: var(--cyan); }
 .clineflow-wordmark { font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; }
@@ -3902,9 +3902,7 @@ html[data-reduced-motion="true"] { scroll-behavior: auto; }
   .selected-work-grid { grid-template-columns: 1fr; }
   .selected-work-link { min-height: 68px; padding: 18px 20px; }
   .clineflow-installer-shell { grid-template-columns: 1fr; gap: 32px; }
-  .clineflow-installer-inner { order: 0; }
-  .clineflow-support { order: 1; }
-  .clineflow-installer-hero { order: 2; margin: 0 8px 8px 0; }
+  .clineflow-installer-hero { margin: 0; }
   .clineflow-installer-panel { padding: 18px; }
   .clineflow-installer-inner h3 { font-size: 2rem; }
   .section-header { margin-bottom: 32px; }
