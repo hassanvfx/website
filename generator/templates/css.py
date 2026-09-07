@@ -4403,7 +4403,7 @@ SIGNAL_STYLES += r'''
 }
 .ai-sparks-callout-inner { --bridge-accent: #f5b7df; --bridge-light: #bb69bc; background: radial-gradient(ellipse at 100% 50%, #67336766, transparent 65%), linear-gradient(120deg, #271735, #191126); }
 .ios-sparks-callout-inner { --bridge-accent: #d0c2ff; --bridge-light: #8b7bed; background: radial-gradient(ellipse at 95% 30%, #6d5cdf55, transparent 60%), linear-gradient(120deg, #1c1b3c, #141429); }
-.writing-sparks-callout-inner { --bridge-accent: #ffcfab; --bridge-light: #cb9268; background: radial-gradient(ellipse at 95% 70%, #ad6d3c44, transparent 60%), linear-gradient(120deg, #302225, #1d171f); }
+.writing-sparks-callout-inner { --bridge-accent: #8de8f3; --bridge-light: #37aeba; background: radial-gradient(ellipse at 95% 70%, #248b9b4d, transparent 60%), linear-gradient(120deg, #102d38, #0b1924); }
 .sparks-bridge-kicker { display: block; color: var(--bridge-accent); font: 600 .68rem/1.5 var(--font-sans); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 24px; }
 .ai-sparks-callout .sparks-callout-title, .ios-sparks-callout .sparks-callout-title, .writing-sparks-callout .sparks-callout-title { font-size: clamp(1.7rem, 2.8vw, 2.55rem); font-weight: 500; letter-spacing: -.035em; align-items: flex-start; }
 .ai-sparks-callout p, .ios-sparks-callout p, .writing-sparks-callout p { color: #d1c8d8; max-width: 58ch; }
