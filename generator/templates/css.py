@@ -1462,6 +1462,7 @@ nav a:hover {
   padding-left: 1rem;
   margin: 1rem 0;
 }
+.project-card-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
 /* Innovation Cards */
 .innovation-grid {

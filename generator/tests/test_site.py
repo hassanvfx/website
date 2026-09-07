@@ -157,8 +157,19 @@ class SiteTests(unittest.TestCase):
         for image_key in ('newsmusic-hero','lyrics-refiner-hero','kie-api-hero'):
             self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],work)
         self.assertIn('View on GitHub',work)
+        self.assertIn('href="https://www.newswire.com/news/brb2mes-ai-friends-pioneer-the-future-of-the-1b-emotional-wellness-22318265"', work)
+        self.assertIn('View Press Release', work)
         self.assertIn('An early exploration of cognitive profiling and conversational AI companions.',work)
         self.assertNotIn('The predecessor to modern AI mind simulation.',work)
+
+    def test_agentic_language_and_research_copy_are_consistent(self):
+        home = self.pages['index.html']
+        work = self.pages['selected-work.html']
+        self.assertIn('Works across major agentic AI tools.', home)
+        self.assertNotIn('AI coding agents', home)
+        self.assertIn('Researching Reflective AI Systems', work)
+        self.assertIn('Research on Contextual Conversational Systems', work)
+        self.assertNotIn('Unlocking VIP Celebrity conversations through AI.', work)
     def test_spreeai_valuation_and_coverage(self):
         work=self.pages['selected-work.html']
         self.assertIn('$1.5B Valuation · 2026',work)

@@ -30,7 +30,7 @@ SITE_LAST_MODIFIED = "2026-09-06"
 SELECTED_WORK_SECTION_IDS = {"selected-work", "impact", "work", "ios-open-source", "technical-writing", "waken", "twinchat-paper", "research", "filmography", "casual-books"}
 PROFILE_SECTION_IDS = {"press", "interviews"}
 HOME_CHAPTERS = {
-    "clineflow": ("Agentic AI", "work", "Durable context and tools for building with AI agents."),
+    "clineflow": ("Agentic AI", "work", "Durable context and tools for building agentic AI systems."),
     "memearcade": ("Mobile Apps", "ios-open-source", "Native experiences, playful products, and the engineering behind them."),
     "citations": ("Citations", "technical-writing", "Research recognized in government, legal, and academic discussions."),
     "books": ("Books", "casual-books", "Practical guides to AI systems, persistent context, and mobile architecture."),
@@ -389,17 +389,17 @@ def generate_clineflow_section():
     {generate_home_chapter_heading('clineflow')}
     <div class="clineflow-installer-shell">
       <figure class="clineflow-hero clineflow-installer-hero">
-        <img {image_attributes("clineflow-hero", loading="lazy")} alt="Persistent Context, Open Knowledge — ClineFlow AI coding memory now native OKE" />
+        <img {image_attributes("clineflow-hero", loading="lazy")} alt="Persistent Context, Open Knowledge — ClineFlow durable memory for agentic AI" />
       </figure>
       <div class="clineflow-installer-inner">
         <a href="{CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="clineflow-wordmark">Creator of {CLINEFLOW["name"]}</a>
         <h3><span>Infinite AI Memory</span> across chats, agents and collaborators.</h3>
         <div class="clineflow-explainer">
-          <p>ClineFlow gives AI coding agents durable project memory using open files instead of vendor-locked databases.</p>
+          <p>ClineFlow gives agentic AI systems durable project memory using open files instead of vendor-locked databases.</p>
           <p>A filesystem-native knowledge layer that travels with the repository, evolves through version control, and stays usable across agents and collaborators.</p>
         </div>
         <div class="clineflow-installer-panel">
-          <p>Run this in your project folder with your favorite AI coding agent</p>
+          <p>Run this in your project folder with your preferred agentic AI tool</p>
           <div class="clineflow-prompt-wrap">
             <code id="clineflow-installer-prompt">{CLINEFLOW["installer_prompt"]}</code>
             <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span>
@@ -408,8 +408,8 @@ def generate_clineflow_section():
       </div>
       <div class="clineflow-support">
         <figure class="clineflow-agent-compatibility">
-          <img {image_attributes("clineflow-agent-compatibility", loading="lazy")} alt="ClineFlow compatibility with major AI coding agents" />
-          <figcaption>Works across major AI coding agents.</figcaption>
+          <img {image_attributes("clineflow-agent-compatibility", loading="lazy")} alt="ClineFlow compatibility with major agentic AI tools" />
+          <figcaption>Works across major agentic AI tools.</figcaption>
         </figure>
         <div class="clineflow-masterclass">
           <p>Explore ClineFlow:</p>
@@ -766,6 +766,9 @@ def generate_current_project_card(project):
     </div>'''
     link_label = escape(project.get("link_label", "Visit Website"))
     website_btn = f'<a href="{project["website"]}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{link_label}</a>' if project.get("website") else ""
+    press_release_btn = (f'<a href="{project["press_release"]}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Press Release</a>'
+                         if project.get("press_release") else "")
+    actions = f'<div class="project-card-actions">{website_btn}{press_release_btn}</div>' if (website_btn or press_release_btn) else ""
     quote = f'<p class="quote">"{project["quote"]}"</p>' if project.get("quote") else ""
     
     return f'''
@@ -777,7 +780,7 @@ def generate_current_project_card(project):
       <p class="year">{project["year"]}</p>
       <p class="description">{project["description"]}</p>
       {quote}
-      {website_btn}
+      {actions}
     </div>
   </article>
 '''
