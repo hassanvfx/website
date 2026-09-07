@@ -987,14 +987,14 @@ def generate_home_content():
             + generate_clineflow_section() + generate_ai_sparks_callout() + generate_meme_arcade_callout()
             + generate_wwdc14_feature() + generate_ios_open_source_callout() + generate_citations_section()
             + generate_books_media()
-            + generate_about() + generate_quote() + generate_recognition())
+            + generate_about() + generate_quote())
 
 
 def generate_profile_content():
     """Generate the focused professional resume page."""
     return (generate_professional_profile(heading_tag="h1")
             + generate_selected_work_grid(page="profile")
-            + generate_press_and_interviews())
+            + generate_recognition() + generate_press_and_interviews())
 
 
 def generate_selected_content():

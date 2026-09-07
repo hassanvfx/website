@@ -40,7 +40,7 @@ class SiteTests(unittest.TestCase):
                     route,anchor=href.split('#'); self.assertIn(anchor,self.docs[route].ids,href)
     def test_existing_content_destinations_preserved(self):
         approved_removed_ids={'sendkarma','professional-profile'}
-        relocated_media_ids={'press','interviews'}
+        relocated_media_ids={'press','interviews','eb1a'}
         approved_removed_destinations={'https://www.sendkarma.app/','https://player.vimeo.com/video/1138631992'}
         relocated_profile_ids={'resumeCanvas','resumeCanvasWrap','resumeNext','resumePageIndicator','resumePreview','resumePrevious','resumeStatus','resumeZoomIn','resumeZoomOut'}
         resume_pdf='assets/hassan-uriostegui-resume-2026-12.pdf'
@@ -60,6 +60,7 @@ class SiteTests(unittest.TestCase):
             baseline_destinations.discard('index.html#press')
             if name == 'index.html':
                 baseline_destinations.discard(resume_pdf)
+                baseline_destinations.discard(generate.BIO['eb1a_overview']['wikipedia_url'])
                 baseline_destinations -= {item['url'] for item in generate.PRESS}
                 # Innovations was removed from the home highlights by request.
                 baseline_destinations.discard('selected-work.html#research')
@@ -281,7 +282,10 @@ class SiteTests(unittest.TestCase):
         profile=self.pages['profile.html']
         self.assertNotIn('id="press"',home)
         self.assertNotIn('id="interviews"',home)
-        self.assertLess(profile.index('id="explore-sparks"'),profile.index('id="press"'))
+        self.assertNotIn('id="eb1a"', home)
+        self.assertLess(profile.index('id="explore-sparks"'), profile.index('id="eb1a"'))
+        self.assertLess(profile.index('id="eb1a"'), profile.index('id="press"'))
+        self.assertIn("location.replace('profile.html#eb1a');", generate.INTERACTION_SCRIPT)
         self.assertLess(profile.index('id="press"'),profile.index('id="interviews"'))
         self.assertIn('profile.html#press', home)
     def test_image_budgets_and_responsive_assets(self):

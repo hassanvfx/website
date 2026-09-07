@@ -251,6 +251,10 @@ INTERACTION_SCRIPT = r'''
     location.replace('profile.html');
   }
 
+  if (!document.getElementById('eb1a') && location.hash === '#eb1a') {
+    location.replace('profile.html#eb1a');
+  }
+
   // Each editorial row owns a motion identity; nested cards inherit its palette
   // and alternate their entrance direction rather than repeating one global fade.
   const sceneDefinitions = [

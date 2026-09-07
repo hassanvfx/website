@@ -4541,6 +4541,22 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
     </div>
   </section>
 
+  <!-- EB1A Recognition -->
+  <section class="bio-section" id="eb1a">
+    <div class="bio-content">
+      <div class="eb1a-card">
+        <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
+        <h3>EB-1A Extraordinary Ability</h3>
+        <p class="eb1a-description">In 2018, Hassan qualified under the EB-1A Extraordinary Ability category, providing a direct path to U.S. permanent residency and eventual citizenship. His petition recognized technology leadership, original technical contributions, published work, industry recognition, and critical roles at distinguished organizations.</p>
+        <ul class="eb1a-criteria">
+          <li>Published works of major international significance</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
+        </ul>
+        <a href="https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)" target="_blank" rel="noopener noreferrer" class="eb1a-wikipedia-link">EB1A on Wikipedia →</a>
+      </div>
+    </div>
+  </section>
+
+
 
   <!-- Press -->
   <section class="section" id="press" style="padding-top: 0;">
@@ -4756,6 +4772,10 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
   }
   if (!document.getElementById('professional-profile') && location.hash === '#professional-profile') {
     location.replace('profile.html');
+  }
+
+  if (!document.getElementById('eb1a') && location.hash === '#eb1a') {
+    location.replace('profile.html#eb1a');
   }
 
   // Each editorial row owns a motion identity; nested cards inherit its palette
