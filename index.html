@@ -3798,10 +3798,10 @@ img { max-width: 100%; }
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }
-.clineflow-installer-shell { max-width: 1224px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; overflow: visible;  background: transparent; box-shadow: none; }
-.clineflow-installer-hero { order: 2; position: relative;  border-radius: 4px; box-shadow: 12px 18px 38px #0006; }
+.clineflow-installer-shell { max-width: 1224px; margin: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: center; overflow: visible;  background: transparent; box-shadow: none; }
+.clineflow-installer-hero { order: 0; margin: 0; position: relative;  border-radius: 4px; box-shadow: 12px 18px 38px #0006; }
 .clineflow-installer-hero img { width: 100%; height: auto; display: block; }
-.clineflow-installer-inner { padding: 0; text-align: left; min-width: 0; }
+.clineflow-installer-inner { order: 1; padding: 0; text-align: left; min-width: 0; max-width: 900px; margin-inline: auto; }
 .clineflow-installer-inner h3 { font-size: clamp(2rem,3.1vw,3rem); line-height: 1.2; letter-spacing: -.025em; margin: 20px 0 28px; }
 .clineflow-installer-inner h3 span { color: var(--cyan); }
 .clineflow-wordmark { font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; }
@@ -3927,9 +3927,7 @@ html[data-reduced-motion="true"] { scroll-behavior: auto; }
   .selected-work-grid { grid-template-columns: 1fr; }
   .selected-work-link { min-height: 68px; padding: 18px 20px; }
   .clineflow-installer-shell { grid-template-columns: 1fr; gap: 32px; }
-  .clineflow-installer-inner { order: 0; }
-  .clineflow-support { order: 1; }
-  .clineflow-installer-hero { order: 2; margin: 0 8px 8px 0; }
+  .clineflow-installer-hero { margin: 0; }
   .clineflow-installer-panel { padding: 18px; }
   .clineflow-installer-inner h3 { font-size: 2rem; }
   .section-header { margin-bottom: 32px; }
@@ -4386,6 +4384,50 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
   .home-chapter-icon .sparks-icon { width: 24px; height: 24px; }
 }
 
+/* Full-width editorial breaks with content aligned to the main page grid. */
+.ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 0 64px; }
+.ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --bridge-gutter: max(48px, calc((100% - 1224px) / 2));
+  max-width: none;
+  width: 100%;
+  border-radius: 0;
+  padding: clamp(48px, 5vw, 80px) var(--bridge-gutter);
+  padding-right: calc(var(--bridge-gutter) + 280px);
+}
+.ai-sparks-callout-inner { --bridge-accent: #f5b7df; --bridge-light: #bb69bc; background: radial-gradient(ellipse at 100% 50%, #67336766, transparent 65%), linear-gradient(120deg, #271735, #191126); }
+.ios-sparks-callout-inner { --bridge-accent: #d0c2ff; --bridge-light: #8b7bed; background: radial-gradient(ellipse at 95% 30%, #6d5cdf55, transparent 60%), linear-gradient(120deg, #1c1b3c, #141429); }
+.writing-sparks-callout-inner { --bridge-accent: #ffcfab; --bridge-light: #cb9268; background: radial-gradient(ellipse at 95% 70%, #ad6d3c44, transparent 60%), linear-gradient(120deg, #302225, #1d171f); }
+.sparks-bridge-kicker { display: block; color: var(--bridge-accent); font: 600 .68rem/1.5 var(--font-sans); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 24px; }
+.ai-sparks-callout .sparks-callout-title, .ios-sparks-callout .sparks-callout-title, .writing-sparks-callout .sparks-callout-title { font-size: clamp(1.7rem, 2.8vw, 2.55rem); font-weight: 500; letter-spacing: -.035em; align-items: flex-start; }
+.ai-sparks-callout p, .ios-sparks-callout p, .writing-sparks-callout p { color: #d1c8d8; max-width: 58ch; }
+.ai-sparks-callout .sparks-callout-icon, .ios-sparks-callout .sparks-callout-icon, .writing-sparks-callout .sparks-callout-icon { background: transparent; color: var(--bridge-accent); }
+.ai-sparks-callout .home-tooling-link, .ios-sparks-callout .home-tooling-link, .writing-sparks-callout .home-tooling-link { color: var(--bridge-accent); margin-top: 8px; gap: 20px; }
+.sparks-bridge-art { position: absolute; right: var(--bridge-gutter); top: 50%; width: 210px; height: 220px; transform: translateY(-50%); pointer-events: none; z-index: -1; }
+.sparks-bridge-art span { position: absolute; display: grid; place-items: center; inset: 28px; background: var(--bridge-light); border-radius: 24px; opacity: .12; box-shadow: 0 22px 40px #0002; }
+.sparks-bridge-art span:last-child { opacity: 1; background: linear-gradient(140deg, #ffffff18, #ffffff04); color: var(--bridge-accent); }
+.sparks-bridge-art .sparks-icon { width: 68px; height: 68px; fill: currentColor; opacity: .85; }
+.sparks-bridge-art--ai span { border-radius: 50%; }
+.sparks-bridge-art--ai span:first-child { transform: scale(1.4, .8) rotate(-35deg); }
+.sparks-bridge-art--ai span:nth-child(2) { transform: scale(.8, 1.4) rotate(-35deg); }
+.sparks-bridge-art--ai span:last-child { inset: 45px 40px; }
+.sparks-bridge-art--ios span:first-child { transform: translate(-22px, 12px) rotate(-14deg); }
+.sparks-bridge-art--ios span:nth-child(2) { transform: translate(18px, -14px) rotate(12deg); }
+.sparks-bridge-art--ios span:last-child { inset: 20px 40px; border-radius: 30px; }
+.sparks-bridge-art--writing span { border-radius: 4px 18px 4px 4px; }
+.sparks-bridge-art--writing span:first-child { transform: translate(18px, -12px) rotate(12deg); }
+.sparks-bridge-art--writing span:nth-child(2) { transform: translate(-16px, 10px) rotate(-12deg); }
+.sparks-bridge-art--writing span:last-child { transform: rotate(-4deg); }
+@media (max-width: 700px) {
+  .ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding-bottom: 40px; }
+  .ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner { padding: 40px 24px; }
+  .sparks-bridge-art { display: none; }
+  .sparks-bridge-kicker { margin-bottom: 20px; font-size: .62rem; }
+  .sparks-callout-title { gap: .4em; }
+}
+
 
   </style>
 </head>
@@ -4537,7 +4579,7 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
           <p>A filesystem-native knowledge layer that travels with the repository, evolves through version control, and stays usable across agents and collaborators.</p>
         </div>
         <div class="clineflow-installer-panel">
-          <p>Try the agentic installer</p>
+          <p>Run this in your project folder with your favorite AI coding agent</p>
           <div class="clineflow-prompt-wrap">
             <code id="clineflow-installer-prompt">Please install ClineFlow by following the instructions provided at https://github.com/hassanvfx/clineflow</code>
             <button type="button" class="clineflow-copy-button" data-copy-prompt="clineflow-installer-prompt">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span>
@@ -4560,9 +4602,11 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
 
   <section class="ai-sparks-callout" aria-labelledby="ai-sparks-heading">
     <div class="ai-sparks-callout-inner">
+      <span class="sparks-bridge-kicker">Explore intelligent systems</span>
       <h2 id="ai-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon"><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3m-2 10H6V7h12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13m7.5-1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5M8 15h8v2H8z" /></svg></span>More AI Sparks</h2>
       <p>Explore agentic products, AI context systems, and prompt engineering experiments across the Sparks portfolio.</p>
       <a class="home-tooling-link" href="selected-work.html#work">More AI Sparks <span aria-hidden="true">→</span></a>
+      <div class="sparks-bridge-art sparks-bridge-art--ai" aria-hidden="true"><span></span><span></span><span><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3m-2 10H6V7h12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13m7.5-1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5M8 15h8v2H8z" /></svg></span></div>
     </div>
   </section>
 
@@ -4636,9 +4680,11 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
 
   <section class="ios-sparks-callout" aria-labelledby="ios-sparks-heading">
     <div class="ios-sparks-callout-inner">
+      <span class="sparks-bridge-kicker">Build native</span>
       <h2 id="ios-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon"><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1m-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5m4.5-4H7V4h9z" /></svg></span>More iOS Sparks</h2>
       <p>Build on three open-source Swift tools: SwiftSPM for package scaffolding, DataStore for encrypted persistence, and WebViewSwiftUI for bringing web content into native apps.</p>
       <a class="home-tooling-link" href="selected-work.html#ios-open-source">More iOS Sparks <span aria-hidden="true">→</span></a>
+      <div class="sparks-bridge-art sparks-bridge-art--ios" aria-hidden="true"><span></span><span></span><span><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1m-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5m4.5-4H7V4h9z" /></svg></span></div>
     </div>
   </section>
 
@@ -4724,7 +4770,7 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
     </div>
   </section>
     <div class="books-grid">
-      <article class="book-card"><a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4" target="_blank" rel="noopener noreferrer" class="book-cover-link" aria-label="View AI From Tensors to Agents on Mac Silicon"><img src="assets/ai-from-tensors-to-agents-cover.160621a33505.webp" width="800" height="1200" decoding="async" loading="lazy" alt="AI From Tensors to Agents on Mac Silicon" class="book-cover book-cover--portrait" /></a>
+      <article class="book-card"><a href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4" target="_blank" rel="noopener noreferrer" class="book-cover-link" aria-label="View AI From Tensors to Agents on Mac Silicon"><img src="assets/ai-from-tensors-to-agents-cover.c275b3bbead2.webp" width="800" height="1200" decoding="async" loading="lazy" alt="AI From Tensors to Agents on Mac Silicon" class="book-cover book-cover--portrait" /></a>
         <span class="year">2026 • English</span>
         <h3>AI From Tensors to Agents on Mac Silicon</h3>
         <p class="subtitle">Learning Modern AI by Learning It on Apple Silicon</p>
@@ -4743,9 +4789,11 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
 
   <section class="writing-sparks-callout" aria-labelledby="writing-sparks-heading">
     <div class="writing-sparks-callout-inner">
+      <span class="sparks-bridge-kicker">Read the field notes</span>
       <h2 id="writing-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon"><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 5v14H5V5zm0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2 M14 17H7v-2h7zm3-4H7v-2h10zm0-4H7V7h10z" /></svg></span>More Technical Writing</h2>
       <p>Read practical notes from building AI systems, Swift tools, and creative workflows—shared to make the decisions, trade-offs, and lessons reusable.</p>
       <a class="home-tooling-link" href="selected-work.html#technical-writing">More Technical Writing <span aria-hidden="true">→</span></a>
+      <div class="sparks-bridge-art sparks-bridge-art--writing" aria-hidden="true"><span></span><span></span><span><svg class="sparks-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 5v14H5V5zm0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2 M14 17H7v-2h7zm3-4H7v-2h10zm0-4H7V7h10z" /></svg></span></div>
     </div>
   </section>
 
@@ -4772,22 +4820,6 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
   <section class="quote-section">
     <blockquote>"One of the biggest lessons from my journey is the power of self-learning and perseverance. Passion, curiosity, and relentless drive can open doors you never imagined."</blockquote>
     <cite>— Hassan Uriostegui</cite>
-  </section>
-
-
-  <!-- EB1A Recognition -->
-  <section class="bio-section" id="eb1a">
-    <div class="bio-content">
-      <div class="eb1a-card">
-        <div class="section-wayfinding"><a class="sparks-return" href="#explore-sparks" aria-label="More Sparks — return to Explore Sparks on this page"><span class="sparks-return-arrow" aria-hidden="true">←</span><span>More Sparks</span></a></div>
-        <h3>EB-1A Extraordinary Ability</h3>
-        <p class="eb1a-description">In 2018, Hassan qualified under the EB-1A Extraordinary Ability category, providing a direct path to U.S. permanent residency and eventual citizenship. His petition recognized technology leadership, original technical contributions, published work, industry recognition, and critical roles at distinguished organizations.</p>
-        <ul class="eb1a-criteria">
-          <li>Published works of major international significance</li><li>Original contributions to the field (Patents, first-of-kind mobile technologies)</li><li>Judging the work of others (Industry expert, VES Member)</li><li>High remuneration for services (Silicon Valley executive roles)</li><li>Lead/critical role in distinguished organizations (CTO, Principal Architect)</li>
-        </ul>
-        <a href="https://en.wikipedia.org/wiki/Alien_of_extraordinary_ability#EB-1A_(E11/E16)" target="_blank" rel="noopener noreferrer" class="eb1a-wikipedia-link">EB1A on Wikipedia →</a>
-      </div>
-    </div>
   </section>
 
 </main>
@@ -4927,6 +4959,10 @@ h1, h2, h3, h4, .identity-mark { font-family: var(--font-display) !important; }
   }
   if (!document.getElementById('professional-profile') && location.hash === '#professional-profile') {
     location.replace('profile.html');
+  }
+
+  if (!document.getElementById('eb1a') && location.hash === '#eb1a') {
+    location.replace('profile.html#eb1a');
   }
 
   // Each editorial row owns a motion identity; nested cards inherit its palette

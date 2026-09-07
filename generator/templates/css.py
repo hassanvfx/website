@@ -3773,10 +3773,10 @@ img { max-width: 100%; }
 /* Product chapters: stable media with dimensional frames and generous typography. */
 .clineflow-installer, .meme-arcade-callout, .wwdc14-feature, .citations-section, .professional-profile, .bio-section, .waken-callout { background: var(--ink);  }
 .clineflow-installer { padding: 80px 48px; }
-.clineflow-installer-shell { max-width: 1224px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; overflow: visible;  background: transparent; box-shadow: none; }
-.clineflow-installer-hero { order: 2; position: relative;  border-radius: 4px; box-shadow: 12px 18px 38px #0006; }
+.clineflow-installer-shell { max-width: 1224px; margin: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: center; overflow: visible;  background: transparent; box-shadow: none; }
+.clineflow-installer-hero { order: 0; margin: 0; position: relative;  border-radius: 4px; box-shadow: 12px 18px 38px #0006; }
 .clineflow-installer-hero img { width: 100%; height: auto; display: block; }
-.clineflow-installer-inner { padding: 0; text-align: left; min-width: 0; }
+.clineflow-installer-inner { order: 1; padding: 0; text-align: left; min-width: 0; max-width: 900px; margin-inline: auto; }
 .clineflow-installer-inner h3 { font-size: clamp(2rem,3.1vw,3rem); line-height: 1.2; letter-spacing: -.025em; margin: 20px 0 28px; }
 .clineflow-installer-inner h3 span { color: var(--cyan); }
 .clineflow-wordmark { font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; }
@@ -3902,9 +3902,7 @@ html[data-reduced-motion="true"] { scroll-behavior: auto; }
   .selected-work-grid { grid-template-columns: 1fr; }
   .selected-work-link { min-height: 68px; padding: 18px 20px; }
   .clineflow-installer-shell { grid-template-columns: 1fr; gap: 32px; }
-  .clineflow-installer-inner { order: 0; }
-  .clineflow-support { order: 1; }
-  .clineflow-installer-hero { order: 2; margin: 0 8px 8px 0; }
+  .clineflow-installer-hero { margin: 0; }
   .clineflow-installer-panel { padding: 18px; }
   .clineflow-installer-inner h3 { font-size: 2rem; }
   .section-header { margin-bottom: 32px; }
@@ -4386,5 +4384,51 @@ SIGNAL_STYLES += r'''
   .home-chapter-title { gap: 12px; }
   .home-chapter-icon { flex-basis: 40px; width: 40px; height: 40px; border-radius: 10px; }
   .home-chapter-icon .sparks-icon { width: 24px; height: 24px; }
+}
+'''
+
+SIGNAL_STYLES += r'''
+/* Full-width editorial breaks with content aligned to the main page grid. */
+.ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding: 0 0 64px; }
+.ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --bridge-gutter: max(48px, calc((100% - 1224px) / 2));
+  max-width: none;
+  width: 100%;
+  border-radius: 0;
+  padding: clamp(48px, 5vw, 80px) var(--bridge-gutter);
+  padding-right: calc(var(--bridge-gutter) + 280px);
+}
+.ai-sparks-callout-inner { --bridge-accent: #f5b7df; --bridge-light: #bb69bc; background: radial-gradient(ellipse at 100% 50%, #67336766, transparent 65%), linear-gradient(120deg, #271735, #191126); }
+.ios-sparks-callout-inner { --bridge-accent: #d0c2ff; --bridge-light: #8b7bed; background: radial-gradient(ellipse at 95% 30%, #6d5cdf55, transparent 60%), linear-gradient(120deg, #1c1b3c, #141429); }
+.writing-sparks-callout-inner { --bridge-accent: #ffcfab; --bridge-light: #cb9268; background: radial-gradient(ellipse at 95% 70%, #ad6d3c44, transparent 60%), linear-gradient(120deg, #302225, #1d171f); }
+.sparks-bridge-kicker { display: block; color: var(--bridge-accent); font: 600 .68rem/1.5 var(--font-sans); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 24px; }
+.ai-sparks-callout .sparks-callout-title, .ios-sparks-callout .sparks-callout-title, .writing-sparks-callout .sparks-callout-title { font-size: clamp(1.7rem, 2.8vw, 2.55rem); font-weight: 500; letter-spacing: -.035em; align-items: flex-start; }
+.ai-sparks-callout p, .ios-sparks-callout p, .writing-sparks-callout p { color: #d1c8d8; max-width: 58ch; }
+.ai-sparks-callout .sparks-callout-icon, .ios-sparks-callout .sparks-callout-icon, .writing-sparks-callout .sparks-callout-icon { background: transparent; color: var(--bridge-accent); }
+.ai-sparks-callout .home-tooling-link, .ios-sparks-callout .home-tooling-link, .writing-sparks-callout .home-tooling-link { color: var(--bridge-accent); margin-top: 8px; gap: 20px; }
+.sparks-bridge-art { position: absolute; right: var(--bridge-gutter); top: 50%; width: 210px; height: 220px; transform: translateY(-50%); pointer-events: none; z-index: -1; }
+.sparks-bridge-art span { position: absolute; display: grid; place-items: center; inset: 28px; background: var(--bridge-light); border-radius: 24px; opacity: .12; box-shadow: 0 22px 40px #0002; }
+.sparks-bridge-art span:last-child { opacity: 1; background: linear-gradient(140deg, #ffffff18, #ffffff04); color: var(--bridge-accent); }
+.sparks-bridge-art .sparks-icon { width: 68px; height: 68px; fill: currentColor; opacity: .85; }
+.sparks-bridge-art--ai span { border-radius: 50%; }
+.sparks-bridge-art--ai span:first-child { transform: scale(1.4, .8) rotate(-35deg); }
+.sparks-bridge-art--ai span:nth-child(2) { transform: scale(.8, 1.4) rotate(-35deg); }
+.sparks-bridge-art--ai span:last-child { inset: 45px 40px; }
+.sparks-bridge-art--ios span:first-child { transform: translate(-22px, 12px) rotate(-14deg); }
+.sparks-bridge-art--ios span:nth-child(2) { transform: translate(18px, -14px) rotate(12deg); }
+.sparks-bridge-art--ios span:last-child { inset: 20px 40px; border-radius: 30px; }
+.sparks-bridge-art--writing span { border-radius: 4px 18px 4px 4px; }
+.sparks-bridge-art--writing span:first-child { transform: translate(18px, -12px) rotate(12deg); }
+.sparks-bridge-art--writing span:nth-child(2) { transform: translate(-16px, 10px) rotate(-12deg); }
+.sparks-bridge-art--writing span:last-child { transform: rotate(-4deg); }
+@media (max-width: 700px) {
+  .ai-sparks-callout, .ios-sparks-callout, .writing-sparks-callout { padding-bottom: 40px; }
+  .ai-sparks-callout-inner, .ios-sparks-callout-inner, .writing-sparks-callout-inner { padding: 40px 24px; }
+  .sparks-bridge-art { display: none; }
+  .sparks-bridge-kicker { margin-bottom: 20px; font-size: .62rem; }
+  .sparks-callout-title { gap: .4em; }
 }
 '''
