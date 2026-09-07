@@ -49,7 +49,7 @@ HOBBY_SPARK_ITEMS = [
     ("Films & VFX", "filmography"),
     ("Writing About Trends", "casual-books"),
 ]
-SELECTED_WORK_ITEMS = AI_SPARK_ITEMS + OTHER_SPARK_ITEMS + [("Innovations", "research")] + HOBBY_SPARK_ITEMS
+SELECTED_WORK_ITEMS = AI_SPARK_ITEMS + OTHER_SPARK_ITEMS + HOBBY_SPARK_ITEMS
 IMAGE_MANIFEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_manifest.json")
 
 
@@ -1081,18 +1081,20 @@ def generate_selected_content():
   <!-- iOS Open Source -->
   {generate_swift_foundations()}
 
-  <!-- Research & Innovations -->
-  <section class="section" id="research">
-    <div class="section-header white">
-      {generate_section_nav("Research & Development")}
-      <h2>Innovations</h2>
-      <p class="lead">Selected products and technical work spanning mobile video, AR, generative systems, and AI.</p>
-    </div>
-    
-    <div class="innovation-grid">
-      {"".join(generate_innovation_card(i) for i in INNOVATIONS)}
-    </div>
-  </section>
+  <!-- Early Innovations -->
+  <details class="early-innovations" id="research">
+    <summary><span>View Early Innovations</span><span class="early-innovations-icon" aria-hidden="true">+</span></summary>
+    <section class="section early-innovations-content" aria-labelledby="early-innovations-title">
+      <div class="section-header white">
+        {generate_section_nav("Early Work")}
+        <h2 id="early-innovations-title">Early Innovations</h2>
+        <p class="lead">Selected experiments and production work across mobile video, AR, and rendering systems.</p>
+      </div>
+      <div class="innovation-grid">
+        {"".join(generate_innovation_card(i) for i in INNOVATIONS)}
+      </div>
+    </section>
+  </details>
 
   <!-- Filmography -->
   {generate_filmography_section()}

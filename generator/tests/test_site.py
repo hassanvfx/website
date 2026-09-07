@@ -39,7 +39,7 @@ class SiteTests(unittest.TestCase):
                 elif '.html#' in href and not href.startswith('http'):
                     route,anchor=href.split('#'); self.assertIn(anchor,self.docs[route].ids,href)
     def test_existing_content_destinations_preserved(self):
-        approved_removed_ids={'sendkarma','professional-profile'}
+        approved_removed_ids={'sendkarma','professional-profile','research'}
         relocated_media_ids={'press','interviews','eb1a'}
         approved_removed_destinations={'https://www.sendkarma.app/','https://player.vimeo.com/video/1138631992'}
         relocated_profile_ids={'resumeCanvas','resumeCanvasWrap','resumeNext','resumePageIndicator','resumePreview','resumePrevious','resumeStatus','resumeZoomIn','resumeZoomOut'}
@@ -55,6 +55,8 @@ class SiteTests(unittest.TestCase):
             if name == 'index.html':
                 baseline_ids-=relocated_profile_ids
                 baseline_ids-=relocated_media_ids
+            if name == 'selected-work.html':
+                baseline_ids -= {innovation['id'] for innovation in generate.INNOVATIONS}
             self.assertTrue(baseline_ids.issubset(set(doc.ids)),name)
             baseline_destinations={h for h in baseline.links if not h.startswith('#')}-approved_removed_destinations
             baseline_destinations.discard('index.html#press')
@@ -214,7 +216,9 @@ class SiteTests(unittest.TestCase):
         self.assertIn('id="ios-open-source"', work)
         self.assertLess(work.index('id="work"'), work.index('id="ios-open-source"'))
         self.assertLess(work.index('id="twinchat-paper"'), work.index('id="ios-open-source"'))
-        self.assertLess(work.index('id="ios-open-source"'), work.index('id="research"'))
+        self.assertIn('<details class="early-innovations" id="research">', work)
+        self.assertIn('View Early Innovations', work)
+        self.assertIn('Early Innovations</h2>', work)
         self.assertLess(work.index('id="swift-spm"'), work.index('id="datastore"'))
         self.assertLess(work.index('id="datastore"'), work.index('id="webview-swiftui"'))
         self.assertIn('href="https://github.com/hassanvfx/ios-framework"',work)

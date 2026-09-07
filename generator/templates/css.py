@@ -1464,6 +1464,29 @@ nav a:hover {
 }
 .project-card-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
+.early-innovations { background: var(--ink); }
+.early-innovations > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1224px, calc(100% - 96px));
+  min-height: 88px;
+  margin: 0 auto;
+  color: var(--paper);
+  cursor: pointer;
+  font: 600 clamp(1rem, 1.4vw, 1.2rem)/1.2 var(--font-sans);
+  list-style: none;
+}
+.early-innovations > summary::-webkit-details-marker { display: none; }
+.early-innovations > summary:focus-visible { outline: 2px solid var(--lilac); outline-offset: 8px; }
+.early-innovations-icon { color: var(--lilac); font-size: 1.8rem; font-weight: 300; transition: transform .25s ease; }
+.early-innovations[open] .early-innovations-icon { transform: rotate(45deg); }
+.early-innovations-content { padding-top: 24px; }
+@media (max-width: 700px) {
+  .early-innovations > summary { width: calc(100% - 48px); min-height: 72px; }
+  .early-innovations-content { padding-top: 16px; }
+}
+
 /* Innovation Cards */
 .innovation-grid {
   display: grid;
