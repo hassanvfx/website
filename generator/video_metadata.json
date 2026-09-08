@@ -107,6 +107,18 @@
     "title": "Hassan Uriostegui @ fractalTV",
     "source": "https://www.youtube.com/oembed?format=json&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Djqs6dXF9wDU"
   },
+  "https://www.youtube.com/embed/L8ljk21Oyx0": {
+    "width": 200,
+    "height": 113,
+    "title": "ultrakam",
+    "source": "https://www.youtube.com/oembed?format=json&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DL8ljk21Oyx0"
+  },
+  "https://player.vimeo.com/video/942408711": {
+    "width": 240,
+    "height": 426,
+    "title": "BTwin Intro",
+    "source": "https://vimeo.com/api/oembed.json?url=https%3A%2F%2Fvimeo.com%2F942408711"
+  },
   "https://www.youtube.com/embed/d3hvzV9KgcE": {
     "width": 200,
     "height": 150,

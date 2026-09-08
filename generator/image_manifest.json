@@ -142,6 +142,28 @@
     "url": "assets/bookstore-woods-small.0b894c373786.webp",
     "width": 440
   },
+  "btwin-app-icon": {
+    "fingerprint": "eb59edbebbfd",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_3c797a3b67be0130ac17cb048e10515c.png",
+    "url": "assets/btwin-app-icon.eb59edbebbfd.webp",
+    "width": 1024
+  },
+  "btwin-wall-icon": {
+    "fingerprint": "b4b3bd833946",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_653fe88809d95fc89112ea1cf1d7d566.png",
+    "url": "assets/btwin-wall-icon.b4b3bd833946.webp",
+    "width": 1024
+  },
   "citations-cover": {
     "fingerprint": "bcc7496f7179",
     "height": 926,
@@ -186,6 +208,28 @@
     "url": "assets/clineflow-hero-small.8fbbb7a8b97d.webp",
     "width": 640
   },
+  "community-app-logo": {
+    "fingerprint": "17f53006cc12",
+    "height": 58,
+    "max_width": 384,
+    "original_height": 57,
+    "original_width": 384,
+    "preset": "graphic",
+    "source": "https://community.com/assets/community-logo-CnwsRT8a.svg",
+    "url": "assets/community-app-logo.17f53006cc12.webp",
+    "width": 384
+  },
+  "community-wall-icon": {
+    "fingerprint": "6dd171196c76",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_e00c76fd8496484fca4fcaeeee4ddcec.png",
+    "url": "assets/community-wall-icon.6dd171196c76.webp",
+    "width": 1024
+  },
   "cybernews-logo": {
     "fingerprint": "c6a48da5b887",
     "height": 268,
@@ -208,6 +252,28 @@
     "url": "assets/datastore-hero.f1773461a504.webp",
     "width": 640
   },
+  "flyrtv-app-icon": {
+    "fingerprint": "60a50a62de0f",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_bc92d3996f7465d9753f1f01bd4f1043.png",
+    "url": "assets/flyrtv-app-icon.60a50a62de0f.webp",
+    "width": 1024
+  },
+  "flyrtv-wall-icon": {
+    "fingerprint": "9d4434b1f2e7",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_82875d50f9c94f8103bf873c440feaf6.png",
+    "url": "assets/flyrtv-wall-icon.9d4434b1f2e7.webp",
+    "width": 1024
+  },
   "forbes-logo": {
     "fingerprint": "7d340c4a8a50",
     "height": 268,
@@ -229,6 +295,17 @@
     "source": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
     "url": "assets/github-logo.366f98869dc4.webp",
     "width": 160
+  },
+  "github-terminal-hero": {
+    "fingerprint": "3d9b11250544",
+    "height": 896,
+    "max_width": 1280,
+    "original_height": 896,
+    "original_width": 1200,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_ff2733590b6bc8af3ad68c36a349efd2.png",
+    "url": "assets/github-terminal-hero.3d9b11250544.webp",
+    "width": 1200
   },
   "infinite-ai-context-cover": {
     "fingerprint": "f48f6bc7bb68",
@@ -263,6 +340,17 @@
     "url": "assets/lyrics-refiner-hero.6205162f1a48.webp",
     "width": 640
   },
+  "meme-arcade-app-icon": {
+    "fingerprint": "a82935b9e331",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_bcd9f88c88250fb381954646add6281d.png",
+    "url": "assets/meme-arcade-app-icon.a82935b9e331.webp",
+    "width": 1024
+  },
   "meme-arcade-discover": {
     "fingerprint": "d34d1c001b38",
     "height": 900,
@@ -296,6 +384,17 @@
     "url": "assets/meme-arcade-play.c06251d39842.webp",
     "width": 416
   },
+  "meme-arcade-product-panels": {
+    "fingerprint": "5eef57b03f04",
+    "height": 1092,
+    "max_width": 1600,
+    "original_height": 1242,
+    "original_width": 1820,
+    "preset": "graphic",
+    "source": "generator/.image-staging/meme-arcade-product-panels.png",
+    "url": "assets/meme-arcade-product-panels.5eef57b03f04.webp",
+    "width": 1600
+  },
   "meme-arcade-profile": {
     "fingerprint": "9b2ac94e9348",
     "height": 900,
@@ -306,6 +405,17 @@
     "source": "assets/memearcade-profile.jpg",
     "url": "assets/meme-arcade-profile.9b2ac94e9348.webp",
     "width": 414
+  },
+  "meme-arcade-wall-icon": {
+    "fingerprint": "baa81b7d98a3",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_5e67afdd0cd9c011cd0cc96a7b2f49c6.png",
+    "url": "assets/meme-arcade-wall-icon.baa81b7d98a3.webp",
+    "width": 1024
   },
   "modern-ios-architecture-cover": {
     "fingerprint": "99964a724421",
@@ -373,6 +483,50 @@
     "url": "assets/resume-preview-small.0f30c2c64c1c.webp",
     "width": 640
   },
+  "securevault-article": {
+    "fingerprint": "31b5ce774972",
+    "height": 900,
+    "max_width": 1600,
+    "original_height": 941,
+    "original_width": 1672,
+    "preset": "graphic",
+    "source": "generator/.image-staging/securevault-article.png",
+    "url": "assets/securevault-article.31b5ce774972.webp",
+    "width": 1600
+  },
+  "spreeai-app-logo": {
+    "fingerprint": "f12161c9764c",
+    "height": 94,
+    "max_width": 384,
+    "original_height": 93,
+    "original_width": 384,
+    "preset": "graphic",
+    "source": "https://spreeai.com/wp-content/themes/spreeai-v3/site/assets/press/spreeai-wordmark.svg",
+    "url": "assets/spreeai-app-logo.f12161c9764c.webp",
+    "width": 384
+  },
+  "spreeai-wall-icon": {
+    "fingerprint": "d9a221908a22",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_11766247a3a1e98816e99c62b41d7c5c.png",
+    "url": "assets/spreeai-wall-icon.d9a221908a22.webp",
+    "width": 1024
+  },
+  "spreeai-wordmark-icon": {
+    "fingerprint": "dfc078ac415c",
+    "height": 384,
+    "max_width": 1024,
+    "original_height": 384,
+    "original_width": 738,
+    "preset": "graphic",
+    "source": "generator/.asset-inputs/spreeai-wordmark.png",
+    "url": "assets/spreeai-wordmark-icon.dfc078ac415c.webp",
+    "width": 738
+  },
   "swift-spm-hero": {
     "fingerprint": "435c7876aca1",
     "height": 360,
@@ -383,6 +537,17 @@
     "source": "Generated by OpenAI ImageGen on 2026-09-05 for this portfolio",
     "url": "assets/swift-spm-hero.435c7876aca1.webp",
     "width": 640
+  },
+  "swiftwallet-article": {
+    "fingerprint": "ddec4a2b6a9e",
+    "height": 900,
+    "max_width": 1600,
+    "original_height": 941,
+    "original_width": 1672,
+    "preset": "graphic",
+    "source": "generator/.image-staging/swiftwallet-article.png",
+    "url": "assets/swiftwallet-article.ddec4a2b6a9e.webp",
+    "width": 1600
   },
   "techcrunch-logo": {
     "fingerprint": "cdf8825e1164",
@@ -395,6 +560,39 @@
     "url": "assets/techcrunch-logo.cdf8825e1164.webp",
     "width": 400
   },
+  "three-technical-books-hero": {
+    "fingerprint": "1c548013e989",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_d35856cb3dccfb9915da27cd5fff4fa1.png",
+    "url": "assets/three-technical-books-hero.1c548013e989.webp",
+    "width": 1024
+  },
+  "twinchat-wall-icon": {
+    "fingerprint": "f991631089f8",
+    "height": 512,
+    "max_width": 1024,
+    "original_height": 512,
+    "original_width": 512,
+    "preset": "graphic",
+    "source": "generator/.asset-inputs/twinchat-icon.png",
+    "url": "assets/twinchat-wall-icon.f991631089f8.webp",
+    "width": 512
+  },
+  "ultrakam-app-icon": {
+    "fingerprint": "35c68209bea2",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_866cbcf5bb10be4c6525d0775c4d87dc.png",
+    "url": "assets/ultrakam-app-icon.35c68209bea2.webp",
+    "width": 1024
+  },
   "ultrakam-icon": {
     "fingerprint": "d79caa166024",
     "height": 152,
@@ -405,6 +603,28 @@
     "source": "assets/ultrakam-remote-control-icon.png",
     "url": "assets/ultrakam-icon.d79caa166024.webp",
     "width": 152
+  },
+  "ultrakam-wall-icon": {
+    "fingerprint": "34022435142d",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_6dbd25466f48d109bc0a66220546f4fa.png",
+    "url": "assets/ultrakam-wall-icon.34022435142d.webp",
+    "width": 1024
+  },
+  "viddy-wall-icon": {
+    "fingerprint": "d5db31da6d43",
+    "height": 1024,
+    "max_width": 1024,
+    "original_height": 1024,
+    "original_width": 1024,
+    "preset": "graphic",
+    "source": "https://tempfile.aiquickdraw.com/workers/images/image_11e185fd0209536f56b7f3ea04c8dd13.png",
+    "url": "assets/viddy-wall-icon.d5db31da6d43.webp",
+    "width": 1024
   },
   "waken-ai-logo": {
     "fingerprint": "caee9fda4efa",

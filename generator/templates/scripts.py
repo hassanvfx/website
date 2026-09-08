@@ -200,6 +200,32 @@ INTERACTION_SCRIPT = r'''
   document.addEventListener('visibilitychange', syncPlayback);
   syncMotion();
 
+  // Advance a single lightweight press image per second. Decode first so
+  // slow connections retain the current frame instead of showing a blank.
+  document.querySelectorAll('[data-press-display]').forEach(display => {
+    const frames = Array.from(display.querySelectorAll('img'));
+    let current = 0, timer = 0, visible = false;
+    const update = () => {
+      clearInterval(timer);
+      timer = 0;
+      if (stopped() || !visible || frames.length < 2) return;
+      timer = setInterval(() => {
+        const next = (current + 1) % frames.length;
+        if (!frames[next].complete || !frames[next].naturalWidth) return;
+        frames[current].classList.remove('is-active');
+        frames[next].classList.add('is-active');
+        current = next;
+      }, 1000);
+    };
+    playbackSubscribers.push(update);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting;
+        update();
+      }).observe(display);
+    } else { visible = true; update(); }
+  });
+
   // A native modal keeps keyboard focus and background content separate.
   function closeMenu(restoreFocus = true) {
     if (!menuOpen) return;
@@ -242,11 +268,18 @@ INTERACTION_SCRIPT = r'''
     compactQuery.addEventListener('change', () => { if (!compactQuery.matches) closeMenu(); resetDepth(); });
   }
 
-  // Preserve old inbound anchors for content hosted on Selected Work.
-  const legacyHashes = new Set(['impact', 'work', 'waken', 'twinchat-paper', 'research', 'filmography']);
-  if (!document.getElementById('selected-work') && legacyHashes.has(location.hash.slice(1))) {
-    location.replace('selected-work.html' + location.hash);
-  }
+  // Preserve old inbound portfolio anchors after moving from one long page to
+  // focused pages. Only redirect if this document does not own the anchor.
+  const legacyHashRoutes = {
+    'selected-work': 'index.html#explore-work', 'explore-sparks': 'index.html#explore-work', 'sparks': 'index.html#explore-work',
+    'impact': 'startups.html#exits', 'work': 'agentic-ai.html#projects',
+    'waken': 'startups.html#waken', 'twinchat-paper': 'agentic-ai.html#articles',
+    'research': 'profile.html#earlier-work', 'filmography': 'profile.html#earlier-work',
+    'ios-open-source': 'mobile-apps.html#open-source', 'technical-writing': 'books.html#articles',
+    'casual-books': 'books.html#earlier-books', 'press': 'profile.html#press', 'interviews': 'profile.html#interviews'
+  };
+  const legacyTarget = legacyHashRoutes[location.hash.slice(1)];
+  if (legacyTarget && !document.getElementById(location.hash.slice(1))) location.replace(legacyTarget);
   if (!document.getElementById('professional-profile') && location.hash === '#professional-profile') {
     location.replace('profile.html');
   }

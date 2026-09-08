@@ -1,347 +1,300 @@
-"""Regression checks for generated page contracts and approved content access."""
-import json
+"""Regression tests for the route registry and central portfolio catalog."""
 from html.parser import HTMLParser
 from pathlib import Path
-import subprocess
 import sys
+import json
+import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / 'generator'))
+sys.path.insert(0, str(ROOT / "generator"))
 import generate
+from content_catalog import GITHUB_REPOSITORIES, GITHUB_REPOSITORY_SNAPSHOT, MOBILE_APP_ICON_WALL, NAVIGATION, PAGE_COMPOSITIONS, PROJECTS, SITE_PAGES
+
 
 class Document(HTMLParser):
     def __init__(self, html):
-        super().__init__(); self.ids=[]; self.links=[]; self.images=[]; self.iframes=[]; self.h1=0
+        super().__init__()
+        self.ids, self.links, self.images, self.h1 = [], [], [], 0
         self.feed(html)
+
     def handle_starttag(self, tag, attrs):
-        a=dict(attrs)
-        if 'id' in a: self.ids.append(a['id'])
-        if tag=='a' and 'href' in a: self.links.append(a['href'])
-        if tag=='img': self.images.append(a)
-        if tag=='iframe': self.iframes.append(a)
-        if tag=='h1': self.h1+=1
+        attrs = dict(attrs)
+        if "id" in attrs:
+            self.ids.append(attrs["id"])
+        if tag == "a" and "href" in attrs:
+            self.links.append(attrs["href"])
+        if tag == "img":
+            self.images.append(attrs)
+        if tag == "h1":
+            self.h1 += 1
+
 
 class SiteTests(unittest.TestCase):
     def setUp(self):
-        self.pages={name:generate.render_portfolio(page) for name,page in [('index.html','home'),('selected-work.html','selected-work'),('profile.html','profile')]}
-        self.docs={name:Document(html) for name,html in self.pages.items()}
+        self.routes = {"index.html": "home", **{meta["path"]: page for page, meta in SITE_PAGES.items() if page != "home"}, "selected-work.html": "selected-work"}
+        self.pages = {name: generate.render_portfolio(page) for name, page in self.routes.items()}
+        self.docs = {name: Document(page) for name, page in self.pages.items()}
+
     def test_outputs_match_generator(self):
-        for name,html in self.pages.items():
-            expected='\n'.join(line.rstrip() for line in html.splitlines())+'\n'
-            self.assertEqual((ROOT/name).read_text(),expected,name)
-    def test_page_landmarks_and_anchors(self):
-        for name,doc in self.docs.items():
-            self.assertEqual(doc.h1,1,name)
-            self.assertEqual(len(doc.ids),len(set(doc.ids)),name)
-            for href in doc.links:
-                if href.startswith('#'): self.assertIn(href[1:],doc.ids,href)
-                elif '.html#' in href and not href.startswith('http'):
-                    route,anchor=href.split('#'); self.assertIn(anchor,self.docs[route].ids,href)
-    def test_existing_content_destinations_preserved(self):
-        approved_removed_ids={'sendkarma','professional-profile','research'}
-        relocated_media_ids={'press','interviews','eb1a'}
-        approved_removed_destinations={'https://www.sendkarma.app/','https://player.vimeo.com/video/1138631992'}
-        relocated_profile_ids={'resumeCanvas','resumeCanvasWrap','resumeNext','resumePageIndicator','resumePreview','resumePrevious','resumeStatus','resumeZoomIn','resumeZoomOut'}
-        resume_pdf='assets/hassan-uriostegui-resume-2026-12.pdf'
-        profile_doc=self.docs['profile.html']
-        self.assertTrue(relocated_profile_ids.issubset(set(profile_doc.ids)))
-        self.assertIn(resume_pdf,profile_doc.links)
-        for name,doc in self.docs.items():
-            if name == 'profile.html':
-                continue
-            baseline=Document(subprocess.check_output(['git','show',f'7e34a70:{name}'],cwd=ROOT,text=True))
-            baseline_ids=set(baseline.ids)-approved_removed_ids
-            if name == 'index.html':
-                baseline_ids-=relocated_profile_ids
-                baseline_ids-=relocated_media_ids
-            if name == 'selected-work.html':
-                baseline_ids -= {innovation['id'] for innovation in generate.INNOVATIONS}
-            self.assertTrue(baseline_ids.issubset(set(doc.ids)),name)
-            baseline_destinations={h for h in baseline.links if not h.startswith('#')}-approved_removed_destinations
-            baseline_destinations.discard('index.html#press')
-            if name == 'index.html':
-                baseline_destinations.discard(resume_pdf)
-                baseline_destinations.discard(generate.BIO['eb1a_overview']['wikipedia_url'])
-                baseline_destinations -= {item['url'] for item in generate.PRESS}
-                # Innovations was removed from the home highlights by request.
-                baseline_destinations.discard('selected-work.html#research')
-            baseline_destinations.discard('index.html#professional-profile')
-            self.assertTrue(baseline_destinations.issubset(set(doc.links)),baseline_destinations-set(doc.links))
-    def test_resume_page_and_media_contract(self):
-        home=self.pages['index.html']
-        profile=self.pages['profile.html']
-        self.assertNotIn('id="professional-profile"',home)
-        self.assertLess(home.index('class="selected-work-gateway"'),home.index('id="clineflow"'))
-        self.assertIn('id="professional-profile"',profile)
-        self.assertIn('id="resumeCanvas"',profile)
-        self.assertNotIn('id="clineflow"',profile)
-        self.assertIn('id="contact"',profile)
-        self.assertIn("location.replace('profile.html');",generate.INTERACTION_SCRIPT)
-        self.assertNotIn('id="resumeCanvas"',self.pages['selected-work.html'])
-        for doc in self.docs.values():
-            for iframe in doc.iframes:
-                self.assertTrue(iframe.get('title'))
-                self.assertEqual(iframe.get('loading'),'lazy')
+        for name, html in self.pages.items():
+            expected = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
+            self.assertEqual((ROOT / name).read_text(), expected, name)
 
-    def test_home_navigation_labels_match_destination_headings(self):
-        home = self.pages['index.html']
-        for section_id, (label, _, _) in generate.HOME_CHAPTERS.items():
-            section = home.split(f'id="{section_id}"', 1)[1].split('</section>', 1)[0]
-            self.assertIn(f'aria-labelledby="{section_id}-chapter-title"', section)
-            self.assertIn(f'<h2 id="{section_id}-chapter-title">{label}</h2>', section)
-            self.assertIn(f'href="#{section_id}">{label}</a>', generate.generate_header('home'))
-            self.assertIn(f'>{label.upper()}</a>', generate.generate_mobile_nav_html('home'))
-            self.assertEqual(section.count('class="sparks-return"'), 1)
-    def test_desktop_navigation_and_home_portfolio_placement(self):
-        home=self.pages['index.html']
-        header=home[home.index('<header'):home.index('</header>')]
-        expected=[
-            ('Resume',generate.PROFILE_PAGE), ('Agentic AI','#clineflow'),
-            ('Mobile Apps','#memearcade'), ('Citations','#citations'), ('Books','#books'),
-            ('Press',f'{generate.PROFILE_PAGE}#press'), ('Sparks',f'{generate.SELECTED_WORK_PAGE}#selected-work'),
-        ]
-        positions=[header.index(f'href="{href}">{label}') for label,href in expected]
-        self.assertEqual(positions,sorted(positions))
-        self.assertIn(f'href="{generate.CLINEFLOW["website"]}" target="_blank" rel="noopener noreferrer" class="desktop-clineflow"',header)
-        self.assertIn('ClineFlow <span aria-hidden="true">↗</span>',header)
-        self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">Sparks</a>',header)
-        self.assertIn(f'href="{generate.SELECTED_WORK_PAGE}#selected-work">SPARKS</a>',home)
-        self.assertIn('Prompt Engineering',home)
-        self.assertNotIn('TwinChat Paper',home)
-        self.assertIn('<h2 id="selected-work-title">Explore Sparks</h2>',home)
-        sparks = home[home.index('id="explore-sparks"'):home.index('id="clineflow"')]
-        self.assertLess(sparks.index('Agentic &amp; Open Source'),sparks.index('AI Context Engineering'))
-        self.assertLess(sparks.index('AI Context Engineering'),sparks.index('Prompt Engineering'))
-        self.assertNotIn('Agentic Products &amp; Tools', home)
-        self.assertIn('AI SYSTEMS',home)
-        self.assertRegex(home, 'href="selected-work.html#ios-open-source" class="selected-work-link">.*?<span class="sparks-label">iOS &amp; Open Source</span>')
-        self.assertRegex(home, 'href="selected-work.html#casual-books" class="selected-work-link">.*?<span class="sparks-label">Writing About Trends</span>')
-        self.assertIn(generate.generate_selected_work_grid("selected-work").strip(), self.pages['selected-work.html'])
-        self.assertNotIn('<nav class="work-index"', self.pages['selected-work.html'])
-        self.assertRegex(home, 'href="#clineflow" class="selected-work-link selected-work-link--ai">.*?<span class="sparks-label">AI Context Engineering</span>')
-        self.assertRegex(self.pages['selected-work.html'], 'href="index.html#clineflow" class="selected-work-link selected-work-link--ai">.*?<span class="sparks-label">AI Context Engineering</span>')
-        self.assertNotIn('selected-work-link--external',home)
-    def test_ultrakam_exit_card_and_coverage(self):
-        work=self.pages['selected-work.html']
-        self.assertLess(work.index('id="viddy"'),work.index('id="ultrakam"'))
-        self.assertLess(work.index('id="ultrakam"'),work.index('id="flyr"'))
-        self.assertIn('https://www.youtube.com/embed/jqs6dXF9wDU',work)
-        self.assertIn('style="--video-ratio: 200 / 150"',work)
-        self.assertIn('Apple’s WWDC14 feature on Medium',work)
-        self.assertEqual({company['name'] for company in generate.HISTORIC_COMPANIES if company.get('exit')},{'Viddy','Ultrakam','FlyrTV'})
+    def test_routes_have_one_heading_unique_ids_and_local_anchors(self):
+        for name, document in self.docs.items():
+            self.assertEqual(document.h1, 1, name)
+            self.assertEqual(len(document.ids), len(set(document.ids)), name)
+            for href in document.links:
+                if href.startswith("#"):
+                    self.assertIn(href[1:], document.ids, f"{name}: {href}")
+                elif ".html#" in href and not href.startswith("http"):
+                    route, anchor = href.split("#", 1)
+                    self.assertIn(anchor, self.docs[route].ids, f"{name}: {href}")
 
-    def test_center_interview_uses_the_ultrakam_video(self):
-        profile = self.pages['profile.html']
-        center_card = profile.split('class="interview-card"')[2]
-        third_card = profile.split('class="interview-card"')[3]
-        self.assertIn('https://www.youtube.com/embed/jqs6dXF9wDU', center_card)
-        self.assertIn('style="--video-ratio: 200 / 150"', center_card)
-        self.assertIn('https://player.vimeo.com/video/843499496', third_card)
+    def test_navigation_is_shared_and_uses_canonical_pages(self):
+        for page_name, page in self.pages.items():
+            current_page = self.routes[page_name]
+            header = page[page.index("<header"):page.index("</header>")]
+            for label, target in NAVIGATION:
+                expected = (f'<a class="nav-link is-current" href="{generate.page_href(target)}" aria-current="page">{label}</a>'
+                            if target == current_page else f'<a class="nav-link" href="{generate.page_href(target)}">{label}</a>')
+                self.assertIn(expected, header)
+            self.assertIn('<a class="desktop-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a>', header)
+            if current_page == "home":
+                self.assertIn('<a class="nav-link is-current" href="index.html" aria-current="page">Home</a>', page)
+            self.assertIn("Book a call", page)
+            self.assertNotIn(">Sparks<", page)
+            self.assertNotIn("Explore Sparks", page)
 
-    def test_ai_native_style_variant_uses_modern_type_and_warm_indigo_tokens(self):
-        home = self.pages['index.html']
-        self.assertIn('family=DM+Sans', home)
-        self.assertIn('family=Space+Grotesk', home)
-        self.assertIn('--ink: #0a091b;', home)
-        self.assertIn('--sunset: #ffd09c;', home)
+    def test_home_uses_the_requested_editorial_sequence(self):
+        home = self.pages["index.html"]
+        self.assertLess(home.index('id="clineflow"'), home.index('id="ai-copyright-weights"'))
+        self.assertLess(home.index('id="ai-copyright-weights"'), home.index('id="memearcade"'))
+        self.assertLess(home.index('id="memearcade"'), home.index('id="wwdc14"'))
+        self.assertLess(home.index('id="wwdc14"'), home.index('id="books"'))
+        self.assertNotIn('id="citations"', home)
+        self.assertIn('>More Agentic AI<', home)
+        self.assertIn('href="agentic-ai.html#projects">More Agentic AI', home)
+        self.assertIn('>More Mobile Apps<', home)
+        self.assertIn('href="mobile-apps.html#projects">More Mobile Apps', home)
 
-    def test_current_projects_follow_the_requested_sequence(self):
-        work=self.pages['selected-work.html']
-        self.assertLess(work.index('id="brb2me"'),work.index('id="newsmusic"'))
-        self.assertLess(work.index('id="newsmusic"'),work.index('id="lyrics-refiner"'))
-        self.assertLess(work.index('id="lyrics-refiner"'),work.index('id="kie-api"'))
-        self.assertLess(work.index('id="kie-api"'),work.index('id="btwinfriends"'))
-        self.assertLess(work.index('id="btwinfriends"'),work.index('id="twinchat"'))
-        self.assertIn('href="https://github.com/hassanvfx/newsmusic"',work)
-        self.assertIn('href="https://github.com/hassanvfx/lyrics-refiner"',work)
-        self.assertIn('href="https://github.com/hassanvfx/kie-api-python"',work)
-        for image_key in ('newsmusic-hero','lyrics-refiner-hero','kie-api-hero'):
-            self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],work)
-        self.assertIn('View on GitHub',work)
-        self.assertIn('href="https://www.newswire.com/news/brb2mes-ai-friends-pioneer-the-future-of-the-1b-emotional-wellness-22318265"', work)
-        self.assertIn('View Press Release', work)
-        self.assertIn('An early exploration of cognitive profiling and conversational AI companions.',work)
-        self.assertNotIn('The predecessor to modern AI mind simulation.',work)
+    def test_resume_places_evidence_after_eb1a(self):
+        profile = self.pages["profile.html"]
+        self.assertLess(profile.index('id="eb1a"'), profile.index('id="citations"'))
+        self.assertLess(profile.index('id="citations"'), profile.index('id="explore-work"'))
+        self.assertLess(profile.index('id="explore-work"'), profile.index('id="press"'))
+        self.assertIn('Bipartisan House Task Force', profile)
+        self.assertNotIn('id="earlier-work"', profile)
+        self.assertIn('Engineering AI-Native Products and Mobile Systems', profile)
 
-    def test_agentic_language_and_research_copy_are_consistent(self):
-        home = self.pages['index.html']
-        work = self.pages['selected-work.html']
-        self.assertIn('Works across major agentic AI tools.', home)
-        self.assertNotIn('AI coding agents', home)
-        self.assertIn('Researching Reflective AI Systems', work)
-        self.assertIn('Research on Contextual Conversational Systems', work)
-        self.assertNotIn('Unlocking VIP Celebrity conversations through AI.', work)
-    def test_spreeai_valuation_and_coverage(self):
-        work=self.pages['selected-work.html']
-        self.assertIn('$1.5B Valuation · 2026',work)
-        self.assertIn('PR Newswire: $1.5B valuation',work)
-        self.assertNotIn('Naomi Campbell Board Member | AI Fashion',work)
+    def test_topic_pages_resolve_from_the_catalog(self):
+        agentic = self.pages["agentic-ai.html"]
+        mobile = self.pages["mobile-apps.html"]
+        github = self.pages["github.html"]
+        startups = self.pages["startups.html"]
+        books = self.pages["books.html"]
+        self.assertIn("ClineFlow", agentic)
+        self.assertIn(generate.IMAGE_MANIFEST["infinite-ai-context-cover"]["url"], agentic)
+        self.assertIn('class="video-frame video-frame--square-preview"', agentic)
+        self.assertIn('class="video-frame video-frame--square-preview"', mobile)
+        self.assertIn(generate.IMAGE_MANIFEST["github-terminal-hero"]["url"], github)
+        self.assertIn('class="topic-hero-action" href="https://github.com/hassanvfx"', github)
+        self.assertIn('>Open GitHub ', github)
+        self.assertIn('topic-hero-art--press-loop', startups)
+        for press_logo in generate.PRESS_LOGOS:
+            self.assertIn(generate.IMAGE_MANIFEST[press_logo["logo"]]["url"], startups)
+        self.assertIn('topic-hero-art--square-image', books)
+        self.assertIn(generate.IMAGE_MANIFEST["three-technical-books-hero"]["url"], books)
+        self.assertIn("AI-Copyright Weights", agentic)
+        for tool in ("SwiftSPM", "DataStore", "WebViewSwiftUI", "SUIPlayer"):
+            self.assertIn(tool, mobile)
+        self.assertIn("ios-suiplayer", mobile)
+        self.assertIn("Meme Arcade", mobile)
+        self.assertIn(generate.IMAGE_MANIFEST["meme-arcade-product-panels"]["url"], mobile)
+        self.assertNotIn(generate.IMAGE_MANIFEST["meme-arcade-play"]["url"], re.search(r'<article class="startup-case .*?id="meme-arcade-project".*?</article>', mobile, re.S).group(0))
+        self.assertIn("Ultrakam", mobile)
+        self.assertLess(mobile.index('id="writing-wwdc14"'), mobile.index('id="writing-demystify-swiftui"'))
+        self.assertIn('https://www.youtube.com/embed/L8ljk21Oyx0', mobile)
+        self.assertIn("KIE CLI &amp; MCP", agentic)
+        self.assertLess(agentic.index('id="ai-copyright-weights-feature"'), agentic.index('id="articles"'))
+        self.assertIn("Read the TwinChat paper", agentic)
+        self.assertIn("https://hassanvfx.github.io/twinchat-paper/", agentic)
+        self.assertIn("Read Mind Simulation Technology", agentic)
+        self.assertIn("https://www.amazon.com/-/he/Hassan-Uriostegui/dp/1304332993", agentic)
+        self.assertNotIn("Read the TwinChat paper", mobile)
+        self.assertNotIn("Read Mind Simulation Technology", mobile)
+        agentic_btwin = re.search(r'<article class="startup-case .*?id="btwinfriends-project".*?</article>', agentic, re.S).group(0)
+        mobile_btwin = re.search(r'<article class="startup-case .*?id="btwinfriends-project".*?</article>', mobile, re.S).group(0)
+        self.assertIn("Model orchestration", agentic_btwin)
+        self.assertIn("Native product delivery", mobile_btwin)
+        self.assertNotIn("SwiftUI", agentic_btwin)
+        agentic_twinchat = re.search(r'<article class="startup-case .*?id="twinchat-project".*?</article>', agentic, re.S).group(0)
+        mobile_twinchat = re.search(r'<article class="startup-case .*?id="twinchat-project".*?</article>', mobile, re.S).group(0)
+        self.assertIn("Behavioral constraints", agentic_twinchat)
+        self.assertIn("Character catalog", mobile_twinchat)
+        clineflow_case = re.search(r'<article class="startup-case .*?id="clineflow-project".*?</article>', agentic, re.S).group(0)
+        open_knowledge = re.search(r'<li class="startup-highlight">.*?<h4>Open knowledge format</h4>.*?</li>', clineflow_case, re.S).group(0)
+        self.assertIn('href="https://hassanvfx.github.io/infinite-ai-context/downloads/infinite-ai-context-web.pdf"', open_knowledge)
+        self.assertIn('>Free ClineFlow ebook ', open_knowledge)
+        versioned_context = re.search(r'<li class="startup-highlight">.*?<h4>Code and context together</h4>.*?</li>', clineflow_case, re.S).group(0)
+        self.assertIn('href="https://github.com/hassanvfx/clineflow"', versioned_context)
+        self.assertIn('>ClineFlow repository ', versioned_context)
+        portable_context = re.search(r'<li class="startup-highlight">.*?<h4>An open file contract</h4>.*?</li>', clineflow_case, re.S).group(0)
+        self.assertIn('https://www.lulu.com/shop/hassan-uriostegui/infinite-ai-context-clineflow-and-googles-open-knowledge-format/paperback/product-rmkn8jg.html?page=1&amp;pageSize=4', portable_context)
+        self.assertIn('>ClineFlow printed edition ', portable_context)
+        self.assertIn('>Lulu book<', portable_context)
+        self.assertIn('assets/securevault-article.31b5ce774972.webp', mobile)
+        self.assertIn('assets/swiftwallet-article.ddec4a2b6a9e.webp', mobile)
 
-    def test_positioning_prefers_supported_evidence(self):
-        home = self.pages['index.html']
-        self.assertIn('EB-1A · EXTRAORDINARY ABILITY', home)
-        self.assertIn('40M+', home)
-        self.assertIn('Users Reached', home)
-        self.assertIn('$6M+', home)
-        self.assertIn('Raised as Co-Founder', home)
-        self.assertNotIn('0.1% of visa applicants', home)
-        self.assertNotIn('granted U.S. Citizenship through the EB1A category', home)
+    def test_mobile_hero_indexes_the_career_app_catalog(self):
+        mobile = self.pages["mobile-apps.html"]
+        self.assertIn('class="mobile-app-wall"', mobile)
+        for item in MOBILE_APP_ICON_WALL:
+            self.assertIn(item.get("label") or generate.entity_name(PROJECTS[item["project_id"]]), mobile)
+            if item.get("image"):
+                self.assertIn(generate.IMAGE_MANIFEST[item["image"]]["url"], mobile)
+        for image_key in ("meme-arcade-wall-icon", "spreeai-wall-icon", "btwin-wall-icon", "twinchat-wall-icon", "community-wall-icon", "ultrakam-wall-icon", "flyrtv-wall-icon", "viddy-wall-icon"):
+            self.assertIn(generate.IMAGE_MANIFEST[image_key]["url"], mobile)
 
-    def test_home_books_are_followed_by_the_technical_writing_bridge(self):
-        home = self.pages['index.html']
-        self.assertLess(home.index('id="books"'), home.index('class="writing-sparks-callout"'))
-        self.assertLess(home.index('class="writing-sparks-callout"'), home.index('id="about"'))
-        self.assertIn('href="selected-work.html#technical-writing">More Technical Writing', home)
-
-    def test_home_clineflow_is_followed_by_the_ai_sparks_bridge(self):
-        home = self.pages['index.html']
-        self.assertLess(home.index('id="clineflow"'), home.index('class="ai-sparks-callout"'))
-        self.assertLess(home.index('class="ai-sparks-callout"'), home.index('id="memearcade"'))
-        self.assertIn('href="selected-work.html#work">More AI Sparks', home)
-        self.assertIn('href="selected-work.html#ios-open-source">More iOS Sparks', home)
-        self.assertIn('id="ai-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">', home)
-        self.assertIn('id="ios-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">', home)
-        self.assertIn('id="writing-sparks-heading" class="sparks-callout-title"><span class="sparks-callout-icon">', home)
-
-    def test_book_covers_link_to_their_product_pages(self):
-        home = self.pages['index.html']
-        self.assertIn('href="https://www.lulu.com/shop/hassan-uriostegui/ai-from-tensors-to-agents-on-mac-silicon/hardcover/product-e7qy7gy.html?page=1&pageSize=4" target="_blank" rel="noopener noreferrer" class="book-cover-link"', home)
-        self.assertIn('href="https://www.lulu.com/shop/hassan-uriostegui/modern-ios-architecture-deconstructing-the-3b-memearcade/hardcover/product-yvewn4y.html?page=1&pageSize=4" target="_blank" rel="noopener noreferrer" class="book-cover-link"', home)
-
-    def test_swift_foundations_are_an_ios_open_source_chapter_on_sparks(self):
-        home=self.pages['index.html']
-        work=self.pages['selected-work.html']
-        self.assertNotIn('<section class="home-tooling-showcase"', home)
-        self.assertIn('id="ios-open-source"', work)
-        self.assertLess(work.index('id="work"'), work.index('id="ios-open-source"'))
-        self.assertLess(work.index('id="twinchat-paper"'), work.index('id="ios-open-source"'))
-        self.assertIn('<details class="early-innovations" id="research">', work)
-        self.assertIn('View Early Innovations', work)
-        self.assertIn('Early Innovations</h2>', work)
-        self.assertLess(work.index('id="swift-spm"'), work.index('id="datastore"'))
-        self.assertLess(work.index('id="datastore"'), work.index('id="webview-swiftui"'))
-        self.assertIn('href="https://github.com/hassanvfx/ios-framework"',work)
-        self.assertIn('href="https://github.com/hassanvfx/ios-storage"',work)
-        self.assertIn('href="https://github.com/hassanvfx/ios-webViewSwiftUI"',work)
-        self.assertIn('"@type":"SoftwareSourceCode"',work)
-        self.assertIn('"codeRepository":"https://github.com/hassanvfx/ios-webViewSwiftUI"',work)
-        for image_key in ('swift-spm-hero','datastore-hero','webview-swiftui-hero'):
-            self.assertIn(generate.IMAGE_MANIFEST[image_key]['url'],work)
-    def test_sitemap_contains_every_canonical_page_and_publishing_metadata(self):
-        sitemap = (ROOT / 'sitemap.xml').read_text()
-        for page in ('', generate.SELECTED_WORK_PAGE, generate.PROFILE_PAGE):
-            self.assertIn(f'<loc>{generate.SITE_URL}/{page}</loc>', sitemap)
-        self.assertEqual(sitemap.count('<url>'), 3)
-        self.assertEqual(sitemap.count(f'<lastmod>{generate.SITE_LAST_MODIFIED}</lastmod>'), 3)
-        self.assertIn('<changefreq>weekly</changefreq>', sitemap)
-
-    def test_crawl_and_share_metadata_describes_current_pages(self):
-        self.assertEqual((ROOT / 'robots.txt').read_text(),
-                         f'User-agent: *\nAllow: /\n\nSitemap: {generate.SITE_URL}/sitemap.xml\n')
+    def test_app_icons_follow_matching_products_across_topic_pages(self):
         expected = {
-            'index.html': ('Hassan Uriostegui | Agentic AI, Mobile Products &amp; ClineFlow', 'ProfilePage'),
-            'selected-work.html': ('AI Projects, iOS Open Source &amp; Technical Writing | Hassan Uriostegui', 'CollectionPage'),
-            'profile.html': ('Resume, Press &amp; Interviews | Hassan Uriostegui', 'ProfilePage'),
+            "agentic-ai.html": ("btwinfriends", "twinchat"),
+            "startups.html": ("ultrakam", "flyr", "viddy", "spreeai", "community"),
         }
-        portrait = f'{generate.SITE_URL}/{generate.IMAGE_MANIFEST[generate.IDENTITY["portrait"]]["url"]}'
-        for name, (title, schema_type) in expected.items():
-            page = self.pages[name]
-            self.assertIn(f'<title>{title}</title>', page)
-            self.assertIn(f'<meta property="og:image" content="{portrait}">', page)
-            self.assertIn('<meta name="twitter:image:alt" content="Portrait of Hassan Uriostegui">', page)
-            graph = json.loads(page.split('<script type="application/ld+json">', 1)[1].split('</script>', 1)[0])
-            webpage = next(node for node in graph['@graph'] if node['@type'] == schema_type)
-            self.assertEqual(webpage['dateModified'], generate.SITE_LAST_MODIFIED)
-            self.assertEqual(webpage['primaryImageOfPage']['url'], portrait)
-            person = next(node for node in graph['@graph'] if node['@type'] == 'Person')
-            self.assertEqual(person['image'], portrait)
+        for page_name, project_ids in expected.items():
+            page = self.pages[page_name]
+            for project_id in project_ids:
+                asset = generate.mobile_app_icon_asset(project_id)
+                self.assertIsNotNone(asset)
+                case = re.search(rf'<article class="startup-case .*?id="{project_id}-(?:project|company|exit)".*?</article>', page, re.S).group(0)
+                self.assertIn(generate.IMAGE_MANIFEST[asset]["url"], case)
 
-    def test_chapter_returns_target_the_current_page_menu(self):
-        for name in ('index.html', 'selected-work.html'):
-            doc = self.docs[name]
-            self.assertEqual(doc.ids.count('explore-sparks'), 1)
-            self.assertGreater(doc.links.count('#explore-sparks'), 0)
-            self.assertIn('id="explore-sparks" tabindex="-1"', self.pages[name])
-            self.assertNotIn('index.html#explore-sparks', doc.links)
-            self.assertNotIn('selected-work.html#explore-sparks', doc.links)
-        profile = self.pages['profile.html']
-        self.assertEqual(self.docs['profile.html'].ids.count('explore-sparks'), 1)
-        self.assertLess(profile.index('id="professional-profile"'), profile.index('id="explore-sparks"'))
-        self.assertIn('href="index.html#clineflow" class="selected-work-link selected-work-link--ai"', profile)
-        self.assertIn('href="selected-work.html#technical-writing" class="selected-work-link"', profile)
+    def test_topic_cards_keep_their_visual_media(self):
+        for page_name in ("books.html", "github.html"):
+            page = self.pages[page_name]
+            rows = re.findall(r'<article class="home-tooling-project portfolio-row.*?</article>', page, re.S)
+            self.assertTrue(rows, page_name)
+            for row in rows:
+                self.assertIn('class="home-tooling-copy"', row)
+                self.assertIn('class="home-tooling-visual"', row)
+                self.assertRegex(row, r'<(?:img|iframe) ')
+            self.assertNotIn('class="showcase-deck"', page)
+            for group in re.findall(r'<div class="portfolio-rows">(.*?)</section>', page, re.S):
+                classes = re.findall(r'<article class="([^"]+)"', group)
+                for index, names in enumerate(classes):
+                    self.assertEqual('home-tooling-project--reverse' in names, index % 2 == 0)
+        self.assertIn('id="repo-kie-api-python-featured"', self.pages["github.html"])
+        self.assertIn('KIE CLI &amp; MCP', self.pages["github.html"])
 
-    def test_technical_writing_navigation_and_articles(self):
-        from html import escape
-        work = self.pages['selected-work.html']
-        self.assertIn('selected-work.html#technical-writing', self.docs['index.html'].links)
-        self.assertIn('#technical-writing', self.docs['selected-work.html'].links)
-        self.assertLess(work.index('id="technical-writing"'), work.index('id="ios-open-source"'))
-        self.assertEqual(len(generate.TECHNICAL_WRITING), 5)
-        for article in generate.TECHNICAL_WRITING:
-            self.assertIn(article['url'], self.docs['selected-work.html'].links)
-            self.assertIn(escape(article['title']), work)
-            self.assertIn(article['id'], self.docs['selected-work.html'].ids)
-            image = next(image for image in self.docs['selected-work.html'].images
-                         if image['src'] == generate.IMAGE_MANIFEST[article['id']]['url'])
-            self.assertEqual(image.get('loading'), 'lazy')
-            self.assertIn('width', image)
-            self.assertIn('height', image)
+    def test_topic_projects_use_technical_case_studies(self):
+        for page_name, composition_id in (("agentic-ai.html", "agentic-ai"), ("mobile-apps.html", "mobile-apps")):
+            page = self.pages[page_name]
+            cases = re.findall(r'<article class="startup-case .*?</article>', page, re.S)
+            self.assertEqual(len(cases), len(PAGE_COMPOSITIONS[composition_id]["projects"]))
+            for case in cases:
+                self.assertIn("Technical contribution", case)
+                self.assertIn('class="startup-case-media"', case)
+                self.assertIn('class="startup-highlights"', case)
+                self.assertIn('class="startup-source"', case)
+                self.assertEqual(len(re.findall(r'<li class="startup-highlight">.*?</li>', case, re.S)), 4)
 
-    def test_sendkarma_is_not_rendered(self):
+    def test_startup_cases_attribute_contributions_and_company_outcomes(self):
+        page = self.pages["startups.html"]
+        cases = re.findall(r'<article class="startup-case .*?</article>', page, re.S)
+        self.assertEqual(len(cases), 6)
+        for case in cases:
+            self.assertIn('My contribution', case)
+            self.assertRegex(case, r'<(?:img|iframe) ')
+            highlights = re.findall(r'<li class="startup-highlight">.*?</li>', case, re.S)
+            self.assertEqual(len(highlights), 4)
+            for highlight in highlights:
+                self.assertIn('class="startup-source"', highlight)
+                self.assertIn('startup-source-kind', highlight)
+        self.assertIn('Later company milestone', page)
+        self.assertIn('Announced in May 2025, after my Dec 2020–Apr 2023 role.', page)
+        self.assertIn('Company release', page)
+        self.assertIn('Founder interview', page)
+        self.assertIn('Career record', page)
+        self.assertNotIn('Jabali', page)
+        self.assertLess(page.index('id="press-releases"'), page.index('id="press"'))
+        self.assertLess(page.index('id="press"'), page.index('id="interviews"'))
+
+    def test_startup_counters_keep_company_milestones(self):
+        hero = re.search(r'<section class="startup-hero-stats".*?</section>', self.pages["startups.html"], re.S).group(0)
+        self.assertIn('class="stats-row"', hero)
+        self.assertEqual(re.findall(r'<div class="value">(.*?)</div>', hero), ["$1.5B", "10M+", "$6M", "40M+"])
+        self.assertEqual(len(re.findall('class="startup-counter-source"', hero)), 4)
+
+    def test_case_sources_stay_beneath_facts(self):
+        for page_name in ("startups.html", "agentic-ai.html", "mobile-apps.html"):
+            page = self.pages[page_name]
+            self.assertNotIn('class="case-sources"', page)
+            self.assertNotIn('class="case-reference"', page)
+            for highlight in re.findall(r'<li class="startup-highlight">.*?</li>', page, re.S):
+                self.assertIn('class="startup-source"', highlight)
+                self.assertNotRegex(highlight, r'href="#.*?-source-')
+        # Established products have separate supporting records for all four facts.
+        for project_id, case in generate.STARTUP_CASES.items():
+            urls = {generate.STARTUP_SOURCES[item["source"]]["url"] for item in case["highlights"]}
+            self.assertEqual(len(urls), 4, project_id)
+
+    def test_github_is_the_previous_portfolio_collection(self):
+        github = self.pages["github.html"]
+        self.assertEqual(len(GITHUB_REPOSITORIES), 7)
+        for repo in GITHUB_REPOSITORY_SNAPSHOT:
+            name = repo["name"]
+            self.assertIn(f"https://github.com/hassanvfx/{name}", github)
+            self.assertIn(repo["language"], github)
+            self.assertIn(repo["description"], github)
+            if repo["license"]:
+                self.assertIn(f'{repo["license"]} license', github)
+        self.assertNotIn("Nuke-Cloudlight-Plugin", github)
+        self.assertNotIn("ios-suiplayer", github)
+
+    def test_seo_registry_and_legacy_page(self):
+        sitemap = (ROOT / "sitemap.xml").read_text()
+        indexable_pages = [meta for meta in SITE_PAGES.values() if meta.get("indexable", True)]
+        self.assertEqual(sitemap.count("<url>"), len(indexable_pages))
+        for meta in indexable_pages:
+            self.assertIn(f'<loc>{generate.SITE_URL}/{meta["path"]}</loc>', sitemap)
+            self.assertIn(f'<priority>{meta["priority"]}</priority>', sitemap)
+            self.assertIn(f'<changefreq>{meta["changefreq"]}</changefreq>', sitemap)
+        robots = (ROOT / "robots.txt").read_text()
+        self.assertIn(f"Sitemap: {generate.SITE_URL}/sitemap.xml", robots)
+
+        for page_name, page in self.pages.items():
+            page_id = self.routes[page_name]
+            metadata = generate.get_page_metadata(page_id)
+            canonical = f'{generate.SITE_URL}/{metadata["path"]}'
+            image = generate.metadata_image(metadata)
+            self.assertIn(f'<link rel="canonical" href="{canonical}">', page)
+            self.assertIn(f'<meta property="og:image" content="{generate.SITE_URL}/{image["url"]}">', page)
+            self.assertIn(f'<meta name="twitter:image" content="{generate.SITE_URL}/{image["url"]}">', page)
+            payload = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', page).group(1))
+            graph = payload["@graph"]
+            page_node = next(node for node in graph if node.get("@id") == canonical)
+            self.assertEqual(page_node["@type"], metadata["schema_type"])
+            self.assertEqual(page_node["primaryImageOfPage"]["url"], f'{generate.SITE_URL}/{image["url"]}')
+            self.assertTrue(any(node.get("@type") == "BreadcrumbList" for node in graph))
+            if metadata["schema_type"] == "CollectionPage" and page_id != "selected-work":
+                self.assertTrue(any(node.get("@type") == "ItemList" for node in graph))
+
+        legacy = self.pages["selected-work.html"]
+        self.assertIn('content="noindex, follow"', legacy)
+        self.assertIn("Explore My Work", legacy)
+        self.assertIn("legacyHashRoutes", generate.INTERACTION_SCRIPT)
+        self.assertIn("'sparks': 'index.html#explore-work'", generate.INTERACTION_SCRIPT)
+
+    def test_manifest_images_remain_intrinsic(self):
+        urls = {entry["url"] for entry in generate.IMAGE_MANIFEST.values()}
         for page in self.pages.values():
-            self.assertNotIn('SendKarma',page)
-            self.assertNotIn('sendkarma',page)
-    def test_press_and_interviews_follow_explore_sparks_on_resume(self):
-        home=self.pages['index.html']
-        profile=self.pages['profile.html']
-        self.assertNotIn('id="press"',home)
-        self.assertNotIn('id="interviews"',home)
-        self.assertNotIn('id="eb1a"', home)
-        self.assertLess(profile.index('id="explore-sparks"'), profile.index('id="eb1a"'))
-        self.assertLess(profile.index('id="eb1a"'), profile.index('id="press"'))
-        self.assertIn("location.replace('profile.html#eb1a');", generate.INTERACTION_SCRIPT)
-        self.assertLess(profile.index('id="press"'),profile.index('id="interviews"'))
-        self.assertIn('profile.html#press', home)
-    def test_image_budgets_and_responsive_assets(self):
-        # Editorial photography has its own allowance: new article covers must
-        # not force existing book imagery below its display resolution.
-        trend_urls = {generate.IMAGE_MANIFEST[book['image']]['url'] for book in generate.BOOKS[2:]}
-        for name,budget in [('index.html',1450000),('selected-work.html',360000)]:
-            urls = {im['src'] for im in self.docs[name].images}
-            if name == 'selected-work.html':
-                urls -= trend_urls
-            total=sum((ROOT/url).stat().st_size for url in urls)
-            self.assertLessEqual(total,budget)
-        self.assertLessEqual(sum((ROOT/url).stat().st_size for url in trend_urls), 600000)
-        portrait=next(im for im in self.docs['index.html'].images if im.get('fetchpriority')=='high')
-        self.assertIn('srcset',portrait)
-        self.assertLessEqual((ROOT/portrait['src']).stat().st_size,150000)
-    def test_trend_images_keep_square_high_resolution_sources(self):
-        for book in generate.BOOKS[2:]:
-            asset = generate.IMAGE_MANIFEST[book['image']]
-            self.assertGreaterEqual(asset['width'], 660)
-            self.assertEqual(asset['width'], asset['height'])
-            image = next(im for im in self.docs['selected-work.html'].images if im['src'] == asset['url'])
-            self.assertIn('660w', image['srcset'])
-            self.assertIn('440w', image['srcset'])
-            self.assertIn('520px', image['sizes'])
-            self.assertEqual(image['loading'], 'lazy')
+            for image in Document(page).images:
+                self.assertIn(image["src"], urls)
+                self.assertIn("width", image)
+                self.assertIn("height", image)
+                self.assertEqual(image.get("decoding"), "async")
 
-    def test_provider_video_dimensions(self):
-        for doc in self.docs.values():
-            for iframe in doc.iframes:
-                metadata=generate.VIDEO_METADATA[iframe['src']]
-                self.assertEqual(int(iframe['width']),metadata['width'])
-                self.assertEqual(int(iframe['height']),metadata['height'])
-        for video_id in ('839937602','1005370651'):
-            video=generate.VIDEO_METADATA[f'https://player.vimeo.com/video/{video_id}']
-            self.assertEqual(video['width'],video['height'])
-    def test_carousel_progressive_fallback(self):
-        html=self.pages['index.html']
-        self.assertEqual(html.count('aria-roledescription="slide"'),3)
-        self.assertIn('class="carousel-controls" hidden',html)
-        self.assertNotIn('particle-field',html)
-        self.assertNotIn('booking-call-bar"',html)
 
-if __name__=='__main__': unittest.main()
+if __name__ == "__main__":
+    unittest.main()

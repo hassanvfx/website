@@ -93,21 +93,17 @@ STATS = [
 # Primary navigation
 NAV_ITEMS = [
     {"label": "HOME", "href": "#home"},
+    {"label": "AGENTIC AI", "href": "agentic-ai.html"},
+    {"label": "MOBILE APPS", "href": "mobile-apps.html"},
+    {"label": "GITHUB", "href": "github.html"},
+    {"label": "STARTUPS", "href": "startups.html"},
+    {"label": "BOOKS", "href": "books.html"},
     {"label": "RESUME", "href": "profile.html"},
-    {"label": "AI-CODING", "href": "#clineflow", "featured": True},
-    {"label": "APPS", "href": "#memearcade", "featured": True},
-    {"label": "CITATIONS", "href": "#citations"},
-    {"label": "BOOKS", "href": "#books"},
-    {"label": "SPARKS", "href": "#selected-work"},
 ]
 
 # Secondary navigation
 SUBMENU_ITEMS = [
-    {"label": "IMPACT", "href": "#impact"},
-    {"label": "RESEARCH", "href": "#waken"},
-    {"label": "HOBBIES", "href": "#filmography"},
-    {"label": "PRESS", "href": "#press"},
-    {"label": "CONTACT", "href": "#contact"},
+    {"label": "BOOK A CALL", "href": "https://intro.co/hassanuriostegui", "external": True},
 ]
 
 # Social Links
@@ -123,9 +119,9 @@ HISTORIC_COMPANIES = [
     {
         "id": "spreeai",
         "name": "SpreeAI",
-        "year": "2024-2026",
-        "role": "Principal iOS Architect",
-        "highlight": "$1.5B Valuation · 2026",
+        "year": "Dec 2020 – Apr 2023",
+        "role": "Lead iOS Architect",
+        "highlight": "$1.5B valuation · 2025",
         "description": "Led iOS architecture for immersive mobile commerce experiences combining ARKit, LiDAR, 3D assets, and real-time interaction.",
         "video": "https://player.vimeo.com/video/1143600495",
         "stats": "AI Fashion Revolution",
@@ -141,9 +137,9 @@ HISTORIC_COMPANIES = [
     {
         "id": "viddy",
         "name": "Viddy",
-        "year": "2012-2013",
+        "year": "Nov 2012 – Dec 2013",
         "exit": True,
-        "role": "Director of Video Engineering",
+        "role": "iOS Architect",
         "highlight": "40M Users · $370M Peak Valuation",
         "description": "Built the mobile VFX rendering architecture and core video-creation pipeline across iOS and Android during the first wave of social video.",
         "video": "https://www.youtube.com/embed/avccq32KfOE",
@@ -162,7 +158,7 @@ HISTORIC_COMPANIES = [
         "role": "Founder",
         "highlight": "2K Mobile Capture · WWDC14 Feature",
         "description": "Built a mobile filmmaking suite with 2K capture, time-lapse, slow motion, and a companion remote-control app for iPhone and iPad.",
-        "video": "https://www.youtube.com/embed/jqs6dXF9wDU",
+        "video": "https://www.youtube.com/embed/L8ljk21Oyx0",
         "stats": "Featured by Apple at WWDC14",
         "press_quote": {
             "quote": "Tools for the next generation of content creators.",
@@ -178,7 +174,7 @@ HISTORIC_COMPANIES = [
     {
         "id": "flyr",
         "name": "FlyrTV",
-        "year": "2014-2018",
+        "year": "Jan 2014 – Dec 2018",
         "exit": True,
         "role": "CTO & Co-founder",
         "highlight": "$6M+ Raised · Acquired by Pond5",
@@ -194,8 +190,8 @@ HISTORIC_COMPANIES = [
     {
         "id": "community",
         "name": "Community",
-        "year": "2019-2020",
-        "role": "Principal iOS Architect",
+        "year": "Sep 2019 – Sep 2020",
+        "role": "Senior iOS Developer",
         "highlight": "10M+ Users",
         "description": "Architected reactive iOS product systems and led a five-person iOS team for a high-volume messaging platform connecting public figures and audiences.",
         "video": "https://www.youtube.com/embed/ZOWuy-HhQxE",
@@ -259,6 +255,17 @@ SWIFT_FOUNDATIONS = [
         "image": "webview-swiftui-hero",
         "image_alt": "Abstract illustration of a SwiftUI web browser with connected navigation controls"
     },
+    {
+        "id": "suiplayer",
+        "eyebrow": "SwiftUI Video",
+        "title": "SUIPlayer",
+        "subtitle": "A SwiftUI wrapper for AVPlayer",
+        "description": "An open-source SwiftUI package for integrating AVPlayer playback into native interfaces.",
+        "highlights": ["AVPlayer wrapper", "Swift Package"],
+        "website": "https://github.com/hassanvfx/ios-suiplayer",
+        "image": None,
+        "image_alt": "SUIPlayer video playback package"
+    },
 ]
 
 # CURRENT AI WORK (2022-2025)
@@ -319,7 +326,7 @@ CURRENT_PROJECTS = [
         "stats": "20,000 conversations | 200,000 messages",
         "website": "https://btwinai.com/",
         "videos": [
-            {"url": "https://player.vimeo.com/video/1005370651", "title": "BTwin Friends"},
+            {"url": "https://player.vimeo.com/video/942408711", "title": "BTwin Intro"},
         ],
         "quote": "Our AI delves into the human essence, giving voice to silent thoughts."
     },
@@ -389,6 +396,8 @@ AI_PRODUCT_SHOTS = {
 # WAKEN AI LABS - Featured Callout
 WAKEN_AI = {
     "name": "Waken AI",
+    "role": "Principal Engineer / Founder, BTwin AI Friends",
+    "year": "Apr 2023 – Feb 2025",
     "tagline": "Researching Reflective AI Systems",
     "subtitle": "Context, Profiles, and Conversation for Emotional-Wellness Research",
     "description": "Waken AI Labs explores how structured personal context, memory, and conversational interfaces can support reflective experiences. The work connects BTwin Friends, TwinChat, and Mind Simulation Technology research.",
@@ -498,6 +507,8 @@ TWINCHAT_PAPER = {
 # CLINEFLOW - Featured Hero Project
 CLINEFLOW = {
     "name": "ClineFlow",
+    "eyebrow": "Durable project memory",
+    "description": "ClineFlow gives agentic AI systems durable project memory using open files instead of vendor-locked databases.",
     "website": "https://clineflow.com/",
     "installer_prompt": "Please install ClineFlow by following the instructions provided at https://github.com/hassanvfx/clineflow"
 }
