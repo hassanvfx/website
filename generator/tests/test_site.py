@@ -62,8 +62,8 @@ class SiteTests(unittest.TestCase):
                             if target == current_page else f'<a class="nav-link" href="{generate.page_href(target)}">{label}</a>')
                 self.assertIn(expected, header)
             self.assertIn('<a class="desktop-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a>', header)
-            self.assertIn('<a class="mobile-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a>', page)
-            self.assertLess(page.index('>Book a consultation ↗</a>'), page.index('class="mobile-clineflow"'))
+            self.assertIn('<a class="signal-button mobile-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a>', page)
+            self.assertLess(page.index('>Book a consultation ↗</a>'), page.index('class="signal-button mobile-clineflow"'))
             if current_page == "home":
                 self.assertIn('<a class="nav-link is-current" href="index.html" aria-current="page">Home</a>', page)
             self.assertIn("Book a call", page)
