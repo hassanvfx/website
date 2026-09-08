@@ -53,6 +53,7 @@ class SiteTests(unittest.TestCase):
                     self.assertIn(anchor, self.docs[route].ids, f"{name}: {href}")
 
     def test_navigation_is_shared_and_uses_canonical_pages(self):
+        self.assertEqual(NAVIGATION[-2:], (("GitHub", "github"), ("Resume", "profile")))
         for page_name, page in self.pages.items():
             current_page = self.routes[page_name]
             header = page[page.index("<header"):page.index("</header>")]
@@ -61,6 +62,7 @@ class SiteTests(unittest.TestCase):
                             if target == current_page else f'<a class="nav-link" href="{generate.page_href(target)}">{label}</a>')
                 self.assertIn(expected, header)
             self.assertIn('<a class="desktop-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a>', header)
+            self.assertIn('<a class="mobile-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a>', page)
             if current_page == "home":
                 self.assertIn('<a class="nav-link is-current" href="index.html" aria-current="page">Home</a>', page)
             self.assertIn("Book a call", page)

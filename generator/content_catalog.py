@@ -25,7 +25,7 @@ SITE_PAGES = {
 
 NAVIGATION = (
     ("Agentic AI", "agentic-ai"), ("Mobile Apps", "mobile-apps"),
-    ("GitHub", "github"), ("Startups", "startups"), ("Publications", "books"),
+    ("Startups", "startups"), ("Publications", "books"), ("GitHub", "github"),
     ("Resume", "profile"),
 )
 
