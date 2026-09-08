@@ -3687,8 +3687,7 @@ img { max-width: 100%; }
 .signal-menu::backdrop { background: #070a0e; }
 .menu-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 32px; }
 .menu-heading h2 { font-size: 2rem; }
-.menu-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
-.mobile-clineflow { color: var(--cyan); font-size: .875rem; font-weight: 600; white-space: nowrap; }
+.mobile-clineflow { display: inline-flex; align-items: center; min-height: 44px; margin-top: 12px; color: var(--cyan); font-size: .875rem; font-weight: 600; white-space: nowrap; }
 .mobile-clineflow span { margin-left: 4px; }
 .signal-menu nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; }
 .signal-menu nav a { font-size: .875rem; letter-spacing: .04em; color: #c8d1d9; padding: 16px 8px;  min-height: 48px; }
@@ -4792,9 +4791,10 @@ main .startup-case[id] { scroll-margin-top: 72px; }
       </nav>
     </header>
     <dialog id="mobileMenu" class="signal-menu" aria-labelledby="menu-title">
-      <div class="menu-heading"><h2 id="menu-title">Explore</h2><div class="menu-actions"><a class="mobile-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a><button type="button" class="menu-close" aria-label="Close navigation menu">Close ×</button></div></div>
+      <div class="menu-heading"><h2 id="menu-title">Explore</h2><button type="button" class="menu-close" aria-label="Close navigation menu">Close ×</button></div>
       <nav aria-label="All sections"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a call</a><a class="nav-link is-current" href="agentic-ai.html" aria-current="page">Agentic AI</a><a class="nav-link" href="mobile-apps.html">Mobile Apps</a><a class="nav-link" href="startups.html">Startups</a><a class="nav-link" href="books.html">Publications</a><a class="nav-link" href="github.html">GitHub</a><a class="nav-link" href="profile.html">Resume</a></nav>
       <a class="signal-button" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a consultation ↗</a>
+      <a class="mobile-clineflow" href="https://clineflow.com/" target="_blank" rel="noopener noreferrer">ClineFlow <span aria-hidden="true">↗</span></a>
     </dialog>
     <noscript><nav class="noscript-nav" aria-label="All sections"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="https://intro.co/hassanuriostegui" target="_blank" rel="noopener noreferrer">Book a call</a><a class="nav-link is-current" href="agentic-ai.html" aria-current="page">Agentic AI</a><a class="nav-link" href="mobile-apps.html">Mobile Apps</a><a class="nav-link" href="startups.html">Startups</a><a class="nav-link" href="books.html">Publications</a><a class="nav-link" href="github.html">GitHub</a><a class="nav-link" href="profile.html">Resume</a></nav></noscript>
     <main id="main-content" tabindex="-1"><section class="topic-hero" id="overview" aria-labelledby="topic-title">

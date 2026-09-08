@@ -3661,8 +3661,7 @@ img { max-width: 100%; }
 .signal-menu::backdrop { background: #070a0e; }
 .menu-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 32px; }
 .menu-heading h2 { font-size: 2rem; }
-.menu-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
-.mobile-clineflow { color: var(--cyan); font-size: .875rem; font-weight: 600; white-space: nowrap; }
+.mobile-clineflow { display: inline-flex; align-items: center; min-height: 44px; margin-top: 12px; color: var(--cyan); font-size: .875rem; font-weight: 600; white-space: nowrap; }
 .mobile-clineflow span { margin-left: 4px; }
 .signal-menu nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; }
 .signal-menu nav a { font-size: .875rem; letter-spacing: .04em; color: #c8d1d9; padding: 16px 8px;  min-height: 48px; }
