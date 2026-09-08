@@ -170,6 +170,17 @@ class SiteTests(unittest.TestCase):
                 case = re.search(rf'<article class="startup-case .*?id="{project_id}-(?:project|company|exit)".*?</article>', page, re.S).group(0)
                 self.assertIn(generate.IMAGE_MANIFEST[asset]["url"], case)
 
+    def test_named_project_cases_use_principal_engineer_role(self):
+        expected = {
+            "mobile-apps.html": ("meme-arcade", "btwinfriends", "twinchat"),
+            "agentic-ai.html": ("btwinfriends", "twinchat", "newsmusic", "lyrics-refiner"),
+        }
+        for page_name, project_ids in expected.items():
+            page = self.pages[page_name]
+            for project_id in project_ids:
+                case = re.search(rf'<article class="startup-case .*?id="{project_id}-project".*?</article>', page, re.S).group(0)
+                self.assertIn('<p class="startup-case-role">Principal Engineer', case)
+
     def test_topic_cards_keep_their_visual_media(self):
         for page_name in ("books.html", "github.html"):
             page = self.pages[page_name]

@@ -44,6 +44,7 @@ RESEARCH_CASES = {
             ),
         },
         "btwinfriends": {
+            "role": "Principal Engineer",
             "thesis": "Turn conversation history into an adaptive companion.",
             "contribution": "Built the companion system around imported relationship context, multi-model orchestration, and persistent profiles. The shared TwinChat research documents the conversation corpus and memory techniques behind this work.",
             "contribution_source": "resume", "additional_source": "twinchat-study",
@@ -55,6 +56,7 @@ RESEARCH_CASES = {
             ),
         },
         "twinchat": {
+            "role": "Principal Engineer",
             "thesis": "A repeatable architecture for consistent character agents.",
             "contribution": "Built a persona system that extracts a character profile, reinjects it into each turn, and adapts behavior to the conversation category. The published study exposes the prompts and implementation patterns.",
             "contribution_source": "twinchat-study",
@@ -66,6 +68,7 @@ RESEARCH_CASES = {
             ),
         },
         "newsmusic": {
+            "role": "Principal Engineer",
             "thesis": "One orchestration flow from news to a finished music video.",
             "contribution": "Built a staged pipeline for news transcripts, original lyrics, generated music and images, video assembly, and YouTube metadata. Dry runs and private uploads make intermediate results reviewable.",
             "highlights": (
@@ -76,6 +79,7 @@ RESEARCH_CASES = {
             ),
         },
         "lyrics-refiner": {
+            "role": "Principal Engineer",
             "thesis": "Five stages of arrangement, with the writer’s words preserved.",
             "contribution": "Built a local arrangement studio for Spanish lyrics and Regional Mexican styles. It combines genre analysis, optional reference matching, musical annotations, and explicit word-preservation checks.",
             "highlights": (
@@ -96,6 +100,7 @@ RESEARCH_CASES = {
             ),
         },
         "meme-arcade": {
+            "role": "Principal Engineer",
             "thesis": "An iPhone arcade for discovering and instantly playing web games.",
             "contribution": "Built a mobile discovery experience around swipe browsing, in-app play, saved favorites, and local play history. The App Store listing documents the released experience; the companion book covers the iOS architecture.",
             "contribution_source": "meme-app-store", "additional_source": "meme-arcade-book",
@@ -107,6 +112,7 @@ RESEARCH_CASES = {
             ),
         },
         "btwinfriends": {
+            "role": "Principal Engineer",
             "thesis": "A mobile companion built around import, conversation, and return visits.",
             "contribution": "Built the native client, subscriptions, and analytics for BTwin Friends. The public iOS listing documents text imports, coaching personas, and conversation continuation; the launch release establishes its 2024 rollout.",
             "contribution_source": "resume", "additional_source": "btwin-app-store",
@@ -118,6 +124,7 @@ RESEARCH_CASES = {
             ),
         },
         "twinchat": {
+            "role": "Principal Engineer",
             "thesis": "Character discovery and interactive dialogue, launched on iOS.",
             "contribution": "Created an iOS conversation product with a large character catalog and custom twin creation. Contemporary launch material and the founder interview document the mobile experience and its asynchronous, podcast-like conversations.",
             "contribution_source": "twinchat-spotlight", "additional_source": "twinchat-launch",

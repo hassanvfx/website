@@ -1232,7 +1232,7 @@ def generate_github_page():
 
     featured = [repository_card(name, featured=True, index=index) for index, name in enumerate(GITHUB_FEATURED)]
     all_repos = [repository_card(name) for name in GITHUB_REPOSITORIES]
-    return (generate_topic_hero("GitHub", "Code that stays inspectable", "A public catalog of portfolio-linked repositories, developer tools, and product foundations.", action={"label": "Open GitHub", "href": "https://github.com/hassanvfx"}, image="github-terminal-hero")
+    return (generate_topic_hero("GitHub", "Open Source. AI-Native", "A public catalog of portfolio-linked repositories, developer tools, and product foundations.", action={"label": "Open GitHub", "href": "https://github.com/hassanvfx"}, image="github-terminal-hero")
             + generate_topic_index((("featured", "Featured"), ("repositories", "Repositories")))
             + generate_showcase_section("featured", "Selected repositories", "Featured GitHub work", "ClineFlow, KIE CLI & MCP, and reusable Swift foundations.", featured)
             + generate_catalog_section("repositories", "Portfolio repositories", "Repository collection", "The seven repositories already connected to this portfolio: agentic tools, creative automation, and Swift foundations.", all_repos, "repository-deck"))
