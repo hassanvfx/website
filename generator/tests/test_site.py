@@ -110,9 +110,8 @@ class SiteTests(unittest.TestCase):
         self.assertIn('topic-hero-art--square-image', books)
         self.assertIn(generate.IMAGE_MANIFEST["three-technical-books-hero"]["url"], books)
         self.assertIn("AI-Copyright Weights", agentic)
-        for tool in ("SwiftSPM", "DataStore", "WebViewSwiftUI", "SUIPlayer"):
+        for tool in ("SwiftSPM", "DataStore", "WebViewSwiftUI"):
             self.assertIn(tool, mobile)
-        self.assertIn("ios-suiplayer", mobile)
         self.assertIn("Meme Arcade", mobile)
         self.assertIn(generate.IMAGE_MANIFEST["meme-arcade-product-panels"]["url"], mobile)
         self.assertNotIn(generate.IMAGE_MANIFEST["meme-arcade-play"]["url"], re.search(r'<article class="startup-case .*?id="meme-arcade-project".*?</article>', mobile, re.S).group(0))
@@ -264,7 +263,6 @@ class SiteTests(unittest.TestCase):
             if repo["license"]:
                 self.assertIn(f'{repo["license"]} license', github)
         self.assertNotIn("Nuke-Cloudlight-Plugin", github)
-        self.assertNotIn("ios-suiplayer", github)
 
     def test_seo_registry_and_legacy_page(self):
         sitemap = (ROOT / "sitemap.xml").read_text()

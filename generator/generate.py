@@ -1068,7 +1068,6 @@ PROJECT_VISUALS = {
     "swift-spm": "swift-spm-hero",
     "datastore": "datastore-hero",
     "webview-swiftui": "webview-swiftui-hero",
-    "suiplayer": "github-logo",
 }
 
 ARTICLE_VISUALS = {
@@ -1178,7 +1177,7 @@ def generate_mobile_page():
     return (generate_topic_hero("Mobile Apps", "Pocket Magic", "Native experiences, real-time products, and iOS engineering from app architecture to WWDC recognition.", "ios-open-source", icon_wall=True, hero_variant="mobile")
             + generate_topic_index((("projects", "Projects"), ("open-source", "Open Source"), ("articles", "Articles & Books")))
             + generate_catalog_section("projects", "Selected mobile work", "Mobile app projects", "Consumer products and native product systems across video, social, AI, and games.", generate_topic_project_cases(composition["projects"], "mobile-apps"), "startup-cases project-cases")
-            + generate_catalog_section("open-source", "Swift tools", "iOS open source", "Four distinct Swift projects for packages, persistence, web surfaces, and video playback.", [generate_swift_tool_card(item) for item in composition["open_source"]], "repository-deck")
+            + generate_catalog_section("open-source", "Swift tools", "iOS open source", "Three distinct Swift projects for packages, persistence, and web surfaces.", [generate_swift_tool_card(item) for item in composition["open_source"]], "repository-deck")
             + generate_showcase_section("articles", "Technical writing", "Mobile articles", "A practical archive of SwiftUI, modular architecture, iOS persistence, security, and mobile product lessons.", [generate_showcase_article_card(item, index) for index, item in enumerate(composition["articles"])])
             + generate_book_shelf("books", "Reading", "Mobile books", "A field guide to mobile architecture and the product systems behind it.", composition["books"]))
 

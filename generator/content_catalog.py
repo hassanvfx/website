@@ -78,7 +78,7 @@ PAGE_COMPOSITIONS = {
     },
     "mobile-apps": {
         "projects": ("meme-arcade", "spreeai", "btwinfriends", "twinchat", "community", "ultrakam", "flyr"),
-        "open_source": ("swift-spm", "datastore", "webview-swiftui", "suiplayer"),
+        "open_source": ("swift-spm", "datastore", "webview-swiftui"),
         "articles": ("writing-wwdc14", "writing-demystify-swiftui", "writing-modular-swift", "writing-swiftspm", "writing-datastore", "writing-securevault", "writing-swiftwallet"),
         "books": ("meme-arcade-book",),
     },

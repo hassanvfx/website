@@ -255,17 +255,6 @@ SWIFT_FOUNDATIONS = [
         "image": "webview-swiftui-hero",
         "image_alt": "Abstract illustration of a SwiftUI web browser with connected navigation controls"
     },
-    {
-        "id": "suiplayer",
-        "eyebrow": "SwiftUI Video",
-        "title": "SUIPlayer",
-        "subtitle": "A SwiftUI wrapper for AVPlayer",
-        "description": "An open-source SwiftUI package for integrating AVPlayer playback into native interfaces.",
-        "highlights": ["AVPlayer wrapper", "Swift Package"],
-        "website": "https://github.com/hassanvfx/ios-suiplayer",
-        "image": None,
-        "image_alt": "SUIPlayer video playback package"
-    },
 ]
 
 # CURRENT AI WORK (2022-2025)
