@@ -18,7 +18,7 @@ from portfolio_data import (
     CITATIONS, FEATURED_BOOKS, WWDC14_FEATURE, SWIFT_FOUNDATIONS
 )
 from templates.css import CSS_STYLES, COMPONENT_STYLES, SIGNAL_STYLES
-from templates.scripts import INTERACTION_SCRIPT, RESUME_SCRIPT
+from templates.scripts import INTERACTION_SCRIPT
 from templates.icons import sparks_icon
 from technical_writing import TECHNICAL_WRITING
 from content_catalog import (
@@ -1408,10 +1408,9 @@ def render_portfolio(page="home"):
         "startups": generate_startups_page,
         "books": generate_books_page,
     }[page]()
-    resume_script = f'<script type="module">{RESUME_SCRIPT}</script>' if page == "profile" else ''
     return (html + generate_header(page) + '<main id="main-content" tabindex="-1">'
             + content + '</main>' + generate_contact() +
-            f'<script>{INTERACTION_SCRIPT}</script>' + resume_script + '</body></html>')
+            f'<script>{INTERACTION_SCRIPT}</script></body></html>')
 
 
 def generate_home_content():
@@ -1424,10 +1423,9 @@ def generate_home_content():
 
 def generate_profile_content():
     """Generate the focused professional resume page."""
-    return (generate_professional_profile(heading_tag="h1")
+    return (generate_about(heading_tag="h1")
             + generate_recognition() + generate_citations_section()
-            + generate_selected_work_grid(page="profile") + generate_press_and_interviews()
-            + generate_about())
+            + generate_selected_work_grid(page="profile") + generate_press_and_interviews())
 
 
 def generate_selected_content():
@@ -1588,13 +1586,13 @@ def generate_press_and_interviews():
 '''
 
 
-def generate_about():
+def generate_about(heading_tag="h2"):
     return f'''
   <!-- Bio / Artist Introduction -->
   <section class="bio-section" id="about">
     <div class="bio-content">
       {generate_section_nav()}
-      <h2 class="bio-headline">{BIO["headline"]}</h2>
+      <{heading_tag} class="bio-headline">{BIO["headline"]}</{heading_tag}>
       <figure class="bio-profile-image">
         <img {image_attributes(BIO["image"], loading="lazy")} alt="{BIO["image_alt"]}" />
       </figure>
